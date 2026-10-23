@@ -19,6 +19,7 @@ import subprocess
 import sys
 import threading
 import time
+import tomllib
 
 MAX_ROUTE_BYTES = 4 * 1024 * 1024
 MAX_LOG_BYTES = 4 * 1024 * 1024
@@ -186,6 +187,49 @@ def unwrap_execution(value, expected_binary_hash=None, require_contract=False):
     return value["result"]
 
 
+def validate_project_mode(descriptor, build, verify_only):
+    if bool(descriptor) != bool(build):
+        raise ValueError("project descriptor and project build must be supplied together")
+    if verify_only and not descriptor:
+        raise ValueError("project verify-only requires both descriptor and build")
+
+
+def validate_project_binding(built, verification):
+    """Bind an official verification result to its recorded official build."""
+    if built.get("schema") != 1 or built.get("kind") != "pce-consumer-build":
+        raise ValueError("shared build receipt schema/kind mismatch")
+    if verification.get("schema") != 1 or verification.get("verified") is not True:
+        raise ValueError("shared project verification did not succeed")
+    binding = built.get("binding")
+    if not isinstance(binding, dict) or set(verification) != set(binding) | {"schema", "verified"}:
+        raise ValueError("shared verification/build binding fields differ")
+    for key, expected in binding.items():
+        # Canonical JSON comparison also distinguishes bools from integers.
+        if json.dumps(verification[key], sort_keys=True) != json.dumps(expected, sort_keys=True):
+            raise ValueError("shared verification/build binding mismatch: " + key)
+    return binding
+
+
+def validate_project_outputs(built, binary):
+    """Check selected binary and exact adjacent output set from build receipt."""
+    if Path(built["binary"]).resolve(strict=True) != binary.resolve(strict=True) or sha256(binary) != built["binary_sha256"]:
+        raise ValueError("selected target does not match shared build receipt binary")
+    outputs = {path.name: sha256(path) for path in sorted(binary.parent.iterdir()) if path.is_file()}
+    if outputs != built["output_files"]:
+        raise ValueError("shared build output/dependency identities changed")
+    return outputs
+
+
+def verify_project_cli(descriptor, environment, cwd):
+    """Delegate source/module/input identity algorithms to the shared toolkit."""
+    completed = subprocess.run([sys.executable, "-m", "pcerecomp.project", "verify", str(descriptor)],
+                               cwd=cwd, env=environment, check=True, capture_output=True,
+                               text=True, timeout=60)
+    if len(completed.stdout.encode("utf-8")) > MAX_ROUTE_BYTES:
+        raise ValueError("shared verification result exceeds four-MiB bound")
+    return json.loads(completed.stdout)
+
+
 class BoundedChild:
     """One bounded child, with byte-capped logs and an independent watchdog."""
     def __init__(self, command, cwd, out, env=None, process_tree=False):
@@ -295,6 +339,7 @@ def replay(args):
     child = None
     started = time.monotonic()
     try:
+        validate_project_mode(args.project_descriptor, args.project_build, args.project_verify_only)
         client_module, tool_identity = upstream_client(tool, args.expected_revision)
         receipt["tool_identity"] = tool_identity
         route_path = Path(args.route).resolve(strict=True)
@@ -335,18 +380,13 @@ def replay(args):
         launch_command = command
         environment = None
         contract_path = None
-        if bool(args.project_descriptor) != bool(args.project_build):
-            raise ValueError("project descriptor and project build must be supplied together")
+        project_guard_inputs = {}
         if args.project_descriptor:
             descriptor = Path(args.project_descriptor).resolve(strict=True)
             project_build = Path(args.project_build).resolve(strict=True)
             built = json.loads((project_build / "build-receipt.json").read_text(encoding="utf-8"))
             if Path(built["binary"]).resolve(strict=True) != binary or built["binary_sha256"] != identities[str(binary)]:
                 raise ValueError("selected target does not match shared build receipt binary")
-            contract_path = out / "contract.json"
-            launch_command = [sys.executable, "-m", "pcerecomp.project", "run", str(descriptor),
-                              "--build-dir", str(project_build), "--receipt", str(contract_path),
-                              "--dev-port", "0", "--start-paused", "--memory-write"]
             environment = os.environ.copy()
             # The evidence cwd may itself contain a different pcerecomp checkout.
             # Suppress Python's implicit cwd import entry so the verified root
@@ -355,6 +395,28 @@ def replay(args):
             receipt.update(project_descriptor=str(descriptor), project_build=str(project_build),
                            project_descriptor_sha256=sha256(descriptor),
                            project_build_receipt_sha256=sha256(project_build / "build-receipt.json"))
+            if args.project_verify_only:
+                verification = verify_project_cli(descriptor, environment, evidence)
+                binding = validate_project_binding(built, verification)
+                output_hashes = validate_project_outputs(built, binary)
+                declared_wall = tomllib.loads(descriptor.read_text(encoding="utf-8"))["limits"]["wall_seconds"]
+                project_guard_inputs = {descriptor: receipt["project_descriptor_sha256"],
+                                        project_build / "build-receipt.json": receipt["project_build_receipt_sha256"]}
+                receipt.update(project_execution_mode="shared-verify-then-consumer-route",
+                               shared_project_run_used=False, project_binding=binding,
+                               project_verification_before=verification,
+                               project_output_files_before=output_hashes,
+                               host_bound_override={"explicit_project_verify_only": True,
+                                                    "descriptor_wall_seconds": declared_wall,
+                                                    "descriptor_wall_applied": False,
+                                                    "effective_consumer_phase_seconds": PHASE_SECONDS,
+                                                    "original_route_guest_arguments_preserved": True,
+                                                    "scope": "Consumer TCP route watchdog; shared project.run was not used."})
+            else:
+                contract_path = out / "contract.json"
+                launch_command = [sys.executable, "-m", "pcerecomp.project", "run", str(descriptor),
+                                  "--build-dir", str(project_build), "--receipt", str(contract_path),
+                                  "--dev-port", "0", "--start-paused", "--memory-write"]
         receipt["launch_command"] = launch_command
         child = BoundedChild(launch_command, evidence, out, env=environment, process_tree=contract_path is not None)
         until = time.monotonic() + 10
@@ -430,6 +492,14 @@ def replay(args):
         for name, expected_hash in identities.items():
             if sha256(name) != expected_hash:
                 raise RuntimeError("read-only input changed during replay: " + name)
+        if args.project_verify_only:
+            for path, expected_hash in project_guard_inputs.items():
+                if sha256(path) != expected_hash:
+                    raise RuntimeError("project descriptor/build receipt changed during replay: " + str(path))
+            verification_after = verify_project_cli(descriptor, environment, evidence)
+            validate_project_binding(built, verification_after)
+            receipt.update(project_verification_after=verification_after,
+                           project_output_files_after=validate_project_outputs(built, binary))
         final_tool_identity = verify_tool_root(tool, args.expected_revision)
         if final_tool_identity != tool_identity:
             raise RuntimeError("verified tool identity changed during replay")
@@ -456,6 +526,8 @@ def main():
     parser.add_argument("--expected-revision", help="explicit development tool revision; public manifest pin remains the default")
     parser.add_argument("--project-descriptor", help="verified shared consumer descriptor")
     parser.add_argument("--project-build", help="shared consumer build directory; requires --project-descriptor")
+    parser.add_argument("--project-verify-only", action="store_true",
+                        help="use shared project verify before/after and preserve the original route under the consumer 1800-second watchdog")
     parser.add_argument("--ignore-tier-counters", action="store_true",
                         help="compare all state except native_steps and interpreter_steps")
     args = parser.parse_args()

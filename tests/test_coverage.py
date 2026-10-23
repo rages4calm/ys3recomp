@@ -28,12 +28,27 @@ def fixtures():
     return before, after, copy.deepcopy(before_run), before_run, after_run
 
 
+def incremental_fixtures():
+    before, after, reference, before_run, after_run = fixtures()
+    before_run.update(native_steps=80, interpreter_steps=20, native_block_steps=4,
+                      interpreter_block_steps=1, guard_misses=12)
+    after_run.update(native_steps=95, interpreter_steps=5, native_block_steps=5,
+                     interpreter_block_steps=0, guard_misses=15)
+    for name in ("final_status", "released_status"):
+        before[name]["host"].update(native_steps=80, interpreter_steps=20)
+        after[name]["host"].update(native_steps=95, interpreter_steps=5)
+    return before, after, reference, before_run, after_run
+
+
 class CoverageQualificationTests(unittest.TestCase):
     def test_native_redistribution_with_conserved_totals_passes(self):
         result = qualify(*fixtures())
         self.assertTrue(result["passed"])
         self.assertEqual(result["native_steps_gained"], 70)
         self.assertEqual(result["candidate_native_fraction"], 0.8)
+        self.assertTrue(result["baseline_matches_original_runner"])
+        self.assertTrue(result["baseline_matches_original_runner_exact_tiers"])
+        self.assertEqual(result["normalization"]["baseline_runner_tier_fields"], [])
 
     def test_shared_wrapper_preserves_full_runner_comparison(self):
         values = list(fixtures())
@@ -116,6 +131,50 @@ class CoverageQualificationTests(unittest.TestCase):
                 qualify(*fixtures(), min_native_fraction=fraction)
         with self.assertRaises(ValueError):
             qualify(*fixtures(), min_native_gain=0)
+
+    def test_incremental_baseline_requires_explicit_opt_in(self):
+        with self.assertRaisesRegex(ValueError, "baseline_runner"):
+            qualify(*incremental_fixtures())
+        result = qualify(*incremental_fixtures(), allow_baseline_tier_change=True)
+        self.assertEqual(result["baseline_native_fraction"], 0.8)
+        self.assertEqual(result["candidate_native_fraction"], 0.95)
+        self.assertEqual(result["native_steps_gained"], 15)
+        self.assertFalse(result["baseline_matches_original_runner"])
+        self.assertTrue(result["baseline_matches_original_runner_semantics"])
+        self.assertFalse(result["baseline_matches_original_runner_exact_tiers"])
+        self.assertEqual(result["normalization"]["baseline_runner_tier_fields"],
+                         ["native_steps", "interpreter_steps", "guard_misses",
+                          "native_block_steps", "interpreter_block_steps"])
+
+    def test_incremental_reference_instruction_and_block_totals_are_conserved(self):
+        for key in ("interpreter_steps", "interpreter_block_steps"):
+            values = incremental_fixtures()
+            values[2][key] += 1
+            with self.subTest(key=key), self.assertRaisesRegex(ValueError, "baseline_runner.total_"):
+                qualify(*values, allow_baseline_tier_change=True)
+
+    def test_incremental_reference_device_and_source_generations_remain_exact(self):
+        for group, key, changed in (("device", "writes", 7), ("source", "generations", [3, 5])):
+            values = incremental_fixtures()
+            values[2][group][key] = changed
+            with self.subTest(group=group), self.assertRaisesRegex(ValueError, "baseline_runner." + group):
+                qualify(*values, allow_baseline_tier_change=True)
+
+    def test_incremental_mode_still_checks_images_and_baseline_status_totals(self):
+        values = incremental_fixtures()
+        values[1]["images"][0]["png_sha256"] = "different"
+        with self.assertRaisesRegex(ValueError, "replay.images"):
+            qualify(*values, allow_baseline_tier_change=True)
+        values = incremental_fixtures()
+        values[0]["final_status"]["host"]["native_steps"] += 1
+        with self.assertRaisesRegex(ValueError, "baseline.final_status: retired count"):
+            qualify(*values, allow_baseline_tier_change=True)
+
+    def test_incremental_tier_counts_cannot_be_invalid_types(self):
+        values = incremental_fixtures()
+        values[3]["guard_misses"] = True
+        with self.assertRaisesRegex(ValueError, "baseline_runner.guard_misses"):
+            qualify(*values, allow_baseline_tier_change=True)
 
 
 if __name__ == "__main__":

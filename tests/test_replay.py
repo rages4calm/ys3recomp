@@ -5,7 +5,9 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from scripts.replay_route import compare_status, source_binary_anchor, unwrap_execution, validate_route
+from scripts.replay_route import (compare_status, source_binary_anchor, unwrap_execution,
+                                 validate_project_binding, validate_project_mode,
+                                 validate_project_outputs, validate_route)
 
 
 def route_fixture():
@@ -155,6 +157,73 @@ class SharedExecutionEnvelopeTests(unittest.TestCase):
                 unwrap_execution(candidate, "authored-hash", require_contract=True)
         with self.assertRaises(ValueError):
             unwrap_execution({"ticks": 1}, require_contract=True)
+
+
+class SharedVerifyOnlyTests(unittest.TestCase):
+    def binding_fixture(self):
+        binding = {"descriptor_sha256": "authored-descriptor", "tool": {"source_sha256": "authored-source"},
+                   "files": {"module_source": "authored-module", "bios": "authored-input"},
+                   "revision_override": False}
+        built = {"schema": 1, "kind": "pce-consumer-build", "binding": binding}
+        verification = {"schema": 1, "verified": True, **copy.deepcopy(binding)}
+        return built, verification
+
+    def test_official_verified_binding_must_match_every_build_identity(self):
+        built, verification = self.binding_fixture()
+        self.assertEqual(validate_project_binding(built, verification), built["binding"])
+        for change in (
+                lambda value: value["tool"].update(source_sha256="changed"),
+                lambda value: value["files"].update(module_source="changed"),
+                lambda value: value["files"].update(bios="changed"),
+                lambda value: value.update(descriptor_sha256="changed"),
+                lambda value: value.update(revision_override=0),
+                lambda value: value.update(verified=False),
+                lambda value: value.update(unexpected_identity="extra")):
+            changed = copy.deepcopy(verification)
+            change(changed)
+            with self.assertRaises(ValueError):
+                validate_project_binding(built, changed)
+
+    def test_exact_output_set_rejects_dependency_hash_change_addition_and_removal(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            binary = root / "authored-runner"
+            dependency = root / "authored-library"
+            binary.write_bytes(b"synthetic executable fixture")
+            dependency.write_bytes(b"synthetic dependency fixture")
+            hashes = {path.name: hashlib.sha256(path.read_bytes()).hexdigest() for path in root.iterdir()}
+            built = {"binary": str(binary), "binary_sha256": hashes[binary.name], "output_files": hashes}
+            self.assertEqual(validate_project_outputs(built, binary), hashes)
+            dependency.write_bytes(b"changed")
+            with self.assertRaisesRegex(ValueError, "output/dependency"):
+                validate_project_outputs(built, binary)
+            dependency.write_bytes(b"synthetic dependency fixture")
+            added = root / "unexpected-library"
+            added.write_bytes(b"unexpected")
+            with self.assertRaisesRegex(ValueError, "output/dependency"):
+                validate_project_outputs(built, binary)
+            added.unlink()
+            dependency.unlink()
+            with self.assertRaisesRegex(ValueError, "output/dependency"):
+                validate_project_outputs(built, binary)
+
+    def test_selected_binary_must_match_recorded_path_and_hash(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            binary = root / "runner"
+            binary.write_bytes(b"synthetic executable")
+            built = {"binary": str(binary), "binary_sha256": "0" * 64, "output_files": {}}
+            with self.assertRaisesRegex(ValueError, "selected target"):
+                validate_project_outputs(built, binary)
+
+    def test_verify_only_requires_descriptor_and_build_pair(self):
+        for descriptor, build, verify_only in ((None, None, True), ("descriptor", None, True),
+                                                (None, "build", True), ("descriptor", None, False)):
+            with self.subTest(descriptor=descriptor, build=build, verify_only=verify_only), self.assertRaises(ValueError):
+                validate_project_mode(descriptor, build, verify_only)
+        validate_project_mode(None, None, False)
+        validate_project_mode("descriptor", "build", False)
+        validate_project_mode("descriptor", "build", True)
 
 
 if __name__ == "__main__":
