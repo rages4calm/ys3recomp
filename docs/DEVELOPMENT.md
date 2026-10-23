@@ -13,12 +13,12 @@ the immutable source dependency. Commands below use PowerShell variables.
 
 ```powershell
 $evidence = 'TOOL_EVIDENCE_ROOT'
-$tool = (Resolve-Path '.deps/pcenginerecomp').Path
+$tool = (Resolve-Path '.deps/pcenginerecomp-next').Path
 python scripts/prepare_private.py --evidence-root $evidence --tool-root $tool --out .local/batch-001
 $module = (Resolve-Path '.local/batch-001/native-baseline/module.cpp').Path
 cmake -S . -B .local/batch-001/build-baseline -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++ "-DPCE_MODULE_SOURCE=$module"
 cmake --build .local/batch-001/build-baseline --parallel 4
-python .deps/pcenginerecomp/scripts/check.py --build .local/batch-001/build-baseline/upstream
+python .deps/pcenginerecomp-next/scripts/check.py --build .local/batch-001/build-baseline/upstream
 python scripts/replay_route.py --tool-root $tool --evidence-root $evidence --route "$evidence/.local/boss-check/attempt8/route.json" --binary .local/batch-001/build-baseline/upstream/pce-headless.exe --out .local/batch-001/replay-baseline
 ```
 
@@ -27,6 +27,43 @@ retained immutable copy with `--source-binary HISTORICAL_BINARY`. Its SHA256
 must still match the unchanged route. The receipt records that explicit
 identity anchor and preserves the original command; this does not change the
 candidate binary that runs or relax the input checks.
+
+## Build the measured native subset
+
+This requires the retained upstream raw capture and a new output batch. Keep
+all artifacts private. The profile is a complete observed route; the selected
+output is explicitly a frequency-ranked subset.
+
+```powershell
+python scripts/select_canonical.py --tool-root $tool --route "$evidence/.local/boss-check/attempt8/route.json" --capture "$evidence/.local/native-coverage/profile/observed-code.json" --out .local/batch-001/selection --max-identities 2048
+$env:PYTHONPATH = $tool
+$env:PYTHONSAFEPATH = '1'
+$env:PYTHONDONTWRITEBYTECODE = '1'
+python -m pcerecomp emit-capture .local/batch-001/selection/selected.json --out .local/batch-001/native-2048
+python scripts/prepare_descriptor.py --tool-root $tool --inputs .local/batch-001/inputs.json --module .local/batch-001/native-2048/module.cpp --out .local/batch-001/project-native.toml
+python -m pcerecomp.project build .local/batch-001/project-native.toml --build-dir .local/batch-001/build-native --generator Ninja --cmake-arg=-DCMAKE_CXX_COMPILER=clang++
+```
+
+For full qualification, pass the shared descriptor/build to the route harness
+using `--project-descriptor` and `--project-build`, together with the build's
+`build/bin/pce-consumer` executable (`.exe` on Windows). Keep the source route
+and historical binary anchor unchanged. Use `--ignore-tier-counters` only for
+the candidate's intended tier change. The harness launches the shared upstream
+run API, verifies its qualified receipt, and retains the original diagnostics.
+
+Then run `scripts/qualify_coverage.py` with `--baseline-receipt`,
+`--candidate-receipt`, `--reference-run`, a new `--out` JSON path,
+`--min-native-fraction 0.9` and `--min-native-gain 2000000000`. This checks the
+original full runner result, before/after state, images, edits and conserved
+instruction totals. Only the ephemeral TCP port and named tier counters are
+normalized. Source generations and device fields stay exact.
+
+The shared development launcher is `python -m pcerecomp.project run DESCRIPTOR
+--build-dir BUILD --receipt NEW_JSON --dev-port 0 --start-paused`. Connect using
+the upstream TCP client. The descriptor bounds the process to 600 wall seconds;
+guest saves stay volatile. The upstream API's explicit `--desktop` build option
+accepts a matching existing SDL SDK, but this consumer batch qualifies only the
+headless host and its guest-frame output.
 
 Preparation verifies the canonical `execution-boss.json` linked receipts and all
 protected inputs, records local input paths/hashes privately and regenerates

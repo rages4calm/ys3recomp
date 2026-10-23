@@ -14,6 +14,7 @@ import json
 import os
 from pathlib import Path
 import re
+import signal
 import subprocess
 import sys
 import threading
@@ -144,12 +145,18 @@ def resolve_capture(checkpoint, route, route_path):
     raise ValueError("retained checkpoint missing or changed: " + checkpoint["file"])
 
 
-def upstream_client(tool_root):
+def verify_tool_root(tool_root, expected_revision=None):
+    command = [sys.executable, str(Path(__file__).with_name("verify_tool.py")),
+               "--tool-root", str(tool_root)]
+    if expected_revision is not None:
+        command += ["--expected-revision", expected_revision]
     verification = subprocess.run(
-        [sys.executable, str(Path(__file__).with_name("verify_tool.py")),
-         "--tool-root", str(tool_root)], check=True, capture_output=True,
-        text=True, timeout=30)
-    identity = json.loads(verification.stdout)
+        command, check=True, capture_output=True, text=True, timeout=30)
+    return json.loads(verification.stdout)
+
+
+def upstream_client(tool_root, expected_revision=None):
+    identity = verify_tool_root(tool_root, expected_revision)
     # Load the verified upstream implementation, without sharing its package
     # name with this consumer's own scripts namespace.
     source = tool_root / "scripts" / "dev_client.py"
@@ -164,9 +171,24 @@ def upstream_client(tool_root):
     return module, identity
 
 
+def unwrap_execution(value, expected_binary_hash=None, require_contract=False):
+    """Accept only a qualified shared-contract envelope, or a direct runner."""
+    if not isinstance(value, dict):
+        raise ValueError("runner output must be a JSON object")
+    if "kind" not in value and not require_contract:
+        return value
+    if value.get("kind") != "pce-consumer-execution" or value.get("qualified") is not True:
+        raise ValueError("shared execution contract is missing or unqualified")
+    if expected_binary_hash is not None and value.get("binary_sha256") != expected_binary_hash:
+        raise ValueError("shared execution contract binary differs from selected target")
+    if not isinstance(value.get("result"), dict):
+        raise ValueError("shared execution contract has no runner result")
+    return value["result"]
+
+
 class BoundedChild:
     """One bounded child, with byte-capped logs and an independent watchdog."""
-    def __init__(self, command, cwd, out):
+    def __init__(self, command, cwd, out, env=None, process_tree=False):
         self.deadline = time.monotonic() + PHASE_SECONDS
         self.lock = threading.Lock()
         self.log_bytes = 0
@@ -174,10 +196,12 @@ class BoundedChild:
         self.port = None
         self.ready = threading.Event()
         self.done = threading.Event()
+        self.process_tree = process_tree
         self.outputs = [(out / name).open("xb") for name in ("run.stdout", "run.stderr")]
         try:
             self.process = subprocess.Popen(command, cwd=cwd, stdin=subprocess.DEVNULL,
                                             stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                            env=env, start_new_session=process_tree and os.name != "nt",
                                             creationflags=0x08000000 if os.name == "nt" else 0)
         except BaseException:
             for output in self.outputs:
@@ -232,7 +256,13 @@ class BoundedChild:
 
     def stop(self):
         if self.process.poll() is None:
-            self.process.terminate()
+            if self.process_tree and os.name == "nt":
+                subprocess.run(["taskkill", "/PID", str(self.process.pid), "/T", "/F"],
+                               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=10)
+            elif self.process_tree:
+                os.killpg(self.process.pid, signal.SIGTERM)
+            else:
+                self.process.terminate()
             try:
                 self.process.wait(timeout=5)
             except subprocess.TimeoutExpired:
@@ -265,7 +295,7 @@ def replay(args):
     child = None
     started = time.monotonic()
     try:
-        client_module, tool_identity = upstream_client(tool)
+        client_module, tool_identity = upstream_client(tool, args.expected_revision)
         receipt["tool_identity"] = tool_identity
         route_path = Path(args.route).resolve(strict=True)
         if route_path.stat().st_size > MAX_ROUTE_BYTES:
@@ -302,7 +332,31 @@ def replay(args):
                        source_route_sha256=identities[str(route_path)],
                        input_sha256=identities, source_binary_sha256=route["binary_sha256"],
                        binary_sha256=identities[str(binary)], initial_bram_sha256=route["initial_bram_sha256"])
-        child = BoundedChild(command, evidence, out)
+        launch_command = command
+        environment = None
+        contract_path = None
+        if bool(args.project_descriptor) != bool(args.project_build):
+            raise ValueError("project descriptor and project build must be supplied together")
+        if args.project_descriptor:
+            descriptor = Path(args.project_descriptor).resolve(strict=True)
+            project_build = Path(args.project_build).resolve(strict=True)
+            built = json.loads((project_build / "build-receipt.json").read_text(encoding="utf-8"))
+            if Path(built["binary"]).resolve(strict=True) != binary or built["binary_sha256"] != identities[str(binary)]:
+                raise ValueError("selected target does not match shared build receipt binary")
+            contract_path = out / "contract.json"
+            launch_command = [sys.executable, "-m", "pcerecomp.project", "run", str(descriptor),
+                              "--build-dir", str(project_build), "--receipt", str(contract_path),
+                              "--dev-port", "0", "--start-paused", "--memory-write"]
+            environment = os.environ.copy()
+            # The evidence cwd may itself contain a different pcerecomp checkout.
+            # Suppress Python's implicit cwd import entry so the verified root
+            # supplied through PYTHONPATH owns the shared contract implementation.
+            environment.update(PYTHONPATH=str(tool), PYTHONDONTWRITEBYTECODE="1", PYTHONSAFEPATH="1")
+            receipt.update(project_descriptor=str(descriptor), project_build=str(project_build),
+                           project_descriptor_sha256=sha256(descriptor),
+                           project_build_receipt_sha256=sha256(project_build / "build-receipt.json"))
+        receipt["launch_command"] = launch_command
+        child = BoundedChild(launch_command, evidence, out, env=environment, process_tree=contract_path is not None)
         until = time.monotonic() + 10
         while not child.ready.wait(0.05):
             if child.failure or child.process.poll() is not None or time.monotonic() >= until:
@@ -359,12 +413,27 @@ def replay(args):
             if len(receipt["images"]) != len(route["checkpoints"]):
                 raise RuntimeError("not every image checkpoint was compared")
             client.call("quit")
-        child.process.wait(timeout=5)
+        child.process.wait(timeout=30 if contract_path is not None else 5)
         if child.process.returncode != 0 or child.failure:
             raise RuntimeError("child exit failed: " + str(child.failure))
+        if contract_path is not None:
+            # Wait for bounded stream readers before inspecting the wrapper's
+            # sole final JSON. The shared runner owns descriptor/source guards.
+            for reader in child.readers:
+                reader.join(timeout=5)
+            envelope = json.loads((out / "run.stdout").read_text(encoding="utf-8"))
+            unwrap_execution(envelope, identities[str(binary)], require_contract=True)
+            if json.loads(contract_path.read_text(encoding="utf-8")) != envelope:
+                raise RuntimeError("shared receipt differs from wrapper stdout")
+            receipt.update(contract_path=str(contract_path), contract_sha256=sha256(contract_path),
+                           contract_command=envelope["command"], contract_binding=envelope.get("binding"))
         for name, expected_hash in identities.items():
             if sha256(name) != expected_hash:
                 raise RuntimeError("read-only input changed during replay: " + name)
+        final_tool_identity = verify_tool_root(tool, args.expected_revision)
+        if final_tool_identity != tool_identity:
+            raise RuntimeError("verified tool identity changed during replay")
+        receipt["tool_identity_after"] = final_tool_identity
         receipt.update(passed=True, exit_code=0)
     except BaseException as error:
         receipt.update(passed=False, error=repr(error))
@@ -384,6 +453,9 @@ def main():
     for name in ("tool-root", "evidence-root", "route", "binary", "out"):
         parser.add_argument("--" + name, required=True)
     parser.add_argument("--source-binary", help="immutable historical executable; must match the unchanged route binary hash")
+    parser.add_argument("--expected-revision", help="explicit development tool revision; public manifest pin remains the default")
+    parser.add_argument("--project-descriptor", help="verified shared consumer descriptor")
+    parser.add_argument("--project-build", help="shared consumer build directory; requires --project-descriptor")
     parser.add_argument("--ignore-tier-counters", action="store_true",
                         help="compare all state except native_steps and interpreter_steps")
     args = parser.parse_args()
