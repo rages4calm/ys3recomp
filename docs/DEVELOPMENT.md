@@ -7,24 +7,24 @@ CPU/device/audio semantics, media, generation and reusable hosts remain upstream
 
 ## Pin, regenerate and build
 
-The current source pin is `e0f67bf64fe670723acd4443b0da76f3bfe8276f`, ABI 15,
-descriptor schema 1. Its 53-file source SHA256 is
-`38573f59cd17b1b9c640337ac6c1d9db80b3dc926d42312f8cedfd28d7959dd7`.
+The current source pin is `3bd06b5055c92e9f368aab7023098ff8aa796854`, ABI 16,
+descriptor schema 1. Its 54-file source SHA256 is
+`720e3c1e980e3ad9d03b28cb4b31db696fe3bb27e687c0cf19bc3d0f3f1c9440`.
 Clone with LF source bytes as shown in README. `verify_tool.py` rejects the
 wrong revision/ABI/digest, dirty source, concealed index changes and shadow files.
 
-ABI 12/13/14 captures remain immutable offline inputs. Re-emit them through the
+ABI 12/13/14/15 captures remain immutable offline inputs. Re-emit them through the
 shared tool and rebuild every compiled object. Never relabel capture metadata.
 The retained expanded profile has 44,883 identities, of which 44,879 are eligible
-in 57 full MPR contexts. Its ABI 15 module has 208 C++ translation units and one
-header. Compared with ABI 13, all operations, guards and exclusions stay exact;
+in 57 full MPR contexts. Its ABI 16 module has 208 C++ translation units and one
+header. Compared with ABI 15, all operations, guards and exclusions stay exact;
 only the 208 ABI assertions change. The header is identical.
 
 These examples require private input configuration and retained evidence. Use
 new output directories and reuse original inputs/dependencies read-only:
 
 ```powershell
-$tool = (Resolve-Path '.deps/pcenginerecomp-abi15').Path
+$tool = (Resolve-Path '.deps/pcenginerecomp-abi16').Path
 $batch = '.local/new-private-batch'
 $profile = 'PRIVATE_OBSERVATION_PROFILE'
 $route = 'PRIVATE_EXTENDED_ROUTE'
@@ -32,14 +32,15 @@ $inputs = 'PRIVATE_INPUT_CONFIGURATION'
 New-Item -ItemType Directory -Path "$batch/temp" -Force
 $env:TEMP = (Resolve-Path "$batch/temp").Path
 $env:TMP = $env:TEMP
-$env:PYTHONPATH = $tool
+$project = (Get-Location).Path
+$env:PYTHONPATH = "$project;$tool"
 $env:PYTHONSAFEPATH = '1'
 $env:PYTHONDONTWRITEBYTECODE = '1'
-python scripts/verify_tool.py --tool-root $tool
-python scripts/expand_native.py --tool-root $tool --route $route --capture $profile --out "$batch/native"
-python scripts/prepare_descriptor.py --tool-root $tool --inputs $inputs --module "$batch/native/module.cpp" --audio on --audio-profile filtered --audio-rate 48000 --audio-timing legacy --out "$batch/project-legacy.toml"
-python scripts/prepare_descriptor.py --tool-root $tool --inputs $inputs --module "$batch/native/module.cpp" --audio on --audio-profile filtered --audio-rate 48000 --out "$batch/project-gear.toml"
-python scripts/prepare_descriptor.py --tool-root $tool --inputs $inputs --module "$batch/native/module.cpp" --audio off --out "$batch/project-off.toml"
+python -m scripts.verify_tool --tool-root $tool
+python -m scripts.expand_native --tool-root $tool --route $route --capture $profile --out "$batch/native"
+python -m scripts.prepare_descriptor --tool-root $tool --inputs $inputs --module "$batch/native/module.cpp" --audio on --audio-profile filtered --audio-rate 48000 --audio-timing legacy --out "$batch/project-legacy.toml"
+python -m scripts.prepare_descriptor --tool-root $tool --inputs $inputs --module "$batch/native/module.cpp" --audio on --audio-profile filtered --audio-rate 48000 --out "$batch/project-gear.toml"
+python -m scripts.prepare_descriptor --tool-root $tool --inputs $inputs --module "$batch/native/module.cpp" --audio off --out "$batch/project-off.toml"
 python -m pcerecomp.project build "$batch/project-gear.toml" --build-dir "$batch/build-gear" --desktop --generator Ninja --cmake-arg=-DCMAKE_CXX_COMPILER=clang++ --cmake-arg=-DSDL3_DIR=SDL3_CMAKE_DIRECTORY
 ```
 
@@ -54,18 +55,18 @@ writes overlapping instruction fetches. Exact PC, all eight MPRs, physical
 addresses and source bytes distinguish overlays. The profile's original hash,
 completeness and hit totals stay intact. Emission counts prove no execution.
 
-## Run and qualify the ABI 15 matrix
+## Run and qualify the ABI 16 matrix
 
 Run the same frozen 94,800-frame route through TCP on all three new packages:
 
-1. Explicit legacy filtered 48 kHz must reproduce the qualified ABI 13 package's
-   exposed guest/native/source state, processed/raw-source PCM and bounded WAV.
-2. Default Gear filtered 48 kHz must match a fresh separately frozen ABI 15
+1. Explicit legacy filtered 48 kHz must match a separately frozen ABI 16
+   headless run, including guest/source/native/CD state, PCM and bounded WAV.
+2. Default Gear filtered 48 kHz must match a fresh separately frozen ABI 16
    headless reference at all 39 checkpoints and three endpoints.
 3. Audio off must retain exposed guest/native/source state and omit all PCM,
    WAV and device-output diagnostics.
 
-Use `replay_route.py` with the matching binary, descriptor and build directory,
+Use `python -m scripts.replay_route` with the matching binary, descriptor and build directory,
 `--project-verify-only --desktop-packaged`, the immutable source-route binary
 anchor, and the same input/route evidence. Enabled runs select
 `--audio-output on --audio-profile filtered --audio-rate 48000 --audio-frames 1440000`.
@@ -81,21 +82,23 @@ Every source/guest/image diagnostic remains retained. Current counts are
 transfers with zero interpreted blocks. The ABI upgrade adds no native coverage.
 
 ```sh
-python scripts/qualify_abi15.py --baseline-receipt OLD13_RECEIPT --legacy-receipt NEW15_LEGACY --gear-receipt NEW15_GEAR --off-receipt NEW15_OFF --expectation REVIEWED_MATRIX --out NEW_QUALIFICATION
+python -m scripts.qualify_abi16 --legacy-receipt NEW16_LEGACY --gear-receipt NEW16_GEAR --off-receipt NEW16_OFF --expectation REVIEWED_MATRIX --out NEW_QUALIFICATION
 ```
 
 The strict expectation hash-binds both full headless reference receipts, runs
 and WAVs; exact tool/source/ABI, route and module identities; actual upstream
-qualification; and separately scoped independent evidence. New consumer receipts
-require timing in their normalized selection. The pinned frozen headless adapter
-retains its two-key selection only when actual argv, PCM marker and root
-qualification independently establish timing. Raw receipts are never rewritten.
+qualification; and separately scoped independent evidence. Both new hosts
+require three selection fields: profile, sample rate and timing. Packaged Gear
+omits timing; headless Gear may explicitly select it. Preserve actual argv and
+descriptors. Raw receipts are never rewritten. The separate ABI 15 conservation
+report measures prior guest/native/source/image/PCM/WAV differences honestly.
 
-Before comparing the capture-free ABI 15 runs, validate and rehash the original
-ABI 13 managed capture and paused restored-source proof. Only its exact reviewed
-capture-window metadata may then be handled separately. All 209 old/new generated
-artifacts are rehashed, accepting only exact ABI assertion replacements. All
-other instruction, block and per-identity retirement totals remain conserved.
+Current ABI 16 qualification runs are capture-free. When comparing a historical
+managed capture, rehash its raw data and paused restored-source proof first.
+Only explicitly reviewed capture-window metadata may be handled separately. All
+209 old/new generated artifacts are rehashed, accepting only exact 15-to-16 ABI
+assertion replacements. All other instruction, block and per-identity retirement
+totals remain conserved.
 
 At every Gear observation, source frames must equal
 `floor(ticks * 44100 / 21477273)`. At 48 kHz, output frames equal
@@ -108,6 +111,22 @@ shared descriptor's 600-second `project.run` bound. The full route bypasses the
 descriptor's shorter project.run wall bound and records that override. A separate finite
 60-frame official run checks the wrapper with dummy SDL. It is not device
 playback evidence or the full gameplay route.
+
+`cd_unknown` is retained and validated in every new status/final JSON. Its
+opcode-attempt histogram includes strict faults; accepted responses must agree
+with the old counter. Origin is the last CPU $1801 latch write supplying the
+initial CDB byte before its first ACK: PC, ticks, all MPRs, mapped physical PC
+and seven nullable pure source peeks. Later known commands do not replace the
+last unknown record. It is not an ACK/retirement trace or implemented command.
+Only this validated added diagnostic is separated for old-schema comparisons;
+never broadly drop IRQ, generation or other guest fields. Current old fields
+remain exact. Future sprite-IRQ differences require independent investigation.
+
+The strict-policy prefix is separate expected-fault evidence, not a route pass.
+The captured stop is a CD-specific bus fault; recorded child OS exit is 1 and
+natural runtime exit was not verified. Keep the original failed outer assertion
+and actual raw output. No retail run is repeated or relabeled to hide a harness
+metadata or lifecycle mismatch.
 
 ## Playback, local commands and limits
 
@@ -145,9 +164,9 @@ The explicit gear-good unknown-CD condition and IPL-entry sandbox remain visible
 ## Authored checks and historical workflows
 
 Run the consumer tests and the unchanged pinned shared checker after relevant
-builds. The fresh embedded desktop build has 30 shared suites and 316 Python
-tests without skips. The consumer has 283 passing tests. The clean default
-configuration intentionally skips eight desktop cases. A fresh ABI 15-only
+builds. The fresh embedded desktop build has 33 shared suites and 328 Python
+tests without skips. The consumer has 324 passing tests. The clean default
+configuration intentionally skips eight desktop cases. A fresh ABI 16-only
 checkout may also skip optional historical c5 capture integration cases; the
 owner's qualified checkout retains that pin and reports zero skips. Keep actual
 skip counts separate from device evidence.
@@ -155,9 +174,13 @@ skip counts separate from device evidence.
 The older ABI 13 raw/filter/native-window workflows and finite qualifiers remain
 unchanged in the source history. Use their corresponding source/toolchain epoch:
 [retained development procedure](https://github.com/rages4calm/ys3recomp/blob/f7ad744bbdff792453360fd9d5eb7c97f7201326/docs/DEVELOPMENT.md).
-The managed capture helper intentionally accepts only its reviewed ABI 13
-contract. A new ABI 15 capture session needs a separate contract review; this
-migration reuses the unchanged ABI 13 profile and creates no fresh retail capture.
+Managed capture accepts only explicitly reviewed ABI 13 or 16 contracts. The
+actual capture ABI must match the selected runtime, with exact paused-window
+counters, all MPRs, mapped physical/fetched-byte identity, restoration readback
+and loss/capacity/hash checks. WRAM aliases do not merge source identities. The
+ABI 16 loader is checked with authored two-byte BRK/wrapped-MPR observations;
+this migration reuses the original ABI 13 retail profile and captures no new
+retail game code. Unknown future ABIs remain rejected.
 
 ## Preservation, cleanup and publication
 

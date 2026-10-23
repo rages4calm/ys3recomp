@@ -39,6 +39,9 @@ STATUS_FIELDS = ("frame", "ticks", "paused", "local_paused", "host")
 ABI15_TOOL = {"revision": "e0f67bf64fe670723acd4443b0da76f3bfe8276f",
               "source_sha256": "38573f59cd17b1b9c640337ac6c1d9db80b3dc926d42312f8cedfd28d7959dd7",
               "runtime_abi": 15}
+ABI16_TOOL = {"revision": "3bd06b5055c92e9f368aab7023098ff8aa796854",
+              "source_sha256": "720e3c1e980e3ad9d03b28cb4b31db696fe3bb27e687c0cf19bc3d0f3f1c9440",
+              "runtime_abi": 16}
 
 
 def _audio15():
@@ -50,17 +53,19 @@ def _audio15():
 
 
 def runtime_audio_selection(identity, mode, profile=None, rate=None, timing=None, wav_limit=None):
-    """Opt into the reviewed ABI15 source; preserve omitted ABI13 semantics."""
+    """Select only exact reviewed ABI15/16 source; retain ABI13 semantics."""
     abi = identity.get("runtime_abi")
-    if type(abi) is not int or abi not in (13, 15):
-        raise ValueError("replay requires reviewed runtime ABI 13 or 15")
-    if abi == 15:
+    if type(abi) is not int or abi not in (13, 15, 16):
+        raise ValueError("replay requires reviewed runtime ABI 13, 15 or 16")
+    if abi in (15, 16):
+        expected = ABI15_TOOL if abi == 15 else ABI16_TOOL
         source = identity.get("shared_source_identity", {})
-        if (identity.get("revision") != ABI15_TOOL["revision"]
-                or source.get("revision") != ABI15_TOOL["revision"]
-                or source.get("source_sha256") != ABI15_TOOL["source_sha256"]
+        if (identity.get("revision") != expected["revision"]
+                or source.get("revision") != expected["revision"]
+                or source.get("source_sha256") != expected["source_sha256"]
+                or (abi == 16 and (type(source.get("source_files")) is not int or source.get("source_files") != 54))
                 or identity.get("tracked_source_clean") is not True):
-            raise ValueError("ABI15 replay requires the exact reviewed clean source identity")
+            raise ValueError(f"ABI{abi} replay requires the exact reviewed clean source identity")
         return _audio15().selection(mode, profile, rate, timing, wav_limit)
     if timing is not None:
         raise ValueError("audio timing selection requires reviewed runtime ABI 15")
@@ -71,9 +76,9 @@ def runtime_audio_command(command, mode, output, wav_limit=None, profile=None, r
                           timing=None, runtime_abi=13):
     if any(str(argument).split("=", 1)[0] == "--audio-timing" for argument in command):
         raise ValueError("frozen source command already specifies audio timing")
-    if type(runtime_abi) is not int or runtime_abi not in (13, 15):
+    if type(runtime_abi) is not int or runtime_abi not in (13, 15, 16):
         raise ValueError("unsupported replay audio ABI")
-    if runtime_abi == 15:
+    if runtime_abi in (15, 16):
         return _audio15().audio_command(command, mode, output, wav_limit, profile, rate, timing)
     if timing is not None:
         raise ValueError("audio timing selection requires reviewed runtime ABI 15")
@@ -82,9 +87,9 @@ def runtime_audio_command(command, mode, output, wav_limit=None, profile=None, r
 
 def selected_audio(value, selected, wav_limit, desktop=False, allow_pending=False, runtime_abi=13):
     """Keep full validated audio diagnostics, including ABI15 timing identity."""
-    if type(runtime_abi) is not int or runtime_abi not in (13, 15):
+    if type(runtime_abi) is not int or runtime_abi not in (13, 15, 16):
         raise ValueError("unsupported selected audio ABI")
-    if runtime_abi == 15:
+    if runtime_abi in (15, 16):
         validator = _audio15().validate_desktop if desktop else _audio15().validate_headless
         return validator(value, selected, wav_limit, allow_pending=allow_pending)
     validator = dsp_contract.desktop_audio if desktop else dsp_contract.headless_audio
@@ -92,9 +97,9 @@ def selected_audio(value, selected, wav_limit, desktop=False, allow_pending=Fals
 
 
 def validate_runtime_desktop_mode(enabled, verify_only, descriptor, mode, wav_limit, runtime_abi=13):
-    if type(runtime_abi) is not int or runtime_abi not in (13, 15):
+    if type(runtime_abi) is not int or runtime_abi not in (13, 15, 16):
         raise ValueError("unsupported packaged replay ABI")
-    if enabled and runtime_abi == 15 and mode == "off":
+    if enabled and runtime_abi in (15, 16) and mode == "off":
         if not verify_only or not descriptor or wav_limit is not None:
             raise ValueError("ABI15 audio-off packaged replay requires project verify-only and no WAV")
         return
@@ -274,16 +279,24 @@ def capture_start_proof(client, selected):
             "retired_instructions": _retired_count(after["host"])}
 
 
-def validate_capture_summary(capture, selected, proof, runner):
+def _managed_capture_abi(expected_runtime_abi):
+    if type(expected_runtime_abi) is not int or expected_runtime_abi not in (13, 16):
+        raise ValueError("managed capture requires an explicitly reviewed ABI 13 or 16 contract")
+    return expected_runtime_abi
+
+
+def validate_capture_summary(capture, selected, proof, runner, *, expected_runtime_abi=13):
+    """Check the actual capture ABI against the caller's reviewed runtime contract."""
+    expected_runtime_abi = _managed_capture_abi(expected_runtime_abi)
     fields = {"schema", "runtime_abi", "capacity", "dropped_instructions", "unreadable_instructions",
               "retired_instructions", "complete"}
     if (not isinstance(capture, dict) or set(capture) != fields
             or any(type(capture[key]) is not int for key in fields - {"complete"})
-            or capture["schema"] != 1 or capture["runtime_abi"] != 13
+            or capture["schema"] != 1 or capture["runtime_abi"] != expected_runtime_abi
             or capture.get("capacity") != selected["capacity"]
             or capture.get("complete") is not True
             or capture.get("dropped_instructions") != 0 or capture.get("unreadable_instructions") != 0):
-        raise ValueError("managed capture must be complete, lossless ABI 13 with selected capacity")
+        raise ValueError(f"managed capture must be complete, lossless ABI {expected_runtime_abi} with selected capacity")
     expected = _retired_count(runner) - proof["retired_instructions"]
     if expected <= 0 or type(capture.get("retired_instructions")) is not int or capture["retired_instructions"] != expected:
         raise ValueError("capture retirement count differs from exact start/final boundary delta")
@@ -300,8 +313,9 @@ def validate_capture_summary(capture, selected, proof, runner):
     return expected
 
 
-def finish_managed_capture(path, tool, selected, proof, runner):
+def finish_managed_capture(path, tool, selected, proof, runner, *, expected_runtime_abi=13):
     """Use the verified upstream loader without importing another checkout's package."""
+    expected_runtime_abi = _managed_capture_abi(expected_runtime_abi)
     digest = sha256(path)
     env = dict(os.environ, PYTHONPATH=str(tool), PYTHONSAFEPATH="1", PYTHONDONTWRITEBYTECODE="1")
     code = ("import json,sys; from pathlib import Path; from pcerecomp.capture import load_capture; "
@@ -315,8 +329,9 @@ def finish_managed_capture(path, tool, selected, proof, runner):
     result = json.loads(checked.stdout)
     if result["sha256"] != digest or sha256(path) != digest:
         raise ValueError("raw capture changed during shared validation")
-    validate_capture_summary(result["capture"], selected, proof, runner)
-    return {"schema": 1, "runtime_abi": 13, "path": str(path), "sha256": digest,
+    validate_capture_summary(result["capture"], selected, proof, runner,
+                             expected_runtime_abi=expected_runtime_abi)
+    return {"schema": 1, "runtime_abi": result["capture"]["runtime_abi"], "path": str(path), "sha256": digest,
             "start_frame": selected["start_frame"], "capacity": selected["capacity"],
             "start_proof": proof, "capture": result["capture"], "observations": result["observations"],
             "window": copy.deepcopy(runner["code_capture_window"]),
@@ -332,8 +347,28 @@ def project_status(status, ignore_tier_counters=False):
     return result
 
 
+def validate_runtime_diagnostics(host, runtime_abi, ticks=None, *, runner=False):
+    if runtime_abi == 16:
+        if __package__:
+            from .compat16_contract import validate_cd_unknown
+        else:
+            from compat16_contract import validate_cd_unknown
+        accepted = host['scsi']['unknown_commands'] if runner else host['unknown_commands']
+        return validate_cd_unknown(host['cd_unknown'], accepted, observed_ticks=ticks)
+    return None
+
+
 def compare_status(expected, actual, ignore_tier_counters=False, audio_mode=None, wav_limit=None,
                    desktop_packaged=False, audio_selection=None, runtime_abi=13):
+    if runtime_abi == 16:
+        validate_runtime_diagnostics(actual['host'], runtime_abi, actual['ticks'])
+        if 'cd_unknown' in expected['host']:
+            validate_runtime_diagnostics(expected['host'], runtime_abi, expected['ticks'])
+        else:
+            # This is the only newly added diagnostic. Raw observations retain
+            # it; every prior guest/source/IRQ/generation field stays exact.
+            actual = copy.deepcopy(actual)
+            actual['host'].pop('cd_unknown')
     left = project_status(expected, ignore_tier_counters)
     if audio_selection is not None:
         if audio_mode != "on":
@@ -344,7 +379,7 @@ def compare_status(expected, actual, ignore_tier_counters=False, audio_mode=None
                        runtime_abi=runtime_abi)
         right = project_status(actual, ignore_tier_counters)
     else:
-        if desktop_packaged and not (runtime_abi == 15 and audio_mode == "off"):
+        if desktop_packaged and not (runtime_abi in (15, 16) and audio_mode == "off"):
             actual = headless_status(actual, wav_limit)
         right = project_status(without_audio(actual, audio_mode, wav_limit) if audio_mode is not None else actual,
                                ignore_tier_counters)
@@ -612,7 +647,7 @@ def replay(args):
         if args.audio_output is not None and args.project_descriptor and not args.project_verify_only:
             raise ValueError("explicit audio route overrides require project verify-only supervision")
         if args.project_descriptor:
-            selection_validator = validate_descriptor_selection15 if runtime_abi == 15 else validate_descriptor_selection
+            selection_validator = validate_descriptor_selection15 if runtime_abi in (15, 16) else validate_descriptor_selection
             selection_validator(tomllib.loads(Path(args.project_descriptor).read_text(encoding="utf-8")), selected)
         route_path = Path(args.route).resolve(strict=True)
         if route_path.stat().st_size > MAX_ROUTE_BYTES:
@@ -623,8 +658,8 @@ def replay(args):
         capture_selected = managed_capture_selection(route, getattr(args, "capture_start_frame", None),
                                                      getattr(args, "capture_limit", None))
         if capture_selected is not None:
-            if tool_identity["runtime_abi"] != 13:
-                raise ValueError("managed capture requires reviewed runtime ABI 13")
+            if tool_identity["runtime_abi"] not in (13, 16):
+                raise ValueError("managed capture requires reviewed runtime ABI 13 or 16")
             if args.project_descriptor and not args.project_verify_only:
                 raise ValueError("managed capture requires direct or project verify-only supervision")
         command = route["initial_command"].copy()
@@ -726,7 +761,7 @@ def replay(args):
                                             "working_directory_initially_empty": not any(launch_cwd.iterdir()),
                                             "hidden": True, "unthrottled": True,
                                             "scope": "Packaged SDL loading and fast-forward muted presentation; paced playback qualified separately."}
-            if runtime_abi == 15 and args.audio_output == "off":
+            if runtime_abi in (15, 16) and args.audio_output == "off":
                 receipt["desktop_contract"]["scope"] = "Packaged SDL loading and fast-forward video presentation with audio disabled."
         receipt["launch_command"] = launch_command
         receipt["launch_cwd"] = str(launch_cwd)
@@ -743,6 +778,7 @@ def replay(args):
                     return
                 metadata, rgb = client.capture("guest")
                 snapshot = status if status is not None else client.call("status")
+                validate_runtime_diagnostics(snapshot['host'], runtime_abi, snapshot['ticks'])
                 if selected is not None:
                     value = snapshot["host"]["audio_output"]
                     selected_audio(value, selected, args.audio_frames, desktop=desktop_packaged,
@@ -767,7 +803,7 @@ def replay(args):
                 else:
                     if capture_selected is not None and current_frame == capture_selected["start_frame"] and capture_proof is None:
                         capture_proof = capture_start_proof(client, capture_selected)
-                        receipt["capture_contract"] = {"schema": 1, "runtime_abi": 13,
+                        receipt["capture_contract"] = {"schema": 1, "runtime_abi": runtime_abi,
                             "start_frame": capture_selected["start_frame"], "capacity": capture_selected["capacity"],
                             "path": str(capture_path), "start_proof": capture_proof}
                     client.call("set_input", mask=step["mask"])
@@ -815,7 +851,8 @@ def replay(args):
                 reader.join(timeout=5)
             captured_runner = unwrap_execution(json.loads((out / "run.stdout").read_text(encoding="utf-8")))
             receipt["capture_contract"] = finish_managed_capture(
-                capture_path, tool, capture_selected, capture_proof, captured_runner)
+                capture_path, tool, capture_selected, capture_proof, captured_runner,
+                expected_runtime_abi=runtime_abi)
         if contract_path is not None:
             # Wait for bounded stream readers before inspecting the wrapper's
             # sole final JSON. The shared runner owns descriptor/source guards.
@@ -832,7 +869,7 @@ def replay(args):
                 reader.join(timeout=5)
             runner = unwrap_execution(json.loads((out / "run.stdout").read_text(encoding="utf-8")))
             if desktop_packaged:
-                if runtime_abi == 15 and args.audio_output == "off":
+                if runtime_abi in (15, 16) and args.audio_output == "off":
                     audio = extract_audio(copy.deepcopy(runner), "off")
                     final_audio = extract_audio(copy.deepcopy(final["host"]), "off")
                     released_audio = extract_audio(copy.deepcopy(released["host"]), "off")
@@ -877,6 +914,15 @@ def replay(args):
                     raise RuntimeError("WAV byte count differs from bounded PCM output")
                 receipt["audio_contract"].update(wav_path=str(wave_path), wav_sha256=sha256(wave_path),
                                                   wav_bytes=wave_path.stat().st_size)
+        if runtime_abi == 16:
+            for reader in child.readers:
+                reader.join(timeout=5)
+            runner = unwrap_execution(json.loads((out / 'run.stdout').read_text(encoding='utf-8')))
+            diagnostic = validate_runtime_diagnostics(runner, runtime_abi, runner['ticks'], runner=True)
+            if diagnostic != final['host']['cd_unknown'] or diagnostic != released['host']['cd_unknown']:
+                raise RuntimeError('unknown-CD diagnostics changed between pause and clean exit')
+            receipt['compatibility_contract'] = {'runtime_abi': 16, 'cd_unknown': diagnostic,
+                'scope': 'Added diagnostics validated and retained. Historical comparison separates only cd_unknown; all prior guest/source/IRQ/generation fields remain exact.'}
         for name, expected_hash in identities.items():
             if sha256(name) != expected_hash:
                 raise RuntimeError("read-only input changed during replay: " + name)

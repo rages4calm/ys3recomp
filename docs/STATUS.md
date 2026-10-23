@@ -1,5 +1,56 @@
 # Consumer status - 23 October 2026
 
+ABI 16 is qualified on the retained 94,800-frame route. This remains a real
+guarded C++/SDL hybrid build, with unseen code interpreted. The upgrade changes
+shared compatibility semantics; it adds no new native-coverage or campaign claim.
+
+| Evidence | Current result | Scope |
+|---|---|---|
+| Tool | `3bd06b5055c92e9f368aab7023098ff8aa796854`, ABI 16 / schema 1 | Exact clean canonical source, 54 files; no runtime fork |
+| Regeneration | 208 translation units and one header | All 209 artifacts rehashed; only 208 ABI assertions change from 15 to 16; operations/guards/header/exclusions exact |
+| Native execution | 2,953,438,406 native + 981 interpreted | 44,879 eligible identities / 57 full MPR contexts; 466,118 native blocks, zero interpreted; 981 guard misses |
+| Actual TCP matrix | Three fresh packaged builds, each 94,800 frames / 39 image and state checkpoints / three endpoints | Legacy, default Gear and off; no new assists |
+| Independent headless regression | Two fresh official ABI 16 headless builds/runs | Legacy and explicit Gear match same-profile desktop guest/source/native/CD/PCM/WAV exactly |
+| Gear selection bridge | Desktop omits timing; headless explicitly selects Gear | Actual argv, descriptors and three-key selection metadata retained |
+| ABI 15 conservation | Both same-profile routes retain every old guest/source/native/image/PCM/WAV value | Only the validated added CD diagnostic is handled separately; no IRQ/generation normalization |
+| PCM | Gear hash `1852331864136332503`; legacy `13785118638779356764` | 76,060,360 output / 69,880,456 source frames, zero runtime loss; first 30-second WAV retained separately |
+| Audio off | All exposed guest/source/native/CD state exact | No PCM, WAV or device-output diagnostics |
+| Unknown CD diagnostics | 53 attempts, all opcode `$FF`, 53 accepted reference responses | Retained last CDB and supplying latch-write CPU/source origin; no unknown-operation semantics |
+| Strict diagnostic | Separate prefix reaches the expected `$FF` bus fault | One attempt / zero accepted; not a full-route pass; natural OS exit is unverified |
+| Paced device | 773,361 output frames; zero runtime discard; final queue empty | Adjacent SDL/same PID, sanitized PATH, empty cwd, TCP input/captures/pause/resume; 2,617 presentation drops distinct from source loss |
+| Official project.run | Separate 60-frame dummy-SDL TCP smoke | 2,014,178 native / zero interpreted; 600-second descriptor bound; full routes instead use direct 1,800-second supervision |
+| Consumer tests | 324 pass, zero skips | Includes actual frozen-16 BRK capture-loader and strict diagnostic/source/selection mutation checks |
+| Shared tests | 33 suites / 328 Python tests pass, zero skips | Fresh empty-module embedded SDL build, unchanged shared checker |
+
+Source SHA256 is
+`720e3c1e980e3ad9d03b28cb4b31db696fe3bb27e687c0cf19bc3d0f3f1c9440`.
+All seven original inputs, original ABI 13 profile and all prior generated files
+remain unchanged. Entire restored six-byte source exclusion stays interpreted
+across all variants: four identities / 981 profile hits, zero unsupported input.
+
+The toolkit adds base PC Engine F8-FB work-RAM mirrors while retaining mapped
+source identities, documented BRK behavior and guest-clock sprite collision/
+overflow events independent of framebuffer presentation. It supports 234 opcode
+encodings; 22 reserved slots remain traps. Independent Geargrafx evidence covers
+3,040 BRK cases / 5,280 checkpoints per execution tier, 81 sprite cases /
+125,922 checkpoints per video mode, 131,072 alias reads and four actual
+instruction aliases. These finite profile checks do not certify hardware.
+
+The route inherits 709 assist transactions / 723 changed bytes and adds none.
+It includes Game Over/Continue recovery, without boss victory or campaign
+completion. Unknown-command `gear-good`, BIOS-backed IPL entry and volatile
+process-local BRAM remain visible limits. REQUEST SENSE remains unsupported;
+CD origin is the last latch write supplying the initial byte before its ACK,
+not an ACK-time or retirement trace. No independent retail-mix/listening,
+analog, authentic reset, persistent host saves or physical-controller claim.
+
+Exact prior source epochs and failed harness attempts remain private and
+explicitly mapped; frozen historical receipts are not rewritten. Runtime and
+final docs/config/launcher/publication graphs are separate. All owned consumer
+test hosts are stopped. No cleanup was executed in this compatibility batch.
+
+## Retained ABI 15 migration baseline
+
 ABI 15 is qualified on the expanded 94,800-frame route. This is a real guarded
 C++ module and compiled SDL host, with unseen code still interpreted. The
 previous batch added 47 source identities and 3,461 native retirements; the

@@ -2,10 +2,10 @@
   "schema": 1,
   "tool": {
     "repository": "https://github.com/rages4calm/pcenginerecomp",
-    "revision": "e0f67bf64fe670723acd4443b0da76f3bfe8276f",
-    "source_sha256": "38573f59cd17b1b9c640337ac6c1d9db80b3dc926d42312f8cedfd28d7959dd7",
-    "checkout": ".deps/pcenginerecomp-abi15",
-    "runtime_abi": 15,
+    "revision": "3bd06b5055c92e9f368aab7023098ff8aa796854",
+    "source_sha256": "720e3c1e980e3ad9d03b28cb4b31db696fe3bb27e687c0cf19bc3d0f3f1c9440",
+    "checkout": ".deps/pcenginerecomp-abi16",
+    "runtime_abi": 16,
     "source_policy": "Exact clean intended commit; current pin also uses the shared consumer API's exact source digest. Development overrides must explicitly supply the intended revision."
   },
   "initial_qualification": {
@@ -1302,5 +1302,113 @@
       "scope": "Clock-driven PSG/ADPCM after integer mixer headroom; explicit overdue single-tick/coarse disagreement and stopped-phase limitations retained"
     },
     "scope": "All exposed guest/source fields retained; explicit legacy PCM/WAV reproduces frozen007, default Gear matches a separately qualified headless route, and off preserves exposed guest execution without PCM/WAV/device telemetry. Unexposed held-DAC/CDDA clock/latch state relies on separately scoped finite upstream evidence, not retail observation. No independent retail-mix, listening, analog, hardware or campaign claim."
+  },
+  "previous_abi16_baseline": {
+    "project_commit": "ded92a91a1813d6dfb44bbf737463226a9d98f09",
+    "tool": {
+      "repository": "https://github.com/rages4calm/pcenginerecomp",
+      "revision": "e0f67bf64fe670723acd4443b0da76f3bfe8276f",
+      "source_sha256": "38573f59cd17b1b9c640337ac6c1d9db80b3dc926d42312f8cedfd28d7959dd7",
+      "checkout": ".deps/pcenginerecomp-abi15",
+      "runtime_abi": 15,
+      "source_policy": "Exact clean intended commit; current pin also uses the shared consumer API's exact source digest. Development overrides must explicitly supply the intended revision."
+    }
+  },
+  "abi16_compatibility_milestone": {
+    "runtime_abi": 16,
+    "descriptor_schema": 1,
+    "source_capture_runtime_abi": 13,
+    "generated_source_artifacts": 209,
+    "translation_units": 208,
+    "generated_headers": 1,
+    "only_generated_source_changes": "208 exact static_assert ABI15 to ABI16 replacements; header and all translated operations/guards unchanged",
+    "eligible_source_identities": 44879,
+    "mpr_contexts": 57,
+    "new_native_identities_from_abi_upgrade": 0,
+    "native_steps": 2953438406,
+    "interpreter_steps": 981,
+    "native_block_steps": 466118,
+    "interpreter_block_steps": 0,
+    "guard_misses": 981,
+    "frames_per_route": 94800,
+    "desktop_routes": 3,
+    "headless_reference_profiles": 2,
+    "checkpoint_states_per_route": 39,
+    "images_per_route": 39,
+    "endpoint_states_per_route": 3,
+    "memory_edit_transactions": 709,
+    "memory_bytes_changed": 723,
+    "new_assists": 0,
+    "base_work_ram_mirrors": [
+      "F8",
+      "F9",
+      "FA",
+      "FB"
+    ],
+    "mapped_source_identity_preserved": true,
+    "supported_opcode_encodings": 234,
+    "reserved_opcode_traps": 22,
+    "guest_clock_sprite_collision_overflow": true,
+    "sprite_events_independent_of_presentation": true,
+    "legacy_exact_new16_headless": true,
+    "gear_exact_new16_headless": true,
+    "off_exact_gear_guest_and_pcm_absent": true,
+    "gear_timing_bridge": {
+      "candidate_argv": "default-omitted",
+      "candidate_descriptor": "default-omitted",
+      "headless_argv": "explicit-gear",
+      "headless_descriptor": "explicit-gear"
+    },
+    "both_profiles_retain_all_abi15_guest_source_native_images_pcm_wav": true,
+    "final_pcm_hashes": {
+      "legacy": 13785118638779356764,
+      "gear": 1852331864136332503
+    },
+    "unknown_cd": {
+      "attempts": [
+        {
+          "opcode": 255,
+          "attempts": 53
+        }
+      ],
+      "accepted_responses": 53,
+      "strict_expected_fault_verified": true,
+      "strict_full_route_qualified": false,
+      "unknown_operations_implemented": false,
+      "request_sense_implemented": false,
+      "origin": "Last CPU1801 latch write supplying the initial CDB byte before its first ACK; mapped PC/allMPR/purefetch retained privately, not ACK-time or retirement trace"
+    },
+    "consumer_tests": 324,
+    "consumer_skips": 0,
+    "shared_suites": 33,
+    "shared_python_tests": 328,
+    "shared_python_skips": 0,
+    "paced_gear_48000": {
+      "output_frames": 773361,
+      "source_frames": 710526,
+      "runtime_discarded_frames": 0,
+      "host_dropped_frames": 2617,
+      "final_queue_frames": 0,
+      "peak_queue_frames": 1712,
+      "pause_resume_passed": true
+    },
+    "official_project_run_smoke": {
+      "frames": 60,
+      "native_steps": 2014178,
+      "interpreted_steps": 0,
+      "dummy_sdl": true,
+      "descriptor_wall_seconds": 600
+    },
+    "full_route_watchdog_seconds": 1800,
+    "full_routes_use_shared_project_run": false,
+    "independent_bounded_reference": {
+      "brk_cases": 3040,
+      "brk_checkpoints_per_tier": 5280,
+      "sprite_cases_per_video_mode": 81,
+      "sprite_checkpoints_per_video_mode": 125922,
+      "alias_reads": 131072,
+      "actual_instruction_aliases": 4
+    },
+    "scope": "Retained assisted hybrid route, explicit gear-good, IPL-entry sandbox and volatile BRAM. New device semantics independently checked in finite Geargrafx cases. Exact old-field conservation on this route does not certify unvisited code, independent retail mix, listening, analog, hardware, reset, host save persistence or campaign completion."
   }
 }
