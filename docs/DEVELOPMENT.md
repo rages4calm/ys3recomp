@@ -8,6 +8,12 @@ artifacts and original inputs unchanged.
 
 ## Regenerate and build for ABI 13
 
+The current filtered-audio pin keeps ABI 13 and descriptor schema 1 unchanged.
+Its three fresh official desktop builds reuse the retained 208 ABI-13 generated
+artifacts byte-for-byte; compiled objects are rebuilt. Regeneration below is
+needed when producing ABI-13 sources from an older capture, rather than for
+every source-compatible audio upgrade.
+
 The current pin accepts retained ABI-12 observation captures for regeneration.
 It requires new ABI-13 translations and a matching runtime; never reuse ABI-12
 compiled objects. Full MPR mappings and exact source bytes still guard execution.
@@ -21,8 +27,8 @@ there, and reuse immutable dependencies/media read-only.
 
 ```powershell
 $evidence = 'TOOL_EVIDENCE_ROOT'
-$tool = (Resolve-Path '.deps/pcenginerecomp-packaged').Path
-$batch = '.local/batch-003'
+$tool = (Resolve-Path '.deps/pcenginerecomp-filtered').Path
+$batch = '.local/new-private-batch'
 New-Item -ItemType Directory -Path "$batch/temp" -Force
 $env:TEMP = (Resolve-Path "$batch/temp").Path
 $env:TMP = $env:TEMP
@@ -46,6 +52,63 @@ receipts establish no execution coverage on their own.
 `--audio on|off`. Schema 1 retains explicit tool/source/module/input hashes,
 loader/MPR values, response profile and limits. Initial formatted blank BRAM
 is a read-only seed; guest writes remain volatile. No owner install/save is used.
+
+## Select and qualify filtered audio
+
+With the current `.deps/pcenginerecomp-filtered` checkout, descriptor preparation
+also accepts `--audio-profile raw|filtered` and `--audio-rate 44100|48000`.
+These require `--audio on`; raw 48 kHz is rejected. Omitting both preserves the
+original raw 44.1 kHz descriptor and PCM schema. Filtered without a rate selects
+44.1 kHz. For example, prepare a new descriptor using the retained ABI-13 module:
+
+```powershell
+python scripts/prepare_descriptor.py --tool-root $tool --inputs .local/batch-001/inputs.json --module .local/batch-003/native-observed/module.cpp --audio on --audio-profile filtered --audio-rate 48000 --out "$batch/project-filtered-48000.toml"
+```
+
+Build each descriptor through the shared `pcerecomp.project build` command.
+For packaged route verification, use its corresponding executable, descriptor
+and build directory with `replay_route.py --desktop-packaged --audio-output on
+--audio-profile filtered --audio-rate 48000 --audio-frames 1440000`. Keep the
+original route, historical executable anchor and other arguments shown below.
+Run a separate explicit `raw` / `44100` bridge with a 1,323,000-frame WAV cap.
+Each run needs its own new output directory. Profile/rate overrides are recorded
+and must agree with the official descriptor; they cannot be hidden in the
+frozen original route arguments.
+
+The raw bridge must match the previous qualified raw route exactly. The
+filtered 48 kHz candidate must match a separately retained new headless
+reference, including processed PCM and WAV bytes. At every checkpoint, all
+original guest/native/source diagnostics and the filtered profile's raw source
+PCM projection must match the old raw route. Source activity stays in the
+44.1 kHz domain; processed frame counts, WAV and queue telemetry use output
+frames. The exact 48 kHz count is `floor(source_frames * 160 / 147)`, with
+31 source frames of latency and no flushed tail. Intermediate desktop pending
+frames must fit the 8,192-output-frame ring; final pending frames must be zero.
+
+Use the distinct schema-2 DSP qualifier with a reviewed, hash-bound expectation:
+
+```powershell
+python scripts/qualify_dsp.py --baseline-receipt OLD_RAW_RECEIPT --raw-receipt NEW_RAW_RECEIPT --candidate-receipt NEW_FILTERED_RECEIPT --audio-expectation REVIEWED_DSP_EXPECTATION --out NEW_QUALIFICATION
+```
+
+Its expectation binds the exact tool/source/ABI, original route and blank seed,
+raw bridge, processed reference run/receipt/WAV, actual upstream qualification
+and independently reviewed Gear evidence. It accepts only the finite raw
+44.1 kHz to filtered 48 kHz comparison; no generic list of guest or PCM fields
+may be ignored. Official descriptor/build, executable and adjacent DLL are
+rehashed. Earlier schema-1 qualification remains unchanged.
+
+`wav_metrics.py analyze WAV --out NEW_JSON` records exact integer PCM metrics;
+`wav_metrics.py compare LEFT RIGHT --out NEW_JSON` compares equal-rate,
+equal-length PCM16 stereo WAVs. It preserves and rechecks both inputs, rejects
+geometry mismatches and never resamples or infers perceptual quality.
+
+Keep paced device checks separate from the unthrottled full route. At both
+filtered rates, verify actual device-open/mute state, queried SDL format/rate,
+bounded queue and drops, pause freeze, resume advance, TCP input and captures,
+loaded package identity and protected inputs. Filtered 44.1 kHz has an identity
+output resampler; a CDDA-dominated opening can remain identical to raw PCM.
+Device acceptance does not establish listening, analog or hardware parity.
 
 ## Verify the retained route with audio
 
@@ -141,12 +204,13 @@ what a listener hears, analog levels or independent mixed-audio parity.
 
 Build the consumer's authored sandbox tests and run the pinned upstream
 `scripts/check.py` fallback plus `python -m unittest discover -s tests -v`.
-For an embedded SDL test build, the upstream fallback finds its binaries in
-`build/upstream` but its desktop detection expects a cache in that directory.
-Run the same Python suite with explicit `PCE_TEST_HEADLESS`/`PCE_TEST_DESKTOP`
-paths, then `pce-desktop-tests` and `pce-audio-host-tests` as well. SDL dummy
-video/audio drivers are appropriate for these authored host suites. Retain
-actual skips and suite results, separately from the real-device test.
+The current pin discovers the parent CMake cache and SDK in an embedded SDL
+build. The unchanged checker at `--build build/upstream` runs all 28 shared
+suites and 291 Python tests without a discovery adapter or test-path overrides;
+the fresh qualified embedded build has zero skips. SDL dummy video/audio
+drivers are appropriate for authored host suites. The separate clean default
+configuration intentionally skips eight desktop tests. Retain actual skips
+and suite results separately from the real-device test.
 
 ## Publication and future batches
 
