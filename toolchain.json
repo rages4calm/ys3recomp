@@ -2,9 +2,9 @@
   "schema": 1,
   "tool": {
     "repository": "https://github.com/rages4calm/pcenginerecomp",
-    "revision": "9be8686554e1c6037411944da695a194d9c0ac2d",
-    "source_sha256": "f873f8d0e06418dffbf1ed478cd46bf1eae6fdf4511fc2797db8193bf04c99f6",
-    "checkout": ".deps/pcenginerecomp-audio",
+    "revision": "cca01ca746cbee224f9050bb4064779f1800d093",
+    "source_sha256": "cedf5f31116a20d7dd5eacdec8eeb156d67a962ef22f9c40316e9dd87f5dcfec",
+    "checkout": ".deps/pcenginerecomp-packaged",
     "runtime_abi": 13,
     "source_policy": "Exact clean intended commit; current pin also uses the shared consumer API's exact source digest. Development overrides must explicitly supply the intended revision."
   },
@@ -159,12 +159,85 @@
     "wav_matches_shared_reference": true,
     "headless_device_opened": false,
     "optional_sdl_stream": {
-      "frames": 709078,
+      "frames": 710526,
       "device_open": true,
       "fast_forward_muted": false,
       "runtime_discarded_frames": 0,
-      "scope": "Separate paced bootstrap; explicit hash-pinned SDK DLL search path required by current Windows embedded-consumer packaging limitation. Device acceptance/consumption, not listening or analog parity."
+      "sdk_path_required": false,
+      "scope": "Separate packaged paced bootstrap; live loaded DLL bound to adjacent package without SDK PATH. Device acceptance/consumption, not listening or analog parity."
     },
     "scope": "Same assisted retained route; shared PCM reproducibility. Independent raw CDDA/PSG-phase scope inherited from upstream, not whole-route mixed-audio or hardware parity."
+  },
+  "previous_packaging_baseline": {
+    "project_commit": "42dc1db967df033b8afed83753ee8d39f831d4fd",
+    "tool": {
+      "repository": "https://github.com/rages4calm/pcenginerecomp",
+      "revision": "9be8686554e1c6037411944da695a194d9c0ac2d",
+      "source_sha256": "f873f8d0e06418dffbf1ed478cd46bf1eae6fdf4511fc2797db8193bf04c99f6",
+      "checkout": ".deps/pcenginerecomp-audio",
+      "runtime_abi": 13,
+      "source_policy": "Exact clean intended commit; current pin also uses the shared consumer API's exact source digest. Development overrides must explicitly supply the intended revision."
+    },
+    "audio_milestone": {
+      "runtime_abi": 13,
+      "descriptor_schema": 1,
+      "regenerated_capture_runtime_abi": 12,
+      "translation_units": 207,
+      "generated_headers": 1,
+      "audio_off_bridge_passed": true,
+      "audio_on_route_passed": true,
+      "unchanged_native_tier_counts": true,
+      "frames": 93735,
+      "image_checkpoints": 25,
+      "checkpoint_status_comparisons": 25,
+      "memory_edit_transactions": 709,
+      "pcm": {
+        "enabled": true,
+        "sample_rate": 44100,
+        "channels": 2,
+        "frames": 69095406,
+        "psg_nonzero": 27644755,
+        "adpcm_nonzero": 4030681,
+        "cdda_nonzero": 49762727,
+        "mixed_nonzero": 65958163,
+        "peak": 13000,
+        "pcm_hash": 7177686580420813080,
+        "discarded_frames": 0,
+        "wav_frames": 1323000,
+        "wav_truncated": true
+      },
+      "bounded_wav_frames": 1323000,
+      "wav_matches_shared_reference": true,
+      "headless_device_opened": false,
+      "optional_sdl_stream": {
+        "frames": 709078,
+        "device_open": true,
+        "fast_forward_muted": false,
+        "runtime_discarded_frames": 0,
+        "scope": "Separate paced bootstrap; explicit hash-pinned SDK DLL search path required by current Windows embedded-consumer packaging limitation. Device acceptance/consumption, not listening or analog parity."
+      },
+      "scope": "Same assisted retained route; shared PCM reproducibility. Independent raw CDDA/PSG-phase scope inherited from upstream, not whole-route mixed-audio or hardware parity."
+    }
+  },
+  "packaging_milestone": {
+    "runtime_abi": 13,
+    "descriptor_schema": 1,
+    "generated_module_reused_with_all_hashes_verified": true,
+    "translation_units": 207,
+    "generated_headers": 1,
+    "frames": 93735,
+    "image_checkpoints": 25,
+    "checkpoint_states": 25,
+    "memory_edit_transactions": 709,
+    "sdk_path_required": false,
+    "isolated_empty_working_directory": true,
+    "loaded_sdl_path_and_hash_match_adjacent_package": true,
+    "packaged_dll_sha256": "4659d5a1e240e7d58fb92808f84afeb53395818cec62385d4796b72977a7d859",
+    "unchanged_guest_state_and_native_tiers": true,
+    "same_core_pcm_and_bounded_wav_as_headless": true,
+    "unthrottled_presentation_muted": true,
+    "paced_tcp_input_guest_window_capture_pause_resume_passed": true,
+    "consumer_tests": 104,
+    "scope": "Windows x64 packaged SDL startup and same assisted route; source audio reproducibility plus separate paced device acceptance, not listening or independent hardware/campaign parity."
   }
 }

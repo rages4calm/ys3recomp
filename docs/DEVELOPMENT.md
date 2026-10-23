@@ -21,7 +21,7 @@ there, and reuse immutable dependencies/media read-only.
 
 ```powershell
 $evidence = 'TOOL_EVIDENCE_ROOT'
-$tool = (Resolve-Path '.deps/pcenginerecomp-audio').Path
+$tool = (Resolve-Path '.deps/pcenginerecomp-packaged').Path
 $batch = '.local/batch-003'
 New-Item -ItemType Directory -Path "$batch/temp" -Force
 $env:TEMP = (Resolve-Path "$batch/temp").Path
@@ -104,12 +104,33 @@ independent whole-route audio/console oracle.
 ## Optional SDL and authored checks
 
 Use the official build command's `--desktop` and explicit `SDL3_DIR` to select
-an existing SDK. The current pin has a Windows embedded-consumer packaging
-issue: it can omit `SDL3.dll` beside the executable. The verified paced test
-uses a child-only SDK `bin` search path with an explicit DLL hash, while keeping
-the source, build receipt and adjacent-output set unchanged. This establishes
-SDK-backed execution, not a self-contained desktop package. The defect is
-reported upstream; adopt a fix only in a deliberate later pin upgrade.
+an existing SDK at build time. The current pin packages `SDL3.dll` beside the
+consumer executable and includes it in the official build/output binding.
+A missing or changed packaged DLL invalidates the retained build. The prior
+SDK-PATH workaround remains historical evidence only.
+
+For a packaged full-route replay, select the official desktop binary/build and
+add `--desktop-packaged --audio-output on --audio-frames 1323000` to the replay
+arguments above. The mode requires `--project-verify-only`. It resolves the
+existing guest input arguments to the same absolute files, creates a new empty
+working directory, strips empty/relative and all SDL-containing directories
+(including packaged bin) from child PATH, and clears SDL dummy-driver overrides.
+The private receipt retains exact original/child PATH and removed entries.
+
+The harness runs hidden and unthrottled. At initial and final guest pauses,
+Windows process-module inspection binds the same PID and executable to the
+actual loaded SDL path/hash; it must equal the adjacent packaged DLL. Official
+project bindings and exact adjacent outputs are checked before and after.
+
+Qualify with `scripts/qualify_desktop.py --baseline-receipt` pointing to the
+retained completed headless audio-on receipt, `--candidate-receipt` pointing
+to the new packaged replay receipt, and a new `--out`. The qualifier separately
+checks exact desktop audio/presentation schemas and muted-device accounting,
+then compares every original guest diagnostic, all checkpoint states/images,
+native/interpreted/block/guard counts, core PCM and bounded WAV hash to the
+headless baseline. No original guest field is projected away. This proves
+same-route packaged execution and digital reproducibility, not full-game or
+independent analog/audio parity.
 
 Normal guest-paced SDL output and headless full-route PCM have distinct
 receipts. Unthrottled desktop output intentionally mutes speakers while PCM

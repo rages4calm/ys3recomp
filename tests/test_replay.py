@@ -84,6 +84,19 @@ class ReplayValidationTests(unittest.TestCase):
 
 
 class StatusComparisonTests(unittest.TestCase):
+    def test_packaged_desktop_projection_requires_explicit_validated_host_mode(self):
+        from tests.test_desktop_qualification import desktop_fixture
+        baseline, candidate, _, _ = desktop_fixture()
+        expected = copy.deepcopy(baseline["final_status"])
+        expected["host"].pop("audio_output")
+        actual = candidate["final_status"]
+        with self.assertRaises(ValueError):
+            compare_status(expected, actual, audio_mode="on", wav_limit=20)
+        compare_status(expected, actual, audio_mode="on", wav_limit=20, desktop_packaged=True)
+        actual["host"]["unexpected_guest_field"] = 0
+        with self.assertRaisesRegex(RuntimeError, "unexpected_guest_field"):
+            compare_status(expected, actual, audio_mode="on", wav_limit=20, desktop_packaged=True)
+
     def test_audio_extension_requires_explicit_mode_and_validation(self):
         from tests.test_audio_qualification import pcm
         expected = route_fixture()["last_status"]

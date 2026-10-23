@@ -45,6 +45,22 @@ def upgrade(mode="on"):
 
 
 class AudioContractTests(unittest.TestCase):
+    def test_explicit_drained_pcm_validates_actual_unsaturated_wave_counters(self):
+        value = pcm()
+        value.update(wav_frames=71, wav_truncated=False)
+        validate_audio(value, "on", 200, drained_frames=71)
+        with self.assertRaises(ValueError):
+            validate_audio(value, "on", 200)
+        for drained in (True, -1, 101, 71.0):
+            with self.subTest(drained=drained), self.assertRaises(ValueError):
+                validate_audio(value, "on", 200, drained_frames=drained)
+        value.update(wav_frames=70, wav_truncated=False)
+        validate_audio(value, "on", 70, drained_frames=70)
+        value["wav_truncated"] = True
+        validate_audio(value, "on", 70, drained_frames=71)
+        with self.assertRaises(ValueError):
+            validate_audio(value, "on", 70, drained_frames=70)
+
     def test_explicit_modes_preserve_original_arguments(self):
         command = ["runner", "authored"]
         self.assertEqual(audio_command(command, "off", "wave"), command + ["--audio-output", "off"])
