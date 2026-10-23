@@ -16,16 +16,18 @@ The expanded module adds **47 observed source identities**, moving **3,461
 retirements from interpreted to native execution** on that same extended route.
 It retires **2,953,438,406 native + 981 interpreted** instructions. All 39 image
 checkpoints and exposed guest/source diagnostics remain exact. The current
-ABI15 migration retains those counts: explicit legacy timing reproduces the
-old PCM, and default Gear timing matches a fresh headless reference. The
+ABI16 migration retains those counts and both ABI15 audio profiles. Legacy
+and default Gear timing each match a fresh headless reference. The
 original 25-checkpoint prefix also remains exact. The inherited route uses
 journaled assistance; this extension adds no RAM edits and establishes no boss victory or campaign completion.
 
-The current tool pin is `e0f67bf64fe670723acd4443b0da76f3bfe8276f`, ABI **15**.
+The current tool pin is `3bd06b5055c92e9f368aab7023098ff8aa796854`, ABI **16**.
 All 209 native source artifacts were regenerated and freshly rebuilt. Three
 complete TCP routes qualify legacy audio, default Gear audio and audio off.
-The default ceiling-rational source timing observes held PSG DAC output; the
-guest CDDA sample clock and latch continue when PCM is disabled. Historical
+The toolkit adds base PC Engine `$F8..$FB` work-RAM aliases, BRK execution,
+and guest-clock sprite collision/overflow events. There are 234 supported
+opcode encodings; 22 reserved slots still trap. Full MPR/source identities
+and native byte guards remain intact. Historical
 milestones remain in [toolchain.json](toolchain.json); see
 [status](docs/STATUS.md) for measured results and limits.
 
@@ -58,15 +60,15 @@ refuses changed files or paths outside its exact reviewed plan.
 Requires Python 3.11+, CMake 3.20+, a C++20 compiler, Ninja and Git.
 
 ```sh
-git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-abi15
-git -C .deps/pcenginerecomp-abi15 checkout --detach e0f67bf64fe670723acd4443b0da76f3bfe8276f
+git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-abi16
+git -C .deps/pcenginerecomp-abi16 checkout --detach 3bd06b5055c92e9f368aab7023098ff8aa796854
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++
 cmake --build build --parallel 4
 ctest --test-dir build --output-on-failure
 ```
 
 If the toolchain omits `ctest`, run
-`python .deps/pcenginerecomp-abi15/scripts/check.py --build build/upstream` and
+`python .deps/pcenginerecomp-abi16/scripts/check.py --build build/upstream` and
 `python -m unittest discover -s tests -v` instead.
 
 The default host has no game module and uses interpreted execution. Authored
@@ -85,26 +87,30 @@ code, game captures or saves are distributed. Existing owner inputs remain
 read-only. The qualified upstream private route can be reused by a local
 developer who already has that evidence; see [development](docs/DEVELOPMENT.md).
 
-The current route uses an explicit reference-emulator `gear-good` response for
-an unknown CD command. That condition does not implement the unknown operation
-or establish hardware correctness. Initial formatted blank BRAM is read-only;
-guest SAVE/LOAD stays within one process. ABI15 adds a guest CDDA sample latch
-that works with PCM enabled or disabled. Its internal held/latch state is
-qualified by separate upstream authored and Geargrafx checks; the current TCP
-schema exposes no new internal latch fields, and retail port usage is not claimed.
+The current route uses an explicit reference-emulator `gear-good` response.
+New diagnostics identify all 53 unknown-command attempts as `$FF`, retaining
+their counts and the last supplying command-latch write's CPU/source context.
+Strict mode still faults on that command; unknown operations and REQUEST SENSE
+remain unimplemented. This is a compatibility condition, without hardware
+qualification. Initial formatted blank BRAM is read-only; guest SAVE/LOAD stays
+within one process. Internal held-DAC/CDDA latch state remains separately
+qualified; the route does not establish retail latch-port usage.
 
 Audio defaults to raw 44.1 kHz with Gear timing. Filtered playback is opt-in at
 44.1 or 48 kHz. Explicit `--audio-timing legacy` preserves the earlier PCM path.
-The current filtered 48 kHz Gear route matches a separately frozen headless run
-at all 39 checkpoints and three endpoints; the legacy route retains the old
-PCM/WAV, and audio off retains every exposed guest/native/source diagnostic.
+The current filtered 48 kHz Gear and legacy routes each match a separately
+frozen ABI16 headless run at all 39 checkpoints and three endpoints. Default
+desktop Gear matches explicitly selected headless Gear. Both retain their
+earlier PCM/WAV; audio off retains every exposed guest/native/source diagnostic.
 
 A separate paced Gear 48 kHz check verifies actual device acceptance, input,
 captures and pause/resume with zero runtime loss. The bounded WAV covers only
 the first 30 guest seconds; cumulative PCM and checkpoints check the later route.
-Retained independent tests cover finite PSG/ADPCM timing, filters and CDDA latch
-cases. These do not establish independent retail-mix, listening, analog or
-hardware parity. See [development](docs/DEVELOPMENT.md) for regeneration and
+Independent Geargrafx checks cover finite BRK, work-RAM alias and sprite-event
+cases, alongside retained audio checks. **324 consumer tests and 33 shared
+suites / 328 Python tests pass, without skips.** These do not establish
+independent retail-mix, listening, analog or hardware parity.
+See [development](docs/DEVELOPMENT.md) for regeneration and
 the explicit migration qualification matrix.
 Host save persistence, authentic console reset and campaign completion remain
 unfinished.

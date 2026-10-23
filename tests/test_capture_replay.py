@@ -157,6 +157,21 @@ class ManagedCaptureTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 capture_start_proof(client, managed_capture_selection(route(), 3))
 
+    def test_alias_mprs_keep_their_mapped_source_identity_in_the_proof(self):
+        """Mapped source identity is distinct from upstream WRAM backing storage."""
+        client = Client()
+        physical = [(248 << 13) | 8191] + list(range(249 << 13, (249 << 13) + 6))
+        for state in (client.before, client.after):
+            state["host"]["cpu"].update(mpr=[248, 249, 250, 251, 0, 0, 0, 0],
+                                        physical_pc=physical[0], instruction_physical=physical.copy())
+        proof = capture_start_proof(client, managed_capture_selection(route(), 3))
+        self.assertEqual(proof["status"]["host"]["cpu"]["mpr"], [248, 249, 250, 251, 0, 0, 0, 0])
+        self.assertEqual(proof["status"]["host"]["cpu"]["instruction_physical"], physical)
+        client.before["host"]["cpu"]["instruction_physical"][1] = 248 << 13
+        client.calls.clear()
+        with self.assertRaises(ValueError):
+            capture_start_proof(client, managed_capture_selection(route(), 3))
+
     def test_window_and_retirement_delta_are_exact(self):
         selected, proof, capture, runner = completion()
         self.assertEqual(validate_capture_summary(capture, selected, proof, runner), 9)
@@ -189,6 +204,74 @@ class ManagedCaptureTests(unittest.TestCase):
             self.assertEqual(run.call_args.kwargs["env"]["PYTHONSAFEPATH"], "1")
             self.assertIn("pcerecomp.capture import load_capture", run.call_args.args[0][2])
 
+    def test_actual_capture_abi_must_match_the_explicit_reviewed_contract(self):
+        selected, proof, original, runner = completion()
+        for expected in (13, 16):
+            for actual in (12, 13, 14, 15, 16, 17, True, 16.0, "16"):
+                capture = dict(original, runtime_abi=actual)
+                with self.subTest(expected=expected, actual=actual):
+                    if type(actual) is int and actual == expected:
+                        self.assertEqual(validate_capture_summary(capture, selected, proof, runner,
+                            expected_runtime_abi=expected), 9)
+                    else:
+                        with self.assertRaises(ValueError):
+                            validate_capture_summary(capture, selected, proof, runner,
+                                expected_runtime_abi=expected)
+        with self.assertRaises(ValueError):
+            validate_capture_summary(dict(original, runtime_abi=16), selected, proof, runner)
+
+    def test_capture16_keeps_exact_summary_window_and_retirement_checks(self):
+        selected, proof, capture, runner = completion()
+        capture["runtime_abi"] = 16
+        for key, value in (("schema", 2), ("capacity", 65535), ("complete", 1),
+                           ("dropped_instructions", 1), ("unreadable_instructions", 1),
+                           ("retired_instructions", 8), ("retired_instructions", True), ("extra", 0)):
+            with self.subTest(summary=key), self.assertRaises(ValueError):
+                validate_capture_summary(dict(capture, **{key: value}), selected, proof, runner,
+                                         expected_runtime_abi=16)
+        for key, value in (("requested_start_frame", 2), ("actual_start_frame", 4),
+                           ("actual_start_ticks", 91), ("native_steps_before", 11),
+                           ("interpreter_steps_before", 19), ("started", 1), ("extra", 0)):
+            changed = copy.deepcopy(runner)
+            changed["code_capture_window"][key] = value
+            with self.subTest(window=key), self.assertRaises(ValueError):
+                validate_capture_summary(capture, selected, proof, changed, expected_runtime_abi=16)
+
+    def test_unreviewed_expected_capture_abi_fails_before_loading(self):
+        selected, proof, capture, runner = completion()
+        for expected in (None, True, 13.0, 16.0, "16", 12, 14, 15, 17):
+            with self.subTest(expected=expected), self.assertRaises(ValueError):
+                validate_capture_summary(capture, selected, proof, runner, expected_runtime_abi=expected)
+            with patch("scripts.replay_route.subprocess.run") as run:
+                with self.assertRaises(ValueError):
+                    finish_managed_capture(Path("missing-capture"), Path("missing-tool"), selected,
+                                           proof, runner, expected_runtime_abi=expected)
+                run.assert_not_called()
+
+    def test_capture16_loader_summary_preserves_actual_metadata_and_file_hash(self):
+        """Mocked loader supervision only; this is no ABI16 runtime/loader execution."""
+        selected, proof, capture, runner = completion()
+        capture["runtime_abi"] = 16
+        with tempfile.TemporaryDirectory() as temp:
+            output = Path(temp) / "observed-code.json"
+            observations = [{"pc": pc, "mpr": [0] * 8, "physical": [pc], "data": [234],
+                             "native_hits": hits, "interpreted_hits": 0}
+                            for pc, hits in ((0, 4), (1, 5))]
+            original = json.dumps(dict(capture, observations=observations)).encode()
+            output.write_bytes(original)
+            digest = sha256(output)
+            response = subprocess.CompletedProcess([], 0, json.dumps(
+                {"capture": capture, "observations": 2, "sha256": digest}), "")
+            with patch("scripts.replay_route.subprocess.run", return_value=response):
+                result = finish_managed_capture(output, Path(temp), selected, proof, runner,
+                                               expected_runtime_abi=16)
+            self.assertEqual(result["runtime_abi"], 16)
+            self.assertEqual(result["capture"], capture)
+            self.assertEqual(result["sha256"], digest)
+            self.assertEqual(output.read_bytes(), original)
+            with patch("scripts.replay_route.subprocess.run", return_value=response), self.assertRaises(ValueError):
+                finish_managed_capture(output, Path(temp), selected, proof, runner)
+
     def test_shared_loader_rejection_and_capture_mutation_cannot_pass(self):
         selected, proof, capture, runner = completion()
         with tempfile.TemporaryDirectory() as temp:
@@ -219,7 +302,7 @@ class ActualSharedLoaderTests(unittest.TestCase):
             raise unittest.SkipTest("The pinned upstream checkout is required for shared capture-loader tests")
         # The normal verifier checks the manifest's exact revision, ABI and full
         # source digest. Existing but dirty/wrong dependencies must fail loudly.
-        verify_tool_root(cls.tool)
+        cls.identity = verify_tool_root(cls.tool)
 
     def fixture(self):
         selected, proof, capture, runner = completion()
@@ -250,6 +333,29 @@ class ActualSharedLoaderTests(unittest.TestCase):
                 with self.assertRaises(subprocess.CalledProcessError):
                     finish_managed_capture(output, self.tool,
                                            selected, proof, runner)
+
+    def test_actual_frozen16_loader_retains_brk_signature_and_wrapped_mpr_identity(self):
+        if self.identity['runtime_abi'] != 16:
+            self.skipTest('Selected immutable runtime ABI16 is required for new BRK metadata')
+        selected, proof, capture, runner = completion()
+        capture['runtime_abi'] = 16
+        mpr = [248, 249, 250, 251, 0, 0, 0, 1]
+        capture['observations'] = [{'pc': 65535, 'mpr': mpr,
+            'physical': [(1 << 13) | 8191, 248 << 13], 'data': [0, 0x7F],
+            'native_hits': 9, 'interpreted_hits': 0}]
+        with tempfile.TemporaryDirectory() as temp:
+            output = Path(temp) / 'observed-code.json'
+            output.write_text(json.dumps(capture))
+            digest = sha256(output)
+            result = finish_managed_capture(output, self.tool, selected, proof, runner,
+                                           expected_runtime_abi=16)
+            self.assertEqual((result['runtime_abi'], result['observations'], result['sha256']),
+                             (16, 1, digest))
+            self.assertEqual(json.loads(output.read_text())['observations'], capture['observations'])
+            capture['observations'][0].update(data=[0], physical=[16383])
+            output.write_text(json.dumps(capture))
+            with self.assertRaises(subprocess.CalledProcessError):
+                finish_managed_capture(output, self.tool, selected, proof, runner, expected_runtime_abi=16)
 
 
 if __name__ == "__main__":
