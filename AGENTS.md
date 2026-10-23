@@ -10,7 +10,7 @@ gameplay/campaign verification. `rages4calm/pcenginerecomp` owns shared CPU and
 device semantics, media, code generation and reusable host features. Reuse its
 verified implementation; do not maintain a runtime fork or patch its active
 working tree. Send focused shared-tool defects upstream and upgrade pins only
-after affected checks. Respect its disabled recomp-workbench policy.
+after affected checks. Do not use a workbench workflow.
 
 Public files contain authored source, configuration, documentation and synthetic
 tests only. Keep ROM/BIOS bytes, extracted data, translated game code, code
@@ -23,11 +23,9 @@ owner installations/saves. Initial authentic-format blank BRAM is an explicitly
 selected immutable seed; guest writes are volatile. Cross-process persistence
 needs a separate implementation and test.
 
-Use one active scratch batch with exactly 1,073,741,824 bytes (1 GiB) of new
-disposable-output allowance, shared with any jointly run upstream work. Include
-build, capture, log, extraction, Temp and external scratch growth. Reuse immutable
-inputs/dependencies. Retain small replayable receipts and stop owned processes.
-Do not delete unrelated files to make room.
+Do not use a per-batch storage quota, budget scanner or accounting workflow.
+Reuse immutable inputs/dependencies, preserve qualified evidence, retain
+replayable receipts and stop owned processes. Do not delete unrelated files.
 
 Use TCP guest controls/captures for bounded verification. Keep built, executed,
 rendered, independent-reference and native-qualified evidence separate. Report

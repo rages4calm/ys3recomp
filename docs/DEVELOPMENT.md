@@ -150,16 +150,36 @@ actual skips and suite results, separately from the real-device test.
 
 ## Publication and future batches
 
+For an intentional sound correction, retain the old packaged route and compare
+the new packaged replay with `scripts/qualify_audio_upgrade.py`. Its
+`--baseline-receipt`, `--candidate-receipt`, `--audio-expectation` and `--out`
+arguments identify private evidence. The expectation binds the exact new tool
+revision/source digest/ABI, original route identities, complete headless reference
+runner/checkpoints/WAV and reviewed upstream/independent qualification hashes.
+Explicit JSON pointers verify those qualification linkages. A reviewed attestation
+may adapt an existing evidence schema while retaining its raw qualification hash;
+it must describe the actual reviewed evidence and its limits.
+
+The default permits no PCM changes. Only explicitly declared `psg_nonzero`,
+`mixed_nonzero`, `pcm_hash` and `peak` may differ from the old route, and each new
+value must equal the new reference at every checkpoint and final observation.
+Original guest state, images, source/mappings, assistance, native/interpreted work,
+sample counts, ADPCM/CDDA activity, format, runtime loss and WAV bounds stay exact.
+Intermediate WAV drain metadata is validated separately because host snapshots
+can precede draining; final PCM/WAV is strict. The bounded new WAV must match the
+new headless reference byte-for-byte. Both old and new audio measurements remain
+in the qualification, alongside independent-reference scope. Unknown ABIs or
+diagnostic schemas require deliberate contract review.
+
 Read source and affected contracts before deliberately upgrading `toolchain.json`.
 Pins identify a complete clean commit, exact source digest and matching ABI.
 Preserve initial/historical qualification and record the actual compiler/options,
 all generated-artifact hashes and input identities privately.
 
-Use exactly 1,073,741,824 bytes of new disposable-output allowance per coherent
-batch, shared with jointly running upstream work. Account for builds, generated
-source, captures/logs, dependencies and external Temp/CrashDumps growth. Reuse
-existing artifacts; do not delete unrelated files to make room. Stop owned
-processes and retain small reproducible receipts.
+Use fresh private output directories and preserve older qualified artifacts.
+Reuse immutable inputs/dependencies, stop owned processes and retain reproducible
+receipts. Do not use a workbench or per-batch storage accounting workflow, and do
+not delete unrelated files.
 
 Stage only explicit authored files, review `git diff --cached`, then run
 `git diff --cached --check` and `python scripts/audit_public.py` before pushing.
