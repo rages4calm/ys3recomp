@@ -51,6 +51,13 @@ def prepare(evidence_root, tool_root, output):
             path = evidence_root/path
         inputs[flag] = {'path': str(path.resolve()), 'sha256': sha(path),
                         'bytes': path.stat().st_size}
+    manifest = json.loads((ROOT/'toolchain.json').read_text())
+    for flag, name in (('--bios', 'bios'), ('--disc', 'disc'), ('--bram', 'initial_bram')):
+        if inputs[flag]['sha256'] != manifest['inputs'][name]['sha256']:
+            raise ValueError('qualified route differs from intended input: ' + name)
+    boot = evidence_root/command[1]
+    if sha(boot) != manifest['inputs']['boot_payload']['sha256']:
+        raise ValueError('qualified boot payload differs from intended input')
     out = Path(output).resolve()
     out.mkdir(parents=True, exist_ok=False)
     config = {'schema': 1, 'evidence_root': str(evidence_root),
@@ -71,7 +78,8 @@ def prepare(evidence_root, tool_root, output):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--evidence-root', required=True)
-    parser.add_argument('--tool-root', default=str(ROOT/'.deps/pcenginerecomp'))
+    manifest = json.loads((ROOT/'toolchain.json').read_text())
+    parser.add_argument('--tool-root', default=str(ROOT/manifest['tool']['checkout']))
     parser.add_argument('--out', required=True)
     args = parser.parse_args()
     prepare(args.evidence_root, args.tool_root, args.out)

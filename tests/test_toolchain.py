@@ -2,6 +2,7 @@
 import importlib.util
 import json
 from pathlib import Path
+import shutil
 import subprocess
 import tempfile
 import unittest
@@ -79,6 +80,73 @@ class ToolIdentityTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "revision mismatch"):
             VERIFY.verify(self.root, self.revision, 12)
         self.assertEqual(VERIFY.verify(self.root, next_revision, 12)["revision"], next_revision)
+
+    def test_untracked_implementation_source_rejected(self):
+        for directory in VERIFY.IMPLEMENTATION_TREES:
+            shadow = self.root / directory / "shadow.py"
+            shadow.parent.mkdir(parents=True, exist_ok=True)
+            shadow.write_text("# Authored shadow implementation fixture.\n", encoding="utf-8")
+            try:
+                with self.subTest(directory=directory):
+                    with self.assertRaisesRegex(ValueError, "untracked implementation source"):
+                        VERIFY.verify(self.root, self.revision, 12)
+            finally:
+                shadow.unlink()
+
+    def test_ignored_implementation_source_still_rejected(self):
+        (self.root / ".git/info/exclude").write_text("runtime/hidden.hpp\n", encoding="utf-8")
+        (self.root / "runtime/hidden.hpp").write_text("// Authored hidden header.\n", encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "untracked implementation source"):
+            VERIFY.verify(self.root, self.revision, 12)
+
+    def test_only_ignored_private_and_cache_subtrees_permitted(self):
+        (self.root / ".git/info/exclude").write_text("__pycache__/\n.local/\n", encoding="utf-8")
+        cache = self.root / "pcerecomp/__pycache__/fixture.pyc"
+        cache.parent.mkdir(parents=True)
+        cache.write_bytes(bytes([0, 1, 2]))
+        private = self.root / "runtime/.local/private.cpp"
+        private.parent.mkdir(parents=True)
+        private.write_text("// Private fixture.\n", encoding="utf-8")
+        self.assertTrue(VERIFY.verify(self.root, self.revision, 12)["tracked_source_clean"])
+        (self.root / ".git/info/exclude").write_text("", encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "untracked implementation source"):
+            VERIFY.verify(self.root, self.revision, 12)
+
+    @unittest.skipUnless(shutil.which("cmake") and shutil.which("clang++") and shutil.which("ninja"), "CMake, Clang and Ninja required for synthetic build guard check")
+    def test_build_guard_rechecks_source_without_recompiling_unchanged_outputs(self):
+        (self.root / "CMakeLists.txt").write_text(
+            "cmake_minimum_required(VERSION 3.20)\n"
+            "project(authored_tool_fixture LANGUAGES CXX)\n"
+            "add_library(pce-runtime STATIC runtime/src/synthetic.cpp)\n", encoding="utf-8")
+        source = self.root / "runtime/src/synthetic.cpp"
+        source.parent.mkdir(parents=True)
+        source.write_text("int authored_fixture() { return 42; }\n", encoding="utf-8")
+        self.git("add", ".")
+        self.git("commit", "--quiet", "-m", "Authored consumer build fixture")
+        binary = self.root / "build"
+
+        def run(*args):
+            return subprocess.run(args, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=40)
+
+        configured = run("cmake", "-S", str(ROOT), "-B", str(binary), "-G", "Ninja",
+                         "-DCMAKE_CXX_COMPILER=clang++", "-DBUILD_TESTING=OFF",
+                         f"-DPCE_TOOL_ROOT={self.root}", f"-DPCE_EXPECTED_REVISION={self.git('rev-parse', 'HEAD')}")
+        self.assertEqual(configured.returncode, 0, configured.stdout)
+        build = ("cmake", "--build", str(binary), "--target", "pce-runtime")
+        first = run(*build)
+        self.assertEqual(first.returncode, 0, first.stdout)
+        products = {path: path.stat().st_mtime_ns for path in (binary / "upstream").rglob("*")
+                    if path.suffix in {".o", ".obj", ".a", ".lib"}}
+        self.assertTrue(products)
+        unchanged = run(*build)
+        self.assertEqual(unchanged.returncode, 0, unchanged.stdout)
+        self.assertIn("Verifying intended upstream source", unchanged.stdout)
+        self.assertEqual(products, {path: path.stat().st_mtime_ns for path in products})
+        source.write_text("int authored_fixture() { return 99; }\n", encoding="utf-8")
+        rejected = run(*build)
+        self.assertNotEqual(rejected.returncode, 0)
+        self.assertIn("tracked source is dirty", rejected.stdout)
+        self.assertEqual(products, {path: path.stat().st_mtime_ns for path in products})
 
 
 class ManifestTests(unittest.TestCase):

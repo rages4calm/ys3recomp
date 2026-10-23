@@ -5,7 +5,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from scripts.replay_route import compare_status, source_binary_anchor, validate_route
+from scripts.replay_route import compare_status, source_binary_anchor, unwrap_execution, validate_route
 
 
 def route_fixture():
@@ -135,6 +135,26 @@ class HistoricalBinaryAnchorTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             with self.assertRaises(FileNotFoundError):
                 source_binary_anchor(["missing-runner"], Path(directory), "0" * 64)
+
+
+class SharedExecutionEnvelopeTests(unittest.TestCase):
+    def test_qualified_contract_unwraps_same_runner_without_projection(self):
+        runner = {"native_steps": 4, "interpreter_steps": 6, "device": {"writes": 3}}
+        wrapper = {"kind": "pce-consumer-execution", "qualified": True,
+                   "binary_sha256": "authored-hash", "result": runner}
+        self.assertIs(unwrap_execution(wrapper, "authored-hash", require_contract=True), runner)
+        self.assertIs(unwrap_execution(runner), runner)
+
+    def test_wrong_binary_unqualified_or_missing_result_are_rejected(self):
+        wrapper = {"kind": "pce-consumer-execution", "qualified": True,
+                   "binary_sha256": "authored-hash", "result": {"ticks": 1}}
+        for key, value in (("kind", "unrelated"), ("qualified", False),
+                           ("qualified", 1), ("binary_sha256", "changed"), ("result", None)):
+            candidate = dict(wrapper, **{key: value})
+            with self.subTest(key=key), self.assertRaises(ValueError):
+                unwrap_execution(candidate, "authored-hash", require_contract=True)
+        with self.assertRaises(ValueError):
+            unwrap_execution({"ticks": 1}, require_contract=True)
 
 
 if __name__ == "__main__":

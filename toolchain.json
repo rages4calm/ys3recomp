@@ -2,12 +2,36 @@
   "schema": 1,
   "tool": {
     "repository": "https://github.com/rages4calm/pcenginerecomp",
+    "revision": "639e377e0d17318f7034b2c661cada609d84ed48",
+    "source_sha256": "9144d62b6b5af1ff28f5e175e48a9a18f41e7a9827e8116c4adc663037eb3507",
+    "checkout": ".deps/pcenginerecomp-next",
+    "runtime_abi": 12,
+    "source_policy": "Exact clean intended commit; current pin also uses the shared consumer API's exact source digest. Development overrides must explicitly supply the intended revision."
+  },
+  "initial_qualification": {
     "revision": "33fe46d4274584da5ba55b419a240f248df4158d",
     "runtime_abi": 12,
-    "source_policy": "Exact intended commit, clean tracked files; development overrides must explicitly supply the intended revision."
+    "native_steps": 5050558,
+    "interpreted_steps": 2915442205,
+    "frames": 93735,
+    "image_checkpoints": 25
+  },
+  "native_milestone": {
+    "selected_original_code_identities": 2048,
+    "mpr_contexts": 9,
+    "native_steps": 2784362065,
+    "interpreted_steps": 136130698,
+    "total_retired": 2920492763,
+    "frames": 93735,
+    "image_checkpoints": 25,
+    "memory_edit_transactions": 709,
+    "minimum_native_fraction": 0.9,
+    "scope": "Bounded assisted route; hot original-code subset from a separate complete observed profile. Cold and unseen code remain interpreted; not full native or campaign qualification."
   },
   "build": {
     "CMAKE_BUILD_TYPE": "Release",
+    "generator": "Ninja",
+    "qualified_compiler": "Clang 22.1.8 on Windows x64",
     "BUILD_TESTING": true,
     "PCE_BUILD_DESKTOP": false,
     "PCE_BUILD_REFERENCE_PROBE": false,

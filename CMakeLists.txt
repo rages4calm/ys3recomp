@@ -5,7 +5,8 @@ find_package(Python3 3.11 REQUIRED COMPONENTS Interpreter)
 file(READ "${CMAKE_CURRENT_SOURCE_DIR}/toolchain.json" YS3_TOOLCHAIN)
 string(JSON YS3_PINNED_REVISION GET "${YS3_TOOLCHAIN}" tool revision)
 string(JSON YS3_RUNTIME_ABI GET "${YS3_TOOLCHAIN}" tool runtime_abi)
-set(PCE_TOOL_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/.deps/pcenginerecomp" CACHE PATH "Verified upstream source checkout")
+string(JSON YS3_TOOL_CHECKOUT GET "${YS3_TOOLCHAIN}" tool checkout)
+set(PCE_TOOL_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/${YS3_TOOL_CHECKOUT}" CACHE PATH "Verified upstream source checkout")
 set(PCE_EXPECTED_REVISION "${YS3_PINNED_REVISION}" CACHE STRING "Exact intended upstream revision; explicitly set when developing against a different commit")
 get_filename_component(PCE_TOOL_ROOT "${PCE_TOOL_ROOT}" ABSOLUTE BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 execute_process(
@@ -21,9 +22,23 @@ message(STATUS "${YS3_VERIFY_OUTPUT}")
 include(CTest)
 option(PCE_BUILD_DESKTOP "Build upstream optional SDL3 desktop host" OFF)
 option(PCE_BUILD_REFERENCE_PROBE "Build upstream authored reference probes" OFF)
+option(PCE_BUILD_TOOLS "Build upstream standalone hosts for the consumer sandbox" ON)
+option(PCE_BUILD_TESTS "Build upstream synthetic qualification suites" ${BUILD_TESTING})
 # The upstream owns the runtime, host, generated-module ABI and synthetic suites.
 # All upstream-generated fixtures and binaries stay in a separate build directory.
 add_subdirectory("${PCE_TOOL_ROOT}" "${CMAKE_CURRENT_BINARY_DIR}/upstream")
+# Recheck every invocation, including target-specific and incremental builds.
+# An order-only target dependency runs the guard before compilation without
+# touching outputs or forcing unchanged sources to compile/link again.
+add_custom_target(ys3-verify-tool ALL
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/scripts/verify_tool.py"
+    --tool-root "${PCE_TOOL_ROOT}" --expected-revision "${PCE_EXPECTED_REVISION}"
+    --expected-abi "${YS3_RUNTIME_ABI}"
+  COMMENT "Verifying intended upstream source before compilation" VERBATIM)
+get_property(YS3_UPSTREAM_TARGETS DIRECTORY "${PCE_TOOL_ROOT}" PROPERTY BUILDSYSTEM_TARGETS)
+foreach(YS3_TARGET IN LISTS YS3_UPSTREAM_TARGETS)
+  add_dependencies("${YS3_TARGET}" ys3-verify-tool)
+endforeach()
 if(BUILD_TESTING)
   add_test(NAME consumer-contract
     COMMAND "${Python3_EXECUTABLE}" -m unittest discover -s tests -p "test_*.py" -v)
