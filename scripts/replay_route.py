@@ -21,6 +21,11 @@ import threading
 import time
 import tomllib
 
+if __package__:
+    from .audio_contract import audio_command, extract_audio, without_audio
+else:
+    from audio_contract import audio_command, extract_audio, without_audio
+
 MAX_ROUTE_BYTES = 4 * 1024 * 1024
 MAX_LOG_BYTES = 4 * 1024 * 1024
 PHASE_SECONDS = 1800
@@ -52,7 +57,8 @@ def validate_route(route):
     if not isinstance(command, list) or len(command) < 8 or not all(
             isinstance(value, str) and value and "\0" not in value for value in command):
         raise ValueError("invalid initial command")
-    if any(flag in command for flag in ("--frame-out", "--window-capture", "--wall-seconds")):
+    if any(flag in command for flag in ("--frame-out", "--window-capture", "--wall-seconds",
+                                        "--audio-out", "--audio-frames", "--audio-output")):
         raise ValueError("source command contains file output or a conflicting wall limit")
     if command_value(command, "--dev-start-paused") != "on":
         raise ValueError("source must start paused")
@@ -110,9 +116,10 @@ def project_status(status, ignore_tier_counters=False):
     return result
 
 
-def compare_status(expected, actual, ignore_tier_counters=False):
+def compare_status(expected, actual, ignore_tier_counters=False, audio_mode=None, wav_limit=None):
     left = project_status(expected, ignore_tier_counters)
-    right = project_status(actual, ignore_tier_counters)
+    right = project_status(without_audio(actual, audio_mode, wav_limit) if audio_mode is not None else actual,
+                           ignore_tier_counters)
     if left != right:
         changed = [key for key in STATUS_FIELDS if left[key] != right[key]]
         if "host" in changed:
@@ -340,6 +347,8 @@ def replay(args):
     started = time.monotonic()
     try:
         validate_project_mode(args.project_descriptor, args.project_build, args.project_verify_only)
+        if args.audio_output is not None and args.project_descriptor and not args.project_verify_only:
+            raise ValueError("explicit audio route overrides require project verify-only supervision")
         client_module, tool_identity = upstream_client(tool, args.expected_revision)
         receipt["tool_identity"] = tool_identity
         route_path = Path(args.route).resolve(strict=True)
@@ -370,6 +379,7 @@ def replay(args):
             identities[str(path)] = checkpoint["png_sha256"]
             checks.setdefault(checkpoint["frame"], []).append(checkpoint)
         command[0] = str(binary)
+        command = audio_command(command, args.audio_output, out / "audio.wav", args.audio_frames)
         receipt.update(command=command, source_command=route["initial_command"],
                        source_binary_anchor=str(source_binary),
                        source_binary_override=str(source_binary) if args.source_binary is not None else None,
@@ -377,6 +387,11 @@ def replay(args):
                        source_route_sha256=identities[str(route_path)],
                        input_sha256=identities, source_binary_sha256=route["binary_sha256"],
                        binary_sha256=identities[str(binary)], initial_bram_sha256=route["initial_bram_sha256"])
+        if args.audio_output is not None:
+            receipt["audio_contract"] = {"runtime_abi": 13, "mode": args.audio_output,
+                                         "wav_frame_limit": args.audio_frames,
+                                         "headless_pcm_only": True,
+                                         "scope": "PCM generation; no physical playback or independent mixed-audio parity claim."}
         launch_command = command
         environment = None
         contract_path = None
@@ -411,6 +426,7 @@ def replay(args):
                                                     "descriptor_wall_applied": False,
                                                     "effective_consumer_phase_seconds": PHASE_SECONDS,
                                                     "original_route_guest_arguments_preserved": True,
+                                                    "explicit_audio_override": args.audio_output,
                                                     "scope": "Consumer TCP route watchdog; shared project.run was not used."})
             else:
                 contract_path = out / "contract.json"
@@ -465,7 +481,7 @@ def replay(args):
                 cleared["host"]["buttons"] = [0] * 5
                 compare_status(cleared, released)
                 final = released
-            compare_status(expected, final, args.ignore_tier_counters)
+            compare_status(expected, final, args.ignore_tier_counters, args.audio_output, args.audio_frames)
             client.call("clear_input")
             released = client.call("status")
             cleared = copy.deepcopy(final)
@@ -489,6 +505,27 @@ def replay(args):
                 raise RuntimeError("shared receipt differs from wrapper stdout")
             receipt.update(contract_path=str(contract_path), contract_sha256=sha256(contract_path),
                            contract_command=envelope["command"], contract_binding=envelope.get("binding"))
+        if args.audio_output is not None:
+            for reader in child.readers:
+                reader.join(timeout=5)
+            runner = unwrap_execution(json.loads((out / "run.stdout").read_text(encoding="utf-8")))
+            audio = extract_audio(copy.deepcopy(runner), args.audio_output, args.audio_frames)
+            if (audio != extract_audio(copy.deepcopy(final["host"]), args.audio_output, args.audio_frames)
+                    or audio != extract_audio(copy.deepcopy(released["host"]), args.audio_output, args.audio_frames)):
+                raise RuntimeError("PCM diagnostics changed between paused guest status and clean exit")
+            receipt["audio_contract"]["validated_output"] = audio
+            receipt["audio_contract"]["audio_output_absent"] = args.audio_output == "off"
+            if args.audio_frames is not None:
+                wave_path = out / "audio.wav"
+                import wave
+                with wave.open(str(wave_path), "rb") as wave_input:
+                    if (wave_input.getnchannels(), wave_input.getsampwidth(), wave_input.getframerate(),
+                            wave_input.getnframes()) != (2, 2, 44100, audio["wav_frames"]):
+                        raise RuntimeError("WAV format/frame count disagrees with PCM diagnostics")
+                if wave_path.stat().st_size != 44 + 4 * audio["wav_frames"]:
+                    raise RuntimeError("WAV byte count differs from bounded PCM output")
+                receipt["audio_contract"].update(wav_path=str(wave_path), wav_sha256=sha256(wave_path),
+                                                  wav_bytes=wave_path.stat().st_size)
         for name, expected_hash in identities.items():
             if sha256(name) != expected_hash:
                 raise RuntimeError("read-only input changed during replay: " + name)
@@ -530,6 +567,10 @@ def main():
                         help="use shared project verify before/after and preserve the original route under the consumer 1800-second watchdog")
     parser.add_argument("--ignore-tier-counters", action="store_true",
                         help="compare all state except native_steps and interpreter_steps")
+    parser.add_argument("--audio-output", choices=("off", "on"),
+                        help="explicit ABI 13 headless PCM bridge/route; validate only its added audio_output separately")
+    parser.add_argument("--audio-frames", type=int,
+                        help="capture a new bounded replay-dir/audio.wav; requires audio on, 1..5292000 stereo frames")
     args = parser.parse_args()
     result = replay(args)
     print(f"PASS: {len(result['images'])} image checkpoints; receipt: {Path(args.out).resolve() / 'receipt.json'}")

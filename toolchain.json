@@ -2,10 +2,10 @@
   "schema": 1,
   "tool": {
     "repository": "https://github.com/rages4calm/pcenginerecomp",
-    "revision": "639e377e0d17318f7034b2c661cada609d84ed48",
-    "source_sha256": "9144d62b6b5af1ff28f5e175e48a9a18f41e7a9827e8116c4adc663037eb3507",
-    "checkout": ".deps/pcenginerecomp-next",
-    "runtime_abi": 12,
+    "revision": "9be8686554e1c6037411944da695a194d9c0ac2d",
+    "source_sha256": "f873f8d0e06418dffbf1ed478cd46bf1eae6fdf4511fc2797db8193bf04c99f6",
+    "checkout": ".deps/pcenginerecomp-audio",
+    "runtime_abi": 13,
     "source_policy": "Exact clean intended commit; current pin also uses the shared consumer API's exact source digest. Development overrides must explicitly supply the intended revision."
   },
   "initial_qualification": {
@@ -90,5 +90,81 @@
     "minimum_native_fraction": 0.9,
     "scope": "Bounded assisted route; hot original-code subset from a separate complete observed profile. Cold and unseen code remain interpreted; not full native or campaign qualification.",
     "qualified_project_commit": "5a0c5ce31fdd49fe6cec05686c154b554697396f"
+  },
+  "previous_audio_upgrade_baseline": {
+    "project_commit": "a736b5ab439a10dc12bbafc7818a324e60767336",
+    "tool": {
+      "repository": "https://github.com/rages4calm/pcenginerecomp",
+      "revision": "639e377e0d17318f7034b2c661cada609d84ed48",
+      "source_sha256": "9144d62b6b5af1ff28f5e175e48a9a18f41e7a9827e8116c4adc663037eb3507",
+      "checkout": ".deps/pcenginerecomp-next",
+      "runtime_abi": 12,
+      "source_policy": "Exact clean intended commit; current pin also uses the shared consumer API's exact source digest. Development overrides must explicitly supply the intended revision."
+    },
+    "native_milestone": {
+      "selected_original_code_identities": 44832,
+      "mpr_contexts": 57,
+      "native_steps": 2920491782,
+      "interpreted_steps": 981,
+      "total_retired": 2920492763,
+      "native_steps_gained_over_previous": 136129717,
+      "native_block_steps": 460685,
+      "interpreted_block_steps": 0,
+      "frames": 93735,
+      "image_checkpoints": 25,
+      "memory_edit_transactions": 709,
+      "excluded_source_identities": 4,
+      "excluded_retired_hits": 981,
+      "minimum_native_fraction": 0.999999,
+      "minimum_native_gain": 136000000,
+      "execution_supervision": {
+        "mode": "Consumer TCP route watchdog with official shared verify/build bindings before and after",
+        "wall_seconds": 1800,
+        "shared_project_run_used": false,
+        "descriptor_project_run_wall_seconds": 600,
+        "descriptor_wall_applied": false
+      },
+      "scope": "All eligible identities from the complete observed assisted route; entire temporary-code spans remain interpreted. Unvisited overlays and full game/campaign/native completion are unqualified."
+    }
+  },
+  "audio_milestone": {
+    "runtime_abi": 13,
+    "descriptor_schema": 1,
+    "regenerated_capture_runtime_abi": 12,
+    "translation_units": 207,
+    "generated_headers": 1,
+    "audio_off_bridge_passed": true,
+    "audio_on_route_passed": true,
+    "unchanged_native_tier_counts": true,
+    "frames": 93735,
+    "image_checkpoints": 25,
+    "checkpoint_status_comparisons": 25,
+    "memory_edit_transactions": 709,
+    "pcm": {
+      "enabled": true,
+      "sample_rate": 44100,
+      "channels": 2,
+      "frames": 69095406,
+      "psg_nonzero": 27644755,
+      "adpcm_nonzero": 4030681,
+      "cdda_nonzero": 49762727,
+      "mixed_nonzero": 65958163,
+      "peak": 13000,
+      "pcm_hash": 7177686580420813080,
+      "discarded_frames": 0,
+      "wav_frames": 1323000,
+      "wav_truncated": true
+    },
+    "bounded_wav_frames": 1323000,
+    "wav_matches_shared_reference": true,
+    "headless_device_opened": false,
+    "optional_sdl_stream": {
+      "frames": 709078,
+      "device_open": true,
+      "fast_forward_muted": false,
+      "runtime_discarded_frames": 0,
+      "scope": "Separate paced bootstrap; explicit hash-pinned SDK DLL search path required by current Windows embedded-consumer packaging limitation. Device acceptance/consumption, not listening or analog parity."
+    },
+    "scope": "Same assisted retained route; shared PCM reproducibility. Independent raw CDDA/PSG-phase scope inherited from upstream, not whole-route mixed-audio or hardware parity."
   }
 }
