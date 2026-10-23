@@ -8,11 +8,12 @@ artifacts and original inputs unchanged.
 
 ## Regenerate and build for ABI 13
 
-The current filtered-audio pin keeps ABI 13 and descriptor schema 1 unchanged.
-Its three fresh official desktop builds reuse the retained 208 ABI-13 generated
-artifacts byte-for-byte; compiled objects are rebuilt. Regeneration below is
-needed when producing ABI-13 sources from an older capture, rather than for
-every source-compatible audio upgrade.
+The current capture-only pin keeps ABI 13 and descriptor schema 1 unchanged.
+The coverage expansion composes the retained profile with a fresh restored-source
+window, then uses the shared emitter to generate 208 translation units and one
+header. All 209 source artifacts are bound to the new module manifest. The old
+208-artifact module remains unchanged for the baseline comparison. Rebuild
+compiled objects when changing generated sources or the pinned runtime.
 
 The current pin accepts retained ABI-12 observation captures for regeneration.
 It requires new ABI-13 translations and a matching runtime; never reuse ABI-12
@@ -27,7 +28,7 @@ there, and reuse immutable dependencies/media read-only.
 
 ```powershell
 $evidence = 'TOOL_EVIDENCE_ROOT'
-$tool = (Resolve-Path '.deps/pcenginerecomp-filtered').Path
+$tool = (Resolve-Path '.deps/pcenginerecomp-capture').Path
 $batch = '.local/new-private-batch'
 New-Item -ItemType Directory -Path "$batch/temp" -Force
 $env:TEMP = (Resolve-Path "$batch/temp").Path
@@ -55,7 +56,7 @@ is a read-only seed; guest writes remain volatile. No owner install/save is used
 
 ## Select and qualify filtered audio
 
-With the current `.deps/pcenginerecomp-filtered` checkout, descriptor preparation
+With the current `.deps/pcenginerecomp-capture` checkout, descriptor preparation
 also accepts `--audio-profile raw|filtered` and `--audio-rate 44100|48000`.
 These require `--audio on`; raw 48 kHz is rejected. Omitting both preserves the
 original raw 44.1 kHz descriptor and PCM schema. Filtered without a rate selects
@@ -206,11 +207,79 @@ Build the consumer's authored sandbox tests and run the pinned upstream
 `scripts/check.py` fallback plus `python -m unittest discover -s tests -v`.
 The current pin discovers the parent CMake cache and SDK in an embedded SDL
 build. The unchanged checker at `--build build/upstream` runs all 28 shared
-suites and 291 Python tests without a discovery adapter or test-path overrides;
+suites and 294 Python tests without a discovery adapter or test-path overrides;
 the fresh qualified embedded build has zero skips. SDL dummy video/audio
 drivers are appropriate for authored host suites. The separate clean default
 configuration intentionally skips eight desktop tests. Retain actual skips
 and suite results separately from the real-device test.
+
+## Extend coverage with a restored-source capture window
+
+The capture-only ABI-13 pin adds `--code-capture-start-frame` to the shared
+host. Use the consumer's managed `replay_route.py --capture-start-frame FRAME`
+option rather than embedding output flags in the immutable route. The chosen
+frame must be an existing paused checkpoint before the route ends and strictly
+after every journaled code patch has been restored. `--capture-limit` optionally
+selects 1 through 65,536 identities; the managed default is 65,536.
+
+The supervisor reads back every restored original byte, retains the full
+logical PC, eight MPRs, physical fetch addresses, bytes, generations and counters,
+and checks that the guest stays paused through that proof. Only then does the
+next advance begin. Capture output is a new `observed-code.json` in the replay
+directory. The shared loader checks its format, exact source mappings, complete
+retirement accounting and zero loss. The runner's actual start frame, ticks and
+native/interpreted counters must match the paused proof, and observed retirements
+must equal the final-minus-start count. An unreached or ambiguous window fails.
+Direct or shared-verify-only supervision is required; the shared `project.run`
+wrapper is not used for managed capture.
+
+The existing assisted prefix temporarily changes code before restoring it.
+Do not capture that prefix from launch. Keep its prior immutable profile and
+collect new instructions only after restoration. Observation files and generated
+code remain private, including excluded source variants.
+
+`merge_observations.py` composes two to sixteen complete profiles through the
+verified shared capture API. Its private manifest uses schema 1 and kind
+`ys3-observation-union`, an explicit `output_runtime_abi` of 12 or 13, and an
+`inputs` list. Each input binds a capture path/SHA256 plus an `epoch` with a
+unique label, declared start/end frames and hash-bound evidence paths. For example:
+
+```sh
+python scripts/merge_observations.py --tool-root TOOL --manifest PRIVATE_MANIFEST --out NEW_PRIVATE_PROFILE
+python scripts/expand_native.py --tool-root TOOL --route EXTENDED_ROUTE --capture NEW_PRIVATE_PROFILE/observations.json --out NEW_PRIVATE_MODULE
+```
+
+The union retains exact PC/all-MPR/physical/source-byte identities, separate byte
+variants and summed original tier hits. It rejects incomplete inputs, overflow
+and excess capacity. Its epochs are provenance declarations bound to evidence;
+the combined profile is not a single execution or measured native gain.
+Emission still excludes every byte of each verified temporary-code span across
+all mappings and checks all assist writes against observed instruction fetches.
+
+Build the old and expanded modules with the same verified capture-only pin,
+descriptor inputs and filtered 48 kHz audio selection. Replay the same frozen
+extended route with the same managed capture boundary on both packages, then run:
+
+```sh
+python scripts/qualify_native_audio.py --baseline-receipt OLD_MODULE_RECEIPT --candidate-receipt EXPANDED_MODULE_RECEIPT --prefix-frame ORIGINAL_ENDPOINT --min-native-gain 1 --out NEW_QUALIFICATION
+```
+
+This finite ABI-13 qualifier requires every original guest/source diagnostic,
+image, assist and processed/raw PCM value to match at every checkpoint and three
+endpoint observations. WAV bytes stay exact. Native/interpreted and block totals
+are conserved while their tier split may change; positive native gain is required
+both overall and after the prefix endpoint. Both raw window captures must retain
+identical source identities and per-identity total hits. Only a fully validated
+runner capture-window object is handled separately. Actual descriptor/build,
+module sources, executable, DLL, protected inputs and captures are rehashed.
+Unreviewed ABIs, timing profiles or capture contracts are refused.
+
+Long frontier sessions must keep the TCP connection active: the server closes
+an idle connection after five seconds. A paused status heartbeat preserves the
+connection without advancing guest time. Keep exploration bounded and retain
+failed attempts separately. The boot WAV cap does not reach a late frontier;
+cumulative PCM hashes and new checkpoint counters qualify its digital output.
+Do not describe the boot WAV as an audible recording of the later encounter.
 
 ## Publication and future batches
 
