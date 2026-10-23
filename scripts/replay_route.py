@@ -23,8 +23,12 @@ import tomllib
 
 if __package__:
     from .audio_contract import audio_command, extract_audio, without_audio
+    from .desktop_contract import (desktop_audio, desktop_command, headless_status,
+                                   validate_desktop, validate_desktop_mode)
 else:
     from audio_contract import audio_command, extract_audio, without_audio
+    from desktop_contract import (desktop_audio, desktop_command, headless_status,
+                                  validate_desktop, validate_desktop_mode)
 
 MAX_ROUTE_BYTES = 4 * 1024 * 1024
 MAX_LOG_BYTES = 4 * 1024 * 1024
@@ -116,8 +120,11 @@ def project_status(status, ignore_tier_counters=False):
     return result
 
 
-def compare_status(expected, actual, ignore_tier_counters=False, audio_mode=None, wav_limit=None):
+def compare_status(expected, actual, ignore_tier_counters=False, audio_mode=None, wav_limit=None,
+                   desktop_packaged=False):
     left = project_status(expected, ignore_tier_counters)
+    if desktop_packaged:
+        actual = headless_status(actual, wav_limit)
     right = project_status(without_audio(actual, audio_mode, wav_limit) if audio_mode is not None else actual,
                            ignore_tier_counters)
     if left != right:
@@ -347,6 +354,9 @@ def replay(args):
     started = time.monotonic()
     try:
         validate_project_mode(args.project_descriptor, args.project_build, args.project_verify_only)
+        desktop_packaged = getattr(args, "desktop_packaged", False)
+        validate_desktop_mode(desktop_packaged, args.project_verify_only, args.project_descriptor,
+                              args.audio_output, args.audio_frames)
         if args.audio_output is not None and args.project_descriptor and not args.project_verify_only:
             raise ValueError("explicit audio route overrides require project verify-only supervision")
         client_module, tool_identity = upstream_client(tool, args.expected_revision)
@@ -379,6 +389,8 @@ def replay(args):
             identities[str(path)] = checkpoint["png_sha256"]
             checks.setdefault(checkpoint["frame"], []).append(checkpoint)
         command[0] = str(binary)
+        if desktop_packaged:
+            command = desktop_command(command, evidence)
         command = audio_command(command, args.audio_output, out / "audio.wav", args.audio_frames)
         receipt.update(command=command, source_command=route["initial_command"],
                        source_binary_anchor=str(source_binary),
@@ -390,12 +402,13 @@ def replay(args):
         if args.audio_output is not None:
             receipt["audio_contract"] = {"runtime_abi": 13, "mode": args.audio_output,
                                          "wav_frame_limit": args.audio_frames,
-                                         "headless_pcm_only": True,
+                                         "headless_pcm_only": not desktop_packaged,
                                          "scope": "PCM generation; no physical playback or independent mixed-audio parity claim."}
         launch_command = command
         environment = None
         contract_path = None
         project_guard_inputs = {}
+        launch_cwd = evidence
         if args.project_descriptor:
             descriptor = Path(args.project_descriptor).resolve(strict=True)
             project_build = Path(args.project_build).resolve(strict=True)
@@ -433,12 +446,29 @@ def replay(args):
                 launch_command = [sys.executable, "-m", "pcerecomp.project", "run", str(descriptor),
                                   "--build-dir", str(project_build), "--receipt", str(contract_path),
                                   "--dev-port", "0", "--start-paused", "--memory-write"]
+        if desktop_packaged:
+            if __package__:
+                from .package_checks import packaged_environment, verify_package, inspect_loaded_sdl
+            else:
+                from package_checks import packaged_environment, verify_package, inspect_loaded_sdl
+            package = verify_package(built, binary)
+            environment, isolation = packaged_environment(binary, environment)
+            launch_cwd = out / "cwd"
+            launch_cwd.mkdir()
+            receipt["desktop_contract"] = {"packaged": True, "package_before": package,
+                                            "environment": isolation, "working_directory": str(launch_cwd),
+                                            "working_directory_initially_empty": not any(launch_cwd.iterdir()),
+                                            "hidden": True, "unthrottled": True,
+                                            "scope": "Packaged SDL loading and fast-forward muted presentation; paced playback qualified separately."}
         receipt["launch_command"] = launch_command
-        child = BoundedChild(launch_command, evidence, out, env=environment, process_tree=contract_path is not None)
+        receipt["launch_cwd"] = str(launch_cwd)
+        child = BoundedChild(launch_command, launch_cwd, out, env=environment, process_tree=contract_path is not None)
         until = time.monotonic() + 10
         while not child.ready.wait(0.05):
             if child.failure or child.process.poll() is not None or time.monotonic() >= until:
                 raise RuntimeError("development TCP startup failed: " + str(child.failure))
+        if desktop_packaged:
+            receipt["desktop_contract"]["loaded_sdl_before"] = inspect_loaded_sdl(child.process.pid, binary.parent / "SDL3.dll")
         with client_module.DevClient(child.port, timeout=90) as client:
             def images(frame, status=None):
                 if frame not in checks:
@@ -481,7 +511,8 @@ def replay(args):
                 cleared["host"]["buttons"] = [0] * 5
                 compare_status(cleared, released)
                 final = released
-            compare_status(expected, final, args.ignore_tier_counters, args.audio_output, args.audio_frames)
+            compare_status(expected, final, args.ignore_tier_counters, args.audio_output, args.audio_frames,
+                           desktop_packaged=desktop_packaged)
             client.call("clear_input")
             released = client.call("status")
             cleared = copy.deepcopy(final)
@@ -490,6 +521,8 @@ def replay(args):
             receipt.update(final_status=final, released_status=released)
             if len(receipt["images"]) != len(route["checkpoints"]):
                 raise RuntimeError("not every image checkpoint was compared")
+            if desktop_packaged:
+                receipt["desktop_contract"]["loaded_sdl_final"] = inspect_loaded_sdl(child.process.pid, binary.parent / "SDL3.dll")
             client.call("quit")
         child.process.wait(timeout=30 if contract_path is not None else 5)
         if child.process.returncode != 0 or child.failure:
@@ -509,9 +542,21 @@ def replay(args):
             for reader in child.readers:
                 reader.join(timeout=5)
             runner = unwrap_execution(json.loads((out / "run.stdout").read_text(encoding="utf-8")))
-            audio = extract_audio(copy.deepcopy(runner), args.audio_output, args.audio_frames)
-            if (audio != extract_audio(copy.deepcopy(final["host"]), args.audio_output, args.audio_frames)
-                    or audio != extract_audio(copy.deepcopy(released["host"]), args.audio_output, args.audio_frames)):
+            if desktop_packaged:
+                audio = desktop_audio(runner["audio_output"], args.audio_frames)
+                final_audio = desktop_audio(final["host"]["audio_output"], args.audio_frames)
+                released_audio = desktop_audio(released["host"]["audio_output"], args.audio_frames)
+                presentation = validate_desktop(runner["desktop"], final["frame"])
+                receipt["desktop_contract"].update(audio_output=runner["audio_output"], presentation=presentation,
+                                                    package_after=verify_package(built, binary),
+                                                    working_directory_finally_empty=not any(launch_cwd.iterdir()))
+                if any(launch_cwd.iterdir()):
+                    raise RuntimeError("packaged replay wrote unexpected working-directory output")
+            else:
+                audio = extract_audio(copy.deepcopy(runner), args.audio_output, args.audio_frames)
+                final_audio = extract_audio(copy.deepcopy(final["host"]), args.audio_output, args.audio_frames)
+                released_audio = extract_audio(copy.deepcopy(released["host"]), args.audio_output, args.audio_frames)
+            if audio != final_audio or audio != released_audio:
                 raise RuntimeError("PCM diagnostics changed between paused guest status and clean exit")
             receipt["audio_contract"]["validated_output"] = audio
             receipt["audio_contract"]["audio_output_absent"] = args.audio_output == "off"
@@ -571,6 +616,8 @@ def main():
                         help="explicit ABI 13 headless PCM bridge/route; validate only its added audio_output separately")
     parser.add_argument("--audio-frames", type=int,
                         help="capture a new bounded replay-dir/audio.wav; requires audio on, 1..5292000 stereo frames")
+    parser.add_argument("--desktop-packaged", action="store_true",
+                        help="verify packaged SDL desktop output, isolated DLL search and original TCP route with muted fast-forward")
     args = parser.parse_args()
     result = replay(args)
     print(f"PASS: {len(result['images'])} image checkpoints; receipt: {Path(args.out).resolve() / 'receipt.json'}")

@@ -10,12 +10,12 @@ PCM_INITIAL_HASH = 14695981039346656037
 MAX_WAV_FRAMES = 5292000
 
 
-def validate_audio(value, mode, wav_limit=None):
+def validate_audio(value, mode, wav_limit=None, drained_frames=None):
     """Reject missing/unknown fields and loss, including future schema drift."""
     if mode not in ("on", "off"):
         raise ValueError("audio mode must be on or off")
     if mode == "off":
-        if value is not None or wav_limit is not None:
+        if value is not None or wav_limit is not None or drained_frames is not None:
             raise ValueError("audio_output must be absent when audio is off")
         return None
     if not isinstance(value, dict) or set(value) != PCM_FIELDS:
@@ -38,8 +38,14 @@ def validate_audio(value, mode, wav_limit=None):
             raise ValueError("audio_output." + key + " exceeds PCM frames")
     if wav_limit is not None and (type(wav_limit) is not int or not 1 <= wav_limit <= MAX_WAV_FRAMES or mode != "on"):
         raise ValueError("WAV limit requires audio on and 1..5292000 frames")
-    expected_wav = min(value["frames"], wav_limit) if wav_limit is not None else 0
-    expected_truncated = wav_limit is not None and value["frames"] > wav_limit
+    if drained_frames is not None and (type(drained_frames) is not int or not 0 <= drained_frames <= value["frames"]):
+        raise ValueError("explicit drained PCM count must be an integer in 0..generated frames")
+    # The default is a fully drained endpoint. A validated desktop pre-drain
+    # checkpoint may instead supply the actual SDL submitted count: the same
+    # drain writes WAV before it submits samples to SDL, without yielding.
+    written_source_frames = value["frames"] if drained_frames is None else drained_frames
+    expected_wav = min(written_source_frames, wav_limit) if wav_limit is not None else 0
+    expected_truncated = wav_limit is not None and written_source_frames > wav_limit
     if value["wav_frames"] != expected_wav or value["wav_truncated"] != expected_truncated:
         raise ValueError("audio_output: WAV counters disagree with explicit output bound")
     return copy.deepcopy(value)

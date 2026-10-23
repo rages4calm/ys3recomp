@@ -1,11 +1,11 @@
 # Consumer status - 23 October 2026
 
-The ABI 13 audio upgrade is verified on Windows x64. This is a bounded hybrid
+The ABI 13 audio upgrade and corrected SDL packaging are verified on Windows x64. This is a bounded hybrid
 port foundation; full native coverage and a finished game port remain unfinished.
 
 | Evidence | Result | Scope |
 |---|---|---|
-| Current tool | `9be8686554e1c6037411944da695a194d9c0ac2d`, ABI 13, descriptor schema 1 | Exact clean published pin and source digest; no runtime fork |
+| Current tool | `cca01ca746cbee224f9050bb4064779f1800d093`, ABI 13, descriptor schema 1 | Exact clean published pin and source digest; no runtime fork |
 | Regeneration | 44,832 identities / 57 full MPR contexts, 207 translation units and one generated header | Existing ABI-12 observations regenerated; every generated artifact hash pinned; no reused ABI-12 objects |
 | Audio-off bridge | Complete 93,735-frame route passes | All 25 image hashes, 25 checkpoint states, final guest diagnostics and original native tier counts exact |
 | Audio-on route | Same complete route passes with PCM enabled | Same 709 edits / 723 changed bytes, no new assistance; only the added validated audio object is separate |
@@ -13,11 +13,11 @@ port foundation; full native coverage and a finished game port remain unfinished
 | Digital PCM | 69,095,406 stereo frames, 44,100 Hz signed 16-bit; peak 13,000; zero runtime queue discard | Exact shared-reference PCM hash `7177686580420813080`; headless synthesis opens no device |
 | Source activity | PSG 27,644,755, ADPCM 4,030,681, CDDA 49,762,727, mixed 65,958,163 nonzero frames | Source counts overlap; digital activity is separate from audible correctness |
 | Bounded WAV | First 1,323,000 stereo frames / 5,292,044 bytes, truncation reported | First 30 guest seconds; byte-identical to retained upstream WAV; private output only |
-| Paced SDL consumer | 709,078 frames submitted, device opens and queue drains; mute false | Separate short bootstrap using explicit hash-pinned SDK DLL search path; pause freezes guest/PCM and clears queue, resume advances |
-| Authored checks | 76 consumer tests; 27 upstream suites; all 252 frontend tests pass with desktop enabled | Windows x64, clean empty-module test build; six desktop skips in the separate fallback invocation |
+| Paced SDL consumer | 710,526 frames submitted, device opens and queue drains; mute false | Separate packaged short bootstrap without SDK PATH; live loaded DLL hash/path verified, pause freezes guest/PCM, resume advances |
+| Authored checks | 104 consumer tests; current upstream 27 suites / 254 frontend tests pass with desktop enabled | Windows x64, clean empty-module test build; retained audio-batch fallback had six desktop skips among 252 tests |
 
 The exact source SHA256 is
-`f873f8d0e06418dffbf1ed478cd46bf1eae6fdf4511fc2797db8193bf04c99f6`
+`cedf5f31116a20d7dd5eacdec8eeb156d67a962ef22f9c40316e9dd87f5dcfec`
 (50 relevant files). Clang 22.1.8, CMake 3.31.12, Ninja, Python 3.14.5 and
 SDL 3.4.18 are the qualified local toolchain. Other hosts/controllers are
 unqualified. All protected input hashes and the original capture remain unchanged.
@@ -62,19 +62,38 @@ omits that object entirely when off. The harness was corrected against a real
 authored runner/TCP test, and a fresh complete audio-off replay passed. The
 failed attempt stays separate and is not counted as qualified.
 
-The current pin's Windows embedded desktop consumer build omits `SDL3.dll`
-beside its executable. The first bounded desktop startup therefore failed
-before entering the guest and is retained. The successful paced check uses a
-child-only SDK search path with an explicit DLL hash, without altering tool
-source, build receipt or adjacent-output hashes. This is SDK-backed execution,
-not a self-contained desktop package; the defect is reported upstream.
+The current pin corrects the earlier Windows embedded-consumer packaging
+failure. The official fresh desktop build now places `SDL3.dll` beside its
+executable and pins both in `output_files`. All prior audio/failed-startup
+receipts remain preserved as history. Current execution requires no SDK PATH
+workaround: the child starts in a new empty working directory with all empty,
+relative, packaged-bin and SDL-DLL-containing PATH entries removed. Exact PATH,
+removed entries and cwd are retained privately. Windows module inspection at
+startup and final guest pause ties the same PID/executable to the adjacent
+packaged DLL's actual loaded path and hash.
+
+The complete packaged desktop replay matches the retained headless audio route:
+all 93,735 frames, 25 image hashes and checkpoint states, 709 transactions and
+every original guest/native diagnostic remain exact. Only separately validated
+desktop presentation/audio-host additions and TCP port metadata are outside
+the guest comparison. Digital PCM counts/hash and the first-30-second WAV bytes
+remain exact. The full run is explicitly unthrottled, so all device presentation
+frames are intentionally muted/dropped; the runtime PCM queue loses none.
+This source-clock measurement is separate from the paced device-stream check.
+One intermediate TCP checkpoint observes 29 generated PCM frames pending in
+the source ring before the host drain. The qualifier checks every checkpoint
+against the pinned 8,192-frame ring bound, zero source loss, equal muted
+submitted/dropped counts and an empty SDL queue. All settled final observations
+and the runner require zero pending frames. Core PCM/guest comparisons stay exact.
+The earlier ABI-13 generated module is reused with all 208 artifact hashes
+verified, preserving source exclusions, without a runtime fork.
 
 The paced check accepts/drains a real default SDL device stream, with
-1,273 pause-flush presentation drops,
-peak input queue 1,566 frames and zero
+2,916 pause-flush presentation drops,
+peak input queue 1,600 frames and zero
 runtime loss. It is not a listening or analog loopback result. Unthrottled SDL
 intentionally mutes speaker presentation while PCM/WAV generation continues.
-The full route's headless PCM evidence is separate from this paced device test.
+The full route's muted PCM evidence is separate from this paced device test.
 
 ## Remaining limits
 

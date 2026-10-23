@@ -18,25 +18,30 @@ diagnostics still match; total retired work is unchanged. This route includes
 journaled assistance and ends at a first-boss encounter, without a victory or
 campaign-completion claim.
 
-The current tool pin is `9be8686554e1c6037411944da695a194d9c0ac2d`, ABI **13**.
+The current tool pin is `cca01ca746cbee224f9050bb4064779f1800d093`, ABI **13**.
 The initial qualified `33fe46d4274584da5ba55b419a240f248df4158d` baseline is
 retained in [toolchain.json](toolchain.json). See [status](docs/STATUS.md) for
 the evidence and limits.
+
+The current Windows desktop build places its pinned `SDL3.dll` beside the
+executable. Startup, TCP controls and audio are verified with SDK directories
+removed from the child PATH and an empty working directory. The loaded SDL
+module is checked against that adjacent file; no SDK PATH workaround is needed.
 
 ## Build without game inputs
 
 Requires Python 3.11+, CMake 3.20+, a C++20 compiler, Ninja and Git.
 
 ```sh
-git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-audio
-git -C .deps/pcenginerecomp-audio checkout --detach 9be8686554e1c6037411944da695a194d9c0ac2d
+git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-packaged
+git -C .deps/pcenginerecomp-packaged checkout --detach cca01ca746cbee224f9050bb4064779f1800d093
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++
 cmake --build build --parallel 4
 ctest --test-dir build --output-on-failure
 ```
 
 If the toolchain omits `ctest`, run
-`python .deps/pcenginerecomp-audio/scripts/check.py --build build/upstream` and
+`python .deps/pcenginerecomp-packaged/scripts/check.py --build build/upstream` and
 `python -m unittest discover -s tests -v` instead.
 
 The default host has no game module and uses interpreted execution. Authored
