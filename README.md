@@ -10,18 +10,21 @@ unseen code continues through its interpreter. Actual retired instruction counts
 source identities and replay results determine coverage, not executable format
 or the amount of generated source.
 
-On the retained 93,735-frame route, native execution increased from **0.17%
-to 95.34%, then 99.99997%**. The current module covers 44,832 observed identities
-in 57 mappings. Exactly **981 retirements remain interpreted** around an
-excluded temporary-code-patch span. All 25 guest image hashes and exposed guest
-diagnostics still match; total retired work is unchanged. This route includes
-journaled assistance and ends at a first-boss encounter, without a victory or
-campaign-completion claim.
+The current 94,800-frame TCP route includes 1,065 normal-input frames beyond
+the original first-boss approach, through combat, Game Over and Continue.
+The expanded module adds **47 observed source identities**, moving **3,461
+retirements from interpreted to native execution** on that same extended route.
+It retires **2,953,438,406 native + 981 interpreted** instructions. All 39 image
+checkpoints, exposed guest/source diagnostics and filtered 48 kHz PCM match the
+old module; total retired work is unchanged. The original 25-checkpoint prefix
+also remains exact. The inherited route uses journaled assistance; this extension
+adds no RAM edits and establishes no boss victory or campaign completion.
 
-The current tool pin is `72bd5a2d4616d50d8b19f0d78c5af6ddfbd1c777`, ABI **13**.
-The initial qualified `33fe46d4274584da5ba55b419a240f248df4158d` baseline is
-retained in [toolchain.json](toolchain.json). See [status](docs/STATUS.md) for
-the evidence and limits.
+The current tool pin is `c5aa9a26125edabdbe98a68bf716bff6eacd310e`, ABI **13**.
+It adds a gated source-capture window without changing audio semantics. The
+initial qualified baseline and previous milestones remain in
+[toolchain.json](toolchain.json). See [status](docs/STATUS.md) for the evidence
+and limits.
 
 The current Windows desktop build places its pinned `SDL3.dll` beside the
 executable. Startup, TCP controls and audio are verified with SDK directories
@@ -33,15 +36,15 @@ module is checked against that adjacent file; no SDK PATH workaround is needed.
 Requires Python 3.11+, CMake 3.20+, a C++20 compiler, Ninja and Git.
 
 ```sh
-git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-filtered
-git -C .deps/pcenginerecomp-filtered checkout --detach 72bd5a2d4616d50d8b19f0d78c5af6ddfbd1c777
+git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-capture
+git -C .deps/pcenginerecomp-capture checkout --detach c5aa9a26125edabdbe98a68bf716bff6eacd310e
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++
 cmake --build build --parallel 4
 ctest --test-dir build --output-on-failure
 ```
 
 If the toolchain omits `ctest`, run
-`python .deps/pcenginerecomp-filtered/scripts/check.py --build build/upstream` and
+`python .deps/pcenginerecomp-capture/scripts/check.py --build build/upstream` and
 `python -m unittest discover -s tests -v` instead.
 
 The default host has no game module and uses interpreted execution. Authored
@@ -64,10 +67,11 @@ The current route uses an explicit reference-emulator `gear-good` response for
 an unknown CD command. That condition does not implement the unknown operation
 or establish hardware correctness. Initial formatted blank BRAM is read-only;
 guest SAVE/LOAD stays within one process. ABI 13 adds digital PSG, ADPCM and
-CDDA mixing, bounded WAV capture and optional SDL playback. The retained route
-is checked with audio disabled and enabled; native work and guest images remain
-exact. Digital PCM reproducibility and device-stream acceptance have separate
-evidence. The current sound fix averages ordinary ultrasonic PSG waveform
+CDDA mixing, bounded WAV capture and optional SDL playback. The original prefix
+retains its audio-disabled/enabled qualification. The current extended route is
+freshly checked with filtered 48 kHz audio. Digital PCM reproducibility and
+device-stream acceptance have separate evidence. The current sound fix averages
+ordinary ultrasonic PSG waveform
 periods 1–5, matching Geargrafx's tested unfiltered half-gain digital profile
 while preserving oscillator state. Expanded independent checks cover 49,258 PSG
 stereo pairs across 3,262 authored cases and raw ADPCM decoder/control state at
@@ -79,14 +83,14 @@ Geargrafx checks match 59,505 filtered PSG and 34,112 filtered ADPCM stereo
 frames. Separate authored checks cover the deterministic 64-tap resampler;
 these do not establish parity with Geargrafx's resampler.
 
-Fresh raw and filtered 48 kHz desktop packages pass the same complete TCP
-route. The raw PCM/WAV stays unchanged, and filtered output matches the shared
-headless reference while preserving the original source PCM and every guest
-diagnostic. Separate paced checks at both filtered rates verify device
-acceptance, pause/resume, controls and captures. These are bounded digital and
-device-stream checks; independent retail-mix, analog and hardware audio parity
-remain unqualified. See [development](docs/DEVELOPMENT.md) for profile selection
-and qualification.
+The prior raw and filtered packages retain their qualified original route and
+headless-reference evidence. The current old-module and expanded-module packages
+match processed and raw-source PCM throughout the extended route. A separate
+paced 48 kHz check verifies device acceptance, pause/resume, controls and captures.
+The bounded WAV covers the first 30 guest seconds; cumulative PCM and checkpoints
+check the later section. These are digital and device-stream checks; independent
+retail-mix, listening, analog and hardware parity remain unqualified.
+See [development](docs/DEVELOPMENT.md) for capture and qualification.
 Host save persistence, authentic console reset and campaign completion remain
 unfinished.
 

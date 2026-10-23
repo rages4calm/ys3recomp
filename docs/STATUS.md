@@ -1,117 +1,112 @@
 # Consumer status - 23 October 2026
 
-Opt-in filtered audio and 48 kHz resampling are verified on Windows x64 with
-ABI 13 and descriptor schema 1. This remains a bounded hybrid port foundation;
-full native coverage and a finished game port remain unfinished.
+Native coverage now extends beyond the original first-boss approach through
+normal combat, a rendered Game Over, Continue and full-health recovery. This
+remains a bounded hybrid milestone; unvisited code and the full campaign are
+unfinished.
 
 | Evidence | Result | Scope |
 |---|---|---|
-| Current tool | `72bd5a2d4616d50d8b19f0d78c5af6ddfbd1c777`, ABI 13, schema 1 | Exact clean source pin; no runtime fork |
-| Module | 44,832 identities / 57 full MPR contexts, 207 translation units and one generated header | All 208 retained ABI-13 artifacts rehashed and reused unchanged; fresh official builds |
-| Official builds | Raw 44.1 kHz, filtered 44.1 kHz and filtered 48 kHz | Separate descriptors/build bindings and adjacent pinned SDL DLL |
-| Full TCP routes | Fresh raw 44.1 kHz and filtered 48 kHz packages pass all 93,735 frames | All 25 images/checkpoint states and three endpoint observations; separate matching headless references |
-| Native execution | 2,920,491,782 native + 981 interpreted, **99.99996641% native** | Total 2,920,492,763 unchanged; 981 guard misses; all 460,685 block transfers native, zero interpreted |
-| Raw bridge | Original PCM and first-30-second WAV unchanged | Default/raw schema and digital output remain exact against the previous qualified package |
-| Filtered source projection | Original 69,095,406 source frames, raw PCM hash, peak and activity unchanged | Every guest/native/source diagnostic remains exact at all matched observations |
-| Filtered output | 75,205,884 stereo frames at 48 kHz; peak 13,355; zero runtime discard | PCM hash `8515195911678413936`; processed output matches the new headless reference |
-| Filtered WAV | First 1,440,000 output frames / 5,760,044 bytes, truncation reported | First 30 guest seconds; byte-identical packaged/headless WAV, private output only |
-| Paced playback | Separate filtered 44.1 and 48 kHz checks pass | TCP input, guest/window captures, pause freeze, resume advance, actual package/DLL and device telemetry |
-| Consumer checks | 190 synthetic tests pass | Legacy raw qualification remains unchanged; new profile, DSP, WAV and qualification rejection cases |
-| Shared checks | 28 suites / 291 Python tests with desktop enabled | Fresh embedded and standalone runs have zero skips; clean default configuration separately has eight intentional desktop skips |
+| Current tool | `c5aa9a26125edabdbe98a68bf716bff6eacd310e`, ABI 13, schema 1 | Exact clean capture-only pin; no runtime fork or audio-semantics change |
+| Expanded module | 44,879 identities / 57 full MPR contexts | 47 new identities; 208 translation units and one header built through the official shared project contract |
+| Extended route | 94,800 frames, including 1,065 new normal-input frames | Same frozen TCP recipe on old and expanded modules; no new RAM edits |
+| Guest reproduction | All 39 image/checkpoint states and three endpoints match | Exact PC, all eight MPRs, fetch bytes/physical identity and source generations |
+| Native execution | 2,953,438,406 native + 981 interpreted | Total 2,953,439,387; 466,118 native block transfers, zero interpreted |
+| Measured gain | 3,461 retirements move from interpreted to native | Compared with 2,953,434,945 native + 4,442 interpreted on the same extended route |
+| Original prefix | All 25 original checkpoints remain exact through frame 93,735 | Guest/source/images, original native counts and raw/processed PCM match the frozen prior package |
+| Source window | Frame 93,735 to 94,800; 12,138 observed identities / 32,946,624 retirements | Fresh paused restored-byte proof; exact actual start frame/ticks/counters; complete with zero loss/unreadable instructions |
+| Observation composition | 44,883 identities across two retained epochs | Original totals preserved; multi-run provenance is separate from execution proof |
+| Exclusions | Four identities / 981 profile hits remain excluded | Entire restored temporary-code span excluded across all mappings/variants; zero unsupported observations |
+| Digital audio | Filtered 48 kHz processed and raw-source PCM exact throughout the extended route | 76,060,360 output frames; peak 13,355; zero runtime discard; cumulative PCM hash `13785118638779356764` |
+| Bounded WAV | First 1,440,000 output frames / 30 guest seconds are byte-identical | The boot WAV does not reach the late frontier; checkpoint/cumulative PCM verifies that section |
+| Packaged device check | Separate paced filtered 48 kHz run passes | Adjacent pinned SDL, empty working directory, sanitized PATH, TCP input/captures, pause freeze and resumed advancement |
+| Consumer checks | 237 tests pass, zero skips | Capture boundary/proof, profile union, source conservation and qualification rejection cases |
+| Shared checks | 28 suites / 294 Python tests, zero skips | Fresh empty-module embedded desktop build; unchanged shared checker |
 
 The exact source SHA256 is
-`0bfa0312dfaa28e4ae0371007385086c885d8fd6f4e5a231870f4d61b557aef3`
+`740f6a5f87aa865c49d538d7c424a8e5b88e903cb022ea0cfab5ab0e387e4b36`
 (53 relevant files). Clang 22.1.8, CMake 3.31.12, Ninja, Python 3.14.5 and
-SDL 3.4.18 are the qualified local toolchain. Other hosts/controllers remain
-unqualified. All seven protected inputs, the original capture and generated
-module hashes remain unchanged. No owner installation or saves are used.
+SDL 3.4.18 are the qualified local toolchain. All seven protected inputs,
+the original capture and all 208 old module artifacts remain unchanged. No
+owner installation or saves are used. Older evidence remains frozen through
+explicit source-epoch preservation mappings.
 
-## Audio profiles and independent evidence
+## What the new qualification proves
 
-The default raw profile stays at 44,100 Hz signed 16-bit stereo with its old
-telemetry schema. The full raw route retains 69,095,406 frames, peak 13,000,
-PCM hash `7177686580420813080` and zero runtime discard. Its overlapping
-nonzero source counts remain PSG 27,644,755, ADPCM 4,030,681 and CDDA 49,762,727;
-mixed activity remains 65,958,163. Its first 1,323,000-frame WAV is unchanged.
+The baseline and expanded packages use the same verified capture-only runtime,
+inputs, audio profile, controls and assistance journal. The native qualifier
+conserves retired instruction and block totals at every exposed observation,
+then requires positive native gain overall and after the original endpoint.
+Every source identity and its total hit count also match between the two fresh
+window captures; only native/interpreted attribution changes. Complete logical
+PC, all MPRs and exact physical/fetch bytes remain distinct across overlays.
+Emission and source-union counts alone are never accepted as execution evidence.
 
-Filtered playback is opt-in at 44.1 or 48 kHz. Geargrafx 1.8.4 independently
-matches 59,505 filtered PSG stereo frames across 3,266 authored cases and
-34,112 filtered held-ADPCM stereo frames across 17 cases. The external
-implementation is separately compiled from hash-bound unmodified sources.
-PSG checks include chunk sizes 1 and 509; ADPCM filtering is checked sample by
-sample, without an ADPCM chunk-invariance claim. These qualify finite digital
-filter stages rather than independent retail-route mixed audio.
+Before the source window starts, fresh TCP readback proves the six original
+bytes restored and the guest paused without retired work. The actual runtime
+gate begins at frame 93,735, tick 33,650,360,835, before the next instruction.
+The shared capture loader independently validates both raw captures. The same
+six-byte source exclusion is retained across the complete composed profile.
+All 709 inherited edit transactions / 723 changed bytes are checked against
+observed instruction fetches. The added combat/failure/recovery section makes
+no further RAM edits.
 
-Separate authored DSP checks cover exact integer vectors, spectral behavior,
-chunk invariance, frame accounting and raw preservation. At 44.1 kHz the output
-resampler is identity. At 48 kHz the toolkit uses a deterministic 64-tap,
-160-phase Q30 FIR: output frames equal `floor(source_frames * 160 / 147)`,
-latency is 31 source frames, initial history is zero and no tail is flushed.
-These checks do not claim Geargrafx resampler parity. The full filtered route
-records mixed activity 71,837,781; source activity counters remain in the
-44.1 kHz domain. Output frames, WAV and queue telemetry use the selected rate.
+This is consumer-supervised route qualification with a 1,800-second watchdog
+and official descriptor/build verification before and after. The shared
+descriptor's 600-second project.run limit is not applied. A newly built module,
+an executed route and independent-reference evidence remain separate tiers.
+The new section is a same-runtime reproduction check; no independent retail
+oracle or hardware qualification has been added for it.
 
-The distinct DSP qualifier compares old raw, new raw, new processed and new
-headless reference observations. It requires every original guest diagnostic,
-PC/MPR/source identity, clock, native/interpreted count, block count, image,
-input and assist transaction to remain exact. Validated presentation metadata,
-checkpoint WAV drain counters and the TCP port are handled separately.
-Raw PCM/WAV must remain exact, filtered raw-source PCM must project exactly to
-that baseline, and processed PCM/WAV must match the new reference. Exact
-descriptor/build, executable, DLL and reviewed reference artifacts are rehashed.
+## Audio and package limits
 
-## Packaged playback and execution limits
+The current pin adds capture gating and leaves the prior ABI-13 DSP unchanged.
+Its default is raw 44.1 kHz; filtered playback is opt-in. The extended comparison
+uses filtered-v1 48 kHz. It preserves 69,880,456 source frames, raw PCM hash
+`4016269554691743388` and source activity as well as processed output at every
+checkpoint. The boot WAV retains the original first-30-second bytes. Runtime
+loss is zero. Full route playback is hidden and unthrottled: SDL presentation
+is intentionally muted while PCM generation continues. Submitted/dropped
+presentation frames are therefore equal; this is separate from runtime loss.
 
-All fresh desktop packages place the pinned `SDL3.dll` beside the executable.
-Tests start in new empty working directories with SDK directories and other
-DLL search shortcuts removed from the child PATH. Live module inspection
-binds the running PID/executable to the adjacent DLL's actual path and hash.
-No SDK PATH workaround is needed.
+The separate paced package check opens the default stereo device at 48 kHz,
+SDL numeric format 33056, unmuted, with an empty final queue and no runtime
+discard. Actual loaded SDL path/hash matches the adjacent packaged DLL. TCP
+input, guest/window captures, source/PCM pause freeze and resume advance pass.
+Device acceptance and exact PCM do not establish listening, analog loopback,
+whole-mix independent retail parity or hardware correctness.
 
-The full route is hidden and unthrottled: SDL presentation is intentionally
-muted and output frames are submitted/dropped equally, while PCM/WAV generation
-continues without runtime loss. Intermediate pending output must fit the
-8,192-frame ring; final observations require zero pending frames. Saturated
-headless WAV telemetry establishes a possible bounded drain interval, not an
-exact intermediate pending count. Headless synthesis opens no device.
+The prior raw 44.1 kHz and filtered 48 kHz packages retain their full original
+93,735-frame route and separate matching headless-reference evidence. Raw PCM
+hash `7177686580420813080` and filtered prefix hash `8515195911678413936`
+remain exact. Prior paced checks cover both 44.1 and 48 kHz. The initial
+audio-off ABI-12-to-13 bridge is retained; it was not rerun for this source-only
+coverage expansion.
 
-Separate paced checks generate 710,526 source frames at each filtered rate.
-The 44.1 kHz run submits 710,526 frames, with 2,393 presentation drops and a
-1,364-frame peak queue. The 48 kHz run submits 773,361 frames, with 2,782 drops
-and a 1,675-frame peak queue. Both finish with empty queues, zero runtime loss,
-device open and mute false. Actual queried devices report respectively 44.1
-and 48 kHz, stereo, numeric SDL format 33056. Pause freezes source/DSP/guest
-state; resume advances it. The CDDA-dominated opening at 44.1 kHz retains raw
-PCM, so this short check alone demonstrates no audible filter improvement.
-Device acceptance and digital hashes do not establish listening, analog
-loopback or hardware correctness.
+Independent Geargrafx 1.8.4 evidence retains its finite scope: 49,258 raw PSG
+stereo pairs across 3,262 authored cases, raw ADPCM decoder/control state at
+all 16 rates, 59,505 filtered PSG frames across 3,266 cases and 34,112 filtered
+held-ADPCM frames across 17 cases. The ADPCM stop-edge phase limitation remains.
+Separate authored FIR checks qualify the deterministic 64-tap, 160-phase Q30
+resampler, with 31 source frames of latency, zero initial history and no tail
+flush; they do not establish Geargrafx resampler parity. No later timing/audio
+ABI is adopted by this batch.
 
-The consumer supervises complete routes with its explicit 1,800-second
-watchdog and official shared verification/build bindings before and after.
-The descriptor's 600-second `project.run` limit is not applied. This is
-consumer-supervised route qualification, separate from shared `project.run`.
-The initial audio-off ABI-12-to-13 bridge remains retained; it was not rerun
-for this source-compatible DSP upgrade. Prior attempts, failures and qualified
-raw baselines remain frozen with explicit source-epoch preservation mappings.
+## Native history and unfinished work
 
-## Native history and remaining scope
+The initial original-route replay retired 5,050,558 native instructions
+(0.17%). The first 2,048-identity module reached 95.34%; the prior
+44,832-identity module reached 2,920,491,782 native + 981 interpreted on that
+93,735-frame route. The expanded module retains that prefix exactly and adds
+qualified source for the later failure/recovery paths. Its 981 interpreted
+retirements remain associated with the excluded temporary-code span; unseen
+overlays remain hybrid and unqualified.
 
-The initial replay retired 5,050,558 native and 2,915,442,205 interpreted
-instructions (0.17%). The first 2,048-identity module reached 95.34%; the
-44,832-identity module reached the present 99.99996641%. Emission and build
-counts alone establish no executed coverage. Unvisited overlays are unqualified.
-
-The raw capture contains 44,836 identities / 57 mappings with no lost or
-unreadable retirements. The verified-restored temporary jump patch's entire
-six-byte span is excluded across mappings and source variants: four identities
-/ 981 original-profile hits. All 709 assisted transactions are checked against
-observed instruction-fetch bytes; no other assisted code is promoted.
-
-The unchanged route uses 709 edits / 723 changed bytes and ends at an assisted
-first-storehouse-boss encounter with visible damage. It establishes no victory,
-unassisted encounter or campaign completion. The explicit `gear-good` response
-is still used for 51 unknown CD commands; those operations remain unimplemented.
-Startup remains the BIOS-backed IPL-entry sandbox. Initial formatted blank
-BRAM is read-only; guest SAVE/LOAD stays volatile within one process.
-Persistent host saves, authentic console reset, independent whole-mix retail
-audio parity, analog sound and hardware compatibility remain unfinished.
+The inherited prefix uses assistance. The new normal-input continuation
+establishes no boss victory, unassisted full encounter or campaign completion.
+The explicit gear-good response remains a visible condition for unknown CD
+commands; it does not implement those operations. Startup is still the
+BIOS-backed IPL-entry sandbox. Initial formatted blank BRAM is read-only and
+guest SAVE/LOAD is volatile within one process. Persistent host saves,
+authentic console reset, other hosts/controllers and the full game remain
+unfinished.

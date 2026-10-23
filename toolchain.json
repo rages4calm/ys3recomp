@@ -2,9 +2,9 @@
   "schema": 1,
   "tool": {
     "repository": "https://github.com/rages4calm/pcenginerecomp",
-    "revision": "72bd5a2d4616d50d8b19f0d78c5af6ddfbd1c777",
-    "source_sha256": "0bfa0312dfaa28e4ae0371007385086c885d8fd6f4e5a231870f4d61b557aef3",
-    "checkout": ".deps/pcenginerecomp-filtered",
+    "revision": "c5aa9a26125edabdbe98a68bf716bff6eacd310e",
+    "source_sha256": "740f6a5f87aa865c49d538d7c424a8e5b88e903cb022ea0cfab5ab0e387e4b36",
+    "checkout": ".deps/pcenginerecomp-capture",
     "runtime_abi": 13,
     "source_policy": "Exact clean intended commit; current pin also uses the shared consumer API's exact source digest. Development overrides must explicitly supply the intended revision."
   },
@@ -17,21 +17,20 @@
     "image_checkpoints": 25
   },
   "native_milestone": {
-    "selected_original_code_identities": 44832,
+    "selected_original_code_identities": 44879,
     "mpr_contexts": 57,
-    "native_steps": 2920491782,
+    "native_steps": 2953438406,
     "interpreted_steps": 981,
-    "total_retired": 2920492763,
-    "native_steps_gained_over_previous": 136129717,
-    "native_block_steps": 460685,
+    "total_retired": 2953439387,
+    "native_block_steps": 466118,
     "interpreted_block_steps": 0,
-    "frames": 93735,
-    "image_checkpoints": 25,
+    "frames": 94800,
+    "image_checkpoints": 39,
     "memory_edit_transactions": 709,
     "excluded_source_identities": 4,
     "excluded_retired_hits": 981,
     "minimum_native_fraction": 0.999999,
-    "minimum_native_gain": 136000000,
+    "minimum_native_gain": 3000,
     "execution_supervision": {
       "mode": "Consumer TCP route watchdog with official shared verify/build bindings before and after",
       "wall_seconds": 1800,
@@ -39,7 +38,18 @@
       "descriptor_project_run_wall_seconds": 600,
       "descriptor_wall_applied": false
     },
-    "scope": "All eligible identities from the complete observed assisted route; entire temporary-code spans remain interpreted. Unvisited overlays and full game/campaign/native completion are unqualified."
+    "scope": "Measured against the old module on the same extended94800frame route: normal combat, Game Over and Continue after the assisted prefix. Full six-byte temporary-code span remains interpreted across every mapping/variant. Unvisited overlays, boss victory and campaign completion remain unqualified.",
+    "native_steps_gained_on_same_extended_route": 3461,
+    "gain_comparison": {
+      "baseline_frames": 94800,
+      "baseline_native_steps": 2953434945,
+      "baseline_interpreted_steps": 4442,
+      "prefix_frames": 93735,
+      "suffix_frames": 1065,
+      "suffix_total_retired": 32946624,
+      "new_native_source_identities": 47,
+      "prefix_all_guest_source_native_and_pcm_exact": true
+    }
   },
   "build": {
     "CMAKE_BUILD_TYPE": "Release",
@@ -75,7 +85,7 @@
     "cd_unknown_status": "gear-good",
     "cd_unknown_status_limit": "Explicit reference-emulator GOOD-response compatibility profile; unknown operations remain unimplemented and hardware behavior is unqualified.",
     "bram": "Read-only initial seed; guest writes are volatile and process-local; cross-process save persistence is unimplemented.",
-    "progression": "Assisted boss encounter is separate from ordinary-input qualification and campaign completion."
+    "progression": "Inherited assisted first-boss approach, followed by1065normal-input frames through combat, rendered Game Over, Continue and full-health recovery; no new RAM edits, boss victory or campaign completion."
   },
   "previous_native_milestone": {
     "selected_original_code_identities": 2048,
@@ -658,5 +668,312 @@
     "fresh_embedded_upstream_skips": 0,
     "clean_default_intentional_desktop_skips": 8,
     "scope": "Finite opt-in filtered-v1 48000 Hz route, unflushed 31-source-frame sinc64-q30-v1 latency. Raw 44100 Hz bridge/source PCM and all retained guest work stay exact. Gear filter-stage evidence and independent FIR vectors retain their declared scopes; neither is Gear resampler, listening, analog or hardware parity."
+  },
+  "previous_frontier_baseline": {
+    "project_commit": "6f0f9bf645495c2510ae128fb525fe078979a00f",
+    "tool": {
+      "repository": "https://github.com/rages4calm/pcenginerecomp",
+      "revision": "72bd5a2d4616d50d8b19f0d78c5af6ddfbd1c777",
+      "source_sha256": "0bfa0312dfaa28e4ae0371007385086c885d8fd6f4e5a231870f4d61b557aef3",
+      "checkout": ".deps/pcenginerecomp-filtered",
+      "runtime_abi": 13,
+      "source_policy": "Exact clean intended commit; current pin also uses the shared consumer API's exact source digest. Development overrides must explicitly supply the intended revision."
+    },
+    "native_milestone": {
+      "selected_original_code_identities": 44832,
+      "mpr_contexts": 57,
+      "native_steps": 2920491782,
+      "interpreted_steps": 981,
+      "total_retired": 2920492763,
+      "native_steps_gained_over_previous": 136129717,
+      "native_block_steps": 460685,
+      "interpreted_block_steps": 0,
+      "frames": 93735,
+      "image_checkpoints": 25,
+      "memory_edit_transactions": 709,
+      "excluded_source_identities": 4,
+      "excluded_retired_hits": 981,
+      "minimum_native_fraction": 0.999999,
+      "minimum_native_gain": 136000000,
+      "execution_supervision": {
+        "mode": "Consumer TCP route watchdog with official shared verify/build bindings before and after",
+        "wall_seconds": 1800,
+        "shared_project_run_used": false,
+        "descriptor_project_run_wall_seconds": 600,
+        "descriptor_wall_applied": false
+      },
+      "scope": "All eligible identities from the complete observed assisted route; entire temporary-code spans remain interpreted. Unvisited overlays and full game/campaign/native completion are unqualified."
+    },
+    "dsp_milestone": {
+      "runtime_abi": 13,
+      "descriptor_schema": 1,
+      "generated_artifacts_reused_with_all_hashes_verified": 208,
+      "fresh_official_builds": [
+        {
+          "profile": "raw",
+          "sample_rate": 44100
+        },
+        {
+          "profile": "filtered",
+          "sample_rate": 44100
+        },
+        {
+          "profile": "filtered",
+          "sample_rate": 48000
+        }
+      ],
+      "default_profile": "raw",
+      "default_sample_rate": 44100,
+      "full_route_frames": 93735,
+      "image_checkpoints": 25,
+      "checkpoint_states": 25,
+      "endpoint_states": 3,
+      "memory_edit_transactions": 709,
+      "memory_bytes_changed": 723,
+      "raw_bridge_exact": true,
+      "processed_matches_new_reference": true,
+      "raw_source_projection_exact": true,
+      "guest_and_native_tiers_exact": true,
+      "raw_pcm": {
+        "enabled": true,
+        "channels": 2,
+        "peak": 13000,
+        "cdda_nonzero": 49762727,
+        "mixed_nonzero": 65958163,
+        "pcm_hash": 7177686580420813080,
+        "frames": 69095406,
+        "psg_nonzero": 27644755,
+        "adpcm_nonzero": 4030681,
+        "sample_rate": 44100,
+        "wav_frames": 1323000,
+        "discarded_frames": 0,
+        "wav_truncated": true
+      },
+      "filtered_48000_pcm": {
+        "enabled": true,
+        "channels": 2,
+        "peak": 13355,
+        "cdda_nonzero": 49762727,
+        "mixed_nonzero": 71837781,
+        "pcm_hash": 8515195911678413936,
+        "frames": 75205884,
+        "processing": {
+          "profile": "filtered-v1",
+          "source_rate": 44100,
+          "source_frames": 69095406,
+          "raw_pcm_hash": 7177686580420813080,
+          "raw_peak": 13000,
+          "raw_mixed_nonzero": 65958163,
+          "resampler": "sinc64-q30-v1",
+          "latency_source_frames": 31,
+          "tail_flushed": false
+        },
+        "psg_nonzero": 27644755,
+        "adpcm_nonzero": 4030681,
+        "sample_rate": 48000,
+        "wav_frames": 1440000,
+        "discarded_frames": 0,
+        "wav_truncated": true
+      },
+      "resampler": {
+        "name": "sinc64-q30-v1",
+        "taps": 64,
+        "phases": 160,
+        "ratio_numerator": 160,
+        "ratio_denominator": 147,
+        "latency_source_frames": 31,
+        "tail_flushed": false
+      },
+      "independent_filter_reference": {
+        "name": "Geargrafx",
+        "version": "1.8.4",
+        "psg_cases": 3266,
+        "psg_stereo_frames": 59505,
+        "psg_chunk_sizes": [
+          1,
+          509
+        ],
+        "adpcm_cases": 17,
+        "adpcm_stereo_frames": 34112,
+        "adpcm_chunk_invariance_claimed": false
+      },
+      "paced_filtered_profiles": {
+        "44100": {
+          "source_frames": 710526,
+          "output_frames": 710526,
+          "device_open": true,
+          "fast_forward_muted": false,
+          "runtime_discarded_frames": 0,
+          "host": {
+            "submitted_frames": 710526,
+            "dropped_frames": 2393,
+            "clears": 9,
+            "pauses": 5,
+            "queued_frames": 0,
+            "peak_queue_frames": 1364,
+            "input_rate": 44100,
+            "device_rate": 44100,
+            "device_channels": 2,
+            "device_format": 33056
+          },
+          "pause_freeze_resume_input_captures_passed": true,
+          "sdk_path_required": false
+        },
+        "48000": {
+          "source_frames": 710526,
+          "output_frames": 773361,
+          "device_open": true,
+          "fast_forward_muted": false,
+          "runtime_discarded_frames": 0,
+          "host": {
+            "submitted_frames": 773361,
+            "dropped_frames": 2782,
+            "clears": 9,
+            "pauses": 5,
+            "queued_frames": 0,
+            "peak_queue_frames": 1675,
+            "input_rate": 48000,
+            "device_rate": 48000,
+            "device_channels": 2,
+            "device_format": 33056
+          },
+          "pause_freeze_resume_input_captures_passed": true,
+          "sdk_path_required": false
+        }
+      },
+      "consumer_tests": 190,
+      "upstream_suites": 28,
+      "upstream_python_tests": 291,
+      "fresh_embedded_upstream_skips": 0,
+      "clean_default_intentional_desktop_skips": 8,
+      "scope": "Finite opt-in filtered-v1 48000 Hz route, unflushed 31-source-frame sinc64-q30-v1 latency. Raw 44100 Hz bridge/source PCM and all retained guest work stay exact. Gear filter-stage evidence and independent FIR vectors retain their declared scopes; neither is Gear resampler, listening, analog or hardware parity."
+    }
+  },
+  "native_audio_expansion_milestone": {
+    "runtime_abi": 13,
+    "descriptor_schema": 1,
+    "capture_only_tool_upgrade": true,
+    "audio_semantics_changed": false,
+    "audio_profile": "filtered",
+    "audio_rate": 48000,
+    "frames": 94800,
+    "prefix_frames": 93735,
+    "new_input_frames": 1065,
+    "image_checkpoints": 39,
+    "checkpoint_states": 39,
+    "endpoint_states": 3,
+    "memory_edit_transactions": 709,
+    "memory_bytes_changed": 723,
+    "new_memory_edits": 0,
+    "selected_original_code_identities": 44879,
+    "new_source_identities": 47,
+    "mpr_contexts": 57,
+    "translation_units": 208,
+    "generated_headers": 1,
+    "old_module_native_steps": 2953434945,
+    "old_module_interpreted_steps": 4442,
+    "new_module_native_steps": 2953438406,
+    "new_module_interpreted_steps": 981,
+    "native_steps_gained": 3461,
+    "suffix_total_retired": 32946624,
+    "exact_total_retirements_and_per_identity_hits": true,
+    "guest_source_images_pcm_and_boot_wav_exact": true,
+    "original_prefix_regression_exact": true,
+    "managed_capture_start_frame": 93735,
+    "managed_capture_start_ticks": 33650360835,
+    "new_window_observations": 12138,
+    "new_window_complete": true,
+    "new_window_lost_or_unreadable": 0,
+    "composed_profile_identities": 44883,
+    "composed_profile_retirements": 2953439387,
+    "profile_is_single_run_execution_proof": false,
+    "excluded_source_identities": 4,
+    "excluded_profile_hits": 981,
+    "unsupported_observations": 0,
+    "pcm": {
+      "enabled": true,
+      "sample_rate": 48000,
+      "channels": 2,
+      "frames": 76060360,
+      "psg_nonzero": 27964895,
+      "adpcm_nonzero": 4030681,
+      "cdda_nonzero": 50505998,
+      "mixed_nonzero": 72568515,
+      "peak": 13355,
+      "pcm_hash": 13785118638779356764,
+      "discarded_frames": 0,
+      "wav_frames": 1440000,
+      "wav_truncated": true,
+      "processing": {
+        "profile": "filtered-v1",
+        "source_rate": 44100,
+        "source_frames": 69880456,
+        "raw_pcm_hash": 4016269554691743388,
+        "raw_peak": 13000,
+        "raw_mixed_nonzero": 66628939,
+        "resampler": "sinc64-q30-v1",
+        "latency_source_frames": 31,
+        "tail_flushed": false
+      },
+      "device_open": true,
+      "fast_forward_muted": true,
+      "host": {
+        "submitted_frames": 76060360,
+        "dropped_frames": 76060360,
+        "clears": 1,
+        "pauses": 1,
+        "queued_frames": 0,
+        "peak_queue_frames": 0,
+        "input_rate": 48000,
+        "device_rate": 48000,
+        "device_channels": 2,
+        "device_format": 33056
+      }
+    },
+    "paced_audio": {
+      "enabled": true,
+      "sample_rate": 48000,
+      "channels": 2,
+      "frames": 773361,
+      "psg_nonzero": 0,
+      "adpcm_nonzero": 0,
+      "cdda_nonzero": 526212,
+      "mixed_nonzero": 570695,
+      "peak": 10434,
+      "pcm_hash": 17430929810710949061,
+      "discarded_frames": 0,
+      "wav_frames": 773361,
+      "wav_truncated": false,
+      "processing": {
+        "profile": "filtered-v1",
+        "source_rate": 44100,
+        "source_frames": 710526,
+        "raw_pcm_hash": 9100448555341449602,
+        "raw_peak": 10366,
+        "raw_mixed_nonzero": 524060,
+        "resampler": "sinc64-q30-v1",
+        "latency_source_frames": 31,
+        "tail_flushed": false
+      },
+      "device_open": true,
+      "fast_forward_muted": false,
+      "host": {
+        "submitted_frames": 773361,
+        "dropped_frames": 2347,
+        "clears": 9,
+        "pauses": 5,
+        "queued_frames": 0,
+        "peak_queue_frames": 1606,
+        "input_rate": 48000,
+        "device_rate": 48000,
+        "device_channels": 2,
+        "device_format": 33056
+      }
+    },
+    "consumer_tests": 237,
+    "upstream_suites": 28,
+    "upstream_python_tests": 294,
+    "embedded_skips": 0,
+    "scope": "Bounded native-source expansion and exact same-profile digital reproduction on the same assisted-prefix extended route. Separate paced device acceptance. The boot WAV covers the first30guestseconds; suffix PCM is checked by cumulative hashes/checkpoints. No new independent retail oracle, timing-profile migration, listening, analog, hardware, boss-victory or campaign claim."
   }
 }

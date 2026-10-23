@@ -64,7 +64,8 @@ def validate_route(route):
             isinstance(value, str) and value and "\0" not in value for value in command):
         raise ValueError("invalid initial command")
     forbidden = {"--frame-out", "--window-capture", "--wall-seconds", "--audio-out",
-                 "--audio-frames", "--audio-output", "--audio-profile", "--audio-rate"}
+                 "--audio-frames", "--audio-output", "--audio-profile", "--audio-rate",
+                 "--code-capture", "--capture-limit", "--code-capture-start-frame"}
     if any(argument.split("=", 1)[0] in forbidden for argument in command):
         raise ValueError("source command contains output, wall-limit or audio overrides")
     if command_value(command, "--dev-start-paused") != "on":
@@ -112,6 +113,150 @@ def validate_route(route):
         if not isinstance(checkpoint["png_sha256"], str) or not re.fullmatch(r"[0-9a-f]{64}", checkpoint["png_sha256"]):
             raise ValueError("invalid checkpoint hash")
     return boundaries
+
+
+def managed_capture_selection(route, start_frame=None, limit=None):
+    """Select a restored, paused capture boundary without changing legacy replay."""
+    if start_frame is None:
+        if limit is not None:
+            raise ValueError("capture limit requires an explicit capture start frame")
+        return None
+    boundaries = validate_route(route)
+    require_integer(start_frame, 0, route["last_status"]["frame"] - 1, "capture start frame")
+    if start_frame not in boundaries or start_frame not in {c["frame"] for c in route["checkpoints"]}:
+        raise ValueError("capture start requires a recorded paused checkpoint boundary")
+    if command_value(route["initial_command"], "--video-output") != "continuous":
+        raise ValueError("managed code capture requires continuous video")
+    capacity = 65536 if limit is None else limit
+    require_integer(capacity, 1, 65536, "capture limit")
+    canonical = {}
+    if "assistance" in route or any("memory_write" in s for s in route["steps"]):
+        if __package__:
+            from .select_canonical import canonical_bytes
+        else:
+            from select_canonical import canonical_bytes
+        canonical = canonical_bytes(route)
+        if any(patch["frame"] >= start_frame for patch in route["assistance"]["code_patches"]):
+            raise ValueError("every temporary code patch must be restored before capture start")
+    return {"start_frame": start_frame, "capacity": capacity,
+            "canonical_bytes": canonical}
+
+
+def managed_capture_command(command, output, selected):
+    if selected is None:
+        return command.copy()
+    flags = {"--code-capture", "--capture-limit", "--code-capture-start-frame"}
+    if any(str(argument).split("=", 1)[0] in flags for argument in command):
+        raise ValueError("source command already specifies code capture options")
+    path = Path(output)
+    if path.exists() or path.is_symlink():
+        raise ValueError("managed code capture requires a new output file")
+    return command.copy() + ["--code-capture", str(path), "--capture-limit", str(selected["capacity"]),
+                             "--code-capture-start-frame", str(selected["start_frame"])]
+
+
+def _retired_count(value):
+    values = [value[key] for key in ("native_steps", "interpreter_steps")]
+    if any(type(v) is not int or not 0 <= v < 1 << 64 for v in values) or sum(values) >= 1 << 64:
+        raise ValueError("capture boundary requires bounded retired instruction counters")
+    return sum(values)
+
+
+def capture_start_proof(client, selected):
+    """Read restored bytes and source identity while the exact guest boundary is paused."""
+    before = client.call("status")
+    if before.get("paused") is not True or before["frame"] != selected["start_frame"]:
+        raise ValueError("capture proof requires the exact paused start frame")
+    host, reads = before["host"], []
+    cpu = host["cpu"]
+    require_integer(host["pc"], 0, 65535, "capture logical PC")
+    if not isinstance(cpu["mpr"], list) or len(cpu["mpr"]) != 8:
+        raise ValueError("capture proof requires all eight MPRs")
+    for mpr in cpu["mpr"]:
+        require_integer(mpr, 0, 255, "capture MPR")
+    for key in ("instruction_bytes", "instruction_physical", "instruction_generations"):
+        if not isinstance(cpu[key], list) or len(cpu[key]) != 7:
+            raise ValueError("capture proof requires complete source identity")
+    for offset, (byte, physical, generation) in enumerate(zip(
+            cpu["instruction_bytes"], cpu["instruction_physical"], cpu["instruction_generations"])):
+        logical = (host["pc"] + offset) & 65535
+        require_integer(byte, 0, 255, "capture instruction byte")
+        require_integer(physical, 0, 0x1fffff, "capture source physical address")
+        if physical != (cpu["mpr"][logical >> 13] << 13) | (logical & 8191):
+            raise ValueError("capture source physical mapping disagrees with PC/MPR")
+        require_integer(generation, 0, (1 << 64) - 1, "capture source generation")
+    if cpu["physical_pc"] != cpu["instruction_physical"][0]:
+        raise ValueError("capture physical PC disagrees with source identity")
+    canonical = selected["canonical_bytes"]
+    addresses = sorted(canonical)
+    while addresses:
+        start = addresses.pop(0)
+        span = [start]
+        while addresses and addresses[0] == span[-1] + 1 and len(span) < 256:
+            span.append(addresses.pop(0))
+        expected = bytes(canonical[address] for address in span)
+        actual = client.read_memory(start, len(span))
+        if actual != expected:
+            raise ValueError("capture restored original-byte readback differs")
+        reads.append({"address": start, "expected": expected.hex(), "observed": actual.hex()})
+    after = client.call("status")
+    for key in ("frame", "ticks", "paused", "local_paused"):
+        if type(before[key]) is not type(after[key]) or before[key] != after[key]:
+            raise ValueError("guest advanced during capture start proof")
+    for key in ("pc", "cpu", "native_steps", "interpreter_steps"):
+        if before["host"][key] != after["host"][key]:
+            raise ValueError("guest source or retired count changed during capture proof")
+    return {"status_before": before, "status": after, "canonical_readback": reads,
+            "retired_instructions": _retired_count(after["host"])}
+
+
+def validate_capture_summary(capture, selected, proof, runner):
+    fields = {"schema", "runtime_abi", "capacity", "dropped_instructions", "unreadable_instructions",
+              "retired_instructions", "complete"}
+    if (not isinstance(capture, dict) or set(capture) != fields
+            or any(type(capture[key]) is not int for key in fields - {"complete"})
+            or capture["schema"] != 1 or capture["runtime_abi"] != 13
+            or capture.get("capacity") != selected["capacity"]
+            or capture.get("complete") is not True
+            or capture.get("dropped_instructions") != 0 or capture.get("unreadable_instructions") != 0):
+        raise ValueError("managed capture must be complete, lossless ABI 13 with selected capacity")
+    expected = _retired_count(runner) - proof["retired_instructions"]
+    if expected <= 0 or type(capture.get("retired_instructions")) is not int or capture["retired_instructions"] != expected:
+        raise ValueError("capture retirement count differs from exact start/final boundary delta")
+    state = proof["status"]
+    expected_window = {"requested_start_frame": selected["start_frame"], "started": True,
+                       "actual_start_frame": state["frame"], "actual_start_ticks": state["ticks"],
+                       "native_steps_before": state["host"]["native_steps"],
+                       "interpreter_steps_before": state["host"]["interpreter_steps"]}
+    window = runner.get("code_capture_window")
+    if (not isinstance(window, dict) or set(window) != set(expected_window)
+            or any(type(window[key]) is not type(value) or window[key] != value
+                   for key, value in expected_window.items())):
+        raise ValueError("capture window differs from exact paused start proof")
+    return expected
+
+
+def finish_managed_capture(path, tool, selected, proof, runner):
+    """Use the verified upstream loader without importing another checkout's package."""
+    digest = sha256(path)
+    env = dict(os.environ, PYTHONPATH=str(tool), PYTHONSAFEPATH="1", PYTHONDONTWRITEBYTECODE="1")
+    code = ("import json,sys; from pathlib import Path; from pcerecomp.capture import load_capture; "
+            "c,h=load_capture(Path(sys.argv[1])); "
+            "print(json.dumps({'capture':{k:v for k,v in c.items() if k!='observations'},"
+            "'observations':len(c['observations']),'sha256':h}))")
+    checked = subprocess.run([sys.executable, "-c", code, str(path)], cwd=tool, env=env,
+                             check=True, capture_output=True, text=True, timeout=60)
+    if len(checked.stdout.encode("utf-8")) > 8192:
+        raise ValueError("capture validation summary exceeded bound")
+    result = json.loads(checked.stdout)
+    if result["sha256"] != digest or sha256(path) != digest:
+        raise ValueError("raw capture changed during shared validation")
+    validate_capture_summary(result["capture"], selected, proof, runner)
+    return {"schema": 1, "runtime_abi": 13, "path": str(path), "sha256": digest,
+            "start_frame": selected["start_frame"], "capacity": selected["capacity"],
+            "start_proof": proof, "capture": result["capture"], "observations": result["observations"],
+            "window": copy.deepcopy(runner["code_capture_window"]),
+            "scope": "Capture begins only at a verified-restored paused boundary; no capture bytes are relabeled."}
 
 
 def project_status(status, ignore_tier_counters=False):
@@ -401,6 +546,13 @@ def replay(args):
         raw = route_path.read_bytes()
         route = json.loads(raw)
         validate_route(route)
+        capture_selected = managed_capture_selection(route, getattr(args, "capture_start_frame", None),
+                                                     getattr(args, "capture_limit", None))
+        if capture_selected is not None:
+            if tool_identity["runtime_abi"] != 13:
+                raise ValueError("managed capture requires reviewed runtime ABI 13")
+            if args.project_descriptor and not args.project_verify_only:
+                raise ValueError("managed capture requires direct or project verify-only supervision")
         command = route["initial_command"].copy()
         source_binary = source_binary_anchor(command, evidence, route["binary_sha256"], args.source_binary)
         binary = Path(args.binary).resolve(strict=True)
@@ -427,6 +579,8 @@ def replay(args):
             command = desktop_command(command, evidence)
         command = dsp_contract.audio_command(command, args.audio_output, out / "audio.wav", args.audio_frames,
                                               getattr(args, "audio_profile", None), getattr(args, "audio_rate", None))
+        capture_path = out / "observed-code.json"
+        command = managed_capture_command(command, capture_path, capture_selected)
         receipt.update(command=command, source_command=route["initial_command"],
                        source_binary_anchor=str(source_binary),
                        source_binary_override=str(source_binary) if args.source_binary is not None else None,
@@ -528,6 +682,8 @@ def replay(args):
                     receipt["images"].append({"frame": frame, "png_sha256": digest, "metadata": metadata})
             images(0)
             progress = 0
+            current_frame = 0
+            capture_proof = None
             for step in route["steps"]:
                 if child.failure:
                     raise RuntimeError(child.failure)
@@ -536,8 +692,14 @@ def replay(args):
                     client.write_memory(edit["address"], bytes.fromhex(edit["data"]), bytes.fromhex(edit["expected"]))
                     receipt["memory_edits_replayed"] += 1
                 else:
+                    if capture_selected is not None and current_frame == capture_selected["start_frame"] and capture_proof is None:
+                        capture_proof = capture_start_proof(client, capture_selected)
+                        receipt["capture_contract"] = {"schema": 1, "runtime_abi": 13,
+                            "start_frame": capture_selected["start_frame"], "capacity": capture_selected["capacity"],
+                            "path": str(capture_path), "start_proof": capture_proof}
                     client.call("set_input", mask=step["mask"])
                     status = client.advance(step["frames"])
+                    current_frame = status["frame"]
                     receipt["last_completed_frame"] = status["frame"]
                     if status["frame"] != step["target_frame"]:
                         raise RuntimeError("frame advancement endpoint differs from route")
@@ -573,6 +735,14 @@ def replay(args):
         child.process.wait(timeout=30 if contract_path is not None else 5)
         if child.process.returncode != 0 or child.failure:
             raise RuntimeError("child exit failed: " + str(child.failure))
+        if capture_selected is not None:
+            if capture_proof is None:
+                raise RuntimeError("managed capture start boundary was never proven")
+            for reader in child.readers:
+                reader.join(timeout=5)
+            captured_runner = unwrap_execution(json.loads((out / "run.stdout").read_text(encoding="utf-8")))
+            receipt["capture_contract"] = finish_managed_capture(
+                capture_path, tool, capture_selected, capture_proof, captured_runner)
         if contract_path is not None:
             # Wait for bounded stream readers before inspecting the wrapper's
             # sole final JSON. The shared runner owns descriptor/source guards.
@@ -677,6 +847,10 @@ def main():
                         help="explicit output rate; 48000 requires filtered profile and audio on")
     parser.add_argument("--desktop-packaged", action="store_true",
                         help="verify packaged SDL desktop output, isolated DLL search and original TCP route with muted fast-forward")
+    parser.add_argument("--capture-start-frame", type=int,
+                        help="capture original code only after a verified-restored paused checkpoint, before the final frame")
+    parser.add_argument("--capture-limit", type=int,
+                        help="managed capture identity capacity 1..65536; default 65536; requires --capture-start-frame")
     args = parser.parse_args()
     result = replay(args)
     print(f"PASS: {len(result['images'])} image checkpoints; receipt: {Path(args.out).resolve() / 'receipt.json'}")
