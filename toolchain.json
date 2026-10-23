@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "tool": {
+    "repository": "https://github.com/rages4calm/pcenginerecomp",
+    "revision": "33fe46d4274584da5ba55b419a240f248df4158d",
+    "runtime_abi": 12,
+    "source_policy": "Exact intended commit, clean tracked files; development overrides must explicitly supply the intended revision."
+  },
+  "build": {
+    "CMAKE_BUILD_TYPE": "Release",
+    "BUILD_TESTING": true,
+    "PCE_BUILD_DESKTOP": false,
+    "PCE_BUILD_REFERENCE_PROBE": false,
+    "PCE_MODULE_SOURCE": "Private generated module supplied explicitly; empty means interpreter-only sandbox."
+  },
+  "inputs": {
+    "bios": {"sha256": "cadac2725711b3c442bcf237b02f5a5210c96f17625c35fa58f009e0ed39e4db", "access": "read-only"},
+    "disc": {"sha256": "e615031482b246b6a7a97291952b441614e672152c430d8d033e35d477453f6b", "access": "read-only"},
+    "boot_payload": {"sha256": "86be93a4a26f8a0a3b2772577452e6814564883cde2db139a7911643b6151d31", "access": "read-only"},
+    "initial_bram": {"sha256": "7e631b4e463a04481939fde974cd341a1478af8c1f75350fd73c94a3430a0887", "bytes": 2048, "access": "read-only"}
+  },
+  "qualified_private_route": {
+    "loader": "Upstream explicit BIOS-backed contiguous payload loader; not an authentic machine-reset claim.",
+    "execution_tier": "hybrid",
+    "cd_unknown_status": "gear-good",
+    "cd_unknown_status_limit": "Explicit reference-emulator GOOD-response compatibility profile; unknown operations remain unimplemented and hardware behavior is unqualified.",
+    "bram": "Read-only initial seed; guest writes are volatile and process-local; cross-process save persistence is unimplemented.",
+    "progression": "Assisted boss encounter is separate from ordinary-input qualification and campaign completion."
+  },
+  "disposable_output_budget_bytes": 1073741824
+}
