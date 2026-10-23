@@ -15,13 +15,46 @@ def sha(path):
         return hashlib.file_digest(stream, 'sha256').hexdigest()
 
 
-def main():
+def runtime_audio_lines(audio, profile=None, rate=None):
+    """Validate explicit audio selections without changing omitted defaults."""
+    if audio is not None and (type(audio) is not str or audio not in ('on', 'off')):
+        raise ValueError('audio must be on or off')
+    if profile is not None and (type(profile) is not str or profile not in ('raw', 'filtered')):
+        raise ValueError('audio profile must be raw or filtered')
+    if rate is not None and (type(rate) is not int or rate not in (44100, 48000)):
+        raise ValueError('audio rate must be 44100 or 48000')
+    if (profile is not None or rate is not None) and audio != 'on':
+        raise ValueError('audio profile and rate selections require audio on')
+    if (profile or 'raw') == 'raw' and rate == 48000:
+        raise ValueError('raw audio requires a rate of 44100')
+    lines = [] if audio is None else [f'audio = {json.dumps(audio)}']
+    if profile is not None:
+        lines.append(f'audio_profile = {json.dumps(profile)}')
+    if rate is not None:
+        lines.append(f'audio_rate = {rate}')
+    return lines
+
+
+def build_parser():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ('tool-root', 'inputs', 'module', 'out'):
         parser.add_argument('--'+name, required=True, type=Path)
     parser.add_argument('--expected-revision', help='explicit clean development tool commit')
     parser.add_argument('--audio', choices=('on', 'off'), help='explicit shared runtime PCM setting')
+    parser.add_argument('--audio-profile', choices=('raw', 'filtered'),
+                        help='explicit shared audio processing profile; requires --audio on')
+    parser.add_argument('--audio-rate', type=int, choices=(44100, 48000),
+                        help='explicit output sample rate; requires --audio on')
+    return parser
+
+
+def main():
+    parser = build_parser()
     args = parser.parse_args()
+    try:
+        audio_lines = runtime_audio_lines(args.audio, args.audio_profile, args.audio_rate)
+    except ValueError as error:
+        parser.error(str(error))
     tool = args.tool_root.resolve(strict=True)
     verification = [sys.executable, str(ROOT/'scripts/verify_tool.py'), '--tool-root', str(tool)]
     if args.expected_revision:
@@ -58,8 +91,7 @@ def main():
     lines += ['[runtime]', 'tier = "hybrid"', 'video = "continuous"',
               'cd_unknown_status = "gear-good"', 'joypad = 2', f'region = {quote(region)}',
               'multitap = "off"']
-    if args.audio is not None:
-        lines += [f'audio = {quote(args.audio)}']
+    lines += audio_lines
     lines += ['', '[limits]', f'steps = {int(command[5])}',
               f'ticks = {int(command[6])}', 'wall_seconds = 600', '']
     for flag, value in inputs['inputs'].items():

@@ -22,10 +22,12 @@ import time
 import tomllib
 
 if __package__:
+    from . import dsp_contract
     from .audio_contract import audio_command, extract_audio, without_audio
     from .desktop_contract import (desktop_audio, desktop_command, headless_status,
                                    validate_desktop, validate_desktop_mode)
 else:
+    import dsp_contract
     from audio_contract import audio_command, extract_audio, without_audio
     from desktop_contract import (desktop_audio, desktop_command, headless_status,
                                   validate_desktop, validate_desktop_mode)
@@ -61,9 +63,10 @@ def validate_route(route):
     if not isinstance(command, list) or len(command) < 8 or not all(
             isinstance(value, str) and value and "\0" not in value for value in command):
         raise ValueError("invalid initial command")
-    if any(flag in command for flag in ("--frame-out", "--window-capture", "--wall-seconds",
-                                        "--audio-out", "--audio-frames", "--audio-output")):
-        raise ValueError("source command contains file output or a conflicting wall limit")
+    forbidden = {"--frame-out", "--window-capture", "--wall-seconds", "--audio-out",
+                 "--audio-frames", "--audio-output", "--audio-profile", "--audio-rate"}
+    if any(argument.split("=", 1)[0] in forbidden for argument in command):
+        raise ValueError("source command contains output, wall-limit or audio overrides")
     if command_value(command, "--dev-start-paused") != "on":
         raise ValueError("source must start paused")
     command_value(command, "--bram")
@@ -121,18 +124,45 @@ def project_status(status, ignore_tier_counters=False):
 
 
 def compare_status(expected, actual, ignore_tier_counters=False, audio_mode=None, wav_limit=None,
-                   desktop_packaged=False):
+                   desktop_packaged=False, audio_selection=None):
     left = project_status(expected, ignore_tier_counters)
-    if desktop_packaged:
-        actual = headless_status(actual, wav_limit)
-    right = project_status(without_audio(actual, audio_mode, wav_limit) if audio_mode is not None else actual,
-                           ignore_tier_counters)
+    if audio_selection is not None:
+        if audio_mode != "on":
+            raise ValueError("explicit audio selection requires audio on")
+        actual = copy.deepcopy(actual)
+        value = actual["host"].pop("audio_output")
+        if desktop_packaged:
+            dsp_contract.desktop_audio(value, audio_selection, wav_limit)
+        else:
+            dsp_contract.headless_audio(value, audio_selection, wav_limit)
+        right = project_status(actual, ignore_tier_counters)
+    else:
+        if desktop_packaged:
+            actual = headless_status(actual, wav_limit)
+        right = project_status(without_audio(actual, audio_mode, wav_limit) if audio_mode is not None else actual,
+                               ignore_tier_counters)
     if left != right:
         changed = [key for key in STATUS_FIELDS if left[key] != right[key]]
         if "host" in changed:
             changed.extend("host." + key for key in sorted(set(left["host"]) | set(right["host"]))
                            if left["host"].get(key) != right["host"].get(key))
         raise RuntimeError("route status mismatch: " + ", ".join(changed))
+
+
+def validate_descriptor_selection(config, selected):
+    """Direct verify-only replay must execute the profile bound by its descriptor."""
+    runtime = config["runtime"]
+    declares_selection = "audio_profile" in runtime or "audio_rate" in runtime
+    if selected is None:
+        if declares_selection:
+            raise ValueError("descriptor audio profile/rate requires explicit replay selection")
+        return
+    if runtime.get("audio") != "on":
+        raise ValueError("selected audio profile requires descriptor audio on")
+    declared = dsp_contract.selection(runtime["audio"], runtime.get("audio_profile"),
+                                      runtime.get("audio_rate"))
+    if selected != (declared or {"profile": "raw", "sample_rate": 44100}):
+        raise ValueError("replay audio selection differs from verified descriptor")
 
 
 def resolve_input(value, root):
@@ -355,10 +385,14 @@ def replay(args):
     try:
         validate_project_mode(args.project_descriptor, args.project_build, args.project_verify_only)
         desktop_packaged = getattr(args, "desktop_packaged", False)
+        selected = dsp_contract.selection(args.audio_output, getattr(args, "audio_profile", None),
+                                         getattr(args, "audio_rate", None), args.audio_frames)
         validate_desktop_mode(desktop_packaged, args.project_verify_only, args.project_descriptor,
                               args.audio_output, args.audio_frames)
         if args.audio_output is not None and args.project_descriptor and not args.project_verify_only:
             raise ValueError("explicit audio route overrides require project verify-only supervision")
+        if args.project_descriptor:
+            validate_descriptor_selection(tomllib.loads(Path(args.project_descriptor).read_text(encoding="utf-8")), selected)
         client_module, tool_identity = upstream_client(tool, args.expected_revision)
         receipt["tool_identity"] = tool_identity
         route_path = Path(args.route).resolve(strict=True)
@@ -391,7 +425,8 @@ def replay(args):
         command[0] = str(binary)
         if desktop_packaged:
             command = desktop_command(command, evidence)
-        command = audio_command(command, args.audio_output, out / "audio.wav", args.audio_frames)
+        command = dsp_contract.audio_command(command, args.audio_output, out / "audio.wav", args.audio_frames,
+                                              getattr(args, "audio_profile", None), getattr(args, "audio_rate", None))
         receipt.update(command=command, source_command=route["initial_command"],
                        source_binary_anchor=str(source_binary),
                        source_binary_override=str(source_binary) if args.source_binary is not None else None,
@@ -404,6 +439,10 @@ def replay(args):
                                          "wav_frame_limit": args.audio_frames,
                                          "headless_pcm_only": not desktop_packaged,
                                          "scope": "PCM generation; no physical playback or independent mixed-audio parity claim."}
+        if selected is not None:
+            if tool_identity["runtime_abi"] != 13:
+                raise ValueError("selected DSP contract requires reviewed runtime ABI 13")
+            receipt["audio_selection"] = selected
         launch_command = command
         environment = None
         contract_path = None
@@ -474,7 +513,14 @@ def replay(args):
                 if frame not in checks:
                     return
                 metadata, rgb = client.capture("guest")
-                receipt["checkpoint_status"].append(status if status is not None else client.call("status"))
+                snapshot = status if status is not None else client.call("status")
+                if selected is not None:
+                    value = snapshot["host"]["audio_output"]
+                    if desktop_packaged:
+                        dsp_contract.desktop_audio(value, selected, args.audio_frames, allow_pending=True)
+                    else:
+                        dsp_contract.headless_audio(value, selected, args.audio_frames, allow_pending=True)
+                receipt["checkpoint_status"].append(snapshot)
                 digest = hashlib.sha256(client_module.encode_png(metadata["width"], metadata["height"], rgb)).hexdigest()
                 for checkpoint in checks[frame]:
                     if metadata["frame"] != frame or digest != checkpoint["png_sha256"]:
@@ -512,7 +558,7 @@ def replay(args):
                 compare_status(cleared, released)
                 final = released
             compare_status(expected, final, args.ignore_tier_counters, args.audio_output, args.audio_frames,
-                           desktop_packaged=desktop_packaged)
+                           desktop_packaged=desktop_packaged, audio_selection=selected)
             client.call("clear_input")
             released = client.call("status")
             cleared = copy.deepcopy(final)
@@ -543,9 +589,13 @@ def replay(args):
                 reader.join(timeout=5)
             runner = unwrap_execution(json.loads((out / "run.stdout").read_text(encoding="utf-8")))
             if desktop_packaged:
-                audio = desktop_audio(runner["audio_output"], args.audio_frames)
-                final_audio = desktop_audio(final["host"]["audio_output"], args.audio_frames)
-                released_audio = desktop_audio(released["host"]["audio_output"], args.audio_frames)
+                def validate_output(value):
+                    if selected is not None:
+                        return dsp_contract.desktop_audio(value, selected, args.audio_frames)
+                    return desktop_audio(value, args.audio_frames)
+                audio = validate_output(runner["audio_output"])
+                final_audio = validate_output(final["host"]["audio_output"])
+                released_audio = validate_output(released["host"]["audio_output"])
                 presentation = validate_desktop(runner["desktop"], final["frame"])
                 receipt["desktop_contract"].update(audio_output=runner["audio_output"], presentation=presentation,
                                                     package_after=verify_package(built, binary),
@@ -553,9 +603,14 @@ def replay(args):
                 if any(launch_cwd.iterdir()):
                     raise RuntimeError("packaged replay wrote unexpected working-directory output")
             else:
-                audio = extract_audio(copy.deepcopy(runner), args.audio_output, args.audio_frames)
-                final_audio = extract_audio(copy.deepcopy(final["host"]), args.audio_output, args.audio_frames)
-                released_audio = extract_audio(copy.deepcopy(released["host"]), args.audio_output, args.audio_frames)
+                if selected is not None:
+                    audio = dsp_contract.headless_audio(runner["audio_output"], selected, args.audio_frames)
+                    final_audio = dsp_contract.headless_audio(final["host"]["audio_output"], selected, args.audio_frames)
+                    released_audio = dsp_contract.headless_audio(released["host"]["audio_output"], selected, args.audio_frames)
+                else:
+                    audio = extract_audio(copy.deepcopy(runner), args.audio_output, args.audio_frames)
+                    final_audio = extract_audio(copy.deepcopy(final["host"]), args.audio_output, args.audio_frames)
+                    released_audio = extract_audio(copy.deepcopy(released["host"]), args.audio_output, args.audio_frames)
             if audio != final_audio or audio != released_audio:
                 raise RuntimeError("PCM diagnostics changed between paused guest status and clean exit")
             receipt["audio_contract"]["validated_output"] = audio
@@ -565,7 +620,7 @@ def replay(args):
                 import wave
                 with wave.open(str(wave_path), "rb") as wave_input:
                     if (wave_input.getnchannels(), wave_input.getsampwidth(), wave_input.getframerate(),
-                            wave_input.getnframes()) != (2, 2, 44100, audio["wav_frames"]):
+                            wave_input.getnframes()) != (2, 2, audio["sample_rate"], audio["wav_frames"]):
                         raise RuntimeError("WAV format/frame count disagrees with PCM diagnostics")
                 if wave_path.stat().st_size != 44 + 4 * audio["wav_frames"]:
                     raise RuntimeError("WAV byte count differs from bounded PCM output")
@@ -615,7 +670,11 @@ def main():
     parser.add_argument("--audio-output", choices=("off", "on"),
                         help="explicit ABI 13 headless PCM bridge/route; validate only its added audio_output separately")
     parser.add_argument("--audio-frames", type=int,
-                        help="capture a new bounded replay-dir/audio.wav; requires audio on, 1..5292000 stereo frames")
+                        help="capture a new bounded replay-dir/audio.wav; requires audio on, at most 120 selected-rate seconds")
+    parser.add_argument("--audio-profile", choices=("raw", "filtered"),
+                        help="explicit reviewed raw/filtered profile; requires audio on and descriptor agreement")
+    parser.add_argument("--audio-rate", type=int, choices=(44100, 48000),
+                        help="explicit output rate; 48000 requires filtered profile and audio on")
     parser.add_argument("--desktop-packaged", action="store_true",
                         help="verify packaged SDL desktop output, isolated DLL search and original TCP route with muted fast-forward")
     args = parser.parse_args()

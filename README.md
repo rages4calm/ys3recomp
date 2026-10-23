@@ -18,7 +18,7 @@ diagnostics still match; total retired work is unchanged. This route includes
 journaled assistance and ends at a first-boss encounter, without a victory or
 campaign-completion claim.
 
-The current tool pin is `df7e16d465b1618e936d2750bdbe3259b56996a9`, ABI **13**.
+The current tool pin is `72bd5a2d4616d50d8b19f0d78c5af6ddfbd1c777`, ABI **13**.
 The initial qualified `33fe46d4274584da5ba55b419a240f248df4158d` baseline is
 retained in [toolchain.json](toolchain.json). See [status](docs/STATUS.md) for
 the evidence and limits.
@@ -33,15 +33,15 @@ module is checked against that adjacent file; no SDK PATH workaround is needed.
 Requires Python 3.11+, CMake 3.20+, a C++20 compiler, Ninja and Git.
 
 ```sh
-git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-accuracy
-git -C .deps/pcenginerecomp-accuracy checkout --detach df7e16d465b1618e936d2750bdbe3259b56996a9
+git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-filtered
+git -C .deps/pcenginerecomp-filtered checkout --detach 72bd5a2d4616d50d8b19f0d78c5af6ddfbd1c777
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++
 cmake --build build --parallel 4
 ctest --test-dir build --output-on-failure
 ```
 
 If the toolchain omits `ctest`, run
-`python .deps/pcenginerecomp-accuracy/scripts/check.py --build build/upstream` and
+`python .deps/pcenginerecomp-filtered/scripts/check.py --build build/upstream` and
 `python -m unittest discover -s tests -v` instead.
 
 The default host has no game module and uses interpreted execution. Authored
@@ -71,11 +71,22 @@ evidence. The current sound fix averages ordinary ultrasonic PSG waveform
 periods 1–5, matching Geargrafx's tested unfiltered half-gain digital profile
 while preserving oscillator state. Expanded independent checks cover 49,258 PSG
 stereo pairs across 3,262 authored cases and raw ADPCM decoder/control state at
-all 16 rates. Filtered,
-resampled, full mixed and analog audio correctness remain unqualified.
-The retained gameplay route's PCM and bounded WAV remain unchanged; that route
-provides regression evidence, while authored reference vectors demonstrate the
-ultrasonic correction.
+all 16 rates.
+
+Audio defaults to the original raw 44.1 kHz profile. Opt-in filtered playback
+adds PSG/ADPCM filtering and supports 44.1 or 48 kHz output. Independent
+Geargrafx checks match 59,505 filtered PSG and 34,112 filtered ADPCM stereo
+frames. Separate authored checks cover the deterministic 64-tap resampler;
+these do not establish parity with Geargrafx's resampler.
+
+Fresh raw and filtered 48 kHz desktop packages pass the same complete TCP
+route. The raw PCM/WAV stays unchanged, and filtered output matches the shared
+headless reference while preserving the original source PCM and every guest
+diagnostic. Separate paced checks at both filtered rates verify device
+acceptance, pause/resume, controls and captures. These are bounded digital and
+device-stream checks; independent retail-mix, analog and hardware audio parity
+remain unqualified. See [development](docs/DEVELOPMENT.md) for profile selection
+and qualification.
 Host save persistence, authentic console reset and campaign completion remain
 unfinished.
 
