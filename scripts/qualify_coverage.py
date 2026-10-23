@@ -70,7 +70,7 @@ def permit_capture_addition(baseline, candidate, path, additions):
 
 
 def qualify(baseline, candidate, reference_run, baseline_run, candidate_run,
-            min_native_fraction=0.5, min_native_gain=1):
+            min_native_fraction=0.5, min_native_gain=1, allow_baseline_tier_change=False):
     baseline_run = unwrap_execution(baseline_run, baseline.get("binary_sha256"))
     candidate_run = unwrap_execution(candidate_run, candidate.get("binary_sha256"))
     if not math.isfinite(min_native_fraction) or not 0 <= min_native_fraction <= 1:
@@ -80,7 +80,19 @@ def qualify(baseline, candidate, reference_run, baseline_run, candidate_run,
     for label, receipt in (("baseline", baseline), ("candidate", candidate)):
         if receipt.get("passed") is not True or type(receipt.get("exit_code")) is not int or receipt["exit_code"] != 0:
             raise ValueError(f"{label}: requires a passed, clean-exit replay receipt")
-    assert_exact(runner_projection(reference_run), runner_projection(baseline_run), "baseline_runner")
+    if allow_baseline_tier_change:
+        for label, run in (("reference_runner", reference_run), ("baseline_runner", baseline_run)):
+            for field in TIER_FIELDS:
+                count(run, field, label)
+        if retired(reference_run, "reference_runner") != retired(baseline_run, "baseline_runner"):
+            raise ValueError("baseline_runner.total_retired: differs from original reference")
+        if block_retired(reference_run, "reference_runner") != block_retired(baseline_run, "baseline_runner"):
+            raise ValueError("baseline_runner.total_block_retired: differs from original reference")
+    assert_exact(runner_projection(reference_run, allow_baseline_tier_change),
+                 runner_projection(baseline_run, allow_baseline_tier_change), "baseline_runner")
+    baseline_exact_tiers = all(type(reference_run[field]) is type(baseline_run[field])
+                               and reference_run[field] == baseline_run[field]
+                               for field in TIER_FIELDS)
     for key in ("source_route_sha256", "source_binary_sha256", "initial_bram_sha256"):
         assert_exact(baseline[key], candidate[key], "replay." + key)
     left_images = [{"frame": image["frame"], "png_sha256": image["png_sha256"]}
@@ -139,18 +151,29 @@ def qualify(baseline, candidate, reference_run, baseline_run, candidate_run,
                        "initial_bram_sha256", "tool_identity", "source_binary_anchor",
                        "source_binary_override", "input_sha256", "command", "module_sha256",
                        "module_manifest_sha256", "contract_path", "contract_sha256", "contract_binding",
-                       "project_descriptor_sha256", "project_build_receipt_sha256")
+                       "project_descriptor_sha256", "project_build_receipt_sha256",
+                       "project_execution_mode", "shared_project_run_used", "project_binding",
+                       "project_verification_before", "project_verification_after",
+                       "project_output_files_before", "project_output_files_after", "host_bound_override")
     return {
         "passed": True,
         "baseline_native_steps": old_native, "candidate_native_steps": new_native,
+        "baseline_interpreter_steps": count(baseline_run, "interpreter_steps", "baseline_runner"),
+        "candidate_interpreter_steps": count(candidate_run, "interpreter_steps", "candidate_runner"),
+        "baseline_native_block_steps": count(baseline_run, "native_block_steps", "baseline_runner"),
+        "candidate_native_block_steps": count(candidate_run, "native_block_steps", "candidate_runner"),
+        "candidate_interpreter_block_steps": count(candidate_run, "interpreter_block_steps", "candidate_runner"),
         "native_steps_gained": gain, "total_retired": candidate_total,
         "baseline_native_fraction": old_native / baseline_total,
         "candidate_native_fraction": fraction, "total_block_retired": candidate_blocks,
         "minimum_native_fraction": min_native_fraction, "minimum_native_gain": min_native_gain,
         "matched_image_checkpoints": len(left_images),
         "memory_edits_replayed": candidate["memory_edits_replayed"],
-        "baseline_matches_original_runner": True,
+        "baseline_matches_original_runner": baseline_exact_tiers,
+        "baseline_matches_original_runner_semantics": True,
+        "baseline_matches_original_runner_exact_tiers": baseline_exact_tiers,
         "normalization": {"all_runner_comparisons": ["development.port"],
+                          "baseline_runner_tier_fields": list(TIER_FIELDS) if allow_baseline_tier_change else [],
                           "candidate_runner_tier_fields": list(TIER_FIELDS),
                           "replay_status_tier_fields": ["host.native_steps", "host.interpreter_steps"],
                           "candidate_added_code_capture": additions},
@@ -174,6 +197,8 @@ def main():
         parser.add_argument("--" + argument, required=True, type=Path)
     parser.add_argument("--min-native-fraction", type=float, default=0.5)
     parser.add_argument("--min-native-gain", type=int, default=1)
+    parser.add_argument("--allow-baseline-tier-change", action="store_true",
+                        help="allow only conserved execution-tier redistribution between baseline and original reference")
     args = parser.parse_args()
     output = args.out.resolve()
     if output.exists():
@@ -188,7 +213,7 @@ def main():
         candidate_stdout = candidate_path.parent / "run.stdout"
         result = qualify(read_json(baseline_path), read_json(candidate_path), read_json(reference_path),
                          read_json(baseline_stdout), read_json(candidate_stdout),
-                         args.min_native_fraction, args.min_native_gain)
+                         args.min_native_fraction, args.min_native_gain, args.allow_baseline_tier_change)
         result["evidence_sha256"] = {str(path): sha256(path) for path in
                                      (baseline_path, candidate_path, reference_path, baseline_stdout, candidate_stdout)}
     except (OSError, ValueError, KeyError, RuntimeError) as error:
@@ -202,7 +227,9 @@ def main():
         stream.write(raw)
     if failure is not None:
         raise failure
-    print(f"PASS: {result['candidate_native_fraction']:.2%} native; gained {result['native_steps_gained']} instructions; {output}")
+    print(f"PASS: {result['candidate_native_fraction']:.8%} native; "
+          f"{result['candidate_interpreter_steps']} interpreted; "
+          f"gained {result['native_steps_gained']} native instructions; {output}")
 
 
 if __name__ == "__main__":

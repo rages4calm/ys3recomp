@@ -17,16 +17,29 @@
     "image_checkpoints": 25
   },
   "native_milestone": {
-    "selected_original_code_identities": 2048,
-    "mpr_contexts": 9,
-    "native_steps": 2784362065,
-    "interpreted_steps": 136130698,
+    "selected_original_code_identities": 44832,
+    "mpr_contexts": 57,
+    "native_steps": 2920491782,
+    "interpreted_steps": 981,
     "total_retired": 2920492763,
+    "native_steps_gained_over_previous": 136129717,
+    "native_block_steps": 460685,
+    "interpreted_block_steps": 0,
     "frames": 93735,
     "image_checkpoints": 25,
     "memory_edit_transactions": 709,
-    "minimum_native_fraction": 0.9,
-    "scope": "Bounded assisted route; hot original-code subset from a separate complete observed profile. Cold and unseen code remain interpreted; not full native or campaign qualification."
+    "excluded_source_identities": 4,
+    "excluded_retired_hits": 981,
+    "minimum_native_fraction": 0.999999,
+    "minimum_native_gain": 136000000,
+    "execution_supervision": {
+      "mode": "Consumer TCP route watchdog with official shared verify/build bindings before and after",
+      "wall_seconds": 1800,
+      "shared_project_run_used": false,
+      "descriptor_project_run_wall_seconds": 600,
+      "descriptor_wall_applied": false
+    },
+    "scope": "All eligible identities from the complete observed assisted route; entire temporary-code spans remain interpreted. Unvisited overlays and full game/campaign/native completion are unqualified."
   },
   "build": {
     "CMAKE_BUILD_TYPE": "Release",
@@ -38,10 +51,23 @@
     "PCE_MODULE_SOURCE": "Private generated module supplied explicitly; empty means interpreter-only sandbox."
   },
   "inputs": {
-    "bios": {"sha256": "cadac2725711b3c442bcf237b02f5a5210c96f17625c35fa58f009e0ed39e4db", "access": "read-only"},
-    "disc": {"sha256": "e615031482b246b6a7a97291952b441614e672152c430d8d033e35d477453f6b", "access": "read-only"},
-    "boot_payload": {"sha256": "86be93a4a26f8a0a3b2772577452e6814564883cde2db139a7911643b6151d31", "access": "read-only"},
-    "initial_bram": {"sha256": "7e631b4e463a04481939fde974cd341a1478af8c1f75350fd73c94a3430a0887", "bytes": 2048, "access": "read-only"}
+    "bios": {
+      "sha256": "cadac2725711b3c442bcf237b02f5a5210c96f17625c35fa58f009e0ed39e4db",
+      "access": "read-only"
+    },
+    "disc": {
+      "sha256": "e615031482b246b6a7a97291952b441614e672152c430d8d033e35d477453f6b",
+      "access": "read-only"
+    },
+    "boot_payload": {
+      "sha256": "86be93a4a26f8a0a3b2772577452e6814564883cde2db139a7911643b6151d31",
+      "access": "read-only"
+    },
+    "initial_bram": {
+      "sha256": "7e631b4e463a04481939fde974cd341a1478af8c1f75350fd73c94a3430a0887",
+      "bytes": 2048,
+      "access": "read-only"
+    }
   },
   "qualified_private_route": {
     "loader": "Upstream explicit BIOS-backed contiguous payload loader; not an authentic machine-reset claim.",
@@ -51,5 +77,18 @@
     "bram": "Read-only initial seed; guest writes are volatile and process-local; cross-process save persistence is unimplemented.",
     "progression": "Assisted boss encounter is separate from ordinary-input qualification and campaign completion."
   },
-  "disposable_output_budget_bytes": 1073741824
+  "disposable_output_budget_bytes": 1073741824,
+  "previous_native_milestone": {
+    "selected_original_code_identities": 2048,
+    "mpr_contexts": 9,
+    "native_steps": 2784362065,
+    "interpreted_steps": 136130698,
+    "total_retired": 2920492763,
+    "frames": 93735,
+    "image_checkpoints": 25,
+    "memory_edit_transactions": 709,
+    "minimum_native_fraction": 0.9,
+    "scope": "Bounded assisted route; hot original-code subset from a separate complete observed profile. Cold and unseen code remain interpreted; not full native or campaign qualification.",
+    "qualified_project_commit": "5a0c5ce31fdd49fe6cec05686c154b554697396f"
+  }
 }

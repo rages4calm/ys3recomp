@@ -65,6 +65,45 @@ guest saves stay volatile. The upstream API's explicit `--desktop` build option
 accepts a matching existing SDL SDK, but this consumer batch qualifies only the
 headless host and its guest-frame output.
 
+## Expand to all eligible observed code
+
+`scripts/expand_native.py` uses the same pinned upstream `emit_capture` API
+against the original complete capture. It verifies the restored patch journal,
+excludes entire temporary-code spans through the upstream range-selection
+interface, and rejects any other recorded assist that overlaps observed source.
+It preserves the original capture hash, hit totals and completeness, reporting
+excluded identities/retirements separately. Generated files stay private.
+
+```powershell
+$batch = '.local/batch-002'
+python scripts/expand_native.py --tool-root $tool --route "$evidence/.local/boss-check/attempt8/route.json" --capture "$evidence/.local/native-coverage/profile/observed-code.json" --out "$batch/native-observed"
+python scripts/prepare_descriptor.py --tool-root $tool --inputs .local/batch-001/inputs.json --module "$batch/native-observed/module.cpp" --out "$batch/project-native.toml"
+python -m pcerecomp.project build "$batch/project-native.toml" --build-dir "$batch/build-native" --generator Ninja --cmake-arg=-DCMAKE_CXX_COMPILER=clang++
+```
+
+Use a new batch directory and redirect compiler/Python Temp there. Reuse the
+retained raw capture and input configuration read-only. Emission and build
+receipts are not execution evidence.
+
+Long TCP routes may use the replay harness's explicit `--project-verify-only`
+with `--project-descriptor` and `--project-build`. The official upstream
+`project verify` command checks the descriptor, source, module and inputs before
+and after; the consumer binds that result to the original build receipt and
+checks the exact executable/adjacent-output hashes. It launches the original
+route arguments under the consumer's 1,800-second watchdog. The descriptor's
+600-second `project.run` wall limit is explicitly not applied in this mode;
+the receipt records that distinction. Normal mode still uses `project.run`.
+Do not call a verify-only replay a shared `project.run` qualification.
+
+Compare against the previous consumer replay using `qualify_coverage.py` with
+`--allow-baseline-tier-change`. This permits only the named tier-counter splits
+between that previous baseline and the original runner reference, conserving
+retired/block totals and every other diagnostic. The new candidate still has
+to match images, edits, inputs and guest state. For this batch the gates are
+`--min-native-fraction 0.999999 --min-native-gain 136000000`; the known excluded
+span accounts for 981 original-profile retirements. Report the actual remainder
+and retain any failed bounded attempt separately.
+
 Preparation verifies the canonical `execution-boss.json` linked receipts and all
 protected inputs, records local input paths/hashes privately and regenerates
 the initial module through the upstream frontend. It copies no media. Output

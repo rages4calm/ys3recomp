@@ -10,11 +10,13 @@ unseen code continues through its interpreter. Actual retired instruction counts
 source identities and replay results determine coverage, not executable format
 or the amount of generated source.
 
-On the retained 93,735-frame route, a 2,048-identity module increased executed
-native coverage from **0.17% to 95.34%**. All 25 guest image hashes and exposed
-guest diagnostics still match; total retired work is unchanged. The route
-includes journaled assistance and ends at a first-boss encounter, without a
-victory or campaign-completion claim.
+On the retained 93,735-frame route, native execution increased from **0.17%
+to 95.34%, then 99.99997%**. The current module covers 44,832 observed identities
+in 57 mappings. Exactly **981 retirements remain interpreted** around an
+excluded temporary-code-patch span. All 25 guest image hashes and exposed guest
+diagnostics still match; total retired work is unchanged. This route includes
+journaled assistance and ends at a first-boss encounter, without a victory or
+campaign-completion claim.
 
 The current tool pin is `639e377e0d17318f7034b2c661cada609d84ed48`, ABI **12**.
 The initial qualified `33fe46d4274584da5ba55b419a240f248df4158d` baseline is
