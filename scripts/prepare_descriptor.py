@@ -15,7 +15,7 @@ def sha(path):
         return hashlib.file_digest(stream, 'sha256').hexdigest()
 
 
-def runtime_audio_lines(audio, profile=None, rate=None):
+def runtime_audio_lines(audio, profile=None, rate=None, timing=None):
     """Validate explicit audio selections without changing omitted defaults."""
     if audio is not None and (type(audio) is not str or audio not in ('on', 'off')):
         raise ValueError('audio must be on or off')
@@ -23,8 +23,10 @@ def runtime_audio_lines(audio, profile=None, rate=None):
         raise ValueError('audio profile must be raw or filtered')
     if rate is not None and (type(rate) is not int or rate not in (44100, 48000)):
         raise ValueError('audio rate must be 44100 or 48000')
-    if (profile is not None or rate is not None) and audio != 'on':
-        raise ValueError('audio profile and rate selections require audio on')
+    if timing is not None and (type(timing) is not str or timing not in ('gear', 'legacy')):
+        raise ValueError('audio timing must be gear or legacy')
+    if (profile is not None or rate is not None or timing is not None) and audio != 'on':
+        raise ValueError('audio profile, rate and timing selections require audio on')
     if (profile or 'raw') == 'raw' and rate == 48000:
         raise ValueError('raw audio requires a rate of 44100')
     lines = [] if audio is None else [f'audio = {json.dumps(audio)}']
@@ -32,7 +34,16 @@ def runtime_audio_lines(audio, profile=None, rate=None):
         lines.append(f'audio_profile = {json.dumps(profile)}')
     if rate is not None:
         lines.append(f'audio_rate = {rate}')
+    if timing is not None:
+        lines.append(f'audio_timing = {json.dumps(timing)}')
     return lines
+
+
+class _SingleTiming(argparse.Action):
+    def __call__(self, parser, namespace, values, option_string=None):
+        if getattr(namespace, self.dest, None) is not None:
+            parser.error('--audio-timing may be supplied only once')
+        setattr(namespace, self.dest, values)
 
 
 def build_parser():
@@ -45,6 +56,8 @@ def build_parser():
                         help='explicit shared audio processing profile; requires --audio on')
     parser.add_argument('--audio-rate', type=int, choices=(44100, 48000),
                         help='explicit output sample rate; requires --audio on')
+    parser.add_argument('--audio-timing', choices=('gear', 'legacy'), action=_SingleTiming,
+                        help='explicit shared source timing; requires --audio on')
     return parser
 
 
@@ -52,7 +65,7 @@ def main():
     parser = build_parser()
     args = parser.parse_args()
     try:
-        audio_lines = runtime_audio_lines(args.audio, args.audio_profile, args.audio_rate)
+        audio_lines = runtime_audio_lines(args.audio, args.audio_profile, args.audio_rate, args.audio_timing)
     except ValueError as error:
         parser.error(str(error))
     tool = args.tool_root.resolve(strict=True)

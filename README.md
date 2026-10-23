@@ -15,36 +15,58 @@ the original first-boss approach, through combat, Game Over and Continue.
 The expanded module adds **47 observed source identities**, moving **3,461
 retirements from interpreted to native execution** on that same extended route.
 It retires **2,953,438,406 native + 981 interpreted** instructions. All 39 image
-checkpoints, exposed guest/source diagnostics and filtered 48 kHz PCM match the
-old module; total retired work is unchanged. The original 25-checkpoint prefix
-also remains exact. The inherited route uses journaled assistance; this extension
-adds no RAM edits and establishes no boss victory or campaign completion.
+checkpoints and exposed guest/source diagnostics remain exact. The current
+ABI15 migration retains those counts: explicit legacy timing reproduces the
+old PCM, and default Gear timing matches a fresh headless reference. The
+original 25-checkpoint prefix also remains exact. The inherited route uses
+journaled assistance; this extension adds no RAM edits and establishes no boss victory or campaign completion.
 
-The current tool pin is `c5aa9a26125edabdbe98a68bf716bff6eacd310e`, ABI **13**.
-It adds a gated source-capture window without changing audio semantics. The
-initial qualified baseline and previous milestones remain in
-[toolchain.json](toolchain.json). See [status](docs/STATUS.md) for the evidence
-and limits.
+The current tool pin is `e0f67bf64fe670723acd4443b0da76f3bfe8276f`, ABI **15**.
+All 209 native source artifacts were regenerated and freshly rebuilt. Three
+complete TCP routes qualify legacy audio, default Gear audio and audio off.
+The default ceiling-rational source timing observes held PSG DAC output; the
+guest CDDA sample clock and latch continue when PCM is disabled. Historical
+milestones remain in [toolchain.json](toolchain.json); see
+[status](docs/STATUS.md) for measured results and limits.
 
 The current Windows desktop build places its pinned `SDL3.dll` beside the
 executable. Startup, TCP controls and audio are verified with SDK directories
 removed from the child PATH and an empty working directory. The loaded SDL
 module is checked against that adjacent file; no SDK PATH workaround is needed.
 
+## Open the local build
+
+In a prepared development checkout, double-click **Play Ys III.cmd** to open
+the privately selected qualified executable with a visible window and audio.
+**Native Files.cmd** opens its generated C++ folder. The public repository keeps
+those game-derived files in `.local/`, outside Git. A fresh clone needs the
+owner's inputs and a qualified private build before these commands can run.
+
+Arrows move; Z is button I, X is II, Shift is Select and Enter is Run.
+Space pauses, F11 toggles fullscreen and Esc exits. Guest saves remain
+session-only. The launcher verifies the selected inputs, module, runtime and
+adjacent SDL package before starting; it does not install or download anything.
+`python scripts/play_local.py --info` checks readiness without opening a game.
+
+**Clean Old Build Files.cmd** runs the guarded cleanup plan retained locally.
+It removes reviewed obsolete compiler intermediates while keeping qualified
+executables, native source, inputs and verification receipts. The local runner
+refuses changed files or paths outside its exact reviewed plan.
+
 ## Build without game inputs
 
 Requires Python 3.11+, CMake 3.20+, a C++20 compiler, Ninja and Git.
 
 ```sh
-git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-capture
-git -C .deps/pcenginerecomp-capture checkout --detach c5aa9a26125edabdbe98a68bf716bff6eacd310e
+git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-abi15
+git -C .deps/pcenginerecomp-abi15 checkout --detach e0f67bf64fe670723acd4443b0da76f3bfe8276f
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++
 cmake --build build --parallel 4
 ctest --test-dir build --output-on-failure
 ```
 
 If the toolchain omits `ctest`, run
-`python .deps/pcenginerecomp-capture/scripts/check.py --build build/upstream` and
+`python .deps/pcenginerecomp-abi15/scripts/check.py --build build/upstream` and
 `python -m unittest discover -s tests -v` instead.
 
 The default host has no game module and uses interpreted execution. Authored
@@ -66,31 +88,24 @@ developer who already has that evidence; see [development](docs/DEVELOPMENT.md).
 The current route uses an explicit reference-emulator `gear-good` response for
 an unknown CD command. That condition does not implement the unknown operation
 or establish hardware correctness. Initial formatted blank BRAM is read-only;
-guest SAVE/LOAD stays within one process. ABI 13 adds digital PSG, ADPCM and
-CDDA mixing, bounded WAV capture and optional SDL playback. The original prefix
-retains its audio-disabled/enabled qualification. The current extended route is
-freshly checked with filtered 48 kHz audio. Digital PCM reproducibility and
-device-stream acceptance have separate evidence. The current sound fix averages
-ordinary ultrasonic PSG waveform
-periods 1–5, matching Geargrafx's tested unfiltered half-gain digital profile
-while preserving oscillator state. Expanded independent checks cover 49,258 PSG
-stereo pairs across 3,262 authored cases and raw ADPCM decoder/control state at
-all 16 rates.
+guest SAVE/LOAD stays within one process. ABI15 adds a guest CDDA sample latch
+that works with PCM enabled or disabled. Its internal held/latch state is
+qualified by separate upstream authored and Geargrafx checks; the current TCP
+schema exposes no new internal latch fields, and retail port usage is not claimed.
 
-Audio defaults to the original raw 44.1 kHz profile. Opt-in filtered playback
-adds PSG/ADPCM filtering and supports 44.1 or 48 kHz output. Independent
-Geargrafx checks match 59,505 filtered PSG and 34,112 filtered ADPCM stereo
-frames. Separate authored checks cover the deterministic 64-tap resampler;
-these do not establish parity with Geargrafx's resampler.
+Audio defaults to raw 44.1 kHz with Gear timing. Filtered playback is opt-in at
+44.1 or 48 kHz. Explicit `--audio-timing legacy` preserves the earlier PCM path.
+The current filtered 48 kHz Gear route matches a separately frozen headless run
+at all 39 checkpoints and three endpoints; the legacy route retains the old
+PCM/WAV, and audio off retains every exposed guest/native/source diagnostic.
 
-The prior raw and filtered packages retain their qualified original route and
-headless-reference evidence. The current old-module and expanded-module packages
-match processed and raw-source PCM throughout the extended route. A separate
-paced 48 kHz check verifies device acceptance, pause/resume, controls and captures.
-The bounded WAV covers the first 30 guest seconds; cumulative PCM and checkpoints
-check the later section. These are digital and device-stream checks; independent
-retail-mix, listening, analog and hardware parity remain unqualified.
-See [development](docs/DEVELOPMENT.md) for capture and qualification.
+A separate paced Gear 48 kHz check verifies actual device acceptance, input,
+captures and pause/resume with zero runtime loss. The bounded WAV covers only
+the first 30 guest seconds; cumulative PCM and checkpoints check the later route.
+Retained independent tests cover finite PSG/ADPCM timing, filters and CDDA latch
+cases. These do not establish independent retail-mix, listening, analog or
+hardware parity. See [development](docs/DEVELOPMENT.md) for regeneration and
+the explicit migration qualification matrix.
 Host save persistence, authentic console reset and campaign completion remain
 unfinished.
 

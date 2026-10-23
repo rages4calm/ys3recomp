@@ -7,7 +7,8 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parent.parent
-ROOT_FILES = {"AGENTS.md", "README.md", "LICENSE", "CMakeLists.txt", "toolchain.json", ".gitignore", ".gitattributes"}
+ROOT_FILES = {"AGENTS.md", "README.md", "LICENSE", "CMakeLists.txt", "toolchain.json", ".gitignore", ".gitattributes",
+              "Play Ys III.cmd", "Native Files.cmd", "Clean Old Build Files.cmd"}
 PATTERNS = {
     "credential-like content": re.compile(rb"(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{30,}|-----BEGIN [A-Z ]*PRIVATE KEY-----)"),
     "personal absolute path": re.compile(rb"(?:[A-Za-z]:[\\/]Users[\\/][^\s\"'<>]+|/[U]sers/[^\s\"'<>]+|/[h]ome/[^\s\"'<>]+)"),

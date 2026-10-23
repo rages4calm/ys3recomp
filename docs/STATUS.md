@@ -1,5 +1,69 @@
 # Consumer status - 23 October 2026
 
+ABI 15 is qualified on the expanded 94,800-frame route. This is a real guarded
+C++ module and compiled SDL host, with unseen code still interpreted. The
+previous batch added 47 source identities and 3,461 native retirements; the
+ABI migration preserves that coverage and adds no new native-execution claim.
+
+| Evidence | Current result | Scope |
+|---|---|---|
+| Tool | `e0f67bf64fe670723acd4443b0da76f3bfe8276f`, ABI 15 / descriptor schema 1 | Clean exact source, 53 files, no runtime fork |
+| Regeneration | 208 C++ translation units and one header | All 209 artifacts rehashed; only 208 ABI assertions change from 13 to 15, every operation/guard and source exclusion retained |
+| Coverage | 44,879 eligible source identities / 57 full MPR contexts | 2,953,438,406 native + 981 interpreted retirements, 981 guard misses; 466,118 native block transfers, zero interpreted |
+| Full TCP matrix | Three fresh official desktop builds; each completes 94,800 frames / 39 image and state checkpoints / 3 endpoints | Explicit legacy filtered 48 kHz, default Gear filtered 48 kHz and audio off; exact guest clocks/PC/all MPRs/fetch source/tier counts |
+| Legacy bridge | Processed/raw-source PCM and bounded WAV exactly reproduce ABI 13 | 76,060,360 output / 69,880,456 source frames; PCM hash `13785118638779356764` |
+| Gear reference | All PCM fields and WAV match a separately frozen ABI 15 headless run | Same frame counts, peak 13,355, zero runtime discard; PCM hash `1852331864136332503` |
+| Gear source timing | Source frames equal `floor(ticks*44100/21477273)` at every checkpoint and endpoint | Output frames equal `floor(source_frames*160/147)`; 31-source-frame latency, no tail flush |
+| Audio off | PCM/WAV/device telemetry absent; exposed guest/native/source state exact | No invented internal CDDA/latch telemetry or retail port-use claim |
+| Paced Gear 48 kHz | 773,361 output frames, zero runtime loss, final queue empty | Actual default device stereo 48 kHz / SDL format 33056; same-PID adjacent SDL path/hash, sanitized PATH, empty cwd, TCP controls/captures/pause freeze/resume |
+| Official project.run | Separate 60-frame TCP startup; 2,014,178 native / 0 interpreted | Dummy SDL, descriptor 600-second bound; separate from full direct-route 1,800-second consumer watchdog |
+| Consumer tests | 283 pass, zero skips | Actual parser duplicate timing rejection, narrow frozen-headless two-key / consumer three-key metadata, clock-edge and artifact mutation checks |
+| Shared tests | 30 suites / 316 Python tests pass, zero skips | Fresh empty-module embedded desktop build, unchanged shared checker |
+
+The exact source SHA256 is
+`38573f59cd17b1b9c640337ac6c1d9db80b3dc926d42312f8cedfd28d7959dd7`.
+All seven protected originals, retained captures and old generated modules stay
+unchanged. New sources are emitted through the upstream API from the original
+ABI 13 profile; capture data is not relabeled. Compiled objects are rebuilt.
+The whole restored six-byte source span remains excluded across all variants:
+four identities / 981 original-profile hits; unsupported observations remain zero.
+
+Default Gear timing uses ceiling-rational sample edges and held PSG DAC values.
+Legacy timing must be selected explicitly to reproduce ABI 13 PCM. The default
+Gear full-route raw-source hash is `12743162666852437487`, versus legacy
+`4016269554691743388`. Both have 69,880,456 source frames. The first 30-second
+WAV is unchanged because it does not reach the later timing-sensitive section;
+full cumulative hashes and all 39 checkpoint PCM values verify that section.
+
+The original helper used for the three actual runs is retained byte-for-byte.
+A later parser-only change rejects duplicate timing flags. Actual single-mode
+command namespaces and every non-parser runtime function remain equivalent;
+the new parser is tested separately and is not described as a rerun of gameplay.
+The actual early manifest epoch and every historical source epoch are likewise
+preserved before documentation or current metadata changes.
+
+Upstream independent evidence remains finite and distinct: the ABI 15 CDDA latch
+matches nine authored cases /367 unique checkpoints with PCM on and off, before
+mixer headroom. Retained ABI14 timing evidence covers 102 cases / 1,551 checkpoints /
+75,137 stereo frames after integer mixer headroom. Its stopped-phase and
+single-master-tick overdue-callback limits remain explicit. These do not observe
+unexposed held-DAC/latch state in this retail route or certify hardware.
+
+The route retains 709 assist transactions / 723 changed bytes from its prefix and
+adds no new assists. Game Over/Continue recovery establishes no boss victory,
+unassisted full encounter or campaign completion. The explicit gear-good
+unknown-CD profile, BIOS IPL-entry sandbox and volatile process-local BRAM
+remain compatibility limits. Physical-controller play, persistent host saves,
+authentic reset and the full campaign are unfinished.
+
+The root Play/Native Files commands expose the privately selected qualified
+build without distributing game code or assets. Launcher readiness is checked
+without opening a game. Cleanup is separate: automatic tool policy blocked the
+reviewed old-intermediate deletion before execution; the owner-run command
+retains its exact guarded plan. No cleanup deletion is claimed.
+
+## Retained ABI13 native-coverage baseline
+
 Native coverage now extends beyond the original first-boss approach through
 normal combat, a rendered Game Over, Continue and full-health recovery. This
 remains a bounded hybrid milestone; unvisited code and the full campaign are

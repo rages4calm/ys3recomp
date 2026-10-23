@@ -1,35 +1,34 @@
 # Consumer development
 
-Read the pinned tool's `AGENTS.md`, `docs/STATUS.md`, `docs/ARCHITECTURE.md`,
-`docs/CONSUMER.md` and `docs/AUDIO_OUTPUT.md` before changing integration.
-Keep its active checkout untouched. Use an isolated clean dependency at the
-manifest pin and one new private scratch batch. Keep all older qualified
-artifacts and original inputs unchanged.
+Read the pinned toolkit's ownership and architecture documents before integration.
+Keep its active checkout untouched. This repository owns game configuration,
+source selection, adapters, coverage, launchers and bounded gameplay checks.
+CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Regenerate and build for ABI 13
+## Pin, regenerate and build
 
-The current capture-only pin keeps ABI 13 and descriptor schema 1 unchanged.
-The coverage expansion composes the retained profile with a fresh restored-source
-window, then uses the shared emitter to generate 208 translation units and one
-header. All 209 source artifacts are bound to the new module manifest. The old
-208-artifact module remains unchanged for the baseline comparison. Rebuild
-compiled objects when changing generated sources or the pinned runtime.
+The current source pin is `e0f67bf64fe670723acd4443b0da76f3bfe8276f`, ABI 15,
+descriptor schema 1. Its 53-file source SHA256 is
+`38573f59cd17b1b9c640337ac6c1d9db80b3dc926d42312f8cedfd28d7959dd7`.
+Clone with LF source bytes as shown in README. `verify_tool.py` rejects the
+wrong revision/ABI/digest, dirty source, concealed index changes and shadow files.
 
-The current pin accepts retained ABI-12 observation captures for regeneration.
-It requires new ABI-13 translations and a matching runtime; never reuse ABI-12
-compiled objects. Full MPR mappings and exact source bytes still guard execution.
-The partitioned manifest pins every translation unit and generated header.
-Preserve the entire generated directory. The consumer delegates generation,
-CPU/device/audio semantics and build identity to the shared tool.
+ABI 12/13/14 captures remain immutable offline inputs. Re-emit them through the
+shared tool and rebuild every compiled object. Never relabel capture metadata.
+The retained expanded profile has 44,883 identities, of which 44,879 are eligible
+in 57 full MPR contexts. Its ABI 15 module has 208 C++ translation units and one
+header. Compared with ABI 13, all operations, guards and exclusions stay exact;
+only the 208 ABI assertions change. The header is identical.
 
-These commands require the existing private evidence and input configuration;
-substitute their locations. Use a fresh batch, redirect Python/compiler Temp
-there, and reuse immutable dependencies/media read-only.
+These examples require private input configuration and retained evidence. Use
+new output directories and reuse original inputs/dependencies read-only:
 
 ```powershell
-$evidence = 'TOOL_EVIDENCE_ROOT'
-$tool = (Resolve-Path '.deps/pcenginerecomp-capture').Path
+$tool = (Resolve-Path '.deps/pcenginerecomp-abi15').Path
 $batch = '.local/new-private-batch'
+$profile = 'PRIVATE_OBSERVATION_PROFILE'
+$route = 'PRIVATE_EXTENDED_ROUTE'
+$inputs = 'PRIVATE_INPUT_CONFIGURATION'
 New-Item -ItemType Directory -Path "$batch/temp" -Force
 $env:TEMP = (Resolve-Path "$batch/temp").Path
 $env:TMP = $env:TEMP
@@ -37,286 +36,150 @@ $env:PYTHONPATH = $tool
 $env:PYTHONSAFEPATH = '1'
 $env:PYTHONDONTWRITEBYTECODE = '1'
 python scripts/verify_tool.py --tool-root $tool
-python scripts/expand_native.py --tool-root $tool --route "$evidence/.local/boss-check/attempt8/route.json" --capture "$evidence/.local/native-coverage/profile/observed-code.json" --out "$batch/native-observed"
-python scripts/prepare_descriptor.py --tool-root $tool --inputs .local/batch-001/inputs.json --module "$batch/native-observed/module.cpp" --audio on --out "$batch/project-native.toml"
-python -m pcerecomp.project build "$batch/project-native.toml" --build-dir "$batch/build-native" --generator Ninja --cmake-arg=-DCMAKE_CXX_COMPILER=clang++
+python scripts/expand_native.py --tool-root $tool --route $route --capture $profile --out "$batch/native"
+python scripts/prepare_descriptor.py --tool-root $tool --inputs $inputs --module "$batch/native/module.cpp" --audio on --audio-profile filtered --audio-rate 48000 --audio-timing legacy --out "$batch/project-legacy.toml"
+python scripts/prepare_descriptor.py --tool-root $tool --inputs $inputs --module "$batch/native/module.cpp" --audio on --audio-profile filtered --audio-rate 48000 --out "$batch/project-gear.toml"
+python scripts/prepare_descriptor.py --tool-root $tool --inputs $inputs --module "$batch/native/module.cpp" --audio off --out "$batch/project-off.toml"
+python -m pcerecomp.project build "$batch/project-gear.toml" --build-dir "$batch/build-gear" --desktop --generator Ninja --cmake-arg=-DCMAKE_CXX_COMPILER=clang++ --cmake-arg=-DSDL3_DIR=SDL3_CMAKE_DIRECTORY
 ```
 
-`expand_native.py` validates restoration of the journaled temporary code patch,
-excludes its entire physical span across all mappings/source variants through
-the upstream range-exclusion API, and refuses any other assisted write that
-intersects observed instruction-fetch bytes. The original complete capture
-hash, hit totals and completeness stay intact. Counts from emission/build
-receipts establish no execution coverage on their own.
+Build each descriptor separately through the official contract. No SDK, media
+or dependencies are fetched implicitly. The shared Windows build packages its
+pinned SDL DLL beside the executable. The manifest binds every generated source
+and header; preserve that entire directory and the official build receipt.
 
-`prepare_descriptor.py` derives the ABI from the verified tool and accepts
-`--audio on|off`. Schema 1 retains explicit tool/source/module/input hashes,
-loader/MPR values, response profile and limits. Initial formatted blank BRAM
-is a read-only seed; guest writes remain volatile. No owner install/save is used.
+`expand_native.py` validates the journal's restored bytes, excludes the entire
+temporary-code span across every mapping/variant, and refuses other assisted
+writes overlapping instruction fetches. Exact PC, all eight MPRs, physical
+addresses and source bytes distinguish overlays. The profile's original hash,
+completeness and hit totals stay intact. Emission counts prove no execution.
 
-## Select and qualify filtered audio
+## Run and qualify the ABI 15 matrix
 
-With the current `.deps/pcenginerecomp-capture` checkout, descriptor preparation
-also accepts `--audio-profile raw|filtered` and `--audio-rate 44100|48000`.
-These require `--audio on`; raw 48 kHz is rejected. Omitting both preserves the
-original raw 44.1 kHz descriptor and PCM schema. Filtered without a rate selects
-44.1 kHz. For example, prepare a new descriptor using the retained ABI-13 module:
+Run the same frozen 94,800-frame route through TCP on all three new packages:
 
-```powershell
-python scripts/prepare_descriptor.py --tool-root $tool --inputs .local/batch-001/inputs.json --module .local/batch-003/native-observed/module.cpp --audio on --audio-profile filtered --audio-rate 48000 --out "$batch/project-filtered-48000.toml"
-```
+1. Explicit legacy filtered 48 kHz must reproduce the qualified ABI 13 package's
+   exposed guest/native/source state, processed/raw-source PCM and bounded WAV.
+2. Default Gear filtered 48 kHz must match a fresh separately frozen ABI 15
+   headless reference at all 39 checkpoints and three endpoints.
+3. Audio off must retain exposed guest/native/source state and omit all PCM,
+   WAV and device-output diagnostics.
 
-Build each descriptor through the shared `pcerecomp.project build` command.
-For packaged route verification, use its corresponding executable, descriptor
-and build directory with `replay_route.py --desktop-packaged --audio-output on
---audio-profile filtered --audio-rate 48000 --audio-frames 1440000`. Keep the
-original route, historical executable anchor and other arguments shown below.
-Run a separate explicit `raw` / `44100` bridge with a 1,323,000-frame WAV cap.
-Each run needs its own new output directory. Profile/rate overrides are recorded
-and must agree with the official descriptor; they cannot be hidden in the
-frozen original route arguments.
+Use `replay_route.py` with the matching binary, descriptor and build directory,
+`--project-verify-only --desktop-packaged`, the immutable source-route binary
+anchor, and the same input/route evidence. Enabled runs select
+`--audio-output on --audio-profile filtered --audio-rate 48000 --audio-frames 1440000`.
+Only the legacy run adds `--audio-timing legacy`; omit timing to exercise default
+Gear. The off run supplies only `--audio-output off`. Each run needs a new output
+directory. Duplicate timing arguments, including equals forms, fail before launch.
 
-The raw bridge must match the previous qualified raw route exactly. The
-filtered 48 kHz candidate must match a separately retained new headless
-reference, including processed PCM and WAV bytes. At every checkpoint, all
-original guest/native/source diagnostics and the filtered profile's raw source
-PCM projection must match the old raw route. Source activity stays in the
-44.1 kHz domain; processed frame counts, WAV and queue telemetry use output
-frames. The exact 48 kHz count is `floor(source_frames * 160 / 147)`, with
-31 source frames of latency and no flushed tail. Intermediate desktop pending
-frames must fit the 8,192-output-frame ring; final pending frames must be zero.
-
-Use the distinct schema-2 DSP qualifier with a reviewed, hash-bound expectation:
-
-```powershell
-python scripts/qualify_dsp.py --baseline-receipt OLD_RAW_RECEIPT --raw-receipt NEW_RAW_RECEIPT --candidate-receipt NEW_FILTERED_RECEIPT --audio-expectation REVIEWED_DSP_EXPECTATION --out NEW_QUALIFICATION
-```
-
-Its expectation binds the exact tool/source/ABI, original route and blank seed,
-raw bridge, processed reference run/receipt/WAV, actual upstream qualification
-and independently reviewed Gear evidence. It accepts only the finite raw
-44.1 kHz to filtered 48 kHz comparison; no generic list of guest or PCM fields
-may be ignored. Official descriptor/build, executable and adjacent DLL are
-rehashed. Earlier schema-1 qualification remains unchanged.
-
-`wav_metrics.py analyze WAV --out NEW_JSON` records exact integer PCM metrics;
-`wav_metrics.py compare LEFT RIGHT --out NEW_JSON` compares equal-rate,
-equal-length PCM16 stereo WAVs. It preserves and rechecks both inputs, rejects
-geometry mismatches and never resamples or infers perceptual quality.
-
-Keep paced device checks separate from the unthrottled full route. At both
-filtered rates, verify actual device-open/mute state, queried SDL format/rate,
-bounded queue and drops, pause freeze, resume advance, TCP input and captures,
-loaded package identity and protected inputs. Filtered 44.1 kHz has an identity
-output resampler; a CDDA-dominated opening can remain identical to raw PCM.
-Device acceptance does not establish listening, analog or hardware parity.
-
-## Verify the retained route with audio
-
-Preserve the immutable route and historical executable anchor. It contains
-ordinary-input checkpoints and separately journaled assisted progression;
-this batch adds no edits. The source route and all expected-byte transactions
-must remain unchanged. Select the old executable with `--source-binary` if
-its original build location has changed; its hash must still match the route.
-
-Run the same full route twice through `scripts/replay_route.py`, with the
-following shared arguments and a fresh output directory for each run:
-
-```powershell
-$binary = "$batch/build-native/build/bin/pce-consumer.exe"
-$common = @('--tool-root', $tool, '--evidence-root', $evidence,
-  '--route', "$evidence/.local/boss-check/attempt8/route.json",
-  '--binary', $binary, '--source-binary', 'HISTORICAL_BINARY',
-  '--project-descriptor', "$batch/project-native.toml",
-  '--project-build', "$batch/build-native",
-  '--project-verify-only', '--ignore-tier-counters')
-python scripts/replay_route.py @common --audio-output off --out "$batch/replay-audio-off"
-python scripts/replay_route.py @common --audio-output on --audio-frames 1323000 --out "$batch/replay-audio-on"
-```
-
-The explicit audio override is appended to the frozen guest argument vector
-and recorded separately. This mode uses the consumer's 1,800-second watchdog.
-Official `project verify` and the complete immutable build/output binding are
-checked before/after. The descriptor's 600-second `project.run` limit is
-explicitly not applied. This is consumer-supervised qualification, not a
-shared `project.run` execution qualification.
-
-The audio-on run creates only a bounded new `audio.wav` in its output directory.
-The 1,323,000-frame cap retains the first 30 guest seconds; it does not limit
-route duration. The harness checks PCM format, file size, frame count/hash and
-truncation telemetry. Headless PCM generation opens no playback device.
-
-Then qualify each replay with `scripts/qualify_audio.py`:
-
-```powershell
-python scripts/qualify_audio.py --baseline-receipt .local/batch-002/replay-native-extended/receipt.json --candidate-receipt "$batch/replay-audio-on/receipt.json" --reference-run "$evidence/.local/boss-check/attempt8/run.json" --audio-reference-run "$evidence/.local/audio-batch/native-desktop-final/run.json" --audio-output on --out "$batch/audio-on-qualified.json"
-```
-
-Use the audio-off candidate and `--audio-output off` for the bridge. The
-qualifier preserves all original diagnostics, images, checkpoint states,
-source generations, mappings, clocks, edit counts and total native/interpreted
-work. It separately validates only the added ABI-13 headless `audio_output`
-object, rejecting unknown fields, malformed values or runtime queue loss.
-Audio-on PCM fields must match the retained shared-tool result exactly;
-audio-off must omit the PCM object exactly as the reference runner does.
-Existing native counts must
-stay exact, including guard misses and block transfers. Unlike a coverage
-expansion, this upgrade permits no tier redistribution or native-count gain.
-That comparison is reproducibility within the shared implementation, not an
-independent whole-route audio/console oracle.
-
-## Optional SDL and authored checks
-
-Use the official build command's `--desktop` and explicit `SDL3_DIR` to select
-an existing SDK at build time. The current pin packages `SDL3.dll` beside the
-consumer executable and includes it in the official build/output binding.
-A missing or changed packaged DLL invalidates the retained build. The prior
-SDK-PATH workaround remains historical evidence only.
-
-For a packaged full-route replay, select the official desktop binary/build and
-add `--desktop-packaged --audio-output on --audio-frames 1323000` to the replay
-arguments above. The mode requires `--project-verify-only`. It resolves the
-existing guest input arguments to the same absolute files, creates a new empty
-working directory, strips empty/relative and all SDL-containing directories
-(including packaged bin) from child PATH, and clears SDL dummy-driver overrides.
-The private receipt retains exact original/child PATH and removed entries.
-
-The harness runs hidden and unthrottled. At initial and final guest pauses,
-Windows process-module inspection binds the same PID and executable to the
-actual loaded SDL path/hash; it must equal the adjacent packaged DLL. Official
-project bindings and exact adjacent outputs are checked before and after.
-
-Qualify with `scripts/qualify_desktop.py --baseline-receipt` pointing to the
-retained completed headless audio-on receipt, `--candidate-receipt` pointing
-to the new packaged replay receipt, and a new `--out`. The qualifier separately
-checks exact desktop audio/presentation schemas and muted-device accounting,
-then compares every original guest diagnostic, all checkpoint states/images,
-native/interpreted/block/guard counts, core PCM and bounded WAV hash to the
-headless baseline. No original guest field is projected away. This proves
-same-route packaged execution and digital reproducibility, not full-game or
-independent analog/audio parity.
-
-Normal guest-paced SDL output and headless full-route PCM have distinct
-receipts. Unthrottled desktop output intentionally mutes speakers while PCM
-and WAV continue. Check device-open success, fast-forward mute, source loss,
-submitted/dropped/queued frames, pause freeze/queue clearing and resumed
-advancement. A dummy device or accepted/drained SDL stream does not establish
-what a listener hears, analog levels or independent mixed-audio parity.
-
-Build the consumer's authored sandbox tests and run the pinned upstream
-`scripts/check.py` fallback plus `python -m unittest discover -s tests -v`.
-The current pin discovers the parent CMake cache and SDK in an embedded SDL
-build. The unchanged checker at `--build build/upstream` runs all 28 shared
-suites and 294 Python tests without a discovery adapter or test-path overrides;
-the fresh qualified embedded build has zero skips. SDL dummy video/audio
-drivers are appropriate for authored host suites. The separate clean default
-configuration intentionally skips eight desktop tests. Retain actual skips
-and suite results separately from the real-device test.
-
-## Extend coverage with a restored-source capture window
-
-The capture-only ABI-13 pin adds `--code-capture-start-frame` to the shared
-host. Use the consumer's managed `replay_route.py --capture-start-frame FRAME`
-option rather than embedding output flags in the immutable route. The chosen
-frame must be an existing paused checkpoint before the route ends and strictly
-after every journaled code patch has been restored. `--capture-limit` optionally
-selects 1 through 65,536 identities; the managed default is 65,536.
-
-The supervisor reads back every restored original byte, retains the full
-logical PC, eight MPRs, physical fetch addresses, bytes, generations and counters,
-and checks that the guest stays paused through that proof. Only then does the
-next advance begin. Capture output is a new `observed-code.json` in the replay
-directory. The shared loader checks its format, exact source mappings, complete
-retirement accounting and zero loss. The runner's actual start frame, ticks and
-native/interpreted counters must match the paused proof, and observed retirements
-must equal the final-minus-start count. An unreached or ambiguous window fails.
-Direct or shared-verify-only supervision is required; the shared `project.run`
-wrapper is not used for managed capture.
-
-The existing assisted prefix temporarily changes code before restoring it.
-Do not capture that prefix from launch. Keep its prior immutable profile and
-collect new instructions only after restoration. Observation files and generated
-code remain private, including excluded source variants.
-
-`merge_observations.py` composes two to sixteen complete profiles through the
-verified shared capture API. Its private manifest uses schema 1 and kind
-`ys3-observation-union`, an explicit `output_runtime_abi` of 12 or 13, and an
-`inputs` list. Each input binds a capture path/SHA256 plus an `epoch` with a
-unique label, declared start/end frames and hash-bound evidence paths. For example:
+The retained route can contain historical tier counters. Replay may use
+`--ignore-tier-counters` for that historical comparison; the final migration
+qualifier separately requires exact current native/interpreted/block counts.
+Every source/guest/image diagnostic remains retained. Current counts are
+2,953,438,406 native, 981 interpreted, 981 guard misses and 466,118 native block
+transfers with zero interpreted blocks. The ABI upgrade adds no native coverage.
 
 ```sh
-python scripts/merge_observations.py --tool-root TOOL --manifest PRIVATE_MANIFEST --out NEW_PRIVATE_PROFILE
-python scripts/expand_native.py --tool-root TOOL --route EXTENDED_ROUTE --capture NEW_PRIVATE_PROFILE/observations.json --out NEW_PRIVATE_MODULE
+python scripts/qualify_abi15.py --baseline-receipt OLD13_RECEIPT --legacy-receipt NEW15_LEGACY --gear-receipt NEW15_GEAR --off-receipt NEW15_OFF --expectation REVIEWED_MATRIX --out NEW_QUALIFICATION
 ```
 
-The union retains exact PC/all-MPR/physical/source-byte identities, separate byte
-variants and summed original tier hits. It rejects incomplete inputs, overflow
-and excess capacity. Its epochs are provenance declarations bound to evidence;
-the combined profile is not a single execution or measured native gain.
-Emission still excludes every byte of each verified temporary-code span across
-all mappings and checks all assist writes against observed instruction fetches.
+The strict expectation hash-binds both full headless reference receipts, runs
+and WAVs; exact tool/source/ABI, route and module identities; actual upstream
+qualification; and separately scoped independent evidence. New consumer receipts
+require timing in their normalized selection. The pinned frozen headless adapter
+retains its two-key selection only when actual argv, PCM marker and root
+qualification independently establish timing. Raw receipts are never rewritten.
 
-Build the old and expanded modules with the same verified capture-only pin,
-descriptor inputs and filtered 48 kHz audio selection. Replay the same frozen
-extended route with the same managed capture boundary on both packages, then run:
+Before comparing the capture-free ABI 15 runs, validate and rehash the original
+ABI 13 managed capture and paused restored-source proof. Only its exact reviewed
+capture-window metadata may then be handled separately. All 209 old/new generated
+artifacts are rehashed, accepting only exact ABI assertion replacements. All
+other instruction, block and per-identity retirement totals remain conserved.
 
-```sh
-python scripts/qualify_native_audio.py --baseline-receipt OLD_MODULE_RECEIPT --candidate-receipt EXPANDED_MODULE_RECEIPT --prefix-frame ORIGINAL_ENDPOINT --min-native-gain 1 --out NEW_QUALIFICATION
-```
+At every Gear observation, source frames must equal
+`floor(ticks * 44100 / 21477273)`. At 48 kHz, output frames equal
+`floor(source_frames * 160 / 147)`, with 31 source frames of latency and no tail
+flush. Gear PCM includes exactly `timing = "gear-v1"`; legacy omits that field.
+Unknown fields, missing metadata, clock-edge drift and changed artifacts fail.
 
-This finite ABI-13 qualifier requires every original guest/source diagnostic,
-image, assist and processed/raw PCM value to match at every checkpoint and three
-endpoint observations. WAV bytes stay exact. Native/interpreted and block totals
-are conserved while their tier split may change; positive native gain is required
-both overall and after the prefix endpoint. Both raw window captures must retain
-identical source identities and per-identity total hits. Only a fully validated
-runner capture-window object is handled separately. Actual descriptor/build,
-module sources, executable, DLL, protected inputs and captures are rehashed.
-Unreviewed ABIs, timing profiles or capture contracts are refused.
+Keep the full direct TCP supervisor's 1,800-second watchdog separate from the
+shared descriptor's 600-second `project.run` bound. The full route bypasses the
+descriptor's shorter project.run wall bound and records that override. A separate finite
+60-frame official run checks the wrapper with dummy SDL. It is not device
+playback evidence or the full gameplay route.
 
-Long frontier sessions must keep the TCP connection active: the server closes
-an idle connection after five seconds. A paused status heartbeat preserves the
-connection without advancing guest time. Keep exploration bounded and retain
-failed attempts separately. The boot WAV cap does not reach a late frontier;
-cumulative PCM hashes and new checkpoint counters qualify its digital output.
-Do not describe the boot WAV as an audible recording of the later encounter.
+## Playback, local commands and limits
 
-## Publication and future batches
+The full routes are hidden/unthrottled, with intentionally muted SDL presentation
+while guest-clock PCM generation continues. Check runtime discard separately
+from presentation drops and pending frames. Settled/final drain boundaries require
+zero pending output; intermediate pending frames must fit the 8,192-frame ring.
 
-For an intentional sound correction, retain the old packaged route and compare
-the new packaged replay with `scripts/qualify_audio_upgrade.py`. Its
-`--baseline-receipt`, `--candidate-receipt`, `--audio-expectation` and `--out`
-arguments identify private evidence. The expectation binds the exact new tool
-revision/source digest/ABI, original route identities, complete headless reference
-runner/checkpoints/WAV and reviewed upstream/independent qualification hashes.
-Explicit JSON pointers verify those qualification linkages. A reviewed attestation
-may adapt an existing evidence schema while retaining its raw qualification hash;
-it must describe the actual reviewed evidence and its limits.
+A separate paced Gear 48 kHz check uses a real device, sanitized child PATH and
+an empty cwd. Inspect the actual loaded SDL path/hash in the same PID before and
+after. Check TCP input, guest/window captures, complete source/processing/timing
+pause freeze, resumed advancement, queue bounds and all seven original inputs
+before launch and after exit. Never invent an extra pre-launch snapshot or a
+successful listening test. Device acceptance and PCM hashes do not prove analog,
+hardware or independent retail-mix correctness.
 
-The default permits no PCM changes. Only explicitly declared `psg_nonzero`,
-`mixed_nonzero`, `pcm_hash` and `peak` may differ from the old route, and each new
-value must equal the new reference at every checkpoint and final observation.
-Original guest state, images, source/mappings, assistance, native/interpreted work,
-sample counts, ADPCM/CDDA activity, format, runtime loss and WAV bounds stay exact.
-Intermediate WAV drain metadata is validated separately because host snapshots
-can precede draining; final PCM/WAV is strict. The bounded new WAV must match the
-new headless reference byte-for-byte. Both old and new audio measurements remain
-in the qualification, alongside independent-reference scope. Unknown ABIs or
-diagnostic schemas require deliberate contract review.
+`Play Ys III.cmd` verifies the private selection and starts a visible paced manual
+host. `Native Files.cmd` opens its C++ folder. `python scripts/play_local.py --info`
+performs readiness checks without a game launch. A manual host removes the
+600-second wall argument while retaining guest step/tick limits; it is separate
+from `project.run`. It enables no TCP edits/captures or automatic assistance.
+Guest saves remain volatile within that process. No owner installation/save is
+used, modified or exported.
 
-Read source and affected contracts before deliberately upgrading `toolchain.json`.
-Pins identify a complete clean commit, exact source digest and matching ABI.
-Preserve initial/historical qualification and record the actual compiler/options,
-all generated-artifact hashes and input identities privately.
+The pin does not expose new held-DAC/CDDA clock/latch fields through TCP. Keep
+retail exposed-state regression separate from the upstream finite state tests.
+The latch oracle covers nine cases and 367 checkpoints with PCM on and off,
+pre-headroom. Retained ABI 14 timing checks cover 102 cases, 1,551 checkpoints and
+75,137 stereo frames after integer headroom, with explicit stopped-phase and
+single-tick overdue-callback limits. No retail latch-port usage is inferred.
+The boot WAV covers only the first 30 guest seconds; cumulative PCM/checkpoints
+verify the later section. Assisted progression is not campaign completion.
+The explicit gear-good unknown-CD condition and IPL-entry sandbox remain visible.
 
-Use fresh private output directories and preserve older qualified artifacts.
-Reuse immutable inputs/dependencies, stop owned processes and retain reproducible
-receipts. Do not use a workbench or per-batch storage accounting workflow, and do
-not delete unrelated files.
+## Authored checks and historical workflows
 
-Stage only explicit authored files, review `git diff --cached`, then run
-`git diff --cached --check` and `python scripts/audit_public.py` before pushing.
-Never publish media, game-generated source/captures/PCM, saves, private paths,
-receipts or chat coordination. The audit is a focused check, not a complete
-legal or secret scanner. Unvisited code and new progression need fresh bounded
-execution evidence; current audio/coverage checks are not campaign completion.
+Run the consumer tests and the unchanged pinned shared checker after relevant
+builds. The fresh embedded desktop build has 30 shared suites and 316 Python
+tests without skips. The consumer has 283 passing tests. The clean default
+configuration intentionally skips eight desktop cases. A fresh ABI 15-only
+checkout may also skip optional historical c5 capture integration cases; the
+owner's qualified checkout retains that pin and reports zero skips. Keep actual
+skip counts separate from device evidence.
+
+The older ABI 13 raw/filter/native-window workflows and finite qualifiers remain
+unchanged in the source history. Use their corresponding source/toolchain epoch:
+[retained development procedure](https://github.com/rages4calm/ys3recomp/blob/f7ad744bbdff792453360fd9d5eb7c97f7201326/docs/DEVELOPMENT.md).
+The managed capture helper intentionally accepts only its reviewed ABI 13
+contract. A new ABI 15 capture session needs a separate contract review; this
+migration reuses the unchanged ABI 13 profile and creates no fresh retail capture.
+
+## Preservation, cleanup and publication
+
+Keep original inputs read-only, guest BRAM volatile, qualified executables and
+module source intact. Archive exact bound source epochs before changing them;
+resolve historical paths by original path plus expected digest. Never rebuild a
+past binary and present it as the one that executed. A parser-only validation fix
+can retain actual runtime evidence only with preserved executed source, exact
+single-mode argv equivalence and separate rejection tests.
+
+Reuse immutable dependencies. Remove obsolete unbound compiler intermediates
+only after reviewing exact paths against all qualified hash graphs. Retain small
+replayable receipts and stop owned processes. Do not use a workbench, per-batch
+quota or accounting workflow, and never delete unrelated files. The owner-run
+cleanup command retains its exact plan, containment/reparse/hash/protected-file
+guards and post-checks; automatic tool policy blocked agent deletion, so no
+cleanup completion is claimed.
+
+Stage explicit authored files, review the diff, then run
+`git diff --cached --check` and `python scripts/audit_public.py` before every push.
+Only the three named root CMD entry points are allowed by the publication audit;
+arbitrary CMD files, private inputs, generated game source/captures/PCM, saves,
+absolute owner paths and coordination metadata remain excluded. Freeze runtime
+evidence independently from final docs/launcher/cleanup metadata, then separately
+verify the actual public commit and unchanged evidence after publication.
