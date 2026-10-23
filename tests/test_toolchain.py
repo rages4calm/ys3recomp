@@ -114,6 +114,7 @@ class ToolIdentityTests(unittest.TestCase):
 
     @unittest.skipUnless(shutil.which("cmake") and shutil.which("clang++") and shutil.which("ninja"), "CMake, Clang and Ninja required for synthetic build guard check")
     def test_build_guard_rechecks_source_without_recompiling_unchanged_outputs(self):
+        self.header.write_text("inline constexpr unsigned abi_version = 13;\n", encoding="utf-8")
         (self.root / "CMakeLists.txt").write_text(
             "cmake_minimum_required(VERSION 3.20)\n"
             "project(authored_tool_fixture LANGUAGES CXX)\n"
@@ -152,7 +153,7 @@ class ToolIdentityTests(unittest.TestCase):
 class ManifestTests(unittest.TestCase):
     def test_published_identity_and_budget(self):
         manifest = json.loads((ROOT / "toolchain.json").read_text(encoding="utf-8"))
-        self.assertEqual(manifest["tool"]["runtime_abi"], 12)
+        self.assertEqual(manifest["tool"]["runtime_abi"], 13)
         self.assertEqual(manifest["disposable_output_budget_bytes"], 1073741824)
         for item in manifest["inputs"].values():
             self.assertRegex(item["sha256"], r"^[0-9a-f]{64}$")

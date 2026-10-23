@@ -75,7 +75,8 @@ class ReplayValidationTests(unittest.TestCase):
             validate_route(route)
 
     def test_child_file_output_is_rejected(self):
-        for flag in ("--frame-out", "--window-capture", "--wall-seconds"):
+        for flag in ("--frame-out", "--window-capture", "--wall-seconds", "--audio-out",
+                     "--audio-frames", "--audio-output"):
             route = route_fixture()
             route["initial_command"] += [flag, "output"]
             with self.assertRaises(ValueError):
@@ -83,6 +84,26 @@ class ReplayValidationTests(unittest.TestCase):
 
 
 class StatusComparisonTests(unittest.TestCase):
+    def test_audio_extension_requires_explicit_mode_and_validation(self):
+        from tests.test_audio_qualification import pcm
+        expected = route_fixture()["last_status"]
+        actual = copy.deepcopy(expected)
+        actual["host"]["audio_output"] = pcm()
+        with self.assertRaises(RuntimeError):
+            compare_status(expected, actual)
+        compare_status(expected, actual, audio_mode="on")
+        actual["host"]["audio_output"]["discarded_frames"] = 1
+        with self.assertRaises(ValueError):
+            compare_status(expected, actual, audio_mode="on")
+
+    def test_audio_projection_preserves_all_other_guest_fields(self):
+        from tests.test_audio_qualification import pcm
+        expected = route_fixture()["last_status"]
+        actual = copy.deepcopy(expected)
+        actual["host"].update(audio_output=pcm(), unknown_diagnostic=1)
+        with self.assertRaisesRegex(RuntimeError, "unknown_diagnostic"):
+            compare_status(expected, actual, audio_mode="on")
+
     def test_request_metadata_does_not_affect_guest_state(self):
         expected = route_fixture()["last_status"]
         actual = copy.deepcopy(expected)

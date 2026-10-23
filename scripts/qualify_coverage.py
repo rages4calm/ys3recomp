@@ -70,13 +70,19 @@ def permit_capture_addition(baseline, candidate, path, additions):
 
 
 def qualify(baseline, candidate, reference_run, baseline_run, candidate_run,
-            min_native_fraction=0.5, min_native_gain=1, allow_baseline_tier_change=False):
+            min_native_fraction=0.5, min_native_gain=1, allow_baseline_tier_change=False,
+            require_unchanged_tiers=False):
     baseline_run = unwrap_execution(baseline_run, baseline.get("binary_sha256"))
     candidate_run = unwrap_execution(candidate_run, candidate.get("binary_sha256"))
     if not math.isfinite(min_native_fraction) or not 0 <= min_native_fraction <= 1:
         raise ValueError("minimum native fraction must be finite and in 0..1")
-    if type(min_native_gain) is not int or min_native_gain < 1:
+    if type(min_native_gain) is not int or min_native_gain < (0 if require_unchanged_tiers else 1):
         raise ValueError("minimum native gain must be a positive integer")
+    if require_unchanged_tiers:
+        for field in TIER_FIELDS:
+            count(baseline_run, field, "baseline_runner")
+            count(candidate_run, field, "candidate_runner")
+            assert_exact(baseline_run[field], candidate_run[field], "unchanged_tiers." + field)
     for label, receipt in (("baseline", baseline), ("candidate", candidate)):
         if receipt.get("passed") is not True or type(receipt.get("exit_code")) is not int or receipt["exit_code"] != 0:
             raise ValueError(f"{label}: requires a passed, clean-exit replay receipt")

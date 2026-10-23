@@ -20,12 +20,13 @@ def main():
     for name in ('tool-root', 'inputs', 'module', 'out'):
         parser.add_argument('--'+name, required=True, type=Path)
     parser.add_argument('--expected-revision', help='explicit clean development tool commit')
+    parser.add_argument('--audio', choices=('on', 'off'), help='explicit shared runtime PCM setting')
     args = parser.parse_args()
     tool = args.tool_root.resolve(strict=True)
     verification = [sys.executable, str(ROOT/'scripts/verify_tool.py'), '--tool-root', str(tool)]
     if args.expected_revision:
         verification += ['--expected-revision', args.expected_revision]
-    json.loads(subprocess.check_output(verification, text=True))
+    verified = json.loads(subprocess.check_output(verification, text=True))
     env = dict(os.environ, PYTHONPATH=str(tool), PYTHONDONTWRITEBYTECODE='1')
     identity = json.loads(subprocess.check_output([sys.executable, '-m', 'pcerecomp.project',
                           'identity', str(tool)], env=env, text=True))
@@ -45,7 +46,8 @@ def main():
         return [f'[{name}]', f'path = {quote(path.as_posix())}', f'sha256 = {quote(digest)}', '']
     lines = ['schema = 1', 'name = "ys3-native"', '', '[tool]',
              f'path = {quote(tool.as_posix())}', f'revision = {quote(identity["revision"])}',
-             f'source_sha256 = {quote(identity["source_sha256"])}', 'runtime_abi = 12', '']
+             f'source_sha256 = {quote(identity["source_sha256"])}',
+             f'runtime_abi = {verified["runtime_abi"]}', '']
     lines += asset('module.source', module, sha(module))
     lines += asset('module.manifest', manifest, sha(manifest))
     manifest_config = json.loads((ROOT/'toolchain.json').read_text())
@@ -55,7 +57,10 @@ def main():
     region = 'japan' if json.loads((Path(inputs['evidence_root'])/'.local/boss-check/attempt8/run.json').read_text())['joypad']['japanese'] else 'usa'
     lines += ['[runtime]', 'tier = "hybrid"', 'video = "continuous"',
               'cd_unknown_status = "gear-good"', 'joypad = 2', f'region = {quote(region)}',
-              'multitap = "off"', '', '[limits]', f'steps = {int(command[5])}',
+              'multitap = "off"']
+    if args.audio is not None:
+        lines += [f'audio = {quote(args.audio)}']
+    lines += ['', '[limits]', f'steps = {int(command[5])}',
               f'ticks = {int(command[6])}', 'wall_seconds = 600', '']
     for flag, value in inputs['inputs'].items():
         lines += asset(flag[2:].replace('-', '_'), value['path'], value['sha256'])

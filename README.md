@@ -18,7 +18,7 @@ diagnostics still match; total retired work is unchanged. This route includes
 journaled assistance and ends at a first-boss encounter, without a victory or
 campaign-completion claim.
 
-The current tool pin is `639e377e0d17318f7034b2c661cada609d84ed48`, ABI **12**.
+The current tool pin is `9be8686554e1c6037411944da695a194d9c0ac2d`, ABI **13**.
 The initial qualified `33fe46d4274584da5ba55b419a240f248df4158d` baseline is
 retained in [toolchain.json](toolchain.json). See [status](docs/STATUS.md) for
 the evidence and limits.
@@ -28,15 +28,15 @@ the evidence and limits.
 Requires Python 3.11+, CMake 3.20+, a C++20 compiler, Ninja and Git.
 
 ```sh
-git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-next
-git -C .deps/pcenginerecomp-next checkout --detach 639e377e0d17318f7034b2c661cada609d84ed48
+git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-audio
+git -C .deps/pcenginerecomp-audio checkout --detach 9be8686554e1c6037411944da695a194d9c0ac2d
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++
 cmake --build build --parallel 4
 ctest --test-dir build --output-on-failure
 ```
 
 If the toolchain omits `ctest`, run
-`python .deps/pcenginerecomp-next/scripts/check.py --build build/upstream` and
+`python .deps/pcenginerecomp-audio/scripts/check.py --build build/upstream` and
 `python -m unittest discover -s tests -v` instead.
 
 The default host has no game module and uses interpreted execution. Authored
@@ -46,7 +46,7 @@ rejects the wrong commit, dirty tracked source, hidden index flags or the wrong
 ABI. The current source digest is also checked through the upstream consumer
 API; clone with LF source bytes as shown. An intentional development override
 must name the exact clean commit. Private native builds additionally use the
-shared descriptor/build/run contract to pin module, inputs and executable.
+shared descriptor/build/verify contract to pin module, inputs and executable.
 
 ## Private game development
 
@@ -58,8 +58,13 @@ developer who already has that evidence; see [development](docs/DEVELOPMENT.md).
 The current route uses an explicit reference-emulator `gear-good` response for
 an unknown CD command. That condition does not implement the unknown operation
 or establish hardware correctness. Initial formatted blank BRAM is read-only;
-guest SAVE/LOAD stays within one process. Host save persistence, decoded/mixed
-audio, authentic console reset and campaign completion remain unfinished.
+guest SAVE/LOAD stays within one process. ABI 13 adds digital PSG, ADPCM and
+CDDA mixing, bounded WAV capture and optional SDL playback. The retained route
+is checked with audio disabled and enabled; native work and guest images remain
+exact. Digital PCM reproducibility and device-stream acceptance have separate
+evidence; independent full-mix and analog correctness remain unqualified.
+Host save persistence, authentic console reset and campaign completion remain
+unfinished.
 
 Game configuration, overlay discovery, native coverage, enhancements, launcher
 and extended gameplay checks belong here. Shared CPU/device semantics, media,
