@@ -2,9 +2,9 @@
   "schema": 1,
   "tool": {
     "repository": "https://github.com/rages4calm/pcenginerecomp",
-    "revision": "cca01ca746cbee224f9050bb4064779f1800d093",
-    "source_sha256": "cedf5f31116a20d7dd5eacdec8eeb156d67a962ef22f9c40316e9dd87f5dcfec",
-    "checkout": ".deps/pcenginerecomp-packaged",
+    "revision": "df7e16d465b1618e936d2750bdbe3259b56996a9",
+    "source_sha256": "f2615f6278c030542fdef56e1709e6891f6e349662b2869a3a11f606a0431caf",
+    "checkout": ".deps/pcenginerecomp-accuracy",
     "runtime_abi": 13,
     "source_policy": "Exact clean intended commit; current pin also uses the shared consumer API's exact source digest. Development overrides must explicitly supply the intended revision."
   },
@@ -77,7 +77,6 @@
     "bram": "Read-only initial seed; guest writes are volatile and process-local; cross-process save persistence is unimplemented.",
     "progression": "Assisted boss encounter is separate from ordinary-input qualification and campaign completion."
   },
-  "disposable_output_budget_bytes": 1073741824,
   "previous_native_milestone": {
     "selected_original_code_identities": 2048,
     "mpr_contexts": 9,
@@ -141,19 +140,19 @@
     "checkpoint_status_comparisons": 25,
     "memory_edit_transactions": 709,
     "pcm": {
-      "enabled": true,
-      "sample_rate": 44100,
-      "channels": 2,
-      "frames": 69095406,
-      "psg_nonzero": 27644755,
-      "adpcm_nonzero": 4030681,
-      "cdda_nonzero": 49762727,
-      "mixed_nonzero": 65958163,
       "peak": 13000,
       "pcm_hash": 7177686580420813080,
-      "discarded_frames": 0,
+      "sample_rate": 44100,
+      "mixed_nonzero": 65958163,
+      "wav_truncated": true,
+      "enabled": true,
       "wav_frames": 1323000,
-      "wav_truncated": true
+      "frames": 69095406,
+      "adpcm_nonzero": 4030681,
+      "discarded_frames": 0,
+      "psg_nonzero": 27644755,
+      "cdda_nonzero": 49762727,
+      "channels": 2
     },
     "bounded_wav_frames": 1323000,
     "wav_matches_shared_reference": true,
@@ -166,7 +165,8 @@
       "sdk_path_required": false,
       "scope": "Separate packaged paced bootstrap; live loaded DLL bound to adjacent package without SDK PATH. Device acceptance/consumption, not listening or analog parity."
     },
-    "scope": "Same assisted retained route; shared PCM reproducibility. Independent raw CDDA/PSG-phase scope inherited from upstream, not whole-route mixed-audio or hardware parity."
+    "scope": "Same assisted retained route; new shared PCM reproduced exactly. Independent raw PSG/CDDA and ADPCM state scopes do not establish mixed/resampled/filtered/analog audio or hardware parity.",
+    "audio_off_bridge_scope": "Retained initial ABI-12-to-13 route qualification; no fresh full audio-off replay for the source-only PSG correction."
   },
   "previous_packaging_baseline": {
     "project_commit": "42dc1db967df033b8afed83753ee8d39f831d4fd",
@@ -237,7 +237,144 @@
     "same_core_pcm_and_bounded_wav_as_headless": true,
     "unthrottled_presentation_muted": true,
     "paced_tcp_input_guest_window_capture_pause_resume_passed": true,
-    "consumer_tests": 104,
+    "consumer_tests": 116,
     "scope": "Windows x64 packaged SDL startup and same assisted route; source audio reproducibility plus separate paced device acceptance, not listening or independent hardware/campaign parity."
+  },
+  "previous_audio_accuracy_baseline": {
+    "project_commit": "97a013b515a0b11d3a831ff1305d86f0607ddcf2",
+    "tool": {
+      "repository": "https://github.com/rages4calm/pcenginerecomp",
+      "revision": "cca01ca746cbee224f9050bb4064779f1800d093",
+      "source_sha256": "cedf5f31116a20d7dd5eacdec8eeb156d67a962ef22f9c40316e9dd87f5dcfec",
+      "checkout": ".deps/pcenginerecomp-packaged",
+      "runtime_abi": 13,
+      "source_policy": "Exact clean intended commit; current pin also uses the shared consumer API's exact source digest. Development overrides must explicitly supply the intended revision."
+    },
+    "audio_milestone": {
+      "runtime_abi": 13,
+      "descriptor_schema": 1,
+      "regenerated_capture_runtime_abi": 12,
+      "translation_units": 207,
+      "generated_headers": 1,
+      "audio_off_bridge_passed": true,
+      "audio_on_route_passed": true,
+      "unchanged_native_tier_counts": true,
+      "frames": 93735,
+      "image_checkpoints": 25,
+      "checkpoint_status_comparisons": 25,
+      "memory_edit_transactions": 709,
+      "pcm": {
+        "enabled": true,
+        "sample_rate": 44100,
+        "channels": 2,
+        "frames": 69095406,
+        "psg_nonzero": 27644755,
+        "adpcm_nonzero": 4030681,
+        "cdda_nonzero": 49762727,
+        "mixed_nonzero": 65958163,
+        "peak": 13000,
+        "pcm_hash": 7177686580420813080,
+        "discarded_frames": 0,
+        "wav_frames": 1323000,
+        "wav_truncated": true
+      },
+      "bounded_wav_frames": 1323000,
+      "wav_matches_shared_reference": true,
+      "headless_device_opened": false,
+      "optional_sdl_stream": {
+        "frames": 710526,
+        "device_open": true,
+        "fast_forward_muted": false,
+        "runtime_discarded_frames": 0,
+        "sdk_path_required": false,
+        "scope": "Separate packaged paced bootstrap; live loaded DLL bound to adjacent package without SDK PATH. Device acceptance/consumption, not listening or analog parity."
+      },
+      "scope": "Same assisted retained route; shared PCM reproducibility. Independent raw CDDA/PSG-phase scope inherited from upstream, not whole-route mixed-audio or hardware parity."
+    },
+    "packaging_milestone": {
+      "runtime_abi": 13,
+      "descriptor_schema": 1,
+      "generated_module_reused_with_all_hashes_verified": true,
+      "translation_units": 207,
+      "generated_headers": 1,
+      "frames": 93735,
+      "image_checkpoints": 25,
+      "checkpoint_states": 25,
+      "memory_edit_transactions": 709,
+      "sdk_path_required": false,
+      "isolated_empty_working_directory": true,
+      "loaded_sdl_path_and_hash_match_adjacent_package": true,
+      "packaged_dll_sha256": "4659d5a1e240e7d58fb92808f84afeb53395818cec62385d4796b72977a7d859",
+      "unchanged_guest_state_and_native_tiers": true,
+      "same_core_pcm_and_bounded_wav_as_headless": true,
+      "unthrottled_presentation_muted": true,
+      "paced_tcp_input_guest_window_capture_pause_resume_passed": true,
+      "consumer_tests": 104,
+      "scope": "Windows x64 packaged SDL startup and same assisted route; source audio reproducibility plus separate paced device acceptance, not listening or independent hardware/campaign parity."
+    }
+  },
+  "audio_accuracy_milestone": {
+    "ordinary_psg_waveform_mean_periods": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "runtime_abi_unchanged": 13,
+    "descriptor_schema_unchanged": 1,
+    "generated_artifacts_reused_with_all_hashes_verified": 208,
+    "frames": 93735,
+    "checkpoint_images": 25,
+    "checkpoint_states": 25,
+    "unchanged_guest_state_source_identity_and_native_tiers": true,
+    "permitted_pcm_changes": [],
+    "old_pcm": {
+      "peak": 13000,
+      "pcm_hash": 7177686580420813080,
+      "sample_rate": 44100,
+      "mixed_nonzero": 65958163,
+      "wav_truncated": true,
+      "enabled": true,
+      "wav_frames": 1323000,
+      "frames": 69095406,
+      "adpcm_nonzero": 4030681,
+      "discarded_frames": 0,
+      "psg_nonzero": 27644755,
+      "cdda_nonzero": 49762727,
+      "channels": 2
+    },
+    "new_pcm": {
+      "peak": 13000,
+      "pcm_hash": 7177686580420813080,
+      "sample_rate": 44100,
+      "mixed_nonzero": 65958163,
+      "wav_truncated": true,
+      "enabled": true,
+      "wav_frames": 1323000,
+      "frames": 69095406,
+      "adpcm_nonzero": 4030681,
+      "discarded_frames": 0,
+      "psg_nonzero": 27644755,
+      "cdda_nonzero": 49762727,
+      "channels": 2
+    },
+    "new_bounded_wav_matches_shared_reference": true,
+    "independent_reference": {
+      "name": "Geargrafx",
+      "version": "1.8.4",
+      "psg_cases": 3262,
+      "psg_stereo_pairs": 49258,
+      "psg_waveform_indices": 6,
+      "psg_noise_seeds": 2,
+      "adpcm_rates": 16,
+      "adpcm_main_checkpoints": 108,
+      "adpcm_continuous_control_checkpoints": 5,
+      "adpcm_limit": "Finite-stop callback residue differs by two ticks; exact stopped phase equality is not claimed. Other instruction-edge control alignments remain unqualified."
+    },
+    "consumer_tests": 116,
+    "upstream_suites": 27,
+    "upstream_python_tests": 273,
+    "scope": "Raw digital profile and bounded assisted route. No full mixed, filtered, resampled, analog, retail-oracle, hardware or campaign completion claim."
   }
 }
