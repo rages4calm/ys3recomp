@@ -7,13 +7,18 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import subprocess
 import sys
 import tomllib
 import uuid
 
-from package_checks import packaged_environment, verify_package
-from replay_route import validate_project_binding
+if __package__:
+    from .package_checks import packaged_environment, verify_package
+    from .replay_route import validate_project_binding
+else:
+    from package_checks import packaged_environment, verify_package
+    from replay_route import validate_project_binding
 
 ROOT = Path(__file__).resolve().parents[1]
 SELECTION = ROOT / '.local/launcher/selection.json'
@@ -47,6 +52,34 @@ def shared(arguments, environment):
                                               text=True, timeout=120))
 
 
+def receipt_contract(receipt):
+    """Decode the two retained receipt layouts without changing their bindings."""
+    require(receipt.get('passed') is True and type(receipt.get('exit_code')) is int
+            and receipt['exit_code'] == 0, 'Selected route did not pass with a clean exit')
+    if receipt.get('kind') == 'ys3-reset-extension-replay':
+        require(receipt.get('child_stopped') is True and receipt.get('natural_quit') is True,
+                'Selected extension did not close naturally')
+        def artifact(name):
+            entry = receipt[name]
+            require(type(entry) is dict and set(entry) == {'path', 'sha256'},
+                    'Unexpected extension artifact binding: ' + name)
+            require(type(entry['path']) is str and bool(entry['path']) and '\0' not in entry['path'],
+                    'Invalid extension artifact path: ' + name)
+            require(type(entry['sha256']) is str and re.fullmatch('[0-9a-f]{64}', entry['sha256']),
+                    'Invalid extension artifact digest: ' + name)
+            return entry['path'], entry['sha256']
+        descriptor, built = artifact('project_descriptor'), artifact('project_build_receipt')
+        require(receipt['tool_identity_before'] == receipt['tool_identity_after'],
+                'Qualified extension toolkit changed')
+        require(receipt['package_before'] == receipt['package_after'],
+                'Qualified extension package changed')
+        return descriptor, built, receipt['tool_identity_after'], receipt['package_after']
+    return ((receipt['project_descriptor'], receipt['project_descriptor_sha256']),
+            (str(Path(receipt['project_build']) / 'build-receipt.json'),
+             receipt['project_build_receipt_sha256']),
+            receipt['tool_identity'], receipt['desktop_contract']['package_after'])
+
+
 def prepare():
     config = load(SELECTION)
     require(config.get('schema') == 1, 'Unknown private launcher selection schema')
@@ -58,15 +91,12 @@ def prepare():
     graph = qualification['evidence_sha256']
     receipt_path = bound(**config['replay_receipt'], graph=graph)
     receipt = load(receipt_path)
-    require(receipt.get('passed') is True and type(receipt.get('exit_code')) is int
-            and receipt['exit_code'] == 0, 'Selected route did not pass with a clean exit')
-    descriptor = bound(receipt['project_descriptor'], receipt['project_descriptor_sha256'], graph)
-    built_path = bound(Path(receipt['project_build']) / 'build-receipt.json',
-                       receipt['project_build_receipt_sha256'], graph)
+    descriptor_binding, build_binding, selected, qualified_package = receipt_contract(receipt)
+    descriptor = bound(*descriptor_binding, graph=graph)
+    built_path = bound(*build_binding, graph=graph)
     built = load(built_path)
     config = tomllib.loads(descriptor.read_text(encoding='utf-8'))
     tool = (descriptor.parent / config['tool']['path']).resolve(strict=True)
-    selected = receipt['tool_identity']
     source = selected['shared_source_identity']
     checked = shared([sys.executable, str(ROOT / 'scripts/verify_tool.py'), '--tool-root', str(tool),
         '--expected-revision', selected['revision'], '--expected-abi', str(selected['runtime_abi']),
@@ -76,7 +106,7 @@ def prepare():
     verification = shared([sys.executable, '-m', 'pcerecomp.project', 'verify', str(descriptor)], environment)
     validate_project_binding(built, verification)
     package = verify_package(built, built['binary'])
-    require(package == receipt['desktop_contract']['package_after'], 'Qualified desktop package changed')
+    require(package == qualified_package, 'Qualified desktop package changed')
     for name, digest in package['output_files'].items():
         bound(Path(package['binary']).parent / name, digest, graph)
     code = ('import json,sys; from pathlib import Path; from pcerecomp.project import verify,command_for; '

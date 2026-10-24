@@ -1,6 +1,50 @@
 # Consumer status - 23 October 2026
 
-## Current ABI 17 System Card reset milestone
+## Current reset extension and separate ABI17 toolkit migration
+
+The current primary evidence extends the unassisted reset route from 14,680 to
+19,126 frames, then repeats the exact closed recipe through a separately built
+host on the newer shared media pin. Native gain and runtime migration are two
+different comparisons.
+
+| Evidence | Result | Scope |
+|---|---|---|
+| Final host tool | `95fe3e07e63b0869de8c9d7b70681b5c557abf01`, ABI17 / schema1, exact 57-file source | Read-only mixed BIN/CUE support; retail input remains CHD |
+| Native generation | Original ABI17 `bb3b695b782352bdfacd8db877f2a843bd1242f1`, exact 54-file source | Expanded module reused without re-emission for newer host |
+| Expanded module | 52,677 eligible identities / 79 MPR contexts; 257 translation units + one header | 121 new eligible identities; multi-run ABI17 source union |
+| Same-route native gain | Old: 564,265,156 native + 20,674 interpreted; expanded: 564,285,827 native + three interpreted | Exactly 20,671 retirements move to native; total work unchanged |
+| Block work | 63,473 native blocks / zero interpreted; three guard misses | Retained separately from instruction retirement counts |
+| Closed route | 19,126 frames / 4,446-frame suffix / 61 requests | Sixty ordinary advances, then finish; no RAM edits or assists |
+| Raw observations | 227 states / 71 images / 357 action rows | 105 opening states, fresh boundary, 60 input-intent statuses, 60 settled advances and terminal state |
+| Opening preservation | First 114 actions / 105 states / ten images / frame14,680 exact | Original action115 quit is explicitly deferred; 432,875,213 native / zero interpreted at boundary |
+| Input diagnostics | Immediate extension statuses validate static guest/source/CD/PCM and prior/requested mask within each run | Settled advancing input is strict; original witnessed prefix54/strict55 remains the only prefix variant |
+| Settled equality | All CPU/MPR/fetch/source-generation/CD/PCM observations exact apart from native tiers | No broad IRQ or timing projection; raw diagnostic differences retained |
+| Audio | Raw44100 Gear: 14,098,470 PCM frames; hash `4270652294026774565`; 13,022,805 mixed-nonzero | Zero runtime loss; strict matching 441,000-frame boot-silent WAV; later audio cumulative |
+| Separate toolkit migration | Full19,126 route on new host retains native counts and byte-identical full code capture | Same expanded module, same CHD, no re-emission or extra native-gain claim |
+| Migration raw input-status difference | Exactly state204: old prior mask1, new released mask0 | Transport-only observation; all other guest fields static within each run, every settled state exact |
+| Additional CHD gate | 5,526 frames / 20 states / two images / 177 sectors | 152,630,394 native / zero interpreted; 4,073,415 PCM / 3,307,345 mixed-nonzero; two `$FF` responses |
+| Source exclusions | Four variants / 984 profile hits across the original six-byte span | Actual new route: three excluded identities / three interpreted hits |
+| Visible progression | Arrival/town traversal/shop entry; Healing Herb100G, gold1000→900, HP020 | No inventory/equipping, campaign or boss-victory claim |
+| CUE scope | Synthetic checks and six independent Gear fixtures; finite authored native/TCP cases | No retail CUE run, conversion, extraction, whole-game native-only, hardware or listening claim |
+| Tests | 452 consumer tests; 35 shared suites / 420 Python tests; zero skips | Exact clean source verification and separate native/migration qualifications |
+| Historical evidence | Prior14,680 reset qualification, paced silent-menu check and95,686 IPL route retained | Older IPL route was not repeated; inherited709 assists/723bytes stay historical |
+| Cleanup | Existing reviewed plans remain owner-run; no deletion | Readiness must be revalidated after final metadata/source changes; root CMD unchanged |
+
+All current reset discovery/replay inputs are ordinary controls. Immediate
+button ACK/status is intent visibility, not an applied-input barrier; the next
+advance must expose the exact requested mask. The original failed idle explorer
+and its immutable source remain retained. The corrected explorer uses read-only
+status keepalives, stored separately from deterministic route states/actions.
+
+The new host has full unthrottled audio/capture evidence, without a new paced
+device test. Guest BRAM remains implicit blank-unformatted at reset and volatile
+within the process. `gear-good`, unsupported unknown/REQUEST SENSE semantics,
+hybrid fallback for unseen code, host-save persistence and campaign completion
+remain visible limits. The records below retain their original historical scope.
+
+---
+
+## Historical first-reset milestone (original ABI17 toolkit)
 
 The current primary route starts at the System Card reset vector with clean US
 BIOS, deterministic zeroed initial CPU/MPR state and implicit blank-unformatted,
