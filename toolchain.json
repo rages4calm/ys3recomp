@@ -2,10 +2,10 @@
   "schema": 1,
   "tool": {
     "repository": "https://github.com/rages4calm/pcenginerecomp",
-    "revision": "95fe3e07e63b0869de8c9d7b70681b5c557abf01",
-    "source_sha256": "60c37d9fb5b1a1318cd2509c7ac1cc45c03a9939116d04e836aa67e0e03c4ffb",
-    "checkout": ".deps/pcenginerecomp-abi17-cue",
-    "runtime_abi": 17,
+    "revision": "6935e46ff8aefacf8ea058a385198299c4e2cd5c",
+    "source_sha256": "9414ed390229b8d411f2f79f6c22080d68fef7b09aef2bf99db0046751e34cf0",
+    "checkout": ".deps/pcenginerecomp-abi18",
+    "runtime_abi": 18,
     "source_policy": "Exact clean intended commit; current pin also uses the shared consumer API's exact source digest. Development overrides must explicitly supply the intended revision."
   },
   "initial_qualification": {
@@ -1593,8 +1593,9 @@
     "historical_abi16_native_extension": "native_extension_milestone",
     "historical_ipl_route": "qualified_private_route",
     "retained_abi17_ipl": "retained_ipl17_regression",
-    "current_toolkit_migration": "abi17_media_migration_milestone",
-    "historical_first_reset": "reset_milestone"
+    "current_toolkit_migration": "abi18_migration_milestone",
+    "historical_first_reset": "reset_milestone",
+    "retained_abi17_media_migration": "abi17_media_migration_milestone"
   },
   "reset_milestone": {
     "qualified": true,
@@ -1850,5 +1851,59 @@
     },
     "new_paced_device_check": false,
     "scope": "Separate same-module host migration; synthetic/finite reference CUE support is not retail CUE or hardware/listening qualification."
+  },
+  "abi18_migration_milestone": {
+    "qualified": true,
+    "runtime_abi": 18,
+    "descriptor_schema": 1,
+    "tool": {
+      "revision": "6935e46ff8aefacf8ea058a385198299c4e2cd5c",
+      "source_sha256": "9414ed390229b8d411f2f79f6c22080d68fef7b09aef2bf99db0046751e34cf0",
+      "source_files": 60,
+      "runtime_abi": 18
+    },
+    "source_capture_runtime_abi": 17,
+    "capture_relabelled": false,
+    "module_reemitted": true,
+    "eligible_source_identities": 52677,
+    "mpr_contexts": 79,
+    "translation_units": 257,
+    "generated_headers": 1,
+    "abi_assertion_only_artifacts": 257,
+    "frames": 5526,
+    "states": 20,
+    "images": 2,
+    "native_steps": 152630394,
+    "interpreted_steps": 0,
+    "native_block_steps": 6440,
+    "interpreted_block_steps": 0,
+    "guard_misses": 0,
+    "executed_source_identities": 11679,
+    "sectors": 177,
+    "unknown_ff_responses": 2,
+    "memory_edit_transactions": 0,
+    "all_guest_source_generations_cd_images_pcm_and_retired_hits_exact": true,
+    "pcm": {
+      "profile": "raw",
+      "sample_rate": 44100,
+      "timing": "gear",
+      "frames": 4073415,
+      "pcm_hash": 16759294491241433069,
+      "mixed_nonzero": 3307345,
+      "discarded_frames": 0,
+      "wav_frames": 441000,
+      "wav_boot_silent": true
+    },
+    "shared_suites": 36,
+    "shared_python_tests": 468,
+    "shared_python_skips": 0,
+    "hu_card_host_tests": 26,
+    "independent_gear_cases": 56,
+    "independent_gear_observations": 23200,
+    "full_19126_route_repeated_on_abi18": false,
+    "new_native_coverage_claim": false,
+    "new_paced_device_check": false,
+    "cleanup_executed": false,
+    "scope": "Finite System Card super/CHD reset regression after ABI18 re-emission. Longer native route remains retained ABI17 evidence; no new campaign, retail HuCard, listening, hardware or persistence qualification."
   }
 }

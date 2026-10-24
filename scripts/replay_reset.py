@@ -1,4 +1,4 @@
-"""Bounded ABI17 System Card reset replay with private raw evidence and capture.
+"""Bounded System Card reset replay with private raw evidence and capture.
 
 This is consumer TCP supervision around the official verify/build/command APIs.
 Inputs are immutable, BRAM starts unformatted and remains process-local, and
@@ -29,6 +29,9 @@ ROOT = Path(__file__).resolve().parents[1]
 TOOL = {'revision':'bb3b695b782352bdfacd8db877f2a843bd1242f1',
         'source_sha256':'5d3551481d1245d8cec9011d0f390ad0b464720c2d1f37a0fce601d0888e7a0d',
         'source_files':54,'runtime_abi':17}
+ABI18_TOOL = {'revision':'6935e46ff8aefacf8ea058a385198299c4e2cd5c',
+              'source_sha256':'9414ed390229b8d411f2f79f6c22080d68fef7b09aef2bf99db0046751e34cf0',
+              'source_files':60,'runtime_abi':18}
 SELECTED = {'profile':'raw','sample_rate':44100,'timing':'gear'}
 WAV_LIMIT = 441000
 U64 = (1 << 64)-1
@@ -286,12 +289,13 @@ def confirm_input_status_bridge(annotation, reference_state, actual_state, *, st
     return result
 
 
-def validate_capture_contract(value, runner, capture=None):
+def validate_capture_contract(value, runner, capture=None, *, expected_abi=17):
+    require(type(expected_abi)is int and expected_abi in (17,18),'Reviewed capture ABI required')
     keys(value,{'schema','runtime_abi','path','sha256','bytes','start_frame','capacity','start_proof',
                 'capture','observations','window'},'reset capture contract')
-    require(value['schema']==1 and type(value['schema'])is int and value['runtime_abi']==17
+    require(value['schema']==1 and type(value['schema'])is int and value['runtime_abi']==expected_abi
             and type(value['runtime_abi'])is int and value['start_frame']==0
-            and type(value['start_frame'])is int and value['capacity']==65536,'Actual17 reset0 capture required')
+            and type(value['start_frame'])is int and value['capacity']==65536,'Actual selected-ABI reset0 capture required')
     require(isinstance(value['path'],str) and value['path'] and isinstance(value['sha256'],str)
             and re.fullmatch('[0-9a-f]{64}',value['sha256']),'Capture artifact binding required')
     integer(value['bytes'],32*1024*1024,1,'Capture byte extent')
@@ -316,9 +320,9 @@ def validate_capture_contract(value, runner, capture=None):
                 and row['expected']==row['observed']==cpu['instruction_bytes'][i], 'Initial source byte readback')
     header=value['capture'];keys(header,{'schema','runtime_abi','capacity','dropped_instructions',
                                        'unreadable_instructions','retired_instructions','complete'},'capture header')
-    require(header['schema']==1 and header['runtime_abi']==17 and header['capacity']==65536
+    require(header['schema']==1 and header['runtime_abi']==expected_abi and header['capacity']==65536
             and header['complete']is True and header['dropped_instructions']==header['unreadable_instructions']==0,
-            'Complete lossless65536 actualABI17 capture')
+            'Complete lossless65536 actual selected-ABI capture')
     for name in set(header)-{'complete'}:integer(header[name])
     total=integer(runner['native_steps'])+integer(runner['interpreter_steps'])
     require(header['retired_instructions']==total and total>0,'Whole reset execution retirement conservation')
@@ -339,7 +343,7 @@ def validate_capture_contract(value, runner, capture=None):
     return copy.deepcopy(value)
 
 
-def normalize_runner(value, *, desktop, project_tiers=False, capture_contract=None):
+def normalize_runner(value, *, desktop, project_tiers=False, capture_contract=None, expected_abi=17):
     require(type(desktop)is bool and type(project_tiers)is bool,'Explicit runner modes')
     keys(value,RUNNER_FIELDS|({'desktop'}if desktop else set())
          |({'code_capture_window'}if capture_contract is not None else set()),'runner')
@@ -379,7 +383,7 @@ def normalize_runner(value, *, desktop, project_tiers=False, capture_contract=No
                                         'unmapped_key_down','last_unmapped_scancode')),'No unrecorded physical input')
     else:require('desktop'not in result,'Headless reference has no desktop telemetry')
     if capture_contract is not None:
-        validate_capture_contract(capture_contract,value);result.pop('code_capture_window')
+        validate_capture_contract(capture_contract,value,expected_abi=expected_abi);result.pop('code_capture_window')
     else:require('code_capture_window'not in result,'Unvalidated capture window')
     if project_tiers:
         for field in TIER_FIELDS:result.pop(field)
@@ -455,7 +459,7 @@ def replay_actions(client, plan, on_action, on_state, on_image):
 
 
 def load_shared(tool):
-    name='_ys3_verified_reset17'
+    name='_ys3_verified_reset_'+hashlib.sha256(str(tool.resolve()).encode()).hexdigest()[:16]
     package=tool/'pcerecomp'
     if name in sys.modules:
         require(Path(sys.modules[name].__file__).resolve()==package/'__init__.py','Shared package collision')
@@ -468,15 +472,24 @@ def load_shared(tool):
     return project,capture,client
 
 
-def verify_tool(tool):
+def verify_tool(tool, expected_tool=None):
+    selected=TOOL if expected_tool is None else reviewed_tool(expected_tool)
     command=[sys.executable,'-B',str(ROOT/'scripts/verify_tool.py'),'--tool-root',str(tool),
-             '--expected-revision',TOOL['revision'],'--expected-abi','17',
-             '--expected-source-sha256',TOOL['source_sha256']]
+             '--expected-revision',selected['revision'],'--expected-abi',str(selected['runtime_abi']),
+             '--expected-source-sha256',selected['source_sha256']]
     value=json.loads(subprocess.check_output(command,cwd=ROOT,text=True,timeout=60))
-    require(value['revision']==TOOL['revision'] and value['runtime_abi']==17
+    require(value['revision']==selected['revision'] and value['runtime_abi']==selected['runtime_abi']
             and value['tracked_source_clean']is True and value['shared_source_identity']==
-            {k:TOOL[k]for k in ('revision','source_sha256','source_files')},'Exact clean reviewed ABI17 tool required')
+            {k:selected[k]for k in ('revision','source_sha256','source_files')},'Exact clean reviewed tool required')
     return value
+
+
+def reviewed_tool(value):
+    """Select the finite ABI18 migration identity; never infer trust from an ABI."""
+    keys(value,ABI18_TOOL,'reviewed migration tool')
+    require(all(type(value[k])is type(v) and value[k]==v for k,v in ABI18_TOOL.items()),
+            'Exact reviewed ABI18 tool required')
+    return copy.deepcopy(value)
 
 
 def reset_command(project_api, project, binary, out):
@@ -532,7 +545,7 @@ def protected_inputs(document):
     return result
 
 
-def run(args):
+def run(args, *, tool_contract=None):
     from .prepare_reset_descriptor import validate_reset_descriptor,validate_boot_metadata
     tool=args.tool_root.resolve(strict=True);descriptor=args.descriptor.resolve(strict=True)
     build=args.build_dir.resolve(strict=True);out=args.out.resolve()
@@ -569,9 +582,13 @@ def run(args):
             require(all(decoded[k]==image[k]for k in ('width','height','rgb_sha256')),'Decoded menu PNG identity')
         plan=boot_prefix_plan(reference)
     else:require(args.prefix_images_sha256 is None,'Prefix image SHA requires explicit reference')
-    before=verify_tool(tool);project_api,capture_api,client_api=load_shared(tool)
+    selected_tool=TOOL if tool_contract is None else reviewed_tool(tool_contract)
+    runtime_abi=selected_tool['runtime_abi']
+    before=verify_tool(tool)if tool_contract is None else verify_tool(tool,selected_tool)
+    project_api,capture_api,client_api=load_shared(tool)
     config=__import__('tomllib').loads(descriptor.read_text(encoding='utf-8'))
     selected=validate_reset_descriptor(config,descriptor)
+    require(selected['tool']['runtime_abi']==runtime_abi,'Descriptor and execution ABI differ')
     require(Path(selected['tool']['path']).resolve()==tool,'Descriptor tool root differs')
     verified=project_api.verify(descriptor);built=strict_json(build/'build-receipt.json')
     shared_binding=project_api._binding(verified)
@@ -708,7 +725,8 @@ def run(args):
             require(receipt['desktop_contract']['package_after']==package,'Package changed')
             receipt['desktop_contract']['working_directory_finally_empty']=not any(cwd.iterdir())
             require(receipt['desktop_contract']['working_directory_finally_empty'],'Private cwd acquired files')
-            receipt['tool_identity_after']=verify_tool(tool);require(receipt['tool_identity_after']==before,'Tool changed')
+            receipt['tool_identity_after']=(verify_tool(tool)if tool_contract is None else verify_tool(tool,selected_tool))
+            require(receipt['tool_identity_after']==before,'Tool changed')
             for value in reference_files.values():check_binding(value)
             if bridge_binding is not None:check_binding(bridge_binding);check_binding(bridge['audit'])
             if prefix_binding is not None:
@@ -717,12 +735,12 @@ def run(args):
             if problem is None:
                 runner=strict_json(out/'run.stdout');receipt['runner']=runner
                 raw,capture_hash=capture_api.load_capture(out/'observed-code.json')
-                contract={'schema':1,'runtime_abi':17,'path':str(out/'observed-code.json'),'sha256':capture_hash,
+                contract={'schema':1,'runtime_abi':runtime_abi,'path':str(out/'observed-code.json'),'sha256':capture_hash,
                           'bytes':(out/'observed-code.json').stat().st_size,'start_frame':0,'capacity':65536,
                           'start_proof':receipt['start_proof'],'capture':{k:v for k,v in raw.items()if k!='observations'},
                           'observations':len(raw['observations']),'window':runner['code_capture_window']}
-                receipt['capture_contract']=validate_capture_contract(contract,runner,raw)
-                actual=normalize_runner(runner,desktop=True,project_tiers=True,capture_contract=contract)
+                receipt['capture_contract']=validate_capture_contract(contract,runner,raw,expected_abi=runtime_abi)
+                actual=normalize_runner(runner,desktop=True,project_tiers=True,capture_contract=contract,expected_abi=runtime_abi)
                 require(all(runner[k]==receipt['final_status']['host'][k]for k in ('native_steps','interpreter_steps')),
                         'Final paused runner tier counts differ')
                 require(runner['ticks']==receipt['final_status']['ticks']
@@ -766,11 +784,14 @@ def argument_parser():
     parser.add_argument('--input-status-bridge-sha256',action=Once)
     parser.add_argument('--wall-seconds',type=int,default=600,action=Once)
     parser.add_argument('--require-zero-native',action='store_true')
+    parser.add_argument('--reviewed-tool',choices=('abi18',),action=Once,
+                        help='Select the exact reviewed ABI18 migration identity; default retains historical ABI17')
     return parser
 
 
 def main():
-    result=run(argument_parser().parse_args())
+    args=argument_parser().parse_args()
+    result=run(args,tool_contract=ABI18_TOOL if args.reviewed_tool=='abi18'else None)
     print(json.dumps({'passed':result['passed'],'frames':result['states'][-1]['frame'],
                       'states':len(result['states']),'actions':len(result['actions']),
                       'images':len(result['images']),'native':result['runner']['native_steps'],

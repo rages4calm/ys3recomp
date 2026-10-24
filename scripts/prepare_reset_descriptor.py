@@ -21,6 +21,10 @@ import tomllib
 ROOT = Path(__file__).resolve().parents[1]
 USA_BIOS_SHA256 = 'cadac2725711b3c442bcf237b02f5a5210c96f17625c35fa58f009e0ed39e4db'
 ABI = 17
+SUPPORTED_MODULE_ABIS = (17, 18)
+ABI18_TOOL = {'revision': '6935e46ff8aefacf8ea058a385198299c4e2cd5c',
+              'source_sha256': '9414ed390229b8d411f2f79f6c22080d68fef7b09aef2bf99db0046751e34cf0',
+              'source_files': 60}
 WAV_FRAME_LIMIT = 441000
 SELECTION = {'profile': 'raw', 'sample_rate': 44100, 'timing': 'gear'}
 RUNTIME = {'tier': 'hybrid', 'video': 'continuous', 'cd_unknown_status': 'gear-good',
@@ -52,6 +56,24 @@ def _digest(value, label, length=64):
     if type(value) is not str or re.fullmatch('[0-9a-f]{' + str(length) + '}', value) is None:
         raise ValueError(label + ' requires an exact lowercase digest')
     return value
+
+
+def _module_abi(value):
+    if type(value) is not int or value not in SUPPORTED_MODULE_ABIS:
+        raise ValueError('reset module/tool ABI must be explicitly 17 or 18')
+    return value
+
+
+def _tool_contract(abi, revision, source_sha256, source_files=None):
+    """Keep historical17 selection; ABI18 requires its exact reviewed source."""
+    _module_abi(abi)
+    if abi == 18:
+        if (revision != ABI18_TOOL['revision'] or source_sha256 != ABI18_TOOL['source_sha256']
+                or (source_files is not None and (type(source_files) is not int
+                    or source_files != ABI18_TOOL['source_files']))):
+            raise ValueError('ABI18 requires the exact reviewed reset toolkit source')
+    elif revision == ABI18_TOOL['revision'] or source_sha256 == ABI18_TOOL['source_sha256']:
+        raise ValueError('reviewed ABI18 source cannot be declared as ABI17')
 
 
 def _file(base, entry, label):
@@ -98,7 +120,8 @@ def validate_boot_metadata(value, bios_path):
     return copy.deepcopy(expected)
 
 
-def _module_files(base, config):
+def _module_files(base, config, module_abi=ABI):
+    _module_abi(module_abi)
     _keys(config, {'source', 'manifest'}, 'module')
     files = {'module_source': _file(base, config['source'], 'module.source'),
              'module_manifest': _file(base, config['manifest'], 'module.manifest')}
@@ -108,13 +131,16 @@ def _module_files(base, config):
     if not isinstance(manifest, dict):
         raise ValueError('module manifest must be an object')
     _integer(manifest.get('schema'), 1, 1, 'module schema')
-    _integer(manifest.get('runtime_abi'), ABI, ABI, 'module ABI')
+    _integer(manifest.get('runtime_abi'), module_abi, module_abi, 'module ABI')
     _integer(manifest.get('native_instructions_emitted'), 1, 1000000, 'positive module identities')
     if 'capture_runtime_abi' in manifest:
-        _integer(manifest['capture_runtime_abi'], ABI, ABI, 'reset source capture ABI')
+        # Capture labels describe the original observation, never the emitter.
+        _integer(manifest['capture_runtime_abi'], ABI, module_abi, 'reset source capture ABI')
     # The official API also supports a legacy one-source authored CFG module.
     if not {'translation_units', 'generated_headers'} & manifest.keys():
         return files
+    if module_abi == 18 and 'capture_runtime_abi' not in manifest:
+        raise ValueError('ABI18 observed module requires its original source capture ABI')
     seen, units = set(), []
     folder = files['module_manifest'].parent
     for field, suffix, minimum, maximum, prefix in (
@@ -172,11 +198,12 @@ def validate_reset_descriptor(config, descriptor_path):
     _keys(tool, {'path', 'revision', 'source_sha256', 'runtime_abi'}, 'tool')
     _digest(tool['revision'], 'tool revision', 40)
     _digest(tool['source_sha256'], 'tool source')
-    _integer(tool['runtime_abi'], ABI, ABI, 'tool ABI')
+    module_abi = _module_abi(tool['runtime_abi'])
+    _tool_contract(module_abi, tool['revision'], tool['source_sha256'])
     if type(tool['path']) is not str or not tool['path'] or '\0' in tool['path']:
         raise ValueError('tool requires an explicit path')
     base = Path(descriptor_path).resolve().parent
-    files = _module_files(base, config['module'])
+    files = _module_files(base, config['module'], module_abi)
     for name in ASSETS: files[name] = _file(base, config[name], name)
     boot = expected_boot_metadata(files['bios'])
     return {'files': {name: str(path) for name, path in files.items()},
@@ -250,14 +277,18 @@ def load_reference(launch_path, receipt_path):
             'bindings': {str(launch_path): sha256(launch_path), str(receipt_path): sha256(receipt_path)}}
 
 
-def descriptor_text(reference, module, tool_root, identity):
+def descriptor_text(reference, module, tool_root, identity, *, module_abi=ABI):
+    """Declare the emitted ABI explicitly; retain source-capture metadata as-is."""
+    _tool_contract(module_abi, identity['revision'], identity['source_sha256'], identity.get('source_files'))
+    if module_abi == 18:
+        _integer(identity.get('source_files'), ABI18_TOOL['source_files'], ABI18_TOOL['source_files'], 'ABI18 source files')
     module = Path(module).resolve(strict=True)
     manifest = module.with_name('module.json')
     quote = lambda value: json.dumps(str(value), ensure_ascii=True)
     lines = ['schema = 1', 'name = "ys3-reset-native"', '', '[tool]',
              'path = ' + quote(Path(tool_root).resolve().as_posix()),
              'revision = ' + quote(identity['revision']), 'source_sha256 = ' + quote(identity['source_sha256']),
-             'runtime_abi = 17', '', '[boot]', 'mode = "system-card-reset"', 'profile = "super"', '']
+             'runtime_abi = ' + str(module_abi), '', '[boot]', 'mode = "system-card-reset"', 'profile = "super"', '']
     entries = {'module.source': {'path': str(module), 'sha256': sha256(module)},
                'module.manifest': {'path': str(manifest), 'sha256': sha256(manifest)}, **reference['assets']}
     for name, item in entries.items():
@@ -269,14 +300,18 @@ def descriptor_text(reference, module, tool_root, identity):
 
 def verify_identity(tool_root, revision, abi, source_sha256):
     _digest(revision, 'expected revision', 40); _digest(source_sha256, 'expected source')
-    _integer(abi, ABI, ABI, 'expected ABI')
+    _tool_contract(abi, revision, source_sha256)
     command = [sys.executable, str(ROOT / 'scripts/verify_tool.py'), '--tool-root', str(tool_root),
                '--expected-revision', revision, '--expected-abi', str(abi), '--expected-source-sha256', source_sha256]
     result = json.loads(subprocess.check_output(command, text=True, timeout=60))
     source = result['shared_source_identity']
-    if (result['revision'] != revision or result['runtime_abi'] != ABI or result['tracked_source_clean'] is not True
+    if (result['revision'] != revision or type(result['runtime_abi']) is not int or result['runtime_abi'] != abi
+            or result['tracked_source_clean'] is not True
             or source['revision'] != revision or source['source_sha256'] != source_sha256):
         raise ValueError('verified toolkit identity differs from explicit reset pin')
+    if abi == 18:
+        _integer(source.get('source_files'), ABI18_TOOL['source_files'], ABI18_TOOL['source_files'], 'ABI18 source files')
+        _tool_contract(abi, source['revision'], source['source_sha256'], source['source_files'])
     return result
 
 
@@ -287,7 +322,7 @@ def prepare(tool_root, reference_launch, reference_receipt, module, out, *, expe
     tool_root = Path(tool_root).resolve(strict=True)
     identity = verify_identity(tool_root, expected_revision, expected_abi, expected_source_sha256)
     reference = load_reference(reference_launch, reference_receipt)
-    text = descriptor_text(reference, module, tool_root, identity['shared_source_identity'])
+    text = descriptor_text(reference, module, tool_root, identity['shared_source_identity'], module_abi=expected_abi)
     checked = validate_reset_descriptor(tomllib.loads(text), out)
     with out.open('x', encoding='utf-8', newline='\n') as stream: stream.write(text)
     env = dict(os.environ, PYTHONPATH=str(tool_root), PYTHONSAFEPATH='1', PYTHONDONTWRITEBYTECODE='1')
@@ -321,7 +356,7 @@ def build_parser():
     for name in ('tool-root', 'reference-launch', 'reference-receipt', 'module', 'out'):
         parser.add_argument('--' + name, type=Path, required=True, action=_Once)
     parser.add_argument('--expected-revision', action=_Once)
-    parser.add_argument('--expected-abi', type=int, choices=(ABI,), action=_Once)
+    parser.add_argument('--expected-abi', type=int, choices=SUPPORTED_MODULE_ABIS, action=_Once)
     parser.add_argument('--expected-source-sha256', action=_Once)
     return parser
 
@@ -330,11 +365,11 @@ def main():
     parser = build_parser(); args = parser.parse_args()
     supplied = (args.expected_revision, args.expected_abi, args.expected_source_sha256)
     if any(value is not None for value in supplied) and not all(value is not None for value in supplied):
-        parser.error('development reset verification requires revision, ABI17 and source SHA256 together')
+        parser.error('development reset verification requires revision, ABI17 or ABI18 and source SHA256 together')
     if all(value is None for value in supplied):
         pin = json.loads((ROOT / 'toolchain.json').read_text(encoding='utf-8'))['tool']
-        if pin['runtime_abi'] != ABI:
-            parser.error('public pin is not ABI17; supply all three explicit verified identity arguments')
+        if type(pin['runtime_abi']) is not int or pin['runtime_abi'] not in SUPPORTED_MODULE_ABIS:
+            parser.error('public pin is not a supported reset ABI; supply all three explicit verified identity arguments')
         supplied = pin['revision'], pin['runtime_abi'], pin['source_sha256']
     result = prepare(args.tool_root, args.reference_launch, args.reference_receipt, args.module, args.out,
                      expected_revision=supplied[0], expected_abi=supplied[1], expected_source_sha256=supplied[2])

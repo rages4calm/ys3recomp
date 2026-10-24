@@ -18,6 +18,7 @@ SPEC = importlib.util.spec_from_file_location('prepare_reset_descriptor', ROOT /
 RESET = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(RESET)
 TOOL = Path(os.environ.get('PCE_RESET_TEST_TOOL', ROOT / '.deps/pcenginerecomp-abi17'))
+TOOL18 = Path(os.environ.get('PCE_RESET_TEST_TOOL18', ROOT / '.deps/pcenginerecomp-abi18'))
 REVISION = 'bb3b695b782352bdfacd8db877f2a843bd1242f1'
 SOURCE_SHA = '5d3551481d1245d8cec9011d0f390ad0b464720c2d1f37a0fce601d0888e7a0d'
 
@@ -170,6 +171,110 @@ class ResetDescriptorTests(unittest.TestCase):
     def test_legacy_single_source_authored_baseline_is_bound(self):
         self.manifest.pop('translation_units'); self.manifest.pop('generated_headers'); self.rewrite_manifest()
         self.assertEqual(len(self.validate()['files']), 6)
+
+    def select_abi18(self):
+        self.manifest['runtime_abi'] = 18
+        self.rewrite_manifest()
+        self.config = tomllib.loads(RESET.descriptor_text(self.reference, self.module, TOOL18,
+                                                       RESET.ABI18_TOOL, module_abi=18))
+
+    def test_explicit_emitter18_keeps_historical_capture17_bytes_and_hash(self):
+        self.select_abi18()
+        before = self.manifest_path.read_bytes(); digest = RESET.sha256(self.manifest_path)
+        result = self.validate()
+        self.assertEqual(result['tool']['runtime_abi'], 18)
+        self.assertEqual(self.manifest['runtime_abi'], 18)
+        self.assertEqual(self.manifest['capture_runtime_abi'], 17)
+        self.assertEqual(self.manifest_path.read_bytes(), before)
+        self.assertEqual(result['identities']['module_manifest'], digest)
+        self.assertEqual(result['boot'], RESET.expected_boot_metadata(self.card))
+
+    def test_abi17_default_and_capture_policy_remain_unchanged(self):
+        text = RESET.descriptor_text(self.reference, self.module, TOOL, self.identity)
+        self.assertEqual(tomllib.loads(text)['tool']['runtime_abi'], 17)
+        self.assertEqual(RESET.ABI, 17)
+        self.manifest['capture_runtime_abi'] = 18; self.rewrite_manifest()
+        with self.assertRaisesRegex(ValueError, 'capture ABI'): self.validate()
+
+    def test_tool_module18_must_agree_and_capture18_is_fresh_not_relabelled(self):
+        self.select_abi18(); self.manifest['capture_runtime_abi'] = 18; self.rewrite_manifest()
+        before = self.manifest_path.read_bytes(); self.assertEqual(self.validate()['tool']['runtime_abi'], 18)
+        self.assertEqual(self.manifest_path.read_bytes(), before)
+        for key, value in [('runtime_abi', 17), ('runtime_abi', 18.0), ('capture_runtime_abi', 16),
+                           ('capture_runtime_abi', 19), ('capture_runtime_abi', True)]:
+            self.manifest.update(runtime_abi=18, capture_runtime_abi=17); self.manifest[key] = value; self.rewrite_manifest()
+            with self.subTest(key=key, value=value), self.assertRaises(ValueError): self.validate()
+        self.manifest.update(runtime_abi=18, capture_runtime_abi=17); self.rewrite_manifest()
+        self.config['tool'].update(runtime_abi=17, revision=REVISION, source_sha256=SOURCE_SHA)
+        with self.assertRaisesRegex(ValueError, 'module ABI'): self.validate()
+
+    def test_abi18_requires_reviewed_source_and_explicit_module_selection(self):
+        self.select_abi18()
+        for key, value in [('revision', REVISION), ('source_sha256', SOURCE_SHA), ('runtime_abi', True)]:
+            config = copy.deepcopy(self.config); config['tool'][key] = value
+            with self.subTest(key=key), self.assertRaises(ValueError): self.validate(config)
+        for identity in (self.identity, dict(RESET.ABI18_TOOL, source_files=59),
+                         dict(RESET.ABI18_TOOL, source_files=60.0),
+                         {k:v for k,v in RESET.ABI18_TOOL.items() if k != 'source_files'}):
+            with self.subTest(identity=identity), self.assertRaises(ValueError):
+                RESET.descriptor_text(self.reference, self.module, TOOL18, identity, module_abi=18)
+        with self.assertRaises(ValueError):
+            RESET.descriptor_text(self.reference, self.module, TOOL18, RESET.ABI18_TOOL)
+
+    def test_abi18_generated_capture_provenance_required_but_authored_cfg_remains_valid(self):
+        self.select_abi18(); self.manifest.pop('capture_runtime_abi'); self.rewrite_manifest()
+        with self.assertRaisesRegex(ValueError, 'original source capture ABI'): self.validate()
+        self.manifest.pop('translation_units'); self.manifest.pop('generated_headers'); self.rewrite_manifest()
+        self.assertEqual(len(self.validate()['files']), 6)
+
+    def test_abi18_verification_rejects_wrong_cleanliness_source_count_or_identity(self):
+        good = {'revision': RESET.ABI18_TOOL['revision'], 'runtime_abi': 18, 'tracked_source_clean': True,
+                'shared_source_identity': dict(RESET.ABI18_TOOL)}
+        mutations = (lambda v:v.update(tracked_source_clean=False), lambda v:v.update(runtime_abi=17),
+                     lambda v:v.update(runtime_abi=18.0), lambda v:v['shared_source_identity'].update(source_files=59),
+                     lambda v:v['shared_source_identity'].update(source_files=60.0),
+                     lambda v:v['shared_source_identity'].update(source_sha256=SOURCE_SHA))
+        for mutate in mutations:
+            value = copy.deepcopy(good); mutate(value)
+            with self.subTest(mutate=mutate), mock.patch.object(RESET.subprocess, 'check_output', return_value=json.dumps(value)), self.assertRaises(ValueError):
+                RESET.verify_identity(TOOL18, RESET.ABI18_TOOL['revision'], 18, RESET.ABI18_TOOL['source_sha256'])
+        with mock.patch.object(RESET.subprocess, 'check_output') as verify, self.assertRaises(ValueError):
+            RESET.verify_identity(TOOL18, REVISION, 18, SOURCE_SHA)
+        verify.assert_not_called()
+
+    def test_cli_explicit18_requires_complete_pin_and_omitted_selection_follows_manifest(self):
+        base = ['--tool-root', 'authored', '--reference-launch', 'authored', '--reference-receipt', 'authored',
+                '--module', 'authored', '--out', 'authored']
+        explicit = ['--expected-revision', RESET.ABI18_TOOL['revision'], '--expected-abi', '18',
+                    '--expected-source-sha256', RESET.ABI18_TOOL['source_sha256']]
+        with mock.patch.object(RESET.sys, 'argv', ['prepare', *base, *explicit]), mock.patch.object(RESET, 'prepare', return_value={}) as prepare, contextlib.redirect_stdout(io.StringIO()):
+            RESET.main()
+        self.assertEqual(prepare.call_args.kwargs['expected_abi'], 18)
+        for abi, revision, source in ((17, REVISION, SOURCE_SHA),
+                                     (18, RESET.ABI18_TOOL['revision'], RESET.ABI18_TOOL['source_sha256'])):
+            pin = {'tool': {'runtime_abi': abi, 'revision': revision, 'source_sha256': source}}
+            with self.subTest(manifest_abi=abi), mock.patch.object(RESET.sys, 'argv', ['prepare', *base]), \
+                 mock.patch.object(RESET.json, 'loads', return_value=pin), \
+                 mock.patch.object(RESET, 'prepare', return_value={}) as prepare, contextlib.redirect_stdout(io.StringIO()):
+                RESET.main()
+            self.assertEqual(prepare.call_args.kwargs['expected_abi'], abi)
+        with mock.patch.object(RESET.sys, 'argv', ['prepare', *base, '--expected-abi', '18']), mock.patch.object(RESET, 'prepare') as prepare, contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+            RESET.main()
+        prepare.assert_not_called()
+
+    @unittest.skipUnless((TOOL18 / 'pcerecomp/project.py').is_file(), 'optional frozen ABI18 tool unavailable')
+    def test_actual_abi18_official_loader_accepts17_capture_without_relabel(self):
+        self.select_abi18(); original = self.manifest_path.read_bytes()
+        result = RESET.prepare(TOOL18, self.launch_path, self.receipt_path, self.module, self.out,
+                               expected_revision=RESET.ABI18_TOOL['revision'], expected_abi=18,
+                               expected_source_sha256=RESET.ABI18_TOOL['source_sha256'])
+        self.assertTrue(result['prepared']); self.assertTrue(result['official_verification']['verified'])
+        self.assertEqual(result['tool_identity']['runtime_abi'], 18)
+        self.assertEqual(result['tool_identity']['shared_source_identity']['source_files'], 60)
+        self.assertEqual(result['validation']['tool']['runtime_abi'], 18)
+        self.assertEqual(result['validation']['boot'], RESET.expected_boot_metadata(self.card))
+        self.assertEqual(self.manifest_path.read_bytes(), original)
+        self.assertEqual(json.loads(self.manifest_path.read_bytes())['capture_runtime_abi'], 17)
 
     def test_valid_reference_requires_immutable_paused_blank_boot(self):
         reference = RESET.load_reference(self.launch_path, self.receipt_path)
