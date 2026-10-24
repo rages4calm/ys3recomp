@@ -17,20 +17,20 @@
     "image_checkpoints": 25
   },
   "native_milestone": {
-    "selected_original_code_identities": 44879,
+    "selected_original_code_identities": 44882,
     "mpr_contexts": 57,
-    "native_steps": 2953438406,
+    "native_steps": 2980431691,
     "interpreted_steps": 981,
-    "total_retired": 2953439387,
-    "native_block_steps": 466118,
+    "total_retired": 2980432672,
+    "native_block_steps": 470652,
     "interpreted_block_steps": 0,
-    "frames": 94800,
-    "image_checkpoints": 39,
+    "frames": 95686,
+    "image_checkpoints": 68,
     "memory_edit_transactions": 709,
     "excluded_source_identities": 4,
     "excluded_retired_hits": 981,
     "minimum_native_fraction": 0.999999,
-    "minimum_native_gain": 3000,
+    "minimum_native_gain": 43,
     "execution_supervision": {
       "mode": "Consumer TCP route watchdog with official shared verify/build bindings before and after",
       "wall_seconds": 1800,
@@ -38,16 +38,16 @@
       "descriptor_project_run_wall_seconds": 600,
       "descriptor_wall_applied": false
     },
-    "scope": "Measured against the old module on the same extended94800frame route: normal combat, Game Over and Continue after the assisted prefix. Full six-byte temporary-code span remains interpreted across every mapping/variant. Unvisited overlays, boss victory and campaign completion remain unqualified.",
-    "native_steps_gained_on_same_extended_route": 3461,
+    "scope": "Measured old/new module native gain on the same95686frame Gearfiltered48k route:886normal-input frames beyond the qualified94800prefix, corridor traversal, boss combat and equipment-menu return; no new assists, boss victory or campaign completion. Entire restored six-byte source span remains interpreted across all mappings and variants.",
+    "native_steps_gained_on_same_extended_route": 43,
     "gain_comparison": {
-      "baseline_frames": 94800,
-      "baseline_native_steps": 2953434945,
-      "baseline_interpreted_steps": 4442,
-      "prefix_frames": 93735,
-      "suffix_frames": 1065,
-      "suffix_total_retired": 32946624,
-      "new_native_source_identities": 47,
+      "baseline_frames": 95686,
+      "baseline_native_steps": 2980431648,
+      "baseline_interpreted_steps": 1024,
+      "prefix_frames": 94800,
+      "suffix_frames": 886,
+      "suffix_total_retired": 26993285,
+      "new_native_source_identities": 3,
       "prefix_all_guest_source_native_and_pcm_exact": true
     }
   },
@@ -85,7 +85,7 @@
     "cd_unknown_status": "gear-good",
     "cd_unknown_status_limit": "Explicit reference-emulator GOOD-response compatibility profile; unknown operations remain unimplemented and hardware behavior is unqualified.",
     "bram": "Read-only initial seed; guest writes are volatile and process-local; cross-process save persistence is unimplemented.",
-    "progression": "Inherited assisted first-boss approach, followed by1065normal-input frames through combat, rendered Game Over, Continue and full-health recovery; no new RAM edits, boss victory or campaign completion."
+    "progression": "Inherited assisted first-boss approach, combat/GameOver/Continue prefix through94800, then886normal-input frames through corridor traversal, boss combat and equipment-menu return; HP20/40, boss alive, equipment unchanged, zero new assists and no campaign completion."
   },
   "previous_native_milestone": {
     "selected_original_code_identities": 2048,
@@ -1410,5 +1410,183 @@
       "actual_instruction_aliases": 4
     },
     "scope": "Retained assisted hybrid route, explicit gear-good, IPL-entry sandbox and volatile BRAM. New device semantics independently checked in finite Geargrafx cases. Exact old-field conservation on this route does not certify unvisited code, independent retail mix, listening, analog, hardware, reset, host save persistence or campaign completion."
+  },
+  "previous_native16_source_baseline": {
+    "tool": {
+      "repository": "https://github.com/rages4calm/pcenginerecomp",
+      "revision": "3bd06b5055c92e9f368aab7023098ff8aa796854",
+      "source_sha256": "720e3c1e980e3ad9d03b28cb4b31db696fe3bb27e687c0cf19bc3d0f3f1c9440",
+      "checkout": ".deps/pcenginerecomp-abi16",
+      "runtime_abi": 16,
+      "source_policy": "Exact clean intended commit; current pin also uses the shared consumer API's exact source digest. Development overrides must explicitly supply the intended revision."
+    },
+    "native_milestone": {
+      "selected_original_code_identities": 44879,
+      "mpr_contexts": 57,
+      "native_steps": 2953438406,
+      "interpreted_steps": 981,
+      "total_retired": 2953439387,
+      "native_block_steps": 466118,
+      "interpreted_block_steps": 0,
+      "frames": 94800,
+      "image_checkpoints": 39,
+      "memory_edit_transactions": 709,
+      "excluded_source_identities": 4,
+      "excluded_retired_hits": 981,
+      "minimum_native_fraction": 0.999999,
+      "minimum_native_gain": 3000,
+      "execution_supervision": {
+        "mode": "Consumer TCP route watchdog with official shared verify/build bindings before and after",
+        "wall_seconds": 1800,
+        "shared_project_run_used": false,
+        "descriptor_project_run_wall_seconds": 600,
+        "descriptor_wall_applied": false
+      },
+      "scope": "Measured against the old module on the same extended94800frame route: normal combat, Game Over and Continue after the assisted prefix. Full six-byte temporary-code span remains interpreted across every mapping/variant. Unvisited overlays, boss victory and campaign completion remain unqualified.",
+      "native_steps_gained_on_same_extended_route": 3461,
+      "gain_comparison": {
+        "baseline_frames": 94800,
+        "baseline_native_steps": 2953434945,
+        "baseline_interpreted_steps": 4442,
+        "prefix_frames": 93735,
+        "suffix_frames": 1065,
+        "suffix_total_retired": 32946624,
+        "new_native_source_identities": 47,
+        "prefix_all_guest_source_native_and_pcm_exact": true
+      }
+    },
+    "qualified_private_route": {
+      "loader": "Upstream explicit BIOS-backed contiguous payload loader; not an authentic machine-reset claim.",
+      "execution_tier": "hybrid",
+      "cd_unknown_status": "gear-good",
+      "cd_unknown_status_limit": "Explicit reference-emulator GOOD-response compatibility profile; unknown operations remain unimplemented and hardware behavior is unqualified.",
+      "bram": "Read-only initial seed; guest writes are volatile and process-local; cross-process save persistence is unimplemented.",
+      "progression": "Inherited assisted first-boss approach, followed by1065normal-input frames through combat, rendered Game Over, Continue and full-health recovery; no new RAM edits, boss victory or campaign completion."
+    },
+    "scope": "Retained qualified94800frame ABI16 source module before the three-identity native extension; full three-mode/headless proof remains abi16_compatibility_milestone."
+  },
+  "native_extension_milestone": {
+    "runtime_abi": 16,
+    "descriptor_schema": 1,
+    "runtime_migration": false,
+    "audio_selection": {
+      "profile": "filtered",
+      "sample_rate": 48000,
+      "timing": "gear"
+    },
+    "prefix_frames": 94800,
+    "prefix_images": 39,
+    "frames": 95686,
+    "normal_input_frames_added": 886,
+    "images": 68,
+    "endpoint_states": 3,
+    "actual_extended_replays_completed": 2,
+    "eligible_source_identities": 44882,
+    "new_source_identities": 3,
+    "mpr_contexts": 57,
+    "translation_units": 208,
+    "generated_headers": 1,
+    "generated_source_artifacts": 209,
+    "fresh_official_desktop_builds": 1,
+    "official_build_steps": 234,
+    "excluded_source_identities": 4,
+    "excluded_profile_hits": 981,
+    "inherited_assist_transactions": 709,
+    "inherited_changed_bytes": 723,
+    "new_assist_transactions": 0,
+    "unknown_cd": {
+      "opcode": "FF",
+      "attempts": 54,
+      "accepted_reference_responses": 54,
+      "unknown_operations_implemented": false
+    },
+    "progression": {
+      "health": 20,
+      "max_health": 40,
+      "boss_alive": true,
+      "equipment_changed": false,
+      "boss_victory": false,
+      "campaign_completed": false,
+      "scope": "Corridor traversal, boss combat and equipment-menu return after inherited assisted progression."
+    },
+    "paced_new_package": {
+      "passed": true,
+      "scope": "Separate bounded startup and real-device acceptance; no extended-gameplay or listening qualification.",
+      "output_frames": 773361,
+      "source_frames": 710526,
+      "runtime_discarded_frames": 0,
+      "host_dropped_frames": 2481,
+      "final_queue_frames": 0,
+      "peak_queue_frames": 1518,
+      "device_rate": 48000,
+      "device_channels": 2,
+      "device_format": 33056,
+      "pause_resume_input_capture_binding_passed": true,
+      "protected_originals": 7
+    },
+    "qualification_contract": {
+      "kind": "ys3-native16-profile-provenance",
+      "file_roles": [
+        "prefix_receipt",
+        "prefix_qualification",
+        "old_profile",
+        "new_profile",
+        "old_selection",
+        "new_selection",
+        "merge_manifest",
+        "merge_receipt"
+      ],
+      "fresh_output_required_after_path_correction": true,
+      "failed_outputs_preserved": true,
+      "qualified": true
+    },
+    "shared_suites": 33,
+    "shared_python_tests": 328,
+    "shared_python_skips": 0,
+    "shared_build_reused": true,
+    "fresh_shared_build": false,
+    "cleanup": {
+      "root_cmd_changed": false,
+      "old_plan_approx_mib": 119,
+      "newer_private_plan_approx_mib": 63,
+      "owner_run_only": true,
+      "executed": false
+    },
+    "qualified": true,
+    "qualification_contract_version": 1,
+    "native_steps": 2980431691,
+    "interpreted_steps": 981,
+    "native_block_steps": 470652,
+    "interpreted_block_steps": 0,
+    "native_steps_gained": 43,
+    "suffix_native_steps_gained": 43,
+    "suffix_total_retired": 26993285,
+    "suffix_capture_observations": 10800,
+    "retained39_prefix_exact": true,
+    "all68_images_and_guest_source_cd_exact_except_measured_tiers": true,
+    "exact_observation_identities_and_retired_hits": true,
+    "pcm_and_bounded_wav_exact": true,
+    "source_profile_is_single_execution_proof": false,
+    "consumer_tests": 339,
+    "consumer_skips": 0,
+    "scope": "Qualified same-profile old/new native-source gain on the same95686frame default-Gear filtered48k route. Retained ABI16 compatibility matrix and headless references remain historical; this source extension adds no runtime migration or new independent retail/hardware qualification.",
+    "pcm": {
+      "output_frames": 76771220,
+      "source_frames": 70533559,
+      "pcm_hash": 3837543589595640322,
+      "raw_pcm_hash": 15217400529352030934,
+      "runtime_discarded_frames": 0
+    },
+    "limits": [
+      "Explicit gear-good compatibility condition; unknown operations and REQUEST SENSE remain unimplemented.",
+      "Inherited assisted progression; no new assists, boss victory or campaign completion.",
+      "Real-device paced startup is separate from full unthrottled/muted gameplay; no listening, analog, hardware, authentic reset or host-save persistence claim."
+    ]
+  },
+  "milestone_roles": {
+    "current_native": "native_milestone",
+    "current_native_extension": "native_extension_milestone",
+    "historical_abi13_native_audio": "native_audio_expansion_milestone",
+    "historical_abi16_migration": "abi16_compatibility_milestone"
   }
 }
