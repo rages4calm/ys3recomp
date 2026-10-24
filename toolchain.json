@@ -2,9 +2,9 @@
   "schema": 1,
   "tool": {
     "repository": "https://github.com/rages4calm/pcenginerecomp",
-    "revision": "bb3b695b782352bdfacd8db877f2a843bd1242f1",
-    "source_sha256": "5d3551481d1245d8cec9011d0f390ad0b464720c2d1f37a0fce601d0888e7a0d",
-    "checkout": ".deps/pcenginerecomp-abi17",
+    "revision": "95fe3e07e63b0869de8c9d7b70681b5c557abf01",
+    "source_sha256": "60c37d9fb5b1a1318cd2509c7ac1cc45c03a9939116d04e836aa67e0e03c4ffb",
+    "checkout": ".deps/pcenginerecomp-abi17-cue",
     "runtime_abi": 17,
     "source_policy": "Exact clean intended commit; current pin also uses the shared consumer API's exact source digest. Development overrides must explicitly supply the intended revision."
   },
@@ -1584,15 +1584,17 @@
     ]
   },
   "milestone_roles": {
-    "current_native": "reset_milestone",
-    "current_native_extension": "reset_milestone",
+    "current_native": "reset_extension_milestone",
+    "current_native_extension": "reset_extension_milestone",
     "historical_abi13_native_audio": "native_audio_expansion_milestone",
     "historical_abi16_migration": "abi16_compatibility_milestone",
-    "current_route": "reset_milestone",
+    "current_route": "reset_extension_milestone",
     "historical_abi16_native": "native_milestone",
     "historical_abi16_native_extension": "native_extension_milestone",
     "historical_ipl_route": "qualified_private_route",
-    "retained_abi17_ipl": "retained_ipl17_regression"
+    "retained_abi17_ipl": "retained_ipl17_regression",
+    "current_toolkit_migration": "abi17_media_migration_milestone",
+    "historical_first_reset": "reset_milestone"
   },
   "reset_milestone": {
     "qualified": true,
@@ -1720,5 +1722,133 @@
     "new_assist_transactions": 0,
     "unknown_ff_responses": 54,
     "scope": "Separate retained IPL-entry route regression; no new assists, boss victory or campaign completion."
+  },
+  "reset_extension_milestone": {
+    "qualified": true,
+    "runtime_abi": 17,
+    "descriptor_schema": 1,
+    "generation_tool": {
+      "revision": "bb3b695b782352bdfacd8db877f2a843bd1242f1",
+      "source_sha256": "5d3551481d1245d8cec9011d0f390ad0b464720c2d1f37a0fce601d0888e7a0d",
+      "source_files": 54,
+      "runtime_abi": 17
+    },
+    "frames": 19126,
+    "prefix_frames": 14680,
+    "suffix_frames": 4446,
+    "requests": 61,
+    "advance_requests": 60,
+    "raw_states": 227,
+    "images": 71,
+    "action_rows": 357,
+    "prefix_actions_executed": 114,
+    "deferred_source_terminal_quit_index": 114,
+    "prefix_native_steps": 432875213,
+    "prefix_interpreted_steps": 0,
+    "memory_edit_transactions": 0,
+    "eligible_source_identities": 52677,
+    "new_eligible_source_identities": 121,
+    "mpr_contexts": 79,
+    "translation_units": 257,
+    "generated_headers": 1,
+    "generated_source_artifacts": 258,
+    "profile_runtime_abis": [
+      17,
+      17
+    ],
+    "profile_is_single_execution": false,
+    "baseline_native_steps": 564265156,
+    "baseline_interpreted_steps": 20674,
+    "native_steps": 564285827,
+    "interpreted_steps": 3,
+    "total_retired": 564285830,
+    "native_steps_gained": 20671,
+    "native_block_steps": 63473,
+    "interpreted_block_steps": 0,
+    "guard_misses": 3,
+    "global_excluded_variants": 4,
+    "global_excluded_profile_hits": 984,
+    "route_excluded_identities": 3,
+    "route_excluded_retired_hits": 3,
+    "settled_guest_source_generations_cd_pcm_exact_except_native_tiers": true,
+    "immediate_input_status_crossrun_raw_parity": false,
+    "input_status_scope": "Exact static within-run prior/requested mask; settled requested input strict; fixed prefix54/55 witness separate.",
+    "pcm": {
+      "profile": "raw",
+      "sample_rate": 44100,
+      "timing": "gear",
+      "frames": 14098470,
+      "pcm_hash": 4270652294026774565,
+      "mixed_nonzero": 13022805,
+      "discarded_frames": 0,
+      "wav_frames": 441000,
+      "wav_first10seconds_boot_silent": true
+    },
+    "progression": {
+      "healing_herb_price": 100,
+      "gold_before": 1000,
+      "gold_after": 900,
+      "visible_hp": "020",
+      "inventory_or_equipping_verified": false,
+      "campaign_completed": false,
+      "scope": "Normal town traversal, shop entry and purchase."
+    },
+    "consumer_tests": 452,
+    "consumer_skips": 0,
+    "new_paced_device_check": false,
+    "scope": "Finite unassisted System Card reset extension; hybrid fallback remains for unseen code; no campaign, listening or hardware claim."
+  },
+  "abi17_media_migration_milestone": {
+    "qualified": true,
+    "runtime_abi": 17,
+    "descriptor_schema": 1,
+    "tool": {
+      "revision": "95fe3e07e63b0869de8c9d7b70681b5c557abf01",
+      "source_sha256": "60c37d9fb5b1a1318cd2509c7ac1cc45c03a9939116d04e836aa67e0e03c4ffb",
+      "checkout": ".deps/pcenginerecomp-abi17-cue",
+      "runtime_abi": 17,
+      "source_files": 57
+    },
+    "module_reemitted": false,
+    "same_expanded_module_reused": true,
+    "frames": 19126,
+    "raw_states": 227,
+    "images": 71,
+    "native_steps": 564285827,
+    "interpreted_steps": 3,
+    "full_capture_byte_identical": true,
+    "same_profile_pcm_wav_exact": true,
+    "all_raw_input_status_snapshots_equal": false,
+    "raw_input_status_differences": [
+      {
+        "state_index": 204,
+        "phase": "extension-input-status",
+        "old_mask": 1,
+        "new_mask": 0,
+        "all_other_guest_fields_static_within_run": true,
+        "settled_states_exact": true
+      }
+    ],
+    "retail_media": "owner CHD",
+    "retail_cue_test_claim": false,
+    "owner_media_converted_or_extracted": false,
+    "read_only_bin_cue_support": true,
+    "independent_gear_cue_fixtures": 6,
+    "shared_suites": 35,
+    "shared_python_tests": 420,
+    "shared_skips": 0,
+    "additional_chd_gate": {
+      "frames": 5526,
+      "states": 20,
+      "images": 2,
+      "sectors": 177,
+      "native_steps": 152630394,
+      "interpreted_steps": 0,
+      "pcm_frames": 4073415,
+      "mixed_nonzero": 3307345,
+      "unknown_ff_responses": 2
+    },
+    "new_paced_device_check": false,
+    "scope": "Separate same-module host migration; synthetic/finite reference CUE support is not retail CUE or hardware/listening qualification."
   }
 }

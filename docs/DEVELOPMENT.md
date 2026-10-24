@@ -5,9 +5,118 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Current reset workflow (ABI 17)
+## Current closed reset-extension workflow
 
-The current clean pin is `bb3b695b782352bdfacd8db877f2a843bd1242f1`, ABI 17,
+The final host pin is `95fe3e07e63b0869de8c9d7b70681b5c557abf01`, ABI17,
+descriptor schema1, with 57-file canonical source SHA256
+`60c37d9fb5b1a1318cd2509c7ac1cc45c03a9939116d04e836aa67e0e03c4ffb`.
+Use `.deps/pcenginerecomp-abi17-cue`, LF source bytes, the official descriptor/
+build/verify APIs, adjacent SDL package hashes, sanitized child PATH and empty
+working directory. Owner inputs remain immutable.
+
+The current retail path still uses the matching owner CHD, TOC, clean US BIOS
+and libchdr. New read-only BIN/CUE support has its own synthetic/independent
+fixture scope; do not relabel the CHD route as a retail CUE test or convert or
+extract owner media. Reset-super retains deterministic initialization and
+implicit blank-unformatted volatile BRAM, without IPL payload, forced PC/MPR,
+input script, seed file or RAM writes. Unknown-CD `gear-good` stays explicit.
+
+These examples name generic private artifacts, not distributed fixtures. Every
+descriptor/build/replay/qualification output must be new.
+
+```powershell
+$tool = (Resolve-Path '.deps/pcenginerecomp-abi17-cue').Path
+$batch = '.local/new-extension-batch'
+$project = (Get-Location).Path
+$env:PYTHONPATH = "$project;$tool"
+$env:PYTHONSAFEPATH = '1'
+$env:PYTHONDONTWRITEBYTECODE = '1'
+python -m scripts.verify_tool --tool-root $tool
+python -m scripts.prepare_reset_descriptor --tool-root $tool --expected-revision 95fe3e07e63b0869de8c9d7b70681b5c557abf01 --expected-abi 17 --expected-source-sha256 60c37d9fb5b1a1318cd2509c7ac1cc45c03a9939116d04e836aa67e0e03c4ffb --reference-launch PRIVATE_RESET_LAUNCH --reference-receipt PRIVATE_RESET_REFERENCE --module PRIVATE_EXPANDED_MODULE --out "$batch/project-expanded.toml"
+python -m pcerecomp.project build "$batch/project-expanded.toml" --build-dir "$batch/build-expanded" --desktop --generator Ninja --cmake-arg=-DCMAKE_CXX_COMPILER=clang++ --cmake-arg=-DSDL3_DIR=SDL3_CMAKE_DIRECTORY
+python -m scripts.replay_reset_extension --tool-root $tool --expected-revision 95fe3e07e63b0869de8c9d7b70681b5c557abf01 --descriptor "$batch/project-expanded.toml" --build-dir "$batch/build-expanded" --baseline-receipt PRIVATE_CLOSED_DISCOVERY --baseline-receipt-sha256 EXACT_BASELINE_SHA256 --out "$batch/replay-expanded" --verify-only
+python -m scripts.replay_reset_extension --tool-root $tool --expected-revision 95fe3e07e63b0869de8c9d7b70681b5c557abf01 --descriptor "$batch/project-expanded.toml" --build-dir "$batch/build-expanded" --baseline-receipt PRIVATE_CLOSED_DISCOVERY --baseline-receipt-sha256 EXACT_BASELINE_SHA256 --out "$batch/replay-expanded"
+```
+
+The original generation pin remains
+`bb3b695b782352bdfacd8db877f2a843bd1242f1` in
+`.deps/pcenginerecomp-abi17`, source
+`5d3551481d1245d8cec9011d0f390ad0b464720c2d1f37a0fce601d0888e7a0d`
+(54files). Native source union/emission and same-route native gain were checked
+there first. CLI reproduction also requires the matching pre-migration consumer
+revision or preserved source epoch as well as that clone: `expand_native.py`
+verifies the current manifest and has no independent old-tool override.
+The later57-file media
+host reused the same module without re-emission; it is a separate full-route
+migration gate with exact counts and byte-identical code capture. The replay
+helper accepts only these two reviewed revision/source/file-count pairs; it
+does not mutate the old reset helper's fixed tool globals.
+
+Bind the closed discovery's actual kind/phase journal directly. Preserve the
+first114 opening actions,105states/10images and fresh14,680-frame boundary;
+defer the old terminal quit until the actual final finish. The current recipe
+has60ordinary advance requests plus finish,227raw states,71images and357action
+rows through19,126 frames. Every request/action/image/state must be present;
+no invented adapter receipt or relabeled replay kind is permitted.
+
+Immediate extension input statuses are raw transport diagnostics. Validate
+within each run that CPU/time/all MPRs/source/generations/CD/PCM and retired
+counts are unchanged from the preceding settled state, except a mask equal to
+the exact prior or requested buttons. After advance1..600, require the exact
+requested mask and frame boundary. Compare all settled checkpoints strictly
+apart from measured native/interpreted redistribution. The original prefix's
+fixed hash-bound state54/action58/frame11,660 witness may retain prior1 or show
+release0, but every other field and actual opening native count stays exact;
+strict advancing state55 confirms release. Retain all raw variants and typed
+annotations; do not mask arbitrary inputs, IRQs or timing fields.
+
+For historical bindings whose public path changed, supply only an explicit
+`--baseline-epochs PRIVATE_EXACT_EPOCH_MAP`: schema1, mappings of original path,
+expected SHA256 and preserved path, each rehashed. Never search for substitutes
+or reconstruct missing evidence. The original baseline and failed attempts stay
+immutable. Interactive lease keepalives belong in separate raw heartbeat logs,
+not deterministic route actions or states.
+
+Capture original source from before the first reset instruction, capacity65,536,
+complete with zero loss/unreadable instructions. Verify initial BIOS vector,
+all CPU/MPR/source bytes, no RAM-write access and exact per-tier/source retired
+hit conservation after natural TCP quit. The new profile combines ABI17 source
+observations from multiple runs:52,677eligible/79MPR contexts,257translation
+units+oneheader,121neweligible identities. Profile composition is not a single
+execution proof. Keep the six-byte historical exclusion across all4variants;
+its984profile hits differ from this route's actual3identities/3interpreted hits.
+
+Same-route native work changes from564,265,156N/20,674I to564,285,827N/3I;
+gain20,671, with63,473native blocks/zero interpreted and3guard misses. Reset
+prefix work remains432,875,213N/0I. Preserve full CPU/MPR/source/CD/PCM/images;
+capture/emission totals alone do not establish execution. Native gain and the
+new shared toolkit migration need separate passing qualifiers before publication.
+
+Raw44100 Gear audio requires source frames equal
+`floor(ticks * 44100 / 21477273)`. The full route has14,098,470PCM frames,
+hash`4270652294026774565`,13,022,805mixed-nonzero and zero runtime loss. Final
+drain and the matching441,000-frame WAV stay strict. The first10guest seconds
+are boot silence; later nonzero audio is cumulative PCM evidence. Full replays
+are unthrottled and SDL-muted. No new paced-device/listening/analog claim follows;
+the prior first-reset silent-menu device test remains historical.
+
+Current regression passes452consumer tests, zero skips; shared checks
+pass35suites/420Python tests, zero skips. Six independent Gear CUE fixtures and
+finite authored native/TCP checks do not prove whole-retail CPU/device timing,
+hardware parity or a native-only complete game. A separate5,526-frame CHD gate
+checks20states/twoimages/177sectors with152,630,394N/0I. The prior95,686-frame
+IPL regression was not repeated here. Unknown operations/REQUEST SENSE,
+cross-process saves and campaign completion remain unfinished. No cleanup ran;
+revalidate owner-run plans after final source/metadata changes.
+
+## Historical first-reset workflow (original ABI17 pin)
+
+The following examples require the matching historical consumer revision and
+frozen original ABI17 pin. In particular, `scripts.replay_reset` is intentionally
+fixed to that original54-file source and does not select the new57-file host.
+The current entry point for closed extension recipes is documented above.
+
+The clean pin for this historical workflow is `bb3b695b782352bdfacd8db877f2a843bd1242f1`, ABI 17,
 schema 1. Its 54-file canonical source digest is
 `5d3551481d1245d8cec9011d0f390ad0b464720c2d1f37a0fce601d0888e7a0d`.
 Clone with LF bytes into `.deps/pcenginerecomp-abi17`. Official verify/build
