@@ -5,7 +5,7 @@ An incremental PC Engine CD consumer of
 *Ys III: Wanderers from Ys* (USA). This is an early hybrid port: unseen code
 still uses the interpreter, and the full campaign remains unfinished.
 
-The current **19,126-frame** reset route adds **4,446 ordinary-input frames**
+The retained **19,126-frame** reset route adds **4,446 ordinary-input frames**
 beyond the verified opening. The expanded module retires **564,285,827 native
 and three interpreted instructions**, moving **20,671 retirements** from the
 interpreter on that same route. Its 121 new eligible source identities bring
@@ -41,21 +41,28 @@ selected inputs, module, runtime and adjacent SDL package; it downloads and
 installs nothing. `python scripts/play_local.py --info` checks readiness without
 opening a game. Cross-process saves are not implemented.
 
-The current toolkit pin is ABI 17 at
-`95fe3e07e63b0869de8c9d7b70681b5c557abf01`. A separate full-route migration
-check reuses the expanded module without re-emission and preserves actual
-native/interpreted counts and the complete code capture byte-for-byte. The new
-shared media support adds read-only BIN/CUE mixed data/audio handling, checked
-with synthetic tests and six independent Gear fixtures. **This retail route
-still uses the owner's CHD**; no retail CUE, conversion or extraction claim is
-made.
+The toolkit pin is now ABI 18 at
+`6935e46ff8aefacf8ea058a385198299c4e2cd5c`. The native module was regenerated
+from the unchanged ABI17 capture; its 258 generated artifacts differ only in
+257 ABI assertions. A fresh **5,526-frame TCP/audio regression** matches all
+20 states, two images and 11,679 executed source identities: **152,630,394 native
+instructions and zero interpreted**, with unchanged CPU/MPR/source generations,
+CD behavior and digital audio. The longer 19,126-frame result above remains
+qualified on the retained ABI17 builds; it was not rerun on ABI18.
 
-Raw 44.1 kHz Gear audio matches 14,098,470 cumulative PCM frames, hash
+The shared toolkit adds explicit base HuCard startup and mapper support. Its
+authored fixtures have separate Geargrafx/native/TCP/PSG checks. **Ys III still
+uses the owner's CHD**; this batch adds no retail HuCard/CUE test or media
+conversion. The earlier full-route ABI17 media migration remains retained.
+
+The retained full-route raw 44.1 kHz Gear audio matches 14,098,470 cumulative PCM frames, hash
 `4270652294026774565`, including 13,022,805 mixed-nonzero frames and zero runtime
 loss. The matching WAV is capped at the first ten guest seconds of silent boot;
 later game audio is verified through cumulative PCM. These full replays are
 unthrottled with muted SDL presentation. No new paced-device or listening test
 is claimed for this package; the earlier silent-menu device check is historical.
+The fresh ABI18 prefix matches 4,073,415 PCM frames, hash
+`16759294491241433069`, with 3,307,345 mixed-nonzero frames and zero runtime loss.
 
 The original six-byte exclusion remains across four profile variants / 984
 profile hits. This route actually executes three excluded identities / three
@@ -75,23 +82,21 @@ analog quality or hardware parity.
 Requires Python 3.11+, CMake 3.20+, a C++20 compiler, Ninja and Git.
 
 ```sh
-git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-abi17-cue
-git -C .deps/pcenginerecomp-abi17-cue checkout --detach 95fe3e07e63b0869de8c9d7b70681b5c557abf01
+git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-abi18
+git -C .deps/pcenginerecomp-abi18 checkout --detach 6935e46ff8aefacf8ea058a385198299c4e2cd5c
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++
 cmake --build build --parallel 4
 ctest --test-dir build --output-on-failure
 ```
 
 If `ctest` is unavailable, run
-`python .deps/pcenginerecomp-abi17-cue/scripts/check.py --build build/upstream`
+`python .deps/pcenginerecomp-abi18/scripts/check.py --build build/upstream`
 and `python -m unittest discover -s tests -v`. The default empty-module host
-uses interpreted execution. Current checks pass **452 consumer tests
-with zero skips**, plus **35 shared suites / 420 Python tests, zero skips**.
-Verification requires the exact clean 57-file source digest and ABI. Native
-source generation for this module used the retained original ABI17 pin; the
-unchanged emitter/module contract was verified separately from host migration.
-CLI reproduction of that generation also requires the matching pre-migration
-consumer revision or preserved source epoch, as well as the old toolkit clone.
+uses interpreted execution. The consumer suite passes **466 tests with zero skips**;
+upstream checks pass **36 shared suites / 468 Python tests, zero skips**.
+Verification requires the exact clean 60-file source digest and ABI. Historical
+captures retain their original ABI labels; fresh ABI18 execution captures are
+checked as ABI18. Emission counts alone establish no runtime coverage.
 
 See [status](docs/STATUS.md), [development](docs/DEVELOPMENT.md) and
 [toolchain.json](toolchain.json) for measured scopes and historical milestones.

@@ -1,6 +1,42 @@
-# Consumer status - 23 October 2026
+# Consumer status - 24 October 2026
 
-## Current reset extension and separate ABI17 toolkit migration
+## ABI18 module regeneration and finite CD regression
+
+The current tool is `6935e46ff8aefacf8ea058a385198299c4e2cd5c`, ABI18/schema1,
+with 60-file canonical source SHA256
+`9414ed390229b8d411f2f79f6c22080d68fef7b09aef2bf99db0046751e34cf0`.
+It adds explicit base HuCard startup/mapping upstream. This consumer protects
+the existing System Card super/CHD path with a finite regression.
+
+The original ABI17 profile is unchanged. Re-emission retains 52,677 eligible
+identities, 79 full MPR contexts and all 258 generated artifacts; only 257 ABI
+assertions differ. The entire six-byte exclusion remains across all four
+profile variants. This regeneration adds no observed native coverage.
+
+A fresh official SDL build passed 5,526 frames through TCP: all 20 states, two
+images, literal input masks and 11,679 executed source identities match the
+closed ABI17 baseline. Results are 152,630,394 native instructions, zero
+interpreted, 6,440 native blocks and zero guard misses. CPU/MPR/physical fetch
+bytes/source generations, CD state, 177 sectors and two explicit `gear-good`
+responses are exact. No mapper diagnostic field is silently projected away.
+
+Raw44100 Gear PCM matches 4,073,415 frames, hash `16759294491241433069`,
+3,307,345 mixed-nonzero frames and zero runtime loss. The matching 441,000-frame
+WAV covers boot silence; later audio is cumulative digital evidence. The host
+ran unthrottled with muted SDL output and quit naturally with exit0. All seven
+original inputs remain unchanged. There were no RAM writes, forced PC/MPR,
+payload, BRAM file, input script or new assists.
+
+The final consumer suite passes 466 tests without skips.
+Upstream separately passed 36 shared suites / 468 Python tests without skips,
+26 HuCard host tests, eight authored ROM sizes / 56 Gear cases / 23,200
+observations, native/interpreted comparisons and two official native TCP/PSG
+hosts. These fixtures do not establish retail HuCard, hardware or listening
+qualification. The retained 19,126-frame result below remains ABI17 evidence;
+it was not repeated on ABI18. Campaign completion and host save persistence
+remain unfinished. No cleanup was executed in this batch.
+
+## Retained reset extension and separate ABI17 toolkit migration
 
 The current primary evidence extends the unassisted reset route from 14,680 to
 19,126 frames, then repeats the exact closed recipe through a separately built
@@ -24,7 +60,7 @@ different comparisons.
 | Migration raw input-status difference | Exactly state204: old prior mask1, new released mask0 | Transport-only observation; all other guest fields static within each run, every settled state exact |
 | Additional CHD gate | 5,526 frames / 20 states / two images / 177 sectors | 152,630,394 native / zero interpreted; 4,073,415 PCM / 3,307,345 mixed-nonzero; two `$FF` responses |
 | Source exclusions | Four variants / 984 profile hits across the original six-byte span | Actual new route: three excluded identities / three interpreted hits |
-| Visible progression | Arrival/town traversal/shop entry; Healing Herb100G, gold1000→900, HP020 | No inventory/equipping, campaign or boss-victory claim |
+| Visible progression | Arrival/town traversal/shop entry; Healing Herb100G, gold1000â†’900, HP020 | No inventory/equipping, campaign or boss-victory claim |
 | CUE scope | Synthetic checks and six independent Gear fixtures; finite authored native/TCP cases | No retail CUE run, conversion, extraction, whole-game native-only, hardware or listening claim |
 | Tests | 452 consumer tests; 35 shared suites / 420 Python tests; zero skips | Exact clean source verification and separate native/migration qualifications |
 | Historical evidence | Prior14,680 reset qualification, paced silent-menu check and95,686 IPL route retained | Older IPL route was not repeated; inherited709 assists/723bytes stay historical |

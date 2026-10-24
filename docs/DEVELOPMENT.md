@@ -5,7 +5,42 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Current closed reset-extension workflow
+## Current ABI18 finite regression
+
+Use the exact clean ABI18 tool `6935e46ff8aefacf8ea058a385198299c4e2cd5c`
+in `.deps/pcenginerecomp-abi18`, schema1, canonical 60-file source SHA256
+`9414ed390229b8d411f2f79f6c22080d68fef7b09aef2bf99db0046751e34cf0`.
+The 52,677-identity module is re-emitted by the upstream emitter from the
+unchanged original ABI17 profile, preserving full PC/MPR/source identity and
+the entire six-byte physical exclusion. Do not relabel historical captures.
+All 258 generated artifacts match the prior module apart from 257 ABI assertions.
+
+`prepare_reset_descriptor` accepts explicit module ABI18 and distinguishes it
+from the original capture ABI17. Its default CLI follows the manifest; explicit
+overrides require the complete revision/ABI/source triple. `replay_reset`
+retains its historical ABI17 default. Select the exact reviewed ABI18 identity
+with `--reviewed-tool abi18`; the selector does not permit arbitrary ABI18 tools.
+Use a fresh official desktop build and private output directory. For the finite
+gate, replay the original reset reference with `--stop-after-frame 5526`,
+the same immutable media and protected-input receipt. This produces a fresh
+lossless capture labelled ABI18, with no RAM write or input assist.
+
+The closed comparison requires exact 20 states, two decoded images, full runner,
+all source hit counts and literal input masks. Expected counts are 152,630,394
+native, zero interpreted, 6,440 native blocks and zero guard misses. Raw44100
+Gear PCM must match 4,073,415 frames/hash16759294491241433069 and the bounded
+441,000-frame boot-silent WAV. Preserve CPU/MPR/source generations and every
+System Card field; there are no new mapper fields to discard. Verify the
+official package, adjacent SDL, empty working directory, all seven originals,
+natural TCP quit0 and stopped owned process before selecting the new launcher.
+
+This is a finite migration check. The longer 19,126-frame native qualification
+and the extension replay helper below retain their ABI17 contracts. Reproducing
+those historical receipts requires their preserved consumer sources and tool
+clones. Do not run that helper against ABI18 or claim a full-route ABI18 replay.
+Shared HuCard/Gear/native/TCP/PSG checks remain separate from this CHD route.
+
+## Retained ABI17 closed reset-extension workflow
 
 The final host pin is `95fe3e07e63b0869de8c9d7b70681b5c557abf01`, ABI17,
 descriptor schema1, with 57-file canonical source SHA256
