@@ -18,6 +18,9 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 U64 = (1 << 64) - 1
+REVIEWED_ABIS = (12, 13, 16)
+ABI16_REVISION = "3bd06b5055c92e9f368aab7023098ff8aa796854"
+ABI16_SOURCE = "720e3c1e980e3ad9d03b28cb4b31db696fe3bb27e687c0cf19bc3d0f3f1c9440"
 MAX_IDENTITIES = 65536
 MAX_MANIFEST_BYTES = 1024 * 1024
 
@@ -76,8 +79,8 @@ def load_capture_api(tool):
 
 def merge_captures(captures, output_runtime_abi, validate_capture):
     """Exact full-MPR/source union; validation is the actual upstream API."""
-    if type(output_runtime_abi) is not int or output_runtime_abi not in (12, 13):
-        raise ValueError('explicit reviewed output capture ABI 12 or 13 required')
+    if type(output_runtime_abi) is not int or output_runtime_abi not in REVIEWED_ABIS:
+        raise ValueError('explicit reviewed output profile ABI 12, 13 or 16 required')
     if not isinstance(captures, list) or not 2 <= len(captures) <= 16:
         raise ValueError('two to sixteen complete input captures required')
     union, epochs = {}, []
@@ -86,7 +89,8 @@ def merge_captures(captures, output_runtime_abi, validate_capture):
     first_keys = set()
     for index, capture in enumerate(captures):
         validate_capture(capture)
-        if type(capture['runtime_abi']) is not int or capture['runtime_abi'] not in (12, 13):
+        if (type(capture['runtime_abi']) is not int or capture['runtime_abi'] not in REVIEWED_ABIS
+                or (capture['runtime_abi'] == 16 and output_runtime_abi != 16)):
             raise ValueError('unreviewed input capture ABI')
         if not capture['complete'] or capture['dropped_instructions'] or capture['unreadable_instructions']:
             raise ValueError('incomplete or lossy captures cannot qualify a native profile union')
@@ -148,7 +152,7 @@ def read_manifest(path):
     exact(manifest, {'schema', 'kind', 'output_runtime_abi', 'inputs'}, 'merge manifest')
     if type(manifest['schema']) is not int or manifest['schema'] != 1 or manifest['kind'] != 'ys3-observation-union':
         raise ValueError('unknown merge manifest schema/kind')
-    if type(manifest['output_runtime_abi']) is not int or manifest['output_runtime_abi'] not in (12, 13):
+    if type(manifest['output_runtime_abi']) is not int or manifest['output_runtime_abi'] not in REVIEWED_ABIS:
         raise ValueError('explicit reviewed output capture ABI required')
     if not isinstance(manifest['inputs'], list) or not 2 <= len(manifest['inputs']) <= 16:
         raise ValueError('two to sixteen capture epochs required')
@@ -204,6 +208,13 @@ def compose(manifest_path, tool_root, output):
         raise ValueError('merge output must be separate from read-only tool and input roots')
     command = [sys.executable, str(ROOT / 'scripts/verify_tool.py'), '--tool-root', str(tool)]
     identity = strict_json(subprocess.check_output(command, text=True))
+    if manifest['output_runtime_abi'] == 16:
+        source = identity.get('shared_source_identity', {})
+        if (identity.get('runtime_abi') != 16 or identity.get('revision') != ABI16_REVISION
+                or identity.get('tracked_source_clean') is not True
+                or source.get('revision') != ABI16_REVISION or source.get('source_sha256') != ABI16_SOURCE
+                or type(source.get('source_files')) is not int or source['source_files'] != 54):
+            raise ValueError('ABI16 profile composition requires exact reviewed clean ABI16 source')
     api = load_capture_api(tool)
     captures = []
     for path, _ in entries:
@@ -226,6 +237,7 @@ def compose(manifest_path, tool_root, output):
                'inputs': [dict(path=str(path), sha256=hashes[path], epoch=epoch, **summary['input_epochs'][index])
                           for index, (path, epoch) in enumerate(entries)],
                'evidence_sha256': {str(path): digest for path, digest in hashes.items()},
+               'profile_format_semantics': 'Output ABI names the composed observation format, not a single execution. Original input runtime ABI and hit tiers remain unchanged in each bound epoch.',
                'provenance_semantics': 'Epoch labels/windows are caller declarations retained verbatim and bound to evidence bytes; this composition does not independently verify their execution meaning.',
                **{key: value for key, value in summary.items() if key != 'input_epochs'}}
     verify_inputs(hashes)

@@ -75,6 +75,58 @@ class MergeObservationTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.merge(inputs)
 
+    def test_abi16_union_retains_original_epochs_and_brk_signature(self):
+        first = capture(abi=13)
+        mapping = [248, 249, 250, 251, 0, 0, 0, 1]
+        second = capture([observation(pc=65535, mpr=mapping, data=[0, 0x7F],
+                                      native=0, interpreted=9)], abi=16)
+        before = copy.deepcopy([first, second])
+        merged, summary = self.merge([first, second], 16)
+        self.assertEqual([first, second], before)
+        self.assertEqual(merged['runtime_abi'], 16)
+        self.assertEqual([x['runtime_abi'] for x in summary['input_epochs']], [13, 16])
+        self.assertEqual(merged['retired_instructions'], 14)
+        brk = next(x for x in merged['observations'] if x['pc'] == 65535)
+        self.assertEqual(brk, second['observations'][0])
+        self.assertEqual(brk['physical'], [16383, 248 << 13])
+        for output in (12, 13):
+            with self.subTest(output=output), self.assertRaises(ValueError):
+                self.merge([first, second], output)
+        second['observations'][0]['data'].pop()
+        second['observations'][0]['physical'].pop()
+        with self.assertRaises(ValueError):
+            self.merge([first, second], 16)
+
+    def test_abi16_manifest_requires_exact_reviewed_source_before_composition(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path, manifest, output = self.fixture(folder)
+            manifest['output_runtime_abi'] = 16
+            write(path, manifest)
+            identity = {'runtime_abi': 16, 'revision':
+                '3bd06b5055c92e9f368aab7023098ff8aa796854', 'tracked_source_clean': True,
+                'shared_source_identity': {'revision': '3bd06b5055c92e9f368aab7023098ff8aa796854',
+                'source_sha256': '720e3c1e980e3ad9d03b28cb4b31db696fe3bb27e687c0cf19bc3d0f3f1c9440',
+                'source_files': 54}}
+            for mutate in (lambda x: x.update(runtime_abi=13),
+                           lambda x: x.update(revision='0' * 40),
+                           lambda x: x.update(tracked_source_clean=False),
+                           lambda x: x['shared_source_identity'].update(source_sha256='0' * 64),
+                           lambda x: x['shared_source_identity'].update(source_files=54.0)):
+                changed = copy.deepcopy(identity)
+                mutate(changed)
+                with patch('scripts.merge_observations.subprocess.check_output',
+                           return_value=json.dumps(changed)):
+                    with self.assertRaisesRegex(ValueError, 'exact reviewed'):
+                        compose(path, TOOL, output)
+                self.assertFalse(output.exists())
+            with patch('scripts.merge_observations.subprocess.check_output',
+                       return_value=json.dumps(identity)):
+                result = compose(path, TOOL, output)
+            self.assertEqual(result['output_capture_runtime_abi'], 16)
+            self.assertEqual([x['runtime_abi'] for x in result['inputs']], [12, 13])
+            self.assertIn('not a single execution', result['profile_format_semantics'])
+            self.assertFalse(result['execution_evidence'])
+
     def test_incomplete_loss_inconsistent_totals_and_bad_mapping_rejected(self):
         for mutate in (lambda value: value.update(complete=False, dropped_instructions=1,
                                                    retired_instructions=6),

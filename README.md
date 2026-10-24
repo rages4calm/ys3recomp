@@ -10,26 +10,27 @@ unseen code continues through its interpreter. Actual retired instruction counts
 source identities and replay results determine coverage, not executable format
 or the amount of generated source.
 
-The current 94,800-frame TCP route includes 1,065 normal-input frames beyond
-the original first-boss approach, through combat, Game Over and Continue.
-The expanded module adds **47 observed source identities**, moving **3,461
-retirements from interpreted to native execution** on that same extended route.
-It retires **2,953,438,406 native + 981 interpreted** instructions. All 39 image
-checkpoints and exposed guest/source diagnostics remain exact. The current
-ABI16 migration retains those counts and both ABI15 audio profiles. Legacy
-and default Gear timing each match a fresh headless reference. The
-original 25-checkpoint prefix also remains exact. The inherited route uses
-journaled assistance; this extension adds no RAM edits and establishes no boss victory or campaign completion.
+The current **95,686-frame** TCP route adds **886 normal-input frames** beyond
+the retained 94,800-frame prefix, through corridor traversal, boss combat and
+an equipment-menu return. The expanded module adds **three observed source
+identities**, moving **43 retirements from interpreted to native execution**
+when compared with the old module on that same extended route. It retires
+**2,980,431,691 native + 981 interpreted** instructions. All 68 image/checkpoint
+states, exposed guest/source/CD diagnostics and same-profile PCM/WAV remain
+exact. The route adds no new RAM edits to its inherited assisted prefix.
+The player ends at 20/40 HP with the boss alive and equipment unchanged;
+this establishes no boss victory or campaign completion.
 
-The current tool pin is `3bd06b5055c92e9f368aab7023098ff8aa796854`, ABI **16**.
-All 209 native source artifacts were regenerated and freshly rebuilt. Three
-complete TCP routes qualify legacy audio, default Gear audio and audio off.
-The toolkit adds base PC Engine `$F8..$FB` work-RAM aliases, BRK execution,
-and guest-clock sprite collision/overflow events. There are 234 supported
-opcode encodings; 22 reserved slots still trap. Full MPR/source identities
-and native byte guards remain intact. Historical
-milestones remain in [toolchain.json](toolchain.json); see
-[status](docs/STATUS.md) for measured results and limits.
+The tool pin stays `3bd06b5055c92e9f368aab7023098ff8aa796854`, ABI **16**,
+with no runtime migration. The new module contains 44,882 eligible source
+identities in 57 full MPR contexts. Its 208 C++ translation units and one header
+were built through one fresh 234-step official desktop build. Old and expanded
+modules each complete the extended route using default Gear filtered 48 kHz.
+The retained three-mode 94,800-frame route and its two headless references
+remain separate historical evidence. Full MPR/source identities, native byte
+guards and all four excluded source variants remain intact. See
+[status](docs/STATUS.md) for measured results and limits and
+[toolchain.json](toolchain.json) for historical milestones.
 
 The current Windows desktop build places its pinned `SDL3.dll` beside the
 executable. Startup, TCP controls and audio are verified with SDK directories
@@ -54,6 +55,9 @@ adjacent SDL package before starting; it does not install or download anything.
 It removes reviewed obsolete compiler intermediates while keeping qualified
 executables, native source, inputs and verification receipts. The local runner
 refuses changed files or paths outside its exact reviewed plan.
+The existing approximately 119 MiB plan and a separate approximately 63 MiB
+review of newer private intermediates remain owner-run plans. Neither was
+executed. The root cleanup command is unchanged.
 
 ## Build without game inputs
 
@@ -87,33 +91,39 @@ code, game captures or saves are distributed. Existing owner inputs remain
 read-only. The qualified upstream private route can be reused by a local
 developer who already has that evidence; see [development](docs/DEVELOPMENT.md).
 
-The current route uses an explicit reference-emulator `gear-good` response.
-New diagnostics identify all 53 unknown-command attempts as `$FF`, retaining
-their counts and the last supplying command-latch write's CPU/source context.
-Strict mode still faults on that command; unknown operations and REQUEST SENSE
-remain unimplemented. This is a compatibility condition, without hardware
-qualification. Initial formatted blank BRAM is read-only; guest SAVE/LOAD stays
-within one process. Internal held-DAC/CDDA latch state remains separately
-qualified; the route does not establish retail latch-port usage.
+The retained and extended routes use the explicit reference-emulator
+`gear-good` response profile. The 95,686-frame route records 54 unknown
+command attempts, all `$FF`, with 54 accepted reference responses; the older
+94,800-frame record remains 53. Strict mode still faults. Unknown operations
+and REQUEST SENSE remain unimplemented, without hardware qualification.
+Initial formatted blank BRAM is read-only; guest SAVE/LOAD stays within one
+process. Internal held-DAC/CDDA latch state remains separately qualified;
+the route does not establish retail latch-port usage.
 
 Audio defaults to raw 44.1 kHz with Gear timing. Filtered playback is opt-in at
 44.1 or 48 kHz. Explicit `--audio-timing legacy` preserves the earlier PCM path.
-The current filtered 48 kHz Gear and legacy routes each match a separately
-frozen ABI16 headless run at all 39 checkpoints and three endpoints. Default
-desktop Gear matches explicitly selected headless Gear. Both retain their
-earlier PCM/WAV; audio off retains every exposed guest/native/source diagnostic.
+The new 95,686-frame comparison covers default Gear filtered 48 kHz on the old
+and expanded modules. It does not repeat the retained legacy/off matrix or add
+a new headless retail reference. Its processed PCM has 76,771,220 output /
+70,533,559 source frames, hash `3837543589595640322` and zero runtime discard;
+the strict native-source qualifier verifies exact same-profile PCM/WAV conservation.
 
-A separate paced Gear 48 kHz check verifies actual device acceptance, input,
-captures and pause/resume with zero runtime loss. The bounded WAV covers only
-the first 30 guest seconds; cumulative PCM and checkpoints check the later route.
-Independent Geargrafx checks cover finite BRK, work-RAM alias and sprite-event
-cases, alongside retained audio checks. **324 consumer tests and 33 shared
-suites / 328 Python tests pass, without skips.** These do not establish
-independent retail-mix, listening, analog or hardware parity.
-See [development](docs/DEVELOPMENT.md) for regeneration and
-the explicit migration qualification matrix.
-Host save persistence, authentic console reset and campaign completion remain
-unfinished.
+Full-route playback is unthrottled with intentionally muted SDL presentation.
+A separate paced check on the new package verifies device acceptance, input,
+captures and source/processing/CD pause freeze and resume. It submitted 773,361
+frames at 48 kHz with zero runtime loss, 2,481 host presentation drops and an
+empty final queue. This is startup/device evidence, without a listening claim.
+Full-route WAV capture is capped at the first 30 guest seconds; cumulative
+PCM and checkpoints verify later audio.
+
+**339 consumer tests pass without skips.** The unchanged
+shared checker passed **33 suites / 328 Python tests, zero skips**, reusing the
+retained empty-module desktop build. No fresh shared build is claimed.
+Finite Geargrafx BRK, work-RAM alias, sprite and retained audio checks stay
+historical evidence. These do not establish independent retail-mix, listening,
+analog or hardware parity. See [development](docs/DEVELOPMENT.md) for the strict
+native-gain provenance contract. Host save persistence, authentic console reset
+and campaign completion remain unfinished.
 
 Game configuration, overlay discovery, native coverage, enhancements, launcher
 and extended gameplay checks belong here. Shared CPU/device semantics, media,

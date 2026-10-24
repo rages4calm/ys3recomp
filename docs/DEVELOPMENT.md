@@ -15,10 +15,12 @@ wrong revision/ABI/digest, dirty source, concealed index changes and shadow file
 
 ABI 12/13/14/15 captures remain immutable offline inputs. Re-emit them through the
 shared tool and rebuild every compiled object. Never relabel capture metadata.
-The retained expanded profile has 44,883 identities, of which 44,879 are eligible
-in 57 full MPR contexts. Its ABI 16 module has 208 C++ translation units and one
-header. Compared with ABI 15, all operations, guards and exclusions stay exact;
-only the 208 ABI assertions change. The header is identical.
+The retained migration profile has 44,883 identities, of which 44,879 are
+eligible in 57 full MPR contexts. Its ABI 16 module has 208 translation units and
+one header; its migration changed only the 208 ABI assertions. That historical
+proof remains separate from the new native-source expansion: 44,882 eligible
+identities in the same 57 contexts, 208 translation units and one header. The
+tool pin remains ABI 16.
 
 These examples require private input configuration and retained evidence. Use
 new output directories and reuse original inputs/dependencies read-only:
@@ -55,7 +57,69 @@ writes overlapping instruction fetches. Exact PC, all eight MPRs, physical
 addresses and source bytes distinguish overlays. The profile's original hash,
 completeness and hit totals stay intact. Emission counts prove no execution.
 
-## Run and qualify the ABI 16 matrix
+## Extend native coverage within ABI 16
+
+The new route extends the qualified 94,800-frame / 39-image prefix to 95,686
+frames / 68 images. Compare the old and expanded module on that same extended
+route, using default Gear filtered 48 kHz and the unchanged ABI 16 source pin.
+This source expansion does not imply a repeated legacy/off migration matrix or
+a fresh independent headless retail reference. One new official desktop build
+contains 208 translation units and one header. Emission of three additional
+eligible identities proves no execution by itself.
+
+The qualified endpoint reports 2,980,431,691 native and 981 interpreted
+retirements, a 43-retirement native gain on the same extended route, and
+470,652 native block transfers. The strict qualifier conserves total work. No new RAM
+assists are permitted; replay only the frozen 709 expected-byte transactions /
+723 changed bytes in the inherited prefix. Read back all six original temporary
+code bytes while paused before starting the suffix capture. Preserve logical
+PC, all eight MPRs, mapped physical/fetched-byte identity and source generations.
+The entire six-byte source span remains excluded across all variants.
+
+Both actual old/new runs need the official descriptor/build/verify guards,
+`--project-verify-only --desktop-packaged`, default Gear filtered 48 kHz,
+`--audio-frames 1440000`, and managed capture beginning exactly at frame 94,800.
+Use the reviewed `--code-capture-start-frame 94800` option and an explicit
+bounded capacity; never capture temporary cheat bytes or relabel the capture
+ABI. Loss, unreadable observations, changed start counters or source bytes fail.
+
+```sh
+python -m scripts.qualify_native16 --baseline-receipt OLD_MODULE_EXTENDED_REPLAY --candidate-receipt NEW_MODULE_EXTENDED_REPLAY --prefix-receipt QUALIFIED_94800_GEAR_REPLAY --provenance REVIEWED_PROFILE_PROVENANCE --min-native-gain 43 --out NEW_QUALIFICATION
+```
+
+The schema-1 provenance kind is `ys3-native16-profile-provenance`. Its exact
+eight file roles are `prefix_receipt`, `prefix_qualification`, `old_profile`,
+`new_profile`, `old_selection`, `new_selection`, `merge_manifest` and
+`merge_receipt`; every role has an explicit path and SHA256 binding. Reject
+missing, unknown, swapped or changed roles. Verify both raw suffix captures'
+exact source identities and total retired hits, the composed profile and
+source exclusions, then reproducible emission through the pinned API. Profile
+composition is a union of retained observations, not a single execution proof.
+
+Preserve inherited checkpoint `source_capture_root`, route-level roots and PNG
+references. Resolve each actual file by its recorded context and exact digest;
+do not silently make a historical relative filename relative to a newer route.
+A path-only correction needs a new qualifier output. Keep failed outputs and
+executed source epochs unchanged. The inherited-relative-PNG correction was
+qualified in a new output; the original failure remains retained.
+
+Every guest/source/CD field stays exact apart from explicitly validated tier
+accounting. At intermediate checkpoints, validate complete raw desktop audio
+and bounded output drain first; only SDL presentation metadata and the two
+validated WAV drain fields are separated from core equality. Preserve both raw
+observations and full validated cores. Processing, source clock, cumulative PCM
+hash, timing identity and activity counters remain exact. Endpoints require
+complete drain and full core/WAV equality. Report precise difference paths.
+
+Keep native/interpreted and block work conserved on the same route and require
+the measured gain to come from the actual captured suffix. The retained 39-image
+prefix and all 68 extended checkpoints / three endpoints must be checked. The
+new endpoint's 54 `$FF` reference responses do not alter the older prefix's
+53-response history or implement unknown CD operations. The full route remains
+hidden/unthrottled with intentionally muted SDL presentation; the new package's
+real-device paced startup check is separate from gameplay and listening proof.
+
+## Retained ABI 16 migration matrix
 
 Run the same frozen 94,800-frame route through TCP on all three new packages:
 
@@ -93,11 +157,12 @@ omits timing; headless Gear may explicitly select it. Preserve actual argv and
 descriptors. Raw receipts are never rewritten. The separate ABI 15 conservation
 report measures prior guest/native/source/image/PCM/WAV differences honestly.
 
-Current ABI 16 qualification runs are capture-free. When comparing a historical
-managed capture, rehash its raw data and paused restored-source proof first.
-Only explicitly reviewed capture-window metadata may be handled separately. All
-209 old/new generated artifacts are rehashed, accepting only exact 15-to-16 ABI
-assertion replacements. All other instruction, block and per-identity retirement
+The retained ABI 16 migration matrix is capture-free. The native-source
+extension above instead uses actual ABI 16 suffix captures. When comparing a
+historical managed capture, rehash its raw data and paused restored-source proof first.
+Only explicitly reviewed capture-window metadata may be handled separately. The retained
+migration rehashed all 209 old/new generated artifacts, accepting only exact
+15-to-16 ABI assertion replacements. All other instruction, block and per-identity retirement
 totals remain conserved.
 
 At every Gear observation, source frames must equal
@@ -164,8 +229,10 @@ The explicit gear-good unknown-CD condition and IPL-entry sandbox remain visible
 ## Authored checks and historical workflows
 
 Run the consumer tests and the unchanged pinned shared checker after relevant
-builds. The fresh embedded desktop build has 33 shared suites and 328 Python
-tests without skips. The consumer has 324 passing tests. The clean default
+changes. The latest shared rerun passes 33 suites and 328 Python tests without
+skips on the retained empty-module embedded desktop build; no fresh shared build
+is claimed for the source expansion. The final consumer regression has 339
+passing tests without skips, including inherited PNG-reference regression checks. The clean default
 configuration intentionally skips eight desktop cases. A fresh ABI 16-only
 checkout may also skip optional historical c5 capture integration cases; the
 owner's qualified checkout retains that pin and reports zero skips. Keep actual
@@ -179,8 +246,8 @@ actual capture ABI must match the selected runtime, with exact paused-window
 counters, all MPRs, mapped physical/fetched-byte identity, restoration readback
 and loss/capacity/hash checks. WRAM aliases do not merge source identities. The
 ABI 16 loader is checked with authored two-byte BRK/wrapped-MPR observations;
-this migration reuses the original ABI 13 retail profile and captures no new
-retail game code. Unknown future ABIs remain rejected.
+the retained migration reused the original ABI 13 retail profile and captured
+no new retail game code. Unknown future ABIs remain rejected.
 
 ## Preservation, cleanup and publication
 
@@ -198,6 +265,10 @@ quota or accounting workflow, and never delete unrelated files. The owner-run
 cleanup command retains its exact plan, containment/reparse/hash/protected-file
 guards and post-checks; automatic tool policy blocked agent deletion, so no
 cleanup completion is claimed.
+The existing approximately 119 MiB plan and separate approximately 63 MiB newer
+private-intermediate plan remain owner-run only. Neither was executed and the
+root cleanup CMD is unchanged. Qualified source, captures, PCM, executables,
+SDL libraries and all bound receipts remain protected.
 
 Stage explicit authored files, review the diff, then run
 `git diff --cached --check` and `python scripts/audit_public.py` before every push.

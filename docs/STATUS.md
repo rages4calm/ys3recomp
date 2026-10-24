@@ -1,5 +1,50 @@
 # Consumer status - 23 October 2026
 
+## Native coverage extension
+
+The qualified 95,686-frame route adds 886 normal-input frames beyond the
+retained 94,800-frame prefix. Two actual default-Gear filtered 48 kHz TCP
+replays complete all 68 image and state checkpoints on the old and expanded
+modules. The strict native-source qualifier confirms a 43-retirement gain on
+that same route, preserving total work, source identity and digital audio.
+
+| Evidence | Current result | Scope |
+|---|---|---|
+| Tool | Retained ABI 16 pin, exact 54-file source | No runtime or ABI migration |
+| Expanded source | 44,882 eligible identities / 57 MPR contexts | Three new identities; four excluded identities / 981 hits unchanged |
+| Official build | One fresh 234-step desktop build | 208 translation units and one header; 209 generated source artifacts |
+| Actual TCP execution | Old and expanded packages each complete 95,686 frames / 68 images and states / three endpoints | Default Gear filtered 48 kHz only; exact old/new conservation except measured tiers |
+| Native execution | 2,980,431,691 native + 981 interpreted | Exactly 43 retirements move from interpreted to native on the same extended route |
+| Native block work | 470,652 native / zero interpreted | Block retirements and total instruction work conserved |
+| Retained prefix | All 39 original checkpoints exact through frame 94,800 | Guest/source/native counts, raw/processed PCM and restored six-byte code readback |
+| Suffix capture | 886 frames / 26,993,285 retirements; 10,800 observed identities | Actual ABI 16 old/new captures, exact source identities and hits, no loss; composition is separate from execution proof |
+| Route endpoint | Corridor traversal, boss combat, equipment-menu return; HP 20/40 | Boss alive; no equipment change or campaign victory |
+| Assists | Zero new transactions | Inherited 709 transactions / 723 changed bytes remain disclosed |
+| Digital audio | 76,771,220 output / 70,533,559 source frames | Processed hash `3837543589595640322`, raw-source hash `15217400529352030934`; zero runtime loss, exact same-profile PCM/WAV |
+| Unknown CD | 54 `$FF` attempts / 54 accepted reference responses | Compatibility profile only; old 94,800-frame record remains 53 |
+| New-package paced device | 773,361 submitted frames; zero runtime discard; final queue empty | Real stereo 48 kHz device, SDL numeric format 33056; 2,481 host drops, peak queue 1,518; separate bounded startup check |
+| Paced controls and binding | Input, guest/window captures, source-clock/processing/timing/CD pause freeze and resume pass | Same-PID adjacent SDL, sanitized PATH, empty cwd; seven protected originals unchanged |
+| Consumer tests | 339 pass / zero skips | Final full regression includes native-source/provenance and inherited PNG-context checks |
+| Shared tests | 33 suites / 328 Python tests pass / zero skips | Unchanged checker on the retained empty-module desktop build; no fresh shared build |
+| Cleanup | Approximately 119 MiB old plan plus separate approximately 63 MiB newer-intermediate plan | Owner-run only; neither executed; root CMD unchanged |
+
+The final qualifier binds all eight source-profile provenance roles, verifies
+actual suffix source identities and retired hits, retains all 39 prefix
+checkpoints and compares all 68 extended states/images and three endpoints.
+Inherited capture roots and exact PNG hashes are preserved. The original failed
+qualifier output and earlier failed explorer remain immutable; the path-resolution
+correction passed in a new output. No guest evidence was rewritten to pass it.
+
+SDL submission counters are validated separately from cumulative guest PCM;
+a checkpoint can precede output drain while guest audio remains exact.
+The full route uses muted unthrottled presentation; the paced device check is
+separate. No new independent headless retail route, listening, analog, hardware,
+authentic reset, host-save persistence, boss victory or campaign claim is made.
+The existing six-byte source exclusion stays interpreted across all variants.
+All prior ABI 16 migration, three-mode and headless evidence is retained below.
+
+## Retained ABI 16 compatibility baseline
+
 ABI 16 is qualified on the retained 94,800-frame route. This remains a real
 guarded C++/SDL hybrid build, with unseen code interpreted. The upgrade changes
 shared compatibility semantics; it adds no new native-coverage or campaign claim.
