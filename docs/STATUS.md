@@ -1,5 +1,43 @@
 # Consumer status - 23 October 2026
 
+## Current ABI 17 System Card reset milestone
+
+The current primary route starts at the System Card reset vector with clean US
+BIOS, deterministic zeroed initial CPU/MPR state and implicit blank-unformatted,
+volatile BRAM. There is no IPL payload, forced PC/MPR override, input script,
+BRAM seed file or development RAM edit.
+
+| Evidence | Result | Scope |
+|---|---|---|
+| Tool | `bb3b695b782352bdfacd8db877f2a843bd1242f1`, ABI 17; exact 54-file source | Shared runtime/emitter; no consumer fork |
+| Source composition | 52,556 eligible identities / 79 full MPR contexts; 7,674 new identities | 257 translation units + one header; multi-run profile, not one execution proof |
+| Actual reset route | 14,680 frames / 105 states / 115 actions / ten images | Ordinary BIOS/menu/Run/Beginning/BRAM Proceed/town-opening route; zero assists |
+| Native retirement | 432,875,213 native / zero interpreted | Actual complete, lossless reset0 capture; baseline native count is zero |
+| BIOS boot proof | At frame 600: 17,483,730 BIOS-native + four RAM-native instructions | Same package/module; 120-frame image is additional visual evidence, not a before-120 source histogram |
+| State comparison | Guest/source/CD/PCM exact except one audited paused input-status mask | Raw state54 masks differ only at the witnessed immediate release; strict advancing state55 confirms zero input |
+| Digital audio | Raw 44.1 kHz Gear; 10,821,162 frames; hash `16077886581937742416` | Zero runtime discard; first-ten-second WAV is boot silence, later cumulative PCM is nonzero |
+| Paced menu device | 755,486 source frames accepted; zero runtime loss; empty final queue | Silent samples, actual default SDL device; controls/captures/pause/resume pass; raw negotiated format triplet omitted |
+| Retained IPL-entry regression | 95,686 frames / 68 images on ABI 17 | 2,980,431,691 native + 981 interpreted; 470,652 native blocks; exact filtered 48 kHz PCM |
+| Assists and exclusions | New reset route has zero RAM edits | Older route retains 709 transactions / 723 changed bytes; original four excluded variants / 981 profile hits remain excluded |
+| Unknown CD | Reset: two `$FF` responses; old route: 54 | Explicit `gear-good`; unknown operations and REQUEST SENSE remain unimplemented |
+| Geargrafx evidence | Aligned 237 rows / 60,672 pixels match at menu frames 120 and 600 | Raw full frames differ; fifty finite authored checks retain 36 CSH differences of 18 ticks; no whole-retail CPU/hardware parity |
+| Tests | 411 consumer tests; 34 shared suites / 386 Python tests; zero skips | Fresh 204-target shared build; authored and finite reference scopes remain separate |
+| Closeout | Six bounded hosts closed; seven original inputs unchanged | Packaged adjacent SDL, sanitized child PATH, empty cwd and source/build bindings checked |
+| Cleanup | Approximately 119 MiB + separate 63 MiB + newer 9 MiB reviewed plans | Owner-run only; none executed; root cleanup CMD unchanged |
+
+The strict qualifier binds 1,117 artifacts. Failed earlier harness/qualifier
+outputs and exact executed source epochs remain retained. No raw evidence was
+rewritten. The input-status exception acknowledges deferred status visibility,
+not CPU/device divergence or an applied-input barrier. The next checkpoint is
+required to match strictly.
+
+The launcher now selects the qualified reset build. Guest SAVE/LOAD remains
+process-local. Unseen instructions still use hybrid fallback, and full campaign,
+host-save persistence, listening, analog and hardware qualification remain
+unfinished. The records below describe their original historical scopes.
+
+---
+
 ## Native coverage extension
 
 The qualified 95,686-frame route adds 886 normal-input frames beyond the
