@@ -18,9 +18,11 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 U64 = (1 << 64) - 1
-REVIEWED_ABIS = (12, 13, 16)
+REVIEWED_ABIS = (12, 13, 16, 17)
 ABI16_REVISION = "3bd06b5055c92e9f368aab7023098ff8aa796854"
 ABI16_SOURCE = "720e3c1e980e3ad9d03b28cb4b31db696fe3bb27e687c0cf19bc3d0f3f1c9440"
+ABI17_REVISION = "bb3b695b782352bdfacd8db877f2a843bd1242f1"
+ABI17_SOURCE = "5d3551481d1245d8cec9011d0f390ad0b464720c2d1f37a0fce601d0888e7a0d"
 MAX_IDENTITIES = 65536
 MAX_MANIFEST_BYTES = 1024 * 1024
 
@@ -80,7 +82,7 @@ def load_capture_api(tool):
 def merge_captures(captures, output_runtime_abi, validate_capture):
     """Exact full-MPR/source union; validation is the actual upstream API."""
     if type(output_runtime_abi) is not int or output_runtime_abi not in REVIEWED_ABIS:
-        raise ValueError('explicit reviewed output profile ABI 12, 13 or 16 required')
+        raise ValueError('explicit reviewed output profile ABI 12, 13, 16 or 17 required')
     if not isinstance(captures, list) or not 2 <= len(captures) <= 16:
         raise ValueError('two to sixteen complete input captures required')
     union, epochs = {}, []
@@ -90,7 +92,7 @@ def merge_captures(captures, output_runtime_abi, validate_capture):
     for index, capture in enumerate(captures):
         validate_capture(capture)
         if (type(capture['runtime_abi']) is not int or capture['runtime_abi'] not in REVIEWED_ABIS
-                or (capture['runtime_abi'] == 16 and output_runtime_abi != 16)):
+                or (capture['runtime_abi'] in (16, 17) and output_runtime_abi < capture['runtime_abi'])):
             raise ValueError('unreviewed input capture ABI')
         if not capture['complete'] or capture['dropped_instructions'] or capture['unreadable_instructions']:
             raise ValueError('incomplete or lossy captures cannot qualify a native profile union')
@@ -207,14 +209,20 @@ def compose(manifest_path, tool_root, output):
             or any(output.is_relative_to(path.parent) or path.is_relative_to(output) for path in hashes)):
         raise ValueError('merge output must be separate from read-only tool and input roots')
     command = [sys.executable, str(ROOT / 'scripts/verify_tool.py'), '--tool-root', str(tool)]
+    if manifest['output_runtime_abi'] in (16, 17):
+        abi = manifest['output_runtime_abi']
+        revision, source_hash = ((ABI16_REVISION, ABI16_SOURCE) if abi == 16
+                                 else (ABI17_REVISION, ABI17_SOURCE))
+        command += ['--expected-revision', revision, '--expected-abi', str(abi),
+                    '--expected-source-sha256', source_hash]
     identity = strict_json(subprocess.check_output(command, text=True))
-    if manifest['output_runtime_abi'] == 16:
+    if manifest['output_runtime_abi'] in (16, 17):
         source = identity.get('shared_source_identity', {})
-        if (identity.get('runtime_abi') != 16 or identity.get('revision') != ABI16_REVISION
+        if (type(identity.get('runtime_abi')) is not int or identity['runtime_abi'] != abi or identity.get('revision') != revision
                 or identity.get('tracked_source_clean') is not True
-                or source.get('revision') != ABI16_REVISION or source.get('source_sha256') != ABI16_SOURCE
+                or source.get('revision') != revision or source.get('source_sha256') != source_hash
                 or type(source.get('source_files')) is not int or source['source_files'] != 54):
-            raise ValueError('ABI16 profile composition requires exact reviewed clean ABI16 source')
+            raise ValueError(f'ABI{abi} profile composition requires exact reviewed clean ABI{abi} source')
     api = load_capture_api(tool)
     captures = []
     for path, _ in entries:

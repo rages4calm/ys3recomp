@@ -5,9 +5,109 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Pin, regenerate and build
+## Current reset workflow (ABI 17)
 
-The current source pin is `3bd06b5055c92e9f368aab7023098ff8aa796854`, ABI 16,
+The current clean pin is `bb3b695b782352bdfacd8db877f2a843bd1242f1`, ABI 17,
+schema 1. Its 54-file canonical source digest is
+`5d3551481d1245d8cec9011d0f390ad0b464720c2d1f37a0fce601d0888e7a0d`.
+Clone with LF bytes into `.deps/pcenginerecomp-abi17`. Official verify/build
+bindings and actual adjacent SDL hashes are required before and after execution.
+
+Use the shared System Card reset mode with profile `super` and the matching
+clean 256 KiB US BIOS. Omit payload/IPL, PC/MPR overrides, BRAM file and input
+script. Initialization is `gear-deterministic-zero-v1`; implicit unformatted
+BRAM is volatile. Select hybrid/continuous/joypad2/USA/multitap-off, raw44100
+audio with default Gear timing and explicit `gear-good` compatibility. Do not
+mistake deterministic reset initialization for hardware power-on certification.
+
+These generic placeholders refer to existing private evidence. Every output
+must be new; do not overwrite qualified receipts or relabel capture ABIs.
+
+```powershell
+$tool = (Resolve-Path '.deps/pcenginerecomp-abi17').Path
+$batch = '.local/new-reset-batch'
+$project = (Get-Location).Path
+$env:PYTHONPATH = "$project;$tool"
+$env:PYTHONSAFEPATH = '1'
+$env:PYTHONDONTWRITEBYTECODE = '1'
+python -m scripts.verify_tool --tool-root $tool
+python -m scripts.prepare_reset_descriptor --tool-root $tool --reference-launch PRIVATE_RESET_LAUNCH --reference-receipt PRIVATE_RESET_REFERENCE --module PRIVATE_NATIVE_MODULE --out "$batch/project-reset.toml"
+python -m pcerecomp.project build "$batch/project-reset.toml" --build-dir "$batch/build-reset" --desktop --generator Ninja --cmake-arg=-DCMAKE_CXX_COMPILER=clang++ --cmake-arg=-DSDL3_DIR=SDL3_CMAKE_DIRECTORY
+python -m scripts.replay_reset --tool-root $tool --descriptor "$batch/project-reset.toml" --build-dir "$batch/build-reset" --reference-launch PRIVATE_RESET_LAUNCH --reference-launch-sha256 EXACT_LAUNCH_SHA256 --reference-receipt PRIVATE_RESET_REFERENCE --reference-receipt-sha256 EXACT_REFERENCE_SHA256 --protected-inputs PRIVATE_SEVEN_ORIGINALS --input-status-bridge PRIVATE_AUDITED_INPUT_WITNESS --input-status-bridge-sha256 EXACT_WITNESS_SHA256 --out "$batch/replay-reset"
+python -m scripts.qualify_reset_native --baseline-receipt PRIVATE_INTERPRETED_RESET --candidate-receipt "$batch/replay-reset/receipt.json" --reference-receipt PRIVATE_RESET_REFERENCE --provenance PRIVATE_RESET_PROVENANCE --out "$batch/native-qualified.json"
+```
+
+The reset harness calls official verify/command/build-binding APIs with its own
+bounded TCP supervision; it does not claim an official `project.run` execution.
+It starts paused at frame0, validates BIOS vector and all MPR/CPU/source identity,
+reads original fetch bytes, disables RAM writes, then captures up to 65,536
+identities from before the first instruction. Require complete capture, zero
+loss/unreadable instructions and exact per-source/native/interpreted retirement
+conservation. Preserve raw actions, states and images before comparisons, finish
+through natural TCP quit and rehash all seven originals and consumed assets.
+
+The main reset route replays the literal 115 ordinary actions through frame
+14,680. The one audited immediate input-release snapshot at state54/action58
+may differ only under an explicitly hash-bound witness: same frame/ticks,
+previous mask1, requested/actual0, and every other guest/source/CD/PCM field
+exact. Retain old/new/previous raw states and require the strict next advance2,
+state55, frame11,662 with zero input. Do not generalize this to other inputs or
+claim all raw snapshots match. An input ACK records intent, not application.
+
+For BIOS timing evidence, use a separate same-package reset0-to600 capture.
+`--stop-after-frame 600` selects the original reference boundary. Adding
+`--prefix-images PRIVATE_MENU_IMAGE_RECEIPT --prefix-images-sha256 EXACT_SHA256`
+records an explicit neutral advance120/capture/advance480/capture recipe,
+retaining the extra raw state120. The full candidate/reference state at600 must
+still match including actual tiers; that capture proves BIOS work by600, not
+before120. Verify decoded RGB and actual PNG hashes. The external Gear menu
+bridge compares only its declared aligned 237-row viewport at120 and600;
+full raw frames differ, and no retail CPU/device tick parity follows.
+
+The full reset route uses raw44100 Gear PCM and a 441,000-frame WAV cap.
+Validate `frames = floor(ticks * 44100 / 21477273)` at every observation.
+Checkpoints can precede bounded host drain; validate full raw PCM/device fields
+before separating WAV phase/presentation metadata. Final drain, PCM and WAV
+must match strictly. The first ten guest seconds are silent boot samples;
+later cumulative nonzero PCM is qualified separately. Full route SDL playback
+is intentionally muted while unthrottled.
+
+A separate paced reset-menu check verifies real default-device acceptance,
+full exposed guest/source/CD/PCM pause freeze, drain settlement without a later
+tail, resumed advancement, TCP input and guest/window captures. Silent samples
+are valid acceptance evidence. Raw telemetry omits negotiated device format
+fields; do not invent them or claim listening/analog quality. Earlier filtered
+48 kHz device geometry remains historical evidence.
+
+The new composed module contains 52,556 eligible identities / 79 MPR contexts,
+257 translation units and one header. It combines observed ABI16/17 original
+source without pretending to be one execution; the entire six-byte historical
+assisted span stays excluded across all four variants / 981 profile hits.
+No new reset assists are present. The separately rebuilt ABI17 IPL-entry route
+retains all 95,686 frames / 68 images, actual tiers and same-profile filtered
+48 kHz PCM; its inherited 709 transactions / 723 bytes remain disclosed.
+
+Current checks pass 411 consumer tests with zero skips. The fresh
+204-target shared build passes 34 suites / 386 Python tests, zero skips. Fifty
+finite authored Geargrafx checks and aligned menu pixels do not establish full
+retail CPU/device timing; 36 CSH cases retain an 18-tick difference. Keep
+`gear-good` and unsupported unknown/REQUEST SENSE semantics visible. All six
+bounded hosts close and all seven originals are rehashed; host saves and the
+full campaign remain unfinished.
+
+## Retained ABI 16 IPL-entry workflows
+
+The following records and commands retain their original ABI16 scope. They are
+separate from the current reset path and are not instructions to downgrade the
+current tool pin. Existing immutable captures and receipts remain unchanged.
+These archived CLI examples require the matching historical consumer revision
+and its frozen ABI16 pin. They do not run unmodified under the current ABI17
+manifest: in particular, `verify_tool` now defaults to ABI17. Use the current
+reset workflow above as the entry point for this checkout.
+
+### Retained pin, regenerate and build
+
+The retained ABI16 source pin is `3bd06b5055c92e9f368aab7023098ff8aa796854`, ABI 16,
 descriptor schema 1. Its 54-file source SHA256 is
 `720e3c1e980e3ad9d03b28cb4b31db696fe3bb27e687c0cf19bc3d0f3f1c9440`.
 Clone with LF source bytes as shown in README. `verify_tool.py` rejects the
@@ -20,7 +120,7 @@ eligible in 57 full MPR contexts. Its ABI 16 module has 208 translation units an
 one header; its migration changed only the 208 ABI assertions. That historical
 proof remains separate from the new native-source expansion: 44,882 eligible
 identities in the same 57 contexts, 208 translation units and one header. The
-tool pin remains ABI 16.
+retained module uses ABI 16.
 
 These examples require private input configuration and retained evidence. Use
 new output directories and reuse original inputs/dependencies read-only:

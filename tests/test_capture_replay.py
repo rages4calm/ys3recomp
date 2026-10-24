@@ -335,8 +335,15 @@ class ActualSharedLoaderTests(unittest.TestCase):
                                            selected, proof, runner)
 
     def test_actual_frozen16_loader_retains_brk_signature_and_wrapped_mpr_identity(self):
-        if self.identity['runtime_abi'] != 16:
-            self.skipTest('Selected immutable runtime ABI16 is required for new BRK metadata')
+        tool = ROOT / '.deps/pcenginerecomp-abi16'
+        if not tool.is_dir():
+            self.skipTest('Retained immutable runtime ABI16 checkout is required')
+        checked = json.loads(subprocess.check_output([
+            os.sys.executable, str(ROOT / 'scripts/verify_tool.py'), '--tool-root', str(tool),
+            '--expected-revision', '3bd06b5055c92e9f368aab7023098ff8aa796854',
+            '--expected-abi', '16', '--expected-source-sha256',
+            '720e3c1e980e3ad9d03b28cb4b31db696fe3bb27e687c0cf19bc3d0f3f1c9440'], text=True))
+        self.assertEqual(checked['runtime_abi'], 16)
         selected, proof, capture, runner = completion()
         capture['runtime_abi'] = 16
         mpr = [248, 249, 250, 251, 0, 0, 0, 1]
@@ -347,7 +354,7 @@ class ActualSharedLoaderTests(unittest.TestCase):
             output = Path(temp) / 'observed-code.json'
             output.write_text(json.dumps(capture))
             digest = sha256(output)
-            result = finish_managed_capture(output, self.tool, selected, proof, runner,
+            result = finish_managed_capture(output, tool, selected, proof, runner,
                                            expected_runtime_abi=16)
             self.assertEqual((result['runtime_abi'], result['observations'], result['sha256']),
                              (16, 1, digest))
@@ -355,7 +362,7 @@ class ActualSharedLoaderTests(unittest.TestCase):
             capture['observations'][0].update(data=[0], physical=[16383])
             output.write_text(json.dumps(capture))
             with self.assertRaises(subprocess.CalledProcessError):
-                finish_managed_capture(output, self.tool, selected, proof, runner, expected_runtime_abi=16)
+                finish_managed_capture(output, tool, selected, proof, runner, expected_runtime_abi=16)
 
 
 if __name__ == "__main__":

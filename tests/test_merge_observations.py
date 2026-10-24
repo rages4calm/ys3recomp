@@ -127,6 +127,62 @@ class MergeObservationTests(unittest.TestCase):
             self.assertIn('not a single execution', result['profile_format_semantics'])
             self.assertFalse(result['execution_evidence'])
 
+    def test_reset17_union_preserves_original16_epoch_and_rejects_downlabel(self):
+        tool = ROOT / '.deps/pcenginerecomp-abi17'
+        if not (tool / 'pcerecomp/capture.py').is_file():
+            self.skipTest('Reviewed ABI17 checkout required for reset capture integration')
+        api = load_capture_api(tool)
+        inputs = [capture(abi=16), capture([observation(pc=0xE000, mpr=[0] * 8,
+                    native=0, interpreted=7)], abi=17)]
+        before = copy.deepcopy(inputs)
+        merged, summary = merge_captures(inputs, 17, api.validate_capture)
+        self.assertEqual(inputs, before)
+        self.assertEqual([e['runtime_abi'] for e in summary['input_epochs']], [16, 17])
+        self.assertEqual(merged['runtime_abi'], 17)
+        self.assertEqual(merged['retired_instructions'], 12)
+        self.assertFalse(summary['execution_evidence'])
+        for output in (12, 13, 16):
+            with self.subTest(output=output), self.assertRaises(ValueError):
+                merge_captures(inputs, output, api.validate_capture)
+        inputs[1]['runtime_abi'] = 18
+        with self.assertRaises(ValueError):
+            merge_captures(inputs, 17, api.validate_capture)
+
+    def test_reset17_composition_uses_explicit_frozen_source_and_typed_identity(self):
+        from scripts.merge_observations import ABI17_REVISION, ABI17_SOURCE
+        tool = ROOT / '.deps/pcenginerecomp-abi17'
+        if not (tool / 'pcerecomp/capture.py').is_file():
+            self.skipTest('Reviewed ABI17 checkout required for reset capture integration')
+        with tempfile.TemporaryDirectory() as folder:
+            path, manifest, output = self.fixture(folder)
+            manifest['output_runtime_abi'] = 17
+            write(path, manifest)
+            identity = {'runtime_abi': 17, 'revision': ABI17_REVISION,
+                        'tracked_source_clean': True, 'shared_source_identity':
+                        {'revision': ABI17_REVISION, 'source_sha256': ABI17_SOURCE,
+                         'source_files': 54}}
+            for mutate in (lambda x: x.update(runtime_abi=17.0),
+                           lambda x: x.update(revision='0' * 40),
+                           lambda x: x.update(tracked_source_clean=False),
+                           lambda x: x['shared_source_identity'].update(source_sha256='0' * 64),
+                           lambda x: x['shared_source_identity'].update(source_files=54.0)):
+                changed = copy.deepcopy(identity); mutate(changed)
+                with patch('scripts.merge_observations.subprocess.check_output',
+                           return_value=json.dumps(changed)):
+                    with self.assertRaisesRegex(ValueError, 'exact reviewed'):
+                        compose(path, tool, output)
+                self.assertFalse(output.exists())
+            with patch('scripts.merge_observations.subprocess.check_output',
+                       return_value=json.dumps(identity)) as checker:
+                result = compose(path, tool, output)
+            self.assertEqual(result['output_capture_runtime_abi'], 17)
+            self.assertEqual([x['runtime_abi'] for x in result['inputs']], [12, 13])
+            for call in checker.call_args_list:
+                command = call.args[0]
+                self.assertEqual(command[command.index('--expected-revision') + 1], ABI17_REVISION)
+                self.assertEqual(command[command.index('--expected-abi') + 1], '17')
+                self.assertEqual(command[command.index('--expected-source-sha256') + 1], ABI17_SOURCE)
+
     def test_incomplete_loss_inconsistent_totals_and_bad_mapping_rejected(self):
         for mutate in (lambda value: value.update(complete=False, dropped_instructions=1,
                                                    retired_instructions=6),
