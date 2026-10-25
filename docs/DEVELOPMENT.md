@@ -5,7 +5,40 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Current Healing Herb native-case workflow
+## Current assisted death/Continue workflow
+
+Keep the published native package and all prior source epochs immutable. Replay
+all 167 nonterminal Herb requests, 438 states and 178 images to the exact paused
+27,490 checkpoint. Derive the deferred terminal boundary from the actual recipe;
+do not claim an old quit or terminal status was replayed before it occurs.
+
+Before the single HP edit, independently validate both complete prior source
+captures, every HP backing alias and the fresh checkpoint. Record expected bytes
+and intent before the official compare-and-write call. Require one committed
+transaction, one changed byte and unchanged CPU/MPR/fetch/time/CD/PCM while
+paused. Keep raw pre-write zero and post-write one counters distinct; validate
+old snapshots with the old ledger phase. Max HP and program code are read-only.
+
+Use ordinary contact, retain zero-HP and Game Over images, then press Run only
+after Game Over is actually observed. Continue must produce positive HP through
+game logic. Sample HP throughout and label assisted progression separately.
+The first-frame HUD can lag the paused RAM edit; do not invent a visible 001.
+
+The new capture starts at 27,490 with actual start ticks and native/interpreted
+counters. Conserve every source hit and both execution-tier totals, check all
+mirrored edit addresses against final fetch history, and retain raw ABI/window
+labels. Native-only means 23,924,761 native / zero interpreted in the case,
+with the 22 prefix fallbacks disclosed.
+
+All 832 newly executed keys are already in the existing module. Reuse it; do not
+re-emit, rebuild or manufacture compilation gain. Verify a fresh exact 177-request
+assisted replay with identical bytes, state, images, PCM, one-write journal and
+per-key native hits before promotion. The module retains 52,754 identities in
+79 MPR contexts, across 258 translation units and one header.
+Run meaningful assisted-contract tests, the final consumer suite and staged
+publication audit/diff review. Preserve failed receipts and raw source epochs.
+
+## Retained Healing Herb native-case workflow
 
 Preserve the exact selected source/package and raw authored-file epochs. Replay
 all 121 retained controls and 132 images to frame 26,510 before opening the new
