@@ -5,7 +5,41 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Current combat expansion workflow
+## Current boss expansion workflow
+
+Reuse the exact pinned official toolkit, immutable inputs and qualified packages.
+Compose only complete original-code captures, preserving full PC/MPR/source
+identity and every prior key. The current 149 additions all execute, but the old
+execution baseline also lacks 112 hits on already-published keys; separate these
+from the 1,701 genuinely new promotions. Emission alone proves no execution.
+
+Earn Pendant/Key normally. Direct quest shortcuts remain disabled. Verified
+living-HP99 and Y24/UP8 data assists require expected bytes, intent-before-CAS,
+ACK/readback, unchanged paused CPU/source/CD/PCM and full data-alias exclusion.
+Never capture temporary instruction patches or refill HP0. Preserve unassisted
+checkpoints, failed receipts and original capture ABI labels.
+
+Compare all states/images/source generations and per-key retirement totals in a
+fresh matching replay. The clean 474-frame wizard interval includes clones,
+projectiles, HP99-to59 and 15 enemy-bar pixels of sword damage, with no edits inside
+it. Read the exact pixels across all eight rows before attributing a phase. Keep raw
+mistaken labels and explicit errata; do not silently rewrite evidence. Separate
+this window from the entry/menu-inclusive raw case and from boss defeat.
+
+Long finite receipts have a separate 128 MiB launcher limit; other launcher
+metadata keeps 16 MiB. Final tests, staged publication audit/diff review and both
+real launcher-info checks are required. Muted fast-forward digital PCM is not
+listening proof. Public files exclude captures, generated game code, input bytes,
+private paths and coordination. Resume the next bounded boss milestone from the
+private handoff rather than relabeling failed Continue or unfinished victory.
+
+Validate opening input-status observations against their actual preceding paused
+state and acknowledged button intent. A controller latch can still show the
+previous value without guest execution. Project only that proved transport field
+for comparison; preserve every raw read and the original opening timing witness.
+Clock, CPU, MPR, fetched source, CD/PCM and other controllers cannot drift.
+
+## Retained starter-gear combat expansion workflow
 
 Keep qualified packages, original capture labels and raw source epochs immutable.
 Use only complete closed captures for profile composition. An interrupted host,

@@ -22,6 +22,8 @@ else:
 
 ROOT = Path(__file__).resolve().parents[1]
 SELECTION = ROOT / '.local/launcher/selection.json'
+METADATA_LIMIT = 16 * 1024 * 1024
+REPLAY_RECEIPT_LIMIT = 128 * 1024 * 1024
 
 
 def require(condition, message):
@@ -34,9 +36,14 @@ def sha(path):
         return hashlib.file_digest(stream, 'sha256').hexdigest()
 
 
-def load(path):
-    require(Path(path).stat().st_size <= 16 * 1024 * 1024, 'Metadata exceeds its size bound')
+def load(path, *, size_limit=METADATA_LIMIT):
+    require(Path(path).stat().st_size <= size_limit, 'Metadata exceeds its size bound')
     return json.loads(Path(path).read_text(encoding='utf-8-sig'))
+
+
+def load_replay_receipt(path):
+    """Long finite routes retain every state; other metadata keeps its small cap."""
+    return load(path, size_limit=REPLAY_RECEIPT_LIMIT)
 
 
 def bound(path, digest, graph=None):
@@ -90,7 +97,7 @@ def prepare():
             'Selected qualification did not pass')
     graph = qualification['evidence_sha256']
     receipt_path = bound(**config['replay_receipt'], graph=graph)
-    receipt = load(receipt_path)
+    receipt = load_replay_receipt(receipt_path)
     descriptor_binding, build_binding, selected, qualified_package = receipt_contract(receipt)
     descriptor = bound(*descriptor_binding, graph=graph)
     built_path = bound(*build_binding, graph=graph)
