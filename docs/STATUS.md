@@ -1,6 +1,44 @@
 # Consumer status - 25 October 2026
 
-## Current native starter-gear and combat batch on ABI18
+## Current wizard combat phases on ABI18
+
+The closed matching TCP/audio route normally earns the Pendant and miner's Key,
+then observes the wizard, clones/projectiles, incoming damage and ordinary sword
+damage. The boss remains alive; no reward or campaign completion is claimed.
+
+| Evidence | Result |
+|---|---|
+| Fresh same-control replay |59,622 frames; 1,811,024,403 native / 66 interpreted|
+| New catalogue execution |149 new keys / 1,701 newly native retirements|
+| Older baseline comparison |1,879 -> 66 interpreted; includes 112 already-published hits|
+| Module |53,302 eligible identities; all prior 53,153 preserved|
+| Clean boss interval |56,346..56,820; 474 frames; 14,740,660 native / zero interpreted|
+| Combat observations |RAM HP99 ->59; enemy yellow239 ->224/red0 ->15 across eight rows|
+| Whole recipe |2,055 states / 801 images / 3,009 actions / 791 requests|
+| Data assists |1 inherited +251 new byte-CAS requests; 16 living-HP99 setups, 25 Y24, 45 UP8|
+| Digital audio |43,949,545 PCM frames/hash12114718313764246034/mixed41,381,501/loss0|
+
+Every settled CPU/all-MPR/fetched source generation, CD/PCM value, RGB image and
+per-key total matches. Only eligible execution tiers change. The 66 original
+fixed-span fallbacks remain outside the zero-interpreter boss interval. Original
+program bytes, quest/room/equipment fields and owner inputs remain unmodified.
+The bounded cheats include current/max HP and source-guarded actor/queue data;
+all edits have fresh expected bytes, intent, ACK/readback and paused checks.
+A paused HP refill can leave the rendered HUD at its earlier value until the
+game naturally refreshes it; RAM and visible health observations remain distinct.
+
+Independent original-program Geargrafx testing also normally earns the Key and
+observes wizard damage. Its enemy-bar loss is 47 pixels, while this native recipe
+observes 15; timing and defensive stats differ, so no matched damage-formula or
+whole-route independent parity is claimed. Pixel counts are not numeric boss HP.
+Raw mistaken anteroom labels have an explicit review erratum; correct later boss
+images establish the phase claims. Failed experiments remain excluded.
+
+The final suite passes 488 consumer tests with zero skips. The silent capped boot
+WAV and later digital PCM do not establish listening/device/hardware parity.
+Boss defeat/reward, unseen overlays, campaign and save persistence remain open.
+
+## Retained native starter-gear and combat batch on ABI18
 
 Ordinary controls purchase and select the Short Sword and Leather Armor, then
 exercise mine attacks, kills, EXP/gold rewards, incoming damage, natural death,

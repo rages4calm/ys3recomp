@@ -1,6 +1,8 @@
 """Retained launcher receipt layouts preserve hashes and closed-run requirements."""
 import copy
+import json
 from pathlib import Path
+from types import SimpleNamespace
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -19,6 +21,25 @@ def extension():
 
 
 class LauncherReceiptTests(unittest.TestCase):
+    def test_long_replay_receipt_does_not_relax_other_metadata_limits(self):
+        with tempfile.TemporaryDirectory() as folder:
+            file = Path(folder) / 'long-route.json'
+            file.write_text(json.dumps(extension()) + ' ' * launcher.METADATA_LIMIT,
+                            encoding='utf-8')
+            with self.assertRaises(ValueError):
+                launcher.load(file)
+            value = launcher.load_replay_receipt(file)
+            self.assertEqual(launcher.receipt_contract(value),
+                             launcher.receipt_contract(extension()))
+
+    def test_oversize_replay_is_rejected_before_reading(self):
+        with patch.object(Path, 'stat', return_value=SimpleNamespace(
+                st_size=launcher.REPLAY_RECEIPT_LIMIT + 1)), \
+             patch.object(Path, 'read_text') as read:
+            with self.assertRaises(ValueError):
+                launcher.load_replay_receipt(Path('oversize-route.json'))
+            read.assert_not_called()
+
     def test_structured_extension_preserves_all_explicit_bindings(self):
         value = extension()
         descriptor, built, identity, package = launcher.receipt_contract(value)

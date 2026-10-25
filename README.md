@@ -5,34 +5,34 @@ An incremental PC Engine CD consumer of
 *Ys III: Wanderers from Ys* (USA). This is an early hybrid port: unseen code
 still uses the interpreter, and the full campaign remains unfinished.
 
-The current **37,463-frame** reset route verifies ordinary purchases and
-equipment selection for the Short Sword and Leather Armor, then mine attacks,
-enemy kills, rewards, damage, Game Over and Continue. One new paused current-HP
-refill changes 16 to 20; the retained route also includes its earlier HP1 setup.
-This is assisted testing, separate from campaign completion.
+The current **59,622-frame** reset route normally earns Roy's Pendant and the
+Storehouse Key, then tests the wizard encounter: clones, projectiles, incoming
+damage and ordinary sword damage. Verified living-HP/max-HP and guarded vertical
+movement assists speed up testing. Quest flags, equipment and program code receive
+no developer writes. This is assisted testing, separate from campaign completion.
 
-The rebuilt module contains **53,153 eligible identities** in 79 full MPR
+The official module contains **53,302 eligible identities** in 79 full MPR
 contexts, across 259 C++ translation units and one header. It preserves all
-52,754 prior identities and adds 399. The matching TCP/audio replay executes
-59 newly compiled keys for **77 additional native retirements**; the other
-340 added keys are compiled coverage without execution proof in this replay.
+53,153 previously published identities and adds **149**, all executed in the fresh
+TCP/audio replay for **1,701 genuinely new native retirements**. The deliberately
+older execution baseline also lacks 112 retirements on already-published keys;
+those are reported separately, giving 1,813 total measured promotions.
 
-The full route retires **1,114,973,224 native and 66 interpreted instructions**,
-down from 143 interpreted on the identical baseline. All remaining fallbacks
-are in the preserved original six-byte exclusion: 22 in the retained prefix
-and 44 in the extension. This is still a hybrid port.
+The matching route retires **1,811,024,403 native and 66 interpreted instructions**,
+down from 1,879 interpreted on the same baseline. The remaining 66 fallbacks stay
+in the original six-byte exclusion. This remains a hybrid port.
 
-One measured **240-frame combat window executes 7,623,762 native and zero
-interpreted instructions**. Ordinary attacks raise visible EXP from 0 to 62 and
-gold from 200 to 204 while HP falls from 20 to 16. Later combat reaches zero HP,
-Game Over appears, and ordinary Continue restores positive HP.
+A clean **474-frame wizard-combat window executes 14,740,660 native and zero
+interpreted instructions**. Player RAM HP falls from 99 to 59 while the enemy bar
+loses 15 yellow pixels, replaced by red across all eight rows. This proves visible
+boss damage, not a numeric boss-HP map or victory. No development edit occurs
+inside this window.
 
-All 757 states, 340 images, source identities, per-key total hits, HP journals
-and digital PCM match the fresh replay, with only the proved execution-tier
-promotions and validated immediate-input transport differences. Original program
-code and max HP receive no development edits in this qualified recipe. Guest
-saves remain volatile. Boss encounters and the full campaign remain unfinished;
-the later boss approach interrupted by a power outage is not qualified.
+All 2,055 states, 801 images, source identities, total retirement counts, data-CAS
+journals and digital PCM match the fresh replay, with only proved execution-tier
+promotions and validated immediate-input transport differences. Boss defeat,
+rewards, the full campaign and cross-process saves remain unfinished. Interrupted
+or failed experiments are retained separately and excluded from qualification.
 
 ## Play the local build
 
@@ -52,7 +52,7 @@ The toolkit remains pinned to ABI18 at
 `6935e46ff8aefacf8ea058a385198299c4e2cd5c`. The composed profile retains its
 original ABI17 lineage and the actual ABI18 labels of the new closed captures.
 This union represents multiple executions. It was re-emitted and rebuilt for
-the current combat batch. Earlier finite migration and route proofs remain
+the current boss-combat batch. Earlier finite migration and route proofs remain
 retained separately; newer upstream ABIs are not selected by this batch.
 
 The shared toolkit adds explicit base HuCard startup and mapper support. Its
@@ -60,15 +60,15 @@ authored fixtures have separate Geargrafx/native/TCP/PSG checks. **Ys III still
 uses the owner's CHD**; this batch adds no retail HuCard/CUE test or media
 conversion. The earlier full-route ABI17 media migration remains retained.
 
-The extended route's raw 44.1 kHz Gear audio matches 27,615,340 cumulative PCM frames, hash
-`4692142117000696351`, including 25,402,413 mixed-nonzero frames and zero runtime
-loss. The matching WAV is capped at the first ten guest seconds of silent boot;
-later game audio is verified through cumulative PCM. These full replays are
-unthrottled with muted SDL presentation. No new paced-device or listening test
-is claimed for this package; the earlier silent-menu device check is historical.
-The earlier 5,526-frame ABI18 startup check remains retained separately.
+Both module runs match 43,949,545 cumulative 44.1 kHz PCM frames, hash
+`12114718313764246034`, including 41,381,501 mixed-nonzero frames and zero synthesis
+loss. The WAV is capped at ten guest seconds of silent boot; later game audio is
+verified through cumulative PCM. Fast-forward SDL presentation is muted. No new
+paced-device or listening test is claimed. Independent Geargrafx boss observations
+have separate timing, stats and damage measurements; they are not full-route audio
+or image parity. Earlier finite startup and device checks remain retained.
 
-The original six-byte exclusion remains across four profile variants / 1,072
+The original six-byte exclusion remains across 4 profile variants / 1,160
 profile hits. This route retires 66 interpreted instructions in that excluded
 span. The composed ABI18 profile is a union of observations from
 multiple runs, not one execution. The older 95,686-frame IPL-entry route passed
@@ -96,8 +96,8 @@ ctest --test-dir build --output-on-failure
 If `ctest` is unavailable, run
 `python .deps/pcenginerecomp-abi18/scripts/check.py --build build/upstream`
 and `python -m unittest discover -s tests -v`. The default empty-module host
-uses interpreted execution. The consumer suite passes **476 tests with zero skips**;
-upstream checks pass **36 shared suites / 468 Python tests, zero skips**.
+uses interpreted execution. The consumer suite passes **488 tests with zero skips**;
+retained upstream checks passed **36 shared suites / 468 Python tests, zero skips**.
 Verification requires the exact clean 60-file source digest and ABI. Historical
 captures retain their original ABI labels; fresh ABI18 execution captures are
 checked as ABI18. Emission counts alone establish no runtime coverage.
