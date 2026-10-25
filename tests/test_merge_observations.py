@@ -8,7 +8,8 @@ import unittest
 from unittest.mock import patch
 
 from scripts.merge_observations import (ROOT, U64, compose, load_capture_api, merge_captures,
-                                        read_manifest, strict_json, verify_inputs)
+                                        read_manifest, strict_json, verify_inputs,
+                                        ABI18_REVISION, ABI18_SOURCE, validate_tool_identity)
 
 TOOL = ROOT / json.loads((ROOT / 'toolchain.json').read_text(encoding='utf-8'))['tool']['checkout']
 
@@ -182,6 +183,113 @@ class MergeObservationTests(unittest.TestCase):
                 self.assertEqual(command[command.index('--expected-revision') + 1], ABI17_REVISION)
                 self.assertEqual(command[command.index('--expected-abi') + 1], '17')
                 self.assertEqual(command[command.index('--expected-source-sha256') + 1], ABI17_SOURCE)
+
+    def test_abi18_union_keeps_all_original_epoch_labels_and_input_bytes(self):
+        inputs = [capture([observation(pc=0x4000 + index)], abi=abi)
+                  for index, abi in enumerate((12, 13, 16, 17, 18))]
+        before = copy.deepcopy(inputs)
+        merged, summary = self.merge(inputs, 18)
+        self.assertEqual(inputs, before)
+        self.assertEqual(merged['runtime_abi'], 18)
+        self.assertEqual([epoch['runtime_abi'] for epoch in summary['input_epochs']],
+                         [12, 13, 16, 17, 18])
+        self.assertEqual((merged['retired_instructions'], summary['native_hits'],
+                          summary['interpreted_hits']), (25, 10, 15))
+        self.assertFalse(summary['execution_evidence'])
+        for output in (12, 13, 16, 17, 19, 18.0, True):
+            with self.subTest(output=output), self.assertRaises(ValueError):
+                self.merge(inputs, output)
+        inputs[-1]['runtime_abi'] = 19
+        with self.assertRaises(ValueError):
+            self.merge(inputs, 18)
+
+    @staticmethod
+    def identity18():
+        return {'runtime_abi': 18, 'revision': ABI18_REVISION, 'tracked_source_clean': True,
+                'shared_source_identity': {'revision': ABI18_REVISION,
+                                          'source_sha256': ABI18_SOURCE, 'source_files': 60}}
+
+    def test_abi18_ledger_rejects_unknown_source_types_counts_and_fields(self):
+        identity = self.identity18()
+        self.assertEqual(validate_tool_identity(identity, 18), identity)
+        for mutate in (lambda x: x.update(runtime_abi=18.0),
+                       lambda x: x.update(runtime_abi=True),
+                       lambda x: x.update(runtime_abi=17),
+                       lambda x: x.update(revision='0' * 40),
+                       lambda x: x.update(tracked_source_clean=1),
+                       lambda x: x.update(extra=True),
+                       lambda x: x.pop('tracked_source_clean'),
+                       lambda x: x['shared_source_identity'].update(revision='0' * 40),
+                       lambda x: x['shared_source_identity'].update(source_sha256='0' * 64),
+                       lambda x: x['shared_source_identity'].update(source_files=54),
+                       lambda x: x['shared_source_identity'].update(source_files=60.0),
+                       lambda x: x['shared_source_identity'].update(source_files=True),
+                       lambda x: x['shared_source_identity'].update(extra=True)):
+            changed = copy.deepcopy(identity); mutate(changed)
+            with self.subTest(identity=changed), self.assertRaisesRegex(ValueError, 'exact reviewed'):
+                validate_tool_identity(changed, 18)
+        for abi in (19, 18.0, True, None):
+            with self.subTest(abi=abi), self.assertRaises(ValueError):
+                validate_tool_identity(identity, abi)
+
+    def test_abi18_uses_actual_reviewed_tool_and_shared_root_capture_validation(self):
+        tool = ROOT / '.deps/pcenginerecomp-abi18'
+        if not (tool / 'pcerecomp/capture.py').is_file():
+            self.skipTest('Reviewed ABI18 checkout required for capture integration')
+        api = load_capture_api(tool)
+        with tempfile.TemporaryDirectory() as folder:
+            path, manifest, output = self.fixture(folder)
+            manifest['output_runtime_abi'] = 18
+            for index, abi in enumerate((17, 18)):
+                artifact = path.parent / manifest['inputs'][index]['capture']['path']
+                manifest['inputs'][index]['capture']['sha256'] = write(
+                    artifact, capture([observation(pc=0x4000 + index)], abi=abi))
+            write(path, manifest)
+            # Real clean-source verification and actual shared loader; only authored NOPs.
+            result = compose(path, tool, output)
+            self.assertEqual(result['tool_identity'], self.identity18())
+            self.assertEqual(result['tool_identity_after'], self.identity18())
+            self.assertEqual([epoch['runtime_abi'] for epoch in result['inputs']], [17, 18])
+            merged, digest = api.load_capture(output / 'observations.json')
+            self.assertEqual((merged['runtime_abi'], digest), (18, result['capture_sha256']))
+            for mutate in (lambda x: x.update(schema=True),
+                           lambda x: x.update(unexpected=0),
+                           lambda x: x.update(runtime_abi=18.0),
+                           lambda x: x['observations'][0]['physical'].__setitem__(0, 0),
+                           lambda x: x.update(retired_instructions=11)):
+                changed = capture(abi=18); mutate(changed)
+                with self.subTest(capture=changed), self.assertRaises(ValueError):
+                    merge_captures([capture(abi=17), changed], 18, api.validate_capture)
+
+    def test_abi18_composition_rejects_unreviewed_identity_before_output(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path, manifest, output = self.fixture(folder)
+            manifest['output_runtime_abi'] = 18
+            write(path, manifest)
+            identity = self.identity18(); identity['shared_source_identity']['source_files'] = 57
+            with patch('scripts.merge_observations.subprocess.check_output',
+                       return_value=json.dumps(identity)) as checker:
+                with self.assertRaisesRegex(ValueError, 'exact reviewed'):
+                    compose(path, TOOL, output)
+            self.assertFalse(output.exists())
+            command = checker.call_args.args[0]
+            self.assertEqual(command[command.index('--expected-revision') + 1], ABI18_REVISION)
+            self.assertEqual(command[command.index('--expected-abi') + 1], '18')
+            self.assertEqual(command[command.index('--expected-source-sha256') + 1], ABI18_SOURCE)
+
+    def test_abi18_final_identity_types_are_revalidated_before_output(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path, manifest, output = self.fixture(folder)
+            manifest['output_runtime_abi'] = 18
+            write(path, manifest)
+            after = self.identity18()
+            # Python equality alone considers 60.0 equal to 60.
+            after['shared_source_identity']['source_files'] = 60.0
+            with patch('scripts.merge_observations.subprocess.check_output',
+                       side_effect=[json.dumps(self.identity18()), json.dumps(after)]):
+                with self.assertRaisesRegex(ValueError, 'exact reviewed'):
+                    compose(path, TOOL, output)
+            self.assertFalse(output.exists())
 
     def test_incomplete_loss_inconsistent_totals_and_bad_mapping_rejected(self):
         for mutate in (lambda value: value.update(complete=False, dropped_instructions=1,

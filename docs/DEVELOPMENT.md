@@ -5,7 +5,67 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Current ABI18 finite regression
+## Current ABI18 native-extension workflow
+
+The exact tool pin remains `6935e46ff8aefacf8ea058a385198299c4e2cd5c`, source
+`9414ed390229b8d411f2f79f6c22080d68fef7b09aef2bf99db0046751e34cf0`,
+60 files / ABI18 / descriptor schema1. Shared CPU, device, media and code
+generation semantics stay upstream. Do not switch to an active toolkit checkout.
+
+`replay_reset_extension` now accepts the finite reviewed ABI17/18 source ledger.
+It validates each recorded capture against that receipt's verified runtime ABI:
+an old capture remains17, and a fresh18 host must produce18. Descriptor revision,
+source digest, ABI and actual clean loader source must agree. The default follows
+the current manifest; arbitrary same-ABI revisions remain rejected.
+
+First repeat the retained 19,126-frame route on the existing ABI18 build, with
+strict per-source retirement counts, images and PCM. Then discover a bounded
+ordinary-input extension using TCP controls/captures and the same immutable
+inputs. Preserve the first 355 action rows / 60 retained controls / 71 images,
+deferring terminal quit. Journal each new input request before its advance.
+Paused input-intent snapshots must be static within their own run, and settled
+input must equal the requested mask. Keep the original prefix54/55 witness;
+never drop button, IRQ, mapping, generation or PCM fields broadly.
+
+Compose the original17 profile and fresh18 discovery through
+`merge_observations` with explicit output ABI18 and the exact reviewed tool.
+Input labels and provenance remain unchanged; reject an18 input composed as17,
+unknown/future ABIs, capture loss and source/key disagreement. The resulting
+union represents several executions. Emit it through `expand_native` using the
+verified restored-code journal so the entire six-byte physical span stays
+excluded across all MPR mappings and byte variants. Preserve the prior 52,677
+eligible source identities; source emission alone proves no runtime gain.
+
+Prepare a fresh official descriptor/SDL build, then replay the exact closed
+discovery recipe with the expanded module. For this 21,934-frame batch, native
+retirements must increase from 639,923,899 to 639,924,808 while interpreted work
+falls from912 to3: exactly303 hits at each of three new eligible identities.
+The 19,126-frame prefix remains564,285,827N/3I. Total work, all per-key total
+hits, every settled CPU/MPR/physical byte/source-generation/CD state, 99 decoded
+images and raw44100 Gear PCM remain exact. Native blocks stay77,809; guards
+fall912 to3. The fixed excluded route identities remain interpreted.
+
+The profile has52,680 eligible identities/79MPR contexts/257 translation units
+plus one header. New execution coverage has1,051 source keys beyond the retained
+route:1,048 already compiled cold identities and three newly emitted identities.
+Keep these counts separate. PCM is16,168,349 frames/hash16485684417233013891,
+mixed-nonzero15,092,682/loss0. The matching441,000-frame WAV is boot silence;
+there is no new listening or hardware claim.
+
+Bind the official package and source/input identities before and after each
+run, preserve seven original inputs, and require natural TCP quit0 with the
+owned process stopped. Preserve actual launcher-pointer bytes before replacing
+the selection. Check both directCLI and rootCMD `--info` for the positive
+readiness marker, then review/audit the exact staged authored files before push.
+Raw working CRLF hashes and Git-normalized staged blobs are distinct evidence;
+verify each without rewriting old sources to make a hash agree.
+
+This route exercises shop movement and Equipment/Inventory windows without new
+assists. It does not qualify equipping, item use, a town exit or campaign
+completion. Retain immutable inputs/dependencies, generated source, receipts,
+failed attempts and source epochs; stop owned processes. No cleanup ran here.
+
+## Retained ABI18 finite-regression workflow
 
 Use the exact clean ABI18 tool `6935e46ff8aefacf8ea058a385198299c4e2cd5c`
 in `.deps/pcenginerecomp-abi18`, schema1, canonical 60-file source SHA256
@@ -34,10 +94,10 @@ System Card field; there are no new mapper fields to discard. Verify the
 official package, adjacent SDL, empty working directory, all seven originals,
 natural TCP quit0 and stopped owned process before selecting the new launcher.
 
-This is a finite migration check. The longer 19,126-frame native qualification
-and the extension replay helper below retain their ABI17 contracts. Reproducing
-those historical receipts requires their preserved consumer sources and tool
-clones. Do not run that helper against ABI18 or claim a full-route ABI18 replay.
+This earlier milestone was a finite migration check. Its original longer
+19,126-frame evidence used ABI17. The current workflow above has since repeated
+that route on ABI18 and extended it. Reproducing historical receipts still
+requires their preserved consumer sources and tool clones.
 Shared HuCard/Gear/native/TCP/PSG checks remain separate from this CHD route.
 
 ## Retained ABI17 closed reset-extension workflow
