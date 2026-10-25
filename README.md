@@ -5,36 +5,38 @@ An incremental PC Engine CD consumer of
 *Ys III: Wanderers from Ys* (USA). This is an early hybrid port: unseen code
 still uses the interpreter, and the full campaign remains unfinished.
 
-The current **26,510-frame** reset route adds **4,576 ordinary-input frames**
-beyond the retained route. The expanded module retires **781,794,544 native
-and 22 interpreted instructions**, moving **100 retirements** from the
-interpreter on that same extended route. Twenty-nine new eligible identities bring
-the module to 52,709 identities in 79 full MPR contexts, across 258 C++
-translation units and one header. Source emission alone proves no execution.
+The current **27,490-frame** reset route extends the retained Tigre route by
+**980 ordinary-input frames** to test a Healing Herb. Its case retires
+**28,321,867 native and zero interpreted instructions**: selection, activation,
+healing from 011 through 017 to 020 HP, and visible item consumption. This is
+a fully native bounded item-use case; it does not establish all combat or bosses.
 
-The extension exercises 3,868 source identities absent from the shorter route:
-3,839 were already compiled and 29 required this expansion. Together they
-retire 7,627,905 instructions natively in the final replay. This separates newly
-executed coverage from newly generated source.
+The full replay retires **810,116,411 native and 22 interpreted instructions**,
+promoting **121 retirements** on the same route. All 22 remaining interpreted
+retirements belong to the retained prefix, with none inside the new case.
+Forty-five new eligible identities bring the module to 52,754 in 79 full MPR
+contexts, across 258 C++ translation units and one header.
 
-The route boots through the System Card reset vector with a clean US BIOS,
-deterministic initialization and implicit blank-unformatted BRAM. It uses no IPL
-payload, forced PC/MPR mapping, input script, BRAM file or development RAM write.
-It reaches the town, enters a shop and buys a Healing Herb for 100G, leaving
-900G. The new extension closes the Inventory/Command windows, leaves town,
-selects Tigre on the world map, crosses its bridge and enters the cave. Visible
-HP falls from 020 to 011 through ordinary gameplay. Equipping, item use, boss
-victory and campaign completion remain unverified. Guest saves remain volatile
-and process-local.
+The new case exercises 220 identities absent from the shorter route: 175 were
+already compiled and 45 required expansion. Together those new keys retire
+7,156 instructions natively. This separates new executed coverage, compilation
+gain and the case's total native work. Source emission alone proves no execution.
 
-All settled CPU/MPR/source/generation/CD/PCM checkpoints match apart from the
-measured execution tiers. Immediate input-status observations retain their raw
-prior/requested masks and are checked within each run before the next strict
-advancing checkpoint. The original opening's one witnessed state54/55 timing
-case remains explicit; there is no broad button, IRQ or timing normalization.
-The original 114 opening actions and the retained route's next 88 control
-requests are preserved. Their terminal quit is deferred until this extension
-ends; no state restore or development assist is used.
+The route uses the System Card reset vector, deterministic initialization and
+implicit blank-unformatted BRAM. It leaves town, selects Tigre and enters its
+cave; ordinary damage lowers HP to 011 before the Herb restores 020. Gold stays
+900. There are no payloads, state restores, forced PC/MPR, owner saves, BRAM
+files or development memory writes. Development write permission is enabled in
+the private test host, with every raw write counter and ledger remaining zero.
+Guest saves remain volatile and process-local.
+
+All settled CPU/MPR/source/generation/CD/PCM checkpoints, per-key total hits,
+178 images and the bounded WAV match apart from measured execution tiers.
+Immediate input-intent observations are checked within each run; the original
+opening's state54/55 witness remains the sole fixed timing exception. All 121
+retained controls and 132 prefix images are preserved before the item case.
+The fresh lossless source capture covers frames 26,510 through 27,490; it is
+explicitly checked as that window, without relabeling it a reset-zero capture.
 
 ## Play the local build
 
@@ -53,7 +55,7 @@ opening a game. Cross-process saves are not implemented.
 The toolkit pin is now ABI 18 at
 `6935e46ff8aefacf8ea058a385198299c4e2cd5c`. The original ABI17 profile is
 preserved in the source lineage. This batch combines the previous ABI18 profile
-with a fresh ABI18 discovery capture, retaining their original labels; the
+with a fresh ABI18 item-case window, retaining their original labels; the
 union is not one execution. Before expansion, the
 complete **19,126-frame route** was repeated on ABI18 with matching execution
 tiers, all 38,235 source keys and per-key hits, 71 images and digital audio.
@@ -64,8 +66,8 @@ authored fixtures have separate Geargrafx/native/TCP/PSG checks. **Ys III still
 uses the owner's CHD**; this batch adds no retail HuCard/CUE test or media
 conversion. The earlier full-route ABI17 media migration remains retained.
 
-The extended route's raw 44.1 kHz Gear audio matches 19,541,485 cumulative PCM frames, hash
-`10917741165598528734`, including 18,224,638 mixed-nonzero frames and zero runtime
+The extended route's raw 44.1 kHz Gear audio matches 20,263,879 cumulative PCM frames, hash
+`10159753993186495202`, including 18,947,032 mixed-nonzero frames and zero runtime
 loss. The matching WAV is capped at the first ten guest seconds of silent boot;
 later game audio is verified through cumulative PCM. These full replays are
 unthrottled with muted SDL presentation. No new paced-device or listening test
@@ -108,9 +110,10 @@ checked as ABI18. Emission counts alone establish no runtime coverage.
 
 See [status](docs/STATUS.md), [development](docs/DEVELOPMENT.md) and
 [toolchain.json](toolchain.json) for measured scopes and historical milestones.
-Owner inputs remain read-only. The reviewed cleanup plans remain owner-run;
-no deletion was performed. Revalidate plans after source or metadata changes
-before running them. **Clean Old Build Files.cmd** remains unchanged.
+Owner inputs remain read-only. The previous batch removed only reviewed
+compiler intermediates from its failed build, preserving qualified evidence.
+Broader cleanup plans remain unchanged and need revalidation before use.
+**Clean Old Build Files.cmd** remains unchanged.
 
 This consumer owns game configuration, source selection, native coverage,
 adapters and launchers. Shared CPU/device semantics, media and generation remain

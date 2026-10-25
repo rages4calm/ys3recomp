@@ -1,8 +1,50 @@
 # Consumer status - 25 October 2026
 
-## Current unassisted town-to-Tigre extension on ABI18
+## Current native Healing Herb case on ABI18
 
 The final consumer suite passes 476 tests with zero skips.
+
+The tool remains exact 6935/ABI18/schema1 with the same clean 60-file source.
+A fresh reset replay preserves the prior 26,510-frame route and adds 980 ordinary
+frames. Equipment selection names the Healing Herb, Run activates it, HP rises
+11 -> 17 -> 20, and reopening the screen shows the Herb slot empty. All actions
+are ordinary guest controls. Raw development-write permission remains enabled,
+with zero requests/changed bytes and an empty ledger; there is no HP or code edit.
+
+| Evidence | Result |
+|---|---|
+| Whole baseline | 810,116,290 native + 143 interpreted |
+| Whole expanded replay | 810,116,411 native + 22 interpreted; total 810,116,433 |
+| Item-case baseline | 28,321,746 native + 121 interpreted |
+| Item-case expanded replay | 28,321,867 native + zero interpreted; exactly 121 promotions |
+| Module | All prior 52,709 identities retained; 45 new; 52,754 total / 79 MPR contexts / 258 translation units + header |
+| New executed coverage | 220 identities absent from prior route: 175 already compiled + 45 new; 7,156 native hits |
+| Source window | ABI18, frames 26,510..27,490, 7,048 identities, complete/lossless; prefix+window union 43,374 keys |
+| Recipe | 439 states / 178 images / 781 action rows / 168 requests: 165 advances, begin, end, finish |
+| Digital audio | Raw44100 Gear: 20,263,879 PCM frames / hash `10159753993186495202` / 18,947,032 mixed-nonzero / zero runtime loss |
+| Original exclusion | Four profile variants / 1,009 aggregate hits; 22 actual prefix hits, zero item-case hits |
+
+All settled CPU/MPR/fetch bytes/source generations/CD/PCM, per-key total hits,
+images and the capped boot WAV match. Both composed profile inputs retain their
+ABI18 labels and the original ABI17 lineage. A union is not one execution. The
+new capture begins at the actual paused frame 26,510 boundary with strict tier
+conservation; it is not passed through the reset-zero validator or relabeled.
+
+The first menu-navigation attempt ended without item use and remains failed.
+A fresh run selected and consumed the item; its state and capture evidence were
+retained before expansion. The native candidate repeats that exact successful
+recipe. Equipment category selection and the Inventory grid use different visual
+cues; no shared runtime defect was established by that investigation.
+
+This qualifies one item-use/healing/consumption case. The remaining 22 interpreted
+instructions are disclosed prefix work, not hidden inside this native-only case.
+HP setup, damage/death/Continue and boss-phase tests remain follow-up work.
+No all-boss, campaign, listening, hardware, owner-save or persistence claim is made.
+The official build passed on its first attempt; no cleanup was performed here.
+
+## Retained unassisted town-to-Tigre extension on ABI18
+
+The consumer suite at that milestone passed 476 tests with zero skips.
 
 The exact tool remains `6935e46ff8aefacf8ea058a385198299c4e2cd5c`, ABI18/schema1.
 This route adds 4,576 frames beyond the qualified 21,934-frame prefix, reaching

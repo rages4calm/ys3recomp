@@ -5,7 +5,48 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Current town-to-Tigre native-extension workflow
+## Current Healing Herb native-case workflow
+
+Preserve the exact selected source/package and raw authored-file epochs. Replay
+all 121 retained controls and 132 images to frame 26,510 before opening the new
+case. The private test host declares write permission enabled, with zero actual
+requests/changed bytes throughout; keep those raw fields and the empty ledger.
+Never represent the development host as write-disabled in stored evidence.
+
+The successful recipe uses Equipment Item selection, I to resume, Run to use,
+then reopens the grid to confirm consumption. HP 11 -> 17 -> 20 and an emptied
+Herb slot are separate witnesses. Preserve the earlier failed attempt. Record
+begin/end counters for the entire case, including its menus and verification.
+
+Use the reviewed ABI18 deferred-window validator at the actual frame 26,510/tick
+boundary with all MPRs and fetched-byte readback. Prove both tier totals and every
+per-source hit over that window. Keep the original full-prefix capture separately;
+do not relabel either header or invent a reset-zero retired total. Both captures
+exclude the independently identified HP data/mirrored aliases from instruction
+fetches before a later data assist can be considered.
+
+Official union/emission preserves all 52,709 prior identities and the original
+six-byte exclusion. Forty-five new identities bring 52,754 in 79 MPR contexts,
+across 258 translation units and one header. The native replay must change only
+execution tiers: the case moves from 28,321,746 native / 121 interpreted to
+28,321,867 native / zero interpreted. The full replay reaches 810,116,411 native
+and 22 interpreted, retaining the prefix fallbacks.
+Exact settled state/source generations, 178 images, full cumulative PCM and capped
+WAV stay strict; immediate input intent is a within-run invariant only.
+
+One official build with private TEMP already present precedes the actual fresh
+same-recipe TCP/audio replay. Emission alone proves no native execution. Review
+and hash the runtime graph before changing public metadata, then run the final
+consumer suite and staged publication audit/diff review before pushing. Keep raw
+CRLF source epochs distinct from normalized Git blobs.
+
+A later one-HP death/Continue case requires a separate frozen runner and exact
+replay of this closed original-code history to its paused endpoint before the
+expected-byte HP edit. Keep it outside current qualification until actual hit,
+zero HP, Game Over and Continue recovery are observed. Boss shortcuts require
+verified room/actor/AI/phase initialization; camera coordinates are not room IDs.
+
+## Retained town-to-Tigre native-extension workflow
 
 The tool pin remains the exact clean 6935 ABI18 source described below. Reuse
 the prior qualified 21,934-frame package for discovery; retain its actual source
