@@ -5,25 +5,26 @@ An incremental PC Engine CD consumer of
 *Ys III: Wanderers from Ys* (USA). This is an early hybrid port: unseen code
 still uses the interpreter, and the full campaign remains unfinished.
 
-The current **21,934-frame** reset route adds **2,808 ordinary-input frames**
-beyond the retained route. The expanded module retires **639,924,808 native
-and three interpreted instructions**, moving **909 retirements** from the
-interpreter on that same extended route. Three new eligible identities bring
-the module to 52,680 identities in 79 full MPR contexts, across 257 C++
+The current **26,510-frame** reset route adds **4,576 ordinary-input frames**
+beyond the retained route. The expanded module retires **781,794,544 native
+and 22 interpreted instructions**, moving **100 retirements** from the
+interpreter on that same extended route. Twenty-nine new eligible identities bring
+the module to 52,709 identities in 79 full MPR contexts, across 258 C++
 translation units and one header. Source emission alone proves no execution.
 
-The extension exercises 1,051 source identities absent from the shorter route:
-1,048 were already compiled and three required this expansion. Together they
-retire 2,424,502 instructions natively in the final replay. This separates newly
+The extension exercises 3,868 source identities absent from the shorter route:
+3,839 were already compiled and 29 required this expansion. Together they
+retire 7,627,905 instructions natively in the final replay. This separates newly
 executed coverage from newly generated source.
 
 The route boots through the System Card reset vector with a clean US BIOS,
 deterministic initialization and implicit blank-unformatted BRAM. It uses no IPL
 payload, forced PC/MPR mapping, input script, BRAM file or development RAM write.
 It reaches the town, enters a shop and buys a Healing Herb for 100G, leaving
-900G and a visible HP display of 020. The extension exercises the Equipment and
-Inventory windows; equipping and item use remain unverified. This route does
-not establish leaving town or campaign completion. Guest saves remain volatile
+900G. The new extension closes the Inventory/Command windows, leaves town,
+selects Tigre on the world map, crosses its bridge and enters the cave. Visible
+HP falls from 020 to 011 through ordinary gameplay. Equipping, item use, boss
+victory and campaign completion remain unverified. Guest saves remain volatile
 and process-local.
 
 All settled CPU/MPR/source/generation/CD/PCM checkpoints match apart from the
@@ -31,7 +32,7 @@ measured execution tiers. Immediate input-status observations retain their raw
 prior/requested masks and are checked within each run before the next strict
 advancing checkpoint. The original opening's one witnessed state54/55 timing
 case remains explicit; there is no broad button, IRQ or timing normalization.
-The original 114 opening actions and the retained route's next 60 control
+The original 114 opening actions and the retained route's next 88 control
 requests are preserved. Their terminal quit is deferred until this extension
 ends; no state restore or development assist is used.
 
@@ -51,8 +52,9 @@ opening a game. Cross-process saves are not implemented.
 
 The toolkit pin is now ABI 18 at
 `6935e46ff8aefacf8ea058a385198299c4e2cd5c`. The original ABI17 profile is
-preserved and combined with the actual ABI18 discovery capture. Their union
-retains both original labels and is not one execution. Before expansion, the
+preserved in the source lineage. This batch combines the previous ABI18 profile
+with a fresh ABI18 discovery capture, retaining their original labels; the
+union is not one execution. Before expansion, the
 complete **19,126-frame route** was repeated on ABI18 with matching execution
 tiers, all 38,235 source keys and per-key hits, 71 images and digital audio.
 The longer discovery and expanded replay then used that same frozen tool.
@@ -62,16 +64,16 @@ authored fixtures have separate Geargrafx/native/TCP/PSG checks. **Ys III still
 uses the owner's CHD**; this batch adds no retail HuCard/CUE test or media
 conversion. The earlier full-route ABI17 media migration remains retained.
 
-The extended route's raw 44.1 kHz Gear audio matches 16,168,349 cumulative PCM frames, hash
-`16485684417233013891`, including 15,092,682 mixed-nonzero frames and zero runtime
+The extended route's raw 44.1 kHz Gear audio matches 19,541,485 cumulative PCM frames, hash
+`10917741165598528734`, including 18,224,638 mixed-nonzero frames and zero runtime
 loss. The matching WAV is capped at the first ten guest seconds of silent boot;
 later game audio is verified through cumulative PCM. These full replays are
 unthrottled with muted SDL presentation. No new paced-device or listening test
 is claimed for this package; the earlier silent-menu device check is historical.
 The earlier 5,526-frame ABI18 startup check remains retained separately.
 
-The original six-byte exclusion remains across four profile variants / 987
-profile hits. This route actually executes three excluded identities / three
+The original six-byte exclusion remains across four profile variants / 1,009
+profile hits. This route actually executes three excluded identities / 22
 interpreted hits. The composed ABI18 profile is a union of observations from
 multiple runs, not one execution. The older 95,686-frame IPL-entry route passed
 in the prior milestone; it was not repeated here and retains its disclosed
