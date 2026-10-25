@@ -5,7 +5,36 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Current assisted death/Continue workflow
+## Current combat expansion workflow
+
+Keep qualified packages, original capture labels and raw source epochs immutable.
+Use only complete closed captures for profile composition. An interrupted host,
+partial responses or an emitted instruction count cannot establish execution.
+The latest composed ABI18 profile preserves every prior key, adds 399 eligible
+keys and retains the original exclusion and all source guards. Build through
+the verified shared project API before measuring the same recipe again.
+
+The current finite recipe preserves all 176 nonterminal prior controls to frame
+28,249, then verifies ordinary purchases, named equipment, attacks, rewards,
+damage and death/Continue. Journal the exact living HP16-to20 compare-and-write
+separately from the inherited HP1 transaction. Max HP and program code remain
+read-only. Check every HP mirror against complete original-code history and
+the final fresh capture. Preserve raw per-state write counts and ledger phases.
+
+Compare every state, image, PCM counter/hash and full source identity. A tier
+change is allowed only for a newly eligible key with equal total hits; here
+59 keys promote 77 retirements. Keep the other 340 newly emitted keys labeled
+compiled-only. Measure combat windows separately from approach: the observed
+240-frame attack/damage window has zero interpretation, while the full route
+retains 66 fixed-span fallbacks. Unproved quest shortcuts remain disabled.
+
+Run the meaningful contract checks, final consumer suite and staged publication
+audit/diff review. Verify the selected official package with both launcher info
+paths. Digital PCM parity with muted fast-forward is not listening or hardware
+qualification. Resume unfinished boss work from its private recovery handoff;
+do not relabel a failed/interrupted capture as a passed encounter.
+
+## Retained assisted death/Continue workflow
 
 Keep the published native package and all prior source epochs immutable. Replay
 all 167 nonterminal Herb requests, 438 states and 178 images to the exact paused

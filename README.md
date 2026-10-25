@@ -5,40 +5,34 @@ An incremental PC Engine CD consumer of
 *Ys III: Wanderers from Ys* (USA). This is an early hybrid port: unseen code
 still uses the interpreter, and the full campaign remains unfinished.
 
-The current **28,249-frame** reset route adds a verified low-HP damage, death
-and Continue case. One paused development edit sets current HP from 20 to 1;
-ordinary bat contact then reaches zero, Game Over appears, and Run/Continue
-returns Adol to the bridge with 20 HP. This assisted progression is explicitly
-separate from unassisted play and campaign completion.
+The current **37,463-frame** reset route verifies ordinary purchases and
+equipment selection for the Short Sword and Leather Armor, then mine attacks,
+enemy kills, rewards, damage, Game Over and Continue. One new paused current-HP
+refill changes 16 to 20; the retained route also includes its earlier HP1 setup.
+This is assisted testing, separate from campaign completion.
 
-The new **759-frame case executes 23,924,761 native and zero interpreted
-instructions**. It exercises **832 identities absent from the retained reset
-route captures**, all already compiled, for 1,731,089 native hits. The existing native package is
-reused without emission or rebuilding; compilation gain is zero. Its module
-still contains 52,754 eligible identities in 79 full MPR contexts, across
-258 C++ translation units and one header.
+The rebuilt module contains **53,153 eligible identities** in 79 full MPR
+contexts, across 259 C++ translation units and one header. It preserves all
+52,754 prior identities and adds 399. The matching TCP/audio replay executes
+59 newly compiled keys for **77 additional native retirements**; the other
+340 added keys are compiled coverage without execution proof in this replay.
 
-The full replay retires **834,041,172 native and 22 interpreted instructions**.
-All 22 interpreted retirements remain in the retained prefix; both the Herb
-case and this death/Continue case have zero interpreted retirements.
-The exact assisted recipe passes a fresh same-package TCP/audio replay with
-455 states, 187 images, per-source hit counts and one journaled HP transaction.
+The full route retires **1,114,973,224 native and 66 interpreted instructions**,
+down from 143 interpreted on the identical baseline. All remaining fallbacks
+are in the preserved original six-byte exclusion: 22 in the retained prefix
+and 44 in the extension. This is still a hybrid port.
 
-The route uses the System Card reset vector, deterministic initialization and
-implicit blank-unformatted BRAM. All 167 nonterminal retained controls and
-178 images are checked before the edit at frame 27,490. The HP write uses
-expected bytes, a pre-request journal, ACK and readback; it changes one data
-byte without advancing guest time. Max HP, program code, items and game flags
-receive no development edits. Original-input and code-capture history checks
-exclude the HP byte and its mirrors from instruction fetches before and after.
+One measured **240-frame combat window executes 7,623,762 native and zero
+interpreted instructions**. Ordinary attacks raise visible EXP from 0 to 62 and
+gold from 200 to 204 while HP falls from 20 to 16. Later combat reaches zero HP,
+Game Over appears, and ordinary Continue restores positive HP.
 
-The fresh lossless ABI18 capture covers frames 27,490 through 28,249 and all
-10,100 case identities. It retains its actual window and ABI. Raw permission
-and the single write request/changed-byte count remain visible. CPU/MPR/source
-generations/CD/PCM, images and the bounded WAV match across the repeat. Immediate
-input intent is checked within each run; the original state54/55 witness remains
-the sole fixed timing exception. Guest saves remain volatile and process-local.
-Boss phases, other combat paths and the complete campaign remain unfinished.
+All 757 states, 340 images, source identities, per-key total hits, HP journals
+and digital PCM match the fresh replay, with only the proved execution-tier
+promotions and validated immediate-input transport differences. Original program
+code and max HP receive no development edits in this qualified recipe. Guest
+saves remain volatile. Boss encounters and the full campaign remain unfinished;
+the later boss approach interrupted by a power outage is not qualified.
 
 ## Play the local build
 
@@ -54,32 +48,29 @@ selected inputs, module, runtime and adjacent SDL package; it downloads and
 installs nothing. `python scripts/play_local.py --info` checks readiness without
 opening a game. Cross-process saves are not implemented.
 
-The toolkit pin is now ABI 18 at
-`6935e46ff8aefacf8ea058a385198299c4e2cd5c`. The original ABI17 profile is
-preserved in the source lineage. The module remains the previously qualified
-ABI18 composed profile. This batch adds an assisted death-case capture and
-same-package repeat without re-emission. Historical labels remain unchanged;
-the composed profile is not one execution. Before expansion, the
-complete **19,126-frame route** was repeated on ABI18 with matching execution
-tiers, all 38,235 source keys and per-key hits, 71 images and digital audio.
-The longer discovery and expanded replay then used that same frozen tool.
+The toolkit remains pinned to ABI18 at
+`6935e46ff8aefacf8ea058a385198299c4e2cd5c`. The composed profile retains its
+original ABI17 lineage and the actual ABI18 labels of the new closed captures.
+This union represents multiple executions. It was re-emitted and rebuilt for
+the current combat batch. Earlier finite migration and route proofs remain
+retained separately; newer upstream ABIs are not selected by this batch.
 
 The shared toolkit adds explicit base HuCard startup and mapper support. Its
 authored fixtures have separate Geargrafx/native/TCP/PSG checks. **Ys III still
 uses the owner's CHD**; this batch adds no retail HuCard/CUE test or media
 conversion. The earlier full-route ABI17 media migration remains retained.
 
-The extended route's raw 44.1 kHz Gear audio matches 20,823,365 cumulative PCM frames, hash
-`15233839849680885939`, including 19,390,686 mixed-nonzero frames and zero runtime
+The extended route's raw 44.1 kHz Gear audio matches 27,615,340 cumulative PCM frames, hash
+`4692142117000696351`, including 25,402,413 mixed-nonzero frames and zero runtime
 loss. The matching WAV is capped at the first ten guest seconds of silent boot;
 later game audio is verified through cumulative PCM. These full replays are
 unthrottled with muted SDL presentation. No new paced-device or listening test
 is claimed for this package; the earlier silent-menu device check is historical.
 The earlier 5,526-frame ABI18 startup check remains retained separately.
 
-The original six-byte exclusion remains across four profile variants / 1,009
-profile hits. This route actually executes three excluded identities / 22
-interpreted hits. The composed ABI18 profile is a union of observations from
+The original six-byte exclusion remains across four profile variants / 1,072
+profile hits. This route retires 66 interpreted instructions in that excluded
+span. The composed ABI18 profile is a union of observations from
 multiple runs, not one execution. The older 95,686-frame IPL-entry route passed
 in the prior milestone; it was not repeated here and retains its disclosed
 709 assist transactions / 723 changed bytes.
