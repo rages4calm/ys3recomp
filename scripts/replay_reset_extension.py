@@ -1,7 +1,7 @@
 """Repeat a closed, unassisted reset discovery recipe with strict raw evidence.
 
 The original terminal quit is deferred until after the explicit extension.
-Only reviewed exact ABI17 source identities are accepted. No private helper,
+Only reviewed exact ABI17/18 source identities are accepted. No private helper,
 input search, memory-write feature or runtime fork is required.
 """
 from __future__ import annotations
@@ -13,7 +13,12 @@ from .desktop_contract import validate_package_proof
 ROOT=Path(__file__).resolve().parents[1]
 TOOLS={
  'bb3b695b782352bdfacd8db877f2a843bd1242f1':('5d3551481d1245d8cec9011d0f390ad0b464720c2d1f37a0fce601d0888e7a0d',54),
- '95fe3e07e63b0869de8c9d7b70681b5c557abf01':('60c37d9fb5b1a1318cd2509c7ac1cc45c03a9939116d04e836aa67e0e03c4ffb',57)}
+ '95fe3e07e63b0869de8c9d7b70681b5c557abf01':('60c37d9fb5b1a1318cd2509c7ac1cc45c03a9939116d04e836aa67e0e03c4ffb',57),
+ '6935e46ff8aefacf8ea058a385198299c4e2cd5c':('9414ed390229b8d411f2f79f6c22080d68fef7b09aef2bf99db0046751e34cf0',60)}
+TOOL_ABIS={
+ 'bb3b695b782352bdfacd8db877f2a843bd1242f1':17,
+ '95fe3e07e63b0869de8c9d7b70681b5c557abf01':17,
+ '6935e46ff8aefacf8ea058a385198299c4e2cd5c':18}
 KINDS={'ys3-reset-interactive-discovery','ys3-reset-extension-replay'}
 
 
@@ -66,20 +71,39 @@ def compare_state(actual,expected,*,phase,previous_settled=None,requested_mask=N
     return {'classification':'settled','actual_counts':actual_counts,'expected_counts':expected_counts,'diagnostic':None}
 
 
-def verify_identity(tool,revision=None):
-    if revision is None:revision=json.loads((ROOT/'toolchain.json').read_text())['tool']['revision']
-    require(type(revision)is str and revision in TOOLS,'Unreviewed exact ABI17 revision')
-    source,files=TOOLS[revision]
-    command=[sys.executable,'-B',str(ROOT/'scripts/verify_tool.py'),'--tool-root',str(tool),
-             '--expected-revision',revision,'--expected-abi','17','--expected-source-sha256',source]
-    value=json.loads(subprocess.check_output(command,cwd=ROOT,text=True,timeout=60))
+def identity_abi(value):
+    """Validate a recorded exact reviewed identity without relabelling its ABI."""
     reset.keys(value,{'revision','runtime_abi','tracked_source_clean','shared_source_identity'},'verified tool identity')
+    revision=value['revision']
+    require(type(revision)is str and revision in TOOLS,'Unreviewed exact toolkit revision')
+    source,files=TOOLS[revision];abi=TOOL_ABIS[revision]
     reset.keys(value['shared_source_identity'],{'revision','source_sha256','source_files'},'canonical shared identity')
     require(type(value['runtime_abi'])is int and type(value['shared_source_identity']['source_files'])is int
-            and value.get('revision')==revision and value.get('runtime_abi')==17 and value.get('tracked_source_clean')is True
-            and value.get('shared_source_identity')=={'revision':revision,'source_sha256':source,'source_files':files},
+            and value['runtime_abi']==abi and value['tracked_source_clean']is True
+            and value['shared_source_identity']=={'revision':revision,'source_sha256':source,'source_files':files},
             'Exact clean reviewed source/ABI/file count required')
+    return abi
+
+
+def verify_identity(tool,revision=None):
+    if revision is None:revision=json.loads((ROOT/'toolchain.json').read_text())['tool']['revision']
+    require(type(revision)is str and revision in TOOLS,'Unreviewed exact toolkit revision')
+    source,_=TOOLS[revision];abi=TOOL_ABIS[revision]
+    command=[sys.executable,'-B',str(ROOT/'scripts/verify_tool.py'),'--tool-root',str(tool),
+             '--expected-revision',revision,'--expected-abi',str(abi),'--expected-source-sha256',source]
+    value=json.loads(subprocess.check_output(command,cwd=ROOT,text=True,timeout=60))
+    require(value.get('revision')==revision,'Verified revision differs from selection')
+    identity_abi(value)
     return value
+
+
+def normalize_recipe_runner(value,*,project_tiers=False,capture=None):
+    """Validate each receipt's capture against its own reviewed execution ABI."""
+    abi=identity_abi(value['tool_identity_before'])
+    require(value['tool_identity_before']==value['tool_identity_after'],'Recipe tool identity changed')
+    reset.validate_capture_contract(value['capture_contract'],value['runner'],capture,expected_abi=abi)
+    return reset.normalize_runner(value['runner'],desktop=True,project_tiers=project_tiers,
+                                  capture_contract=value['capture_contract'],expected_abi=abi)
 
 
 def load_shared(tool):
@@ -202,11 +226,16 @@ def read_recipe(binding,epochs):
     for image in value['images']:
         png=reset.png_identity(bound({'path':image['path'],'sha256':image['png_sha256']},epochs))
         require(all(png[k]==image[k]for k in('width','height','rgb_sha256')),'Bound decoded discovery PNG')
-    tool=Path(tomllib.loads(bound(value['project_descriptor'],epochs).read_text())['tool']['path'])
+    abi=identity_abi(value['tool_identity_before'])
+    declaration=tomllib.loads(bound(value['project_descriptor'],epochs).read_text())['tool']
+    recorded=value['tool_identity_before'];shared=recorded['shared_source_identity']
+    require(declaration['revision']==recorded['revision']and declaration['source_sha256']==shared['source_sha256']
+            and type(declaration['runtime_abi'])is int and declaration['runtime_abi']==abi,'Recipe descriptor/tool identity differs')
+    tool=Path(declaration['path'])
+    require(verify_identity(tool,recorded['revision'])==recorded,'Recipe shared loader source differs')
     _,capture,_=load_shared(tool);raw,digest=capture.load_capture(bound({'path':value['capture_contract']['path'],'sha256':value['capture_contract']['sha256']},epochs))
     require(digest==value['capture_contract']['sha256'],'Original baseline capture hash')
-    reset.validate_capture_contract(value['capture_contract'],value['runner'],raw)
-    reset.normalize_runner(value['runner'],desktop=True,capture_contract=value['capture_contract'])
+    normalize_recipe_runner(value,capture=raw)
     return value,observations,requests
 
 
@@ -273,6 +302,9 @@ def preflight(args):
     verified=api.verify(descriptor);selected=validate_reset_descriptor(tomllib.loads(descriptor.read_text()),descriptor)
     built=reset.strict_json(build/'build-receipt.json');require(built['binding']==api._binding(verified),'Official candidate build binding')
     require(Path(selected['tool']['path']).resolve()==tool,'Candidate descriptor tool differs')
+    require(selected['tool']['revision']==identity['revision']
+            and selected['tool']['source_sha256']==identity['shared_source_identity']['source_sha256']
+            and selected['tool']['runtime_abi']==identity_abi(identity),'Candidate descriptor/source/ABI differs')
     binary=Path(built['binary']);package=reset.package_checks.verify_package(built,binary)
     old_config=tomllib.loads(bound(baseline['project_descriptor'],epochs).read_text());new_config=tomllib.loads(descriptor.read_text())
     for key in ('boot','runtime','limits','bios','toc','disc','libchdr'):require(new_config[key]==old_config[key],'Candidate recipe changed '+key)
@@ -396,11 +428,11 @@ def run(args):
             result['cwd_finally_empty']=not any(cwd.iterdir());require(result['cwd_finally_empty'],'Private cwd acquired files')
             if problem is None:
                 runner=reset.strict_json(out/'run.stdout');result['runner']=runner;raw,digest=capture.load_capture(out/'observed-code.json')
-                contract={'schema':1,'runtime_abi':17,'path':str(out/'observed-code.json'),'sha256':digest,'bytes':(out/'observed-code.json').stat().st_size,
+                contract={'schema':1,'runtime_abi':identity_abi(identity),'path':str(out/'observed-code.json'),'sha256':digest,'bytes':(out/'observed-code.json').stat().st_size,
                     'start_frame':0,'capacity':65536,'start_proof':result['start_proof'],'capture':{k:v for k,v in raw.items()if k!='observations'},'observations':len(raw['observations']),'window':runner['code_capture_window']}
-                result['capture_contract']=reset.validate_capture_contract(contract,runner,raw)
-                actual=reset.normalize_runner(runner,desktop=True,project_tiers=True,capture_contract=contract)
-                expected=reset.normalize_runner(baseline['runner'],desktop=True,project_tiers=True,capture_contract=baseline['capture_contract'])
+                result['capture_contract']=reset.validate_capture_contract(contract,runner,raw,expected_abi=identity_abi(identity))
+                actual=normalize_recipe_runner(result,project_tiers=True,capture=raw)
+                expected=normalize_recipe_runner(baseline,project_tiers=True)
                 require(actual==expected,'Final guest/source/device/PCM/WAV counters differ')
                 require(all(runner[k]==result['final_status']['host'][k]for k in('native_steps','interpreter_steps')),'Final paused per-tier retirement counts')
                 require(reset.sha256(out/'audio.wav')==baseline['raw_files']['audio.wav']['sha256'],'Exact capped prefix WAV bytes required')

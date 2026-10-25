@@ -1,6 +1,51 @@
-# Consumer status - 24 October 2026
+# Consumer status - 25 October 2026
 
-## ABI18 module regeneration and finite CD regression
+## Current unassisted reset extension on ABI18
+
+The final consumer suite passes 476 tests with zero skips.
+
+The tool pin remains `6935e46ff8aefacf8ea058a385198299c4e2cd5c`, ABI18/schema1,
+with the same clean 60-file canonical source. A complete 19,126-frame TCP/audio
+replay first closed the earlier ABI17-to18 migration: all 38,235 source keys
+and per-key native/interpreted hits, 71 images and cumulative PCM match. Its
+counts remain 564,285,827 native and three interpreted instructions.
+
+The new route adds 2,808 ordinary-input frames, ending at 21,934. It preserves
+the original opening and the next 60 retained control requests before testing
+shop movement and the Equipment/Inventory windows. There are no new assists,
+RAM edits, state restores, payloads, PC/MPR overrides, BRAM files or input scripts.
+Gold remains 900 and visible HP remains 020. Equipping, item use, leaving town
+and campaign completion are not established by this route.
+
+| Evidence | Result |
+|---|---|
+| Same-route baseline | 639,923,899 native + 912 interpreted; total 639,924,811 |
+| Expanded replay | 639,924,808 native + three interpreted; exactly 909 retirements move to native |
+| Newly generated identities | Three; 52,680 eligible identities / 79 full MPR contexts / 257 translation units + one header |
+| Executed source coverage | 39,286 source keys; 1,051 absent from the retained route, including 1,048 already compiled identities and the three new ones |
+| New-key native work | 2,424,502 retirements in the final replay; distinct from the 909-retirement compilation gain |
+| Block work | 77,809 native blocks / zero interpreted blocks; guard misses fall from 912 to three |
+| Raw route evidence | 283 states / 99 images / 469 action rows / 89 requests, including 88 ordinary advances and finish |
+| Retained prefix | First 355 action rows, 60 retained advances and 71 images preserved; final quit deferred |
+| Source/audio parity | Exact per-key total hits and settled CPU/MPR/physical fetch/source generations/CD/PCM; only measured execution tiers change |
+| Raw44100 Gear audio | 16,168,349 PCM frames; hash `16485684417233013891`; 15,092,682 mixed-nonzero; zero runtime loss |
+| Exclusions | Entire six-byte span retained across four profile variants / 987 aggregate profile hits; this route executes three excluded identities once each |
+
+Original capture labels remain 17 and 18 in the composed ABI18 source profile;
+the union is not single-execution evidence. Fresh discovery and replay captures
+are actual ABI18, complete and lossless. All 52,677 prior eligible identities
+are retained. Immediate extension input observations validate the paused guest
+within each run; settled advancing input is strict. The original prefix54/55
+witness remains explicit. Raw ACK masks are not asserted identical across runs.
+
+Both owned hosts quit naturally with exit0 and preserve all seven original
+inputs. WAV evidence remains capped at 441,000 frames of boot silence; later
+audio is cumulative digital PCM. These unthrottled SDL-muted runs establish no
+new paced-device, listening or hardware qualification. Unknown-CD `gear-good`
+remains an explicit compatibility condition; unknown operations, REQUEST SENSE
+and cross-process saves remain unimplemented. No cleanup was executed.
+
+## Retained ABI18 module regeneration and finite CD regression
 
 The current tool is `6935e46ff8aefacf8ea058a385198299c4e2cd5c`, ABI18/schema1,
 with 60-file canonical source SHA256
@@ -60,7 +105,7 @@ different comparisons.
 | Migration raw input-status difference | Exactly state204: old prior mask1, new released mask0 | Transport-only observation; all other guest fields static within each run, every settled state exact |
 | Additional CHD gate | 5,526 frames / 20 states / two images / 177 sectors | 152,630,394 native / zero interpreted; 4,073,415 PCM / 3,307,345 mixed-nonzero; two `$FF` responses |
 | Source exclusions | Four variants / 984 profile hits across the original six-byte span | Actual new route: three excluded identities / three interpreted hits |
-| Visible progression | Arrival/town traversal/shop entry; Healing Herb100G, gold1000â†’900, HP020 | No inventory/equipping, campaign or boss-victory claim |
+| Visible progression | Arrival/town traversal/shop entry; Healing Herb100G, gold1000Ã¢â€ â€™900, HP020 | No inventory/equipping, campaign or boss-victory claim |
 | CUE scope | Synthetic checks and six independent Gear fixtures; finite authored native/TCP cases | No retail CUE run, conversion, extraction, whole-game native-only, hardware or listening claim |
 | Tests | 452 consumer tests; 35 shared suites / 420 Python tests; zero skips | Exact clean source verification and separate native/migration qualifications |
 | Historical evidence | Prior14,680 reset qualification, paced silent-menu check and95,686 IPL route retained | Older IPL route was not repeated; inherited709 assists/723bytes stay historical |

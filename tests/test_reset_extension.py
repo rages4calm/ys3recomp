@@ -9,7 +9,7 @@ from tests.test_reset_replay import status,latency_fixture
 
 def identity(revision):
     source,files=e.TOOLS[revision]
-    return {'revision':revision,'runtime_abi':17,'tracked_source_clean':True,
+    return {'revision':revision,'runtime_abi':e.TOOL_ABIS[revision],'tracked_source_clean':True,
             'shared_source_identity':{'revision':revision,'source_sha256':source,'source_files':files}}
 
 
@@ -127,13 +127,14 @@ class ExactPrefixVisibilityTests(unittest.TestCase):
 
 
 class ReviewedToolTests(unittest.TestCase):
-    def test_exact_two_reviewed_pairs_use_explicit_source_and_abi_without_old_global_mutation(self):
+    def test_exact_reviewed_pairs_use_explicit_source_and_abi_without_old_global_mutation(self):
         original=copy.deepcopy(e.reset.TOOL)
         for revision in e.TOOLS:
             with patch.object(e.subprocess,'check_output',return_value=json.dumps(identity(revision)))as call:
                 value=e.verify_identity(Path('authored-tool'),revision)
                 command=call.call_args.args[0];self.assertIn('--expected-source-sha256',command)
                 self.assertEqual(value['shared_source_identity']['source_files'],e.TOOLS[revision][1])
+                self.assertEqual(command[command.index('--expected-abi')+1],str(e.TOOL_ABIS[revision]))
         self.assertEqual(e.reset.TOOL,original)
 
     def test_wrong_revision_dirty_float_abi_filecount_and_unknown_fields_reject(self):
@@ -147,6 +148,75 @@ class ReviewedToolTests(unittest.TestCase):
         with self.assertRaises(ValueError):e.verify_identity(Path('authored'),'0'*40)
         with patch.object(e.subprocess,'check_output',side_effect=subprocess.CalledProcessError(1,['verify'])),self.assertRaises(subprocess.CalledProcessError):
             e.verify_identity(Path('authored'),revision)
+
+
+class CrossAbiCaptureTests(unittest.TestCase):
+    def bundle(self,abi):
+        from tests.test_reset_replay import contract,runner
+        value,_,raw=contract();value['runtime_abi']=value['capture']['runtime_abi']=raw['runtime_abi']=abi
+        run=runner(True);run['code_capture_window']=copy.deepcopy(value['window'])
+        revision=next(k for k in e.TOOLS if e.TOOL_ABIS[k]==abi)
+        selected=identity(revision)
+        return {'tool_identity_before':selected,'tool_identity_after':copy.deepcopy(selected),
+                'capture_contract':value,'runner':run},raw
+
+    def test_each_recorded_abi_validates_its_own_capture_without_relabelling(self):
+        old,oldraw=self.bundle(17);new,newraw=self.bundle(18)
+        original=copy.deepcopy((old,oldraw,new,newraw))
+        self.assertEqual(e.normalize_recipe_runner(old,capture=oldraw),
+                         e.normalize_recipe_runner(new,capture=newraw))
+        self.assertEqual(original,(old,oldraw,new,newraw))
+        self.assertEqual(old['capture_contract']['runtime_abi'],17)
+        self.assertEqual(new['capture_contract']['runtime_abi'],18)
+
+    def test_mixed_receipt_header_raw_labels_and_postrun_identity_reject(self):
+        for abi in (17,18):
+            other=35-abi
+            for part in ('contract','header','raw','identity','after'):
+                value,raw=self.bundle(abi)
+                if part=='contract':value['capture_contract']['runtime_abi']=other
+                elif part=='header':value['capture_contract']['capture']['runtime_abi']=other
+                elif part=='raw':raw['runtime_abi']=other
+                elif part=='identity':value['tool_identity_before']['runtime_abi']=other
+                else:value['tool_identity_after']['runtime_abi']=other
+                with self.subTest(abi=abi,part=part),self.assertRaises(ValueError):
+                    e.normalize_recipe_runner(value,capture=raw)
+
+    def test_migration_keeps_source_pcm_and_total_retirement_strict(self):
+        old,oldraw=self.bundle(17);new,newraw=self.bundle(18)
+        new['runner']['native_steps']=2;new['runner']['interpreter_steps']=1
+        newraw['observations'][0].update(native_hits=2,interpreted_hits=1)
+        self.assertEqual(e.normalize_recipe_runner(old,capture=oldraw,project_tiers=True),
+                         e.normalize_recipe_runner(new,capture=newraw,project_tiers=True))
+        newraw['observations'][0]['native_hits']=3
+        with self.assertRaises(ValueError):e.normalize_recipe_runner(new,capture=newraw,project_tiers=True)
+        for field,mutate in (
+            ('source',lambda run:run['instruction_bytes'].__setitem__(0,18)),
+            ('pcm',lambda run:run['audio_output'].update(pcm_hash=123))):
+            new,newraw=self.bundle(18);mutate(new['runner'])
+            with self.subTest(field=field):
+                self.assertNotEqual(e.normalize_recipe_runner(old,capture=oldraw,project_tiers=True),
+                                    e.normalize_recipe_runner(new,capture=newraw,project_tiers=True))
+
+    def test_only_exact_reviewed18_identity_is_accepted(self):
+        revision=next(k for k in e.TOOLS if e.TOOL_ABIS[k]==18)
+        for mutate in (lambda v:v.update(revision='a'*40),lambda v:v.update(runtime_abi=17),
+                       lambda v:v.update(runtime_abi=18.0),lambda v:v.update(tracked_source_clean=False),
+                       lambda v:v['shared_source_identity'].update(source_files=57),
+                       lambda v:v['shared_source_identity'].update(source_sha256='b'*64),
+                       lambda v:v['shared_source_identity'].update(revision='a'*40)):
+            value=identity(revision);mutate(value)
+            with self.subTest(mutate=mutate),self.assertRaises(ValueError):e.identity_abi(value)
+
+    def test_default_cli_identity_follows_exact_current18_manifest(self):
+        revision=next(k for k in e.TOOLS if e.TOOL_ABIS[k]==18)
+        with tempfile.TemporaryDirectory()as folder:
+            root=Path(folder);(root/'toolchain.json').write_text(json.dumps({'tool':{'revision':revision}}))
+            with patch.object(e,'ROOT',root),patch.object(e.subprocess,'check_output',return_value=json.dumps(identity(revision)))as call:
+                self.assertEqual(e.verify_identity(Path('authored')),identity(revision))
+                command=call.call_args.args[0]
+                self.assertEqual(command[command.index('--expected-abi')+1],'18')
+                self.assertEqual(command[command.index('--expected-revision')+1],revision)
 
 
 class EpochAndCliTests(unittest.TestCase):
