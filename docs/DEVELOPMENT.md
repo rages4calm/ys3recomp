@@ -5,7 +5,67 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Current ABI18 native-extension workflow
+## Current town-to-Tigre native-extension workflow
+
+The tool pin remains the exact clean 6935 ABI18 source described below. Reuse
+the prior qualified 21,934-frame package for discovery; retain its actual source
+epochs and launcher-pointer bytes before any change. The private supervisor
+must replay all 88 retained controls and match 99 images plus every settled
+CPU/MPR/source/CD/PCM/tier checkpoint before permitting new frontier input.
+The original terminal proof and quit are deferred, not claimed executed early.
+
+The new closed route ends at 26,510 frames with 349 states/132 images/601 action rows
+and 122 requests. It leaves town and reaches Tigre's bridge/cave; HP 020 becomes 011,
+gold stays 900. Build from the prior composed-format 18 profile plus the new
+actual 18 capture. Preserve the original 17 lineage and both top-level 18 labels;
+never relabel a historical capture or call the union a single execution.
+
+All 52,680 prior eligible identities remain, with 29 new identities giving 52,709
+in 79 full MPR contexts. Partitioning now produces 258 translation units plus one
+header. Qualify actual counts from the manifest; do not hardcode the previous
+258-artifact total. Re-emission must match every guarded source artifact.
+
+The same-route measured gain is 100: native 781,794,444 -> 781,794,544 and
+interpreted 122 -> 22, with total 781,794,566 unchanged. The fixed six-byte exclusion
+executes 22 times (8/7/7) here, versus 3 in the prefix, so don't require a zero
+interpreted suffix or label these 19 additional excluded hits as new eligible
+work. All per-key total hits, exact settled guest/device state, 132 decoded PNGs
+and PCM 19541485/hash 10917741165598528734/mixed 18224638/loss 0 stay strict.
+Native blocks remain 100,581; guards fall 122 -> 22. The prefix remains
+639,924,808 N/3 I at 21,934, including 467 action rows/88 controls/99 images.
+
+Use actual fixture counts: the final test receipt must supply the passed count
+with zero skips. The official build requires a NEW output
+directory; create its private TEMP first. If it fails, preserve the failed log,
+source and configuration and run a new official attempt; never manufacture a
+build receipt or bypass the fresh-directory guard. This batch removed only
+reviewed compiler intermediates from its new failed build, retaining all failure
+metadata and protecting every qualified artifact and original input.
+
+## Assisted behavior cases
+
+Use verified game-state changes to reach and repeat cases quickly: low HP for
+damage/death, partially depleted HP for healing, specific boss phases for
+attacks and vulnerability, and appropriate item ownership for use/consumption.
+Invincibility and instant kills are unsuitable when they suppress the event a
+case needs. Keep the unassisted checkpoint and label assisted progression.
+
+Use compare-and-write RAM transactions with independently verified addresses,
+expected original bytes, a journal written BEFORE the request and exact
+readback afterward. Preserve all CPU/MPR/source identity. Do not guess stage
+flags or borrow cheats from a different platform. Temporary program patches
+must be restored before source capture; never promote captured cheat bytes.
+Data changes must not overlap instruction fetches, including mirrored aliases.
+
+Measure native/interpreted deltas for each case window. A fully native case
+requires zero interpreted retirements in that window and actual guarded source
+evidence; inherited prefix fallback, source emission and a boss reached by warp
+do not prove that its combat/death/item paths were tested. Record boss idle,
+attack, player-hit/death, vulnerability, phase-change and defeat paths separately.
+Report concrete shared-host/CPU/device/media blockers upstream with a bounded
+recipe and exact input/source/state identity. Keep game-specific setup here.
+
+## Retained ABI18 inventory-extension workflow
 
 The exact tool pin remains `6935e46ff8aefacf8ea058a385198299c4e2cd5c`, source
 `9414ed390229b8d411f2f79f6c22080d68fef7b09aef2bf99db0046751e34cf0`,

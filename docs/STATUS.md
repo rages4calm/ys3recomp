@@ -1,8 +1,63 @@
 # Consumer status - 25 October 2026
 
-## Current unassisted reset extension on ABI18
+## Current unassisted town-to-Tigre extension on ABI18
 
 The final consumer suite passes 476 tests with zero skips.
+
+The exact tool remains `6935e46ff8aefacf8ea058a385198299c4e2cd5c`, ABI18/schema1.
+This route adds 4,576 frames beyond the qualified 21,934-frame prefix, reaching
+26,510. It leaves the shop, advances the injured-miner dialogue, exits town,
+selects Tigre on the world map, crosses the bridge and enters the cave. Gold
+remains 900; visible HP falls from 020 to 011 during ordinary gameplay. There
+are no new assists, RAM writes, payloads, forced PC/MPR, state restores, BRAM
+files or input scripts. Equipment use, boss victory and campaign completion
+are not established.
+
+| Evidence | Result |
+|---|---|
+| Same-route baseline | 781,794,444 native + 122 interpreted; total 781,794,566 |
+| Expanded replay | 781,794,544 native + 22 interpreted; exactly 100 promotions |
+| New emission | 29 new eligible identities; all prior 52,680 retained; 52,709 total / 79 full MPR contexts |
+| Generated artifacts | 258 translation units + one header; partition growth verified rather than assuming the previous count |
+| Executed source coverage | 43,154 keys; 3,868 absent from the prior route, including 3,839 already compiled cold identities and 29 new ones |
+| New-key native work | 7,627,905 retirements in the expanded replay; separate from the 100-retirement compilation gain |
+| Block work | 100,581 native blocks / zero interpreted blocks; guards fall from 122 to 22 |
+| Recipe | 349 raw states / 132 images / 601 action rows / 122 requests, including 121 ordinary advances and finish |
+| Prefix preservation | First 467 action rows, 88 retained controls and 99 images; prefix 639,924,808 native + three interpreted |
+| Digital audio | Raw44100 Gear: 19,541,485 PCM frames / hash `10917741165598528734` / 18,224,638 mixed-nonzero / zero runtime loss |
+| Fixed exclusion | Four profile variants / 1,009 aggregate hits; actual three excluded identities retire 8, 7 and 7 times |
+
+The additional 19 excluded retirements occur after the prefix; they are not
+mistaken for new eligible source gaps. All 100 newly promoted retirements belong
+to the 29 new identities. Per-key total hits, settled CPU/MPR/physical fetch
+bytes/source generations/CD/PCM, all images and bounded WAV remain exact.
+Immediate input-intent status stays a within-run diagnostic; raw ACK masks are
+not asserted identical across runs. Prefix54/55 remains the sole fixed witness.
+
+Both merge inputs are format18, and the original17 lineage remains unchanged
+through the retained prior profile. This is a multi-run profile, not one raw
+execution. Fresh captures are ABI18, complete and lossless. The original
+temporary-code variant remains excluded; it is never promoted as original code.
+
+The successful official build followed a failed link caused by a missing private
+temporary directory. The failed attempt, source, log and cache evidence were
+preserved; no success receipt was fabricated. Only that failed attempt's 285
+unneeded object/archive files were removed after path/hash/protection checks.
+All 578 protected files and 18 retained failure-metadata files stayed unchanged.
+No old cleanup plan, qualified package, generated source or original input was
+removed. Owned game processes quit naturally with exit0.
+
+The current route remains unassisted. Follow-up assisted testing uses verified
+low-HP, damage/death/Continue, item-use and boss-phase cases. Assists must create
+the needed condition without suppressing the behavior being tested. A case is
+called fully native only when its own retired interpreted count is zero;
+inherited prefix work and planned boss cases are not counted as completed tests.
+Hardware, listening, host save persistence and complete-campaign claims remain
+outside this qualification.
+
+## Retained unassisted inventory extension on ABI18
+
+The consumer suite at that milestone passed 476 tests with zero skips.
 
 The tool pin remains `6935e46ff8aefacf8ea058a385198299c4e2cd5c`, ABI18/schema1,
 with the same clean 60-file canonical source. A complete 19,126-frame TCP/audio
