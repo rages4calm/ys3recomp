@@ -1,6 +1,43 @@
 # Consumer status - 25 October 2026
 
-## Current assisted native death and Continue case on ABI18
+## Current native starter-gear and combat batch on ABI18
+
+Ordinary controls purchase and select the Short Sword and Leather Armor, then
+exercise mine attacks, kills, EXP/gold rewards, incoming damage, natural death,
+Game Over and Continue. The new case uses one verified paused HP16-to20 refill;
+the earlier HP20-to1 setup remains visible in the retained prefix. Both edits
+use expected bytes, durable intent, ACK/readback and raw counter checks.
+
+| Evidence | Result |
+|---|---|
+| Fresh matching replay | 37,463 frames; 1,114,973,224 native / 66 interpreted |
+| Measured gain | Baseline 143 interpreted -> 66; 77 promotions on 59 new keys |
+| Module | 53,153 identities / 79 MPR contexts / 259 translation units + header |
+| Compilation versus execution | 399 added; 59 execute here, 340 compiled-only |
+| Combat interval | Frames 35,323..35,563; 7,623,762 native / zero interpreted |
+| Visible combat outcomes | HP20 ->16, EXP0 ->62, gold200 ->204; later Game Over/Continue |
+| Exact recipe | 757 states / 340 images / 1,413 actions / 330 requests |
+| Current HP assists | Two transactions / two bytes total; one inherited, one new |
+| Complete source window | ABI18 frames 28,249..37,463; 22,587 keys / no loss |
+| Digital audio | 27,615,340 PCM frames, hash `4692142117000696351`, zero synthesis loss |
+| Original exclusion | Four profile variants / 1,072 aggregate hits; 66 actual fallbacks |
+
+Every settled CPU/MPR/fetched byte/source generation, CD/PCM value, RGB image,
+capped WAV and per-source total retirement count matches the repeat. Only the
+proved new-key interpreter-to-native promotions differ; immediate input intent
+is validated inside each run. The original opening timing witness is retained.
+The profile union is multiple captures, not one execution. Max HP, quest flags,
+scene state, equipment fields and program code receive no developer writes in
+this qualified recipe. Purchases and equipment selection use the game UI.
+
+The ten-second WAV covers silent boot. Later audio is checked through cumulative
+PCM with muted fast-forward presentation; no listening or paced-device test is
+claimed. Boss navigation/reference experiments remain separate. The outage
+interrupted a later boss approach before a complete capture/closeout, so it is
+excluded from native qualification. No boss victory, all-native campaign,
+hardware parity, owner-save change or cross-process persistence is claimed.
+
+## Retained assisted native death and Continue case on ABI18
 
 The final consumer suite passes 476 tests with zero skips.
 

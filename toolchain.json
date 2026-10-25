@@ -1584,11 +1584,11 @@
     ]
   },
   "milestone_roles": {
-    "current_native": "assisted_death18_milestone",
-    "current_native_extension": "assisted_death18_milestone",
+    "current_native": "combat18_milestone",
+    "current_native_extension": "combat18_milestone",
     "historical_abi13_native_audio": "native_audio_expansion_milestone",
     "historical_abi16_migration": "abi16_compatibility_milestone",
-    "current_route": "assisted_death18_milestone",
+    "current_route": "combat18_milestone",
     "historical_abi16_native": "native_milestone",
     "historical_abi16_native_extension": "native_extension_milestone",
     "historical_ipl_route": "qualified_private_route",
@@ -1600,7 +1600,8 @@
     "historical_first_abi18_migration": "abi18_migration_milestone",
     "retained_abi18_inventory_extension": "reset_extension18_milestone",
     "retained_abi18_tigre_extension": "reset_extension18_tigre_milestone",
-    "retained_abi18_herb_case": "herb18_milestone"
+    "retained_abi18_herb_case": "herb18_milestone",
+    "retained_abi18_death_case": "assisted_death18_milestone"
   },
   "reset_milestone": {
     "qualified": true,
@@ -2353,5 +2354,119 @@
     "new_paced_device_check": false,
     "cleanup_executed_this_batch": false,
     "scope": "Assisted oneHPdataedit then naturalenemyhit/zeroHP/GameOver/RunContinue. Case23924761N0I, full834041172N22I,832newlyexecutedcoldkeys. Sameexistingmodule/package, zerocompilationgain. No allboss, campaign, listening, hardware orpersistencequalification."
+  },
+  "combat18_milestone": {
+    "qualified": true,
+    "tool": {
+      "revision": "6935e46ff8aefacf8ea058a385198299c4e2cd5c",
+      "source_sha256": "9414ed390229b8d411f2f79f6c22080d68fef7b09aef2bf99db0046751e34cf0",
+      "source_files": 60,
+      "runtime_abi": 18
+    },
+    "runtime_abi": 18,
+    "descriptor_schema": 1,
+    "frames": 37463,
+    "prefix_frames": 28249,
+    "suffix_frames": 9214,
+    "raw_states": 757,
+    "images": 340,
+    "action_rows": 1413,
+    "requests": 330,
+    "prefix_nonterminal_requests": 176,
+    "prefix_preterminal_states": 454,
+    "prefix_action_rows": 809,
+    "prefix_images": 187,
+    "native_steps": 1114973224,
+    "interpreted_steps": 66,
+    "total_retired": 1114973290,
+    "baseline_native_steps": 1114973147,
+    "baseline_interpreted_steps": 143,
+    "native_steps_gained_on_same_route": 77,
+    "eligible_source_identities": 53153,
+    "prior_eligible_source_identities": 52754,
+    "new_eligible_source_identities": 399,
+    "newly_emitted_keys_executed_in_this_replay": 59,
+    "promoted_retirements": 77,
+    "remaining_new_keys_compiled_only": 340,
+    "mpr_contexts": 79,
+    "translation_units": 259,
+    "generated_headers": 1,
+    "official_build_attempts": 1,
+    "combat_window": {
+      "start_frame": 35323,
+      "end_frame": 35563,
+      "native_steps": 7623762,
+      "interpreted_steps": 0,
+      "fully_native_in_bounded_window": true,
+      "hp_before_after": [
+        20,
+        16
+      ],
+      "visible_exp_before_after": [
+        0,
+        62
+      ],
+      "visible_gold_before_after": [
+        200,
+        204
+      ],
+      "pcm_frames_delta": 176913,
+      "mixed_nonzero_delta": 176913
+    },
+    "progression": {
+      "short_sword_purchased_and_equipped": true,
+      "leather_armor_purchased_and_equipped": true,
+      "natural_enemy_kills_and_rewards": true,
+      "damage_received": true,
+      "natural_death_and_game_over": true,
+      "ordinary_continue_positive_hp": true,
+      "end_hp": 20,
+      "boss_encounter_qualified": false,
+      "boss_victory": false,
+      "campaign_completed": false
+    },
+    "capture_window": {
+      "runtime_abi": 18,
+      "start_frame": 28249,
+      "end_frame": 37463,
+      "source_identities": 22587,
+      "retired_instructions": 280932096,
+      "complete": true,
+      "dropped": 0,
+      "unreadable": 0
+    },
+    "assisted_progression": true,
+    "memory_edit_transactions": 2,
+    "memory_bytes_changed": 2,
+    "write_journal_rows": 4,
+    "inherited_hp_setup_20_to1": 1,
+    "new_living_hp_refill_16_to20": 1,
+    "developer_code_edits": 0,
+    "developer_max_hp_edits": 0,
+    "developer_scene_or_item_edits": 0,
+    "hp_alias_fetch_absence_before_and_after": true,
+    "global_excluded_variants": 4,
+    "global_excluded_profile_hits": 1072,
+    "route_excluded_interpreted_hits": 66,
+    "prefix_excluded_interpreted_hits": 22,
+    "suffix_excluded_interpreted_hits": 44,
+    "settled_source_cpu_cd_pcm_rgb_wav_exact": true,
+    "per_key_total_hits_exact": true,
+    "native_tier_changes_only_on_new_eligible_keys": true,
+    "immediate_input_status_crossrun_raw_parity": false,
+    "pcm": {
+      "sample_rate": 44100,
+      "timing": "gear-v1",
+      "frames": 27615340,
+      "pcm_hash": 4692142117000696351,
+      "mixed_nonzero": 25402413,
+      "peak": 11212,
+      "discarded_frames": 0,
+      "wav_frames": 441000
+    },
+    "wav_first10seconds_boot_silent": true,
+    "new_paced_device_check": false,
+    "crossprocess_save_persistence": false,
+    "scope": "Finite ordinary-enemy gear/attack/reward/damage/death/Continue case with one new verified living-HP refill, plus inherited HP1 setup.399 new eligible identities built;59 execute77 newly native retirements on the identical route.240-frame attack/damage window7623762N0I; fullroute1114973224N66I. Remaining340 new catalogue keys compiled only. Boss approach interrupted by power loss is not qualified. No listening/hardware/fullcampaign/persistence claim."
   }
 }
