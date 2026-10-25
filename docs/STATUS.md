@@ -1,8 +1,51 @@
 # Consumer status - 25 October 2026
 
-## Current native Healing Herb case on ABI18
+## Current assisted native death and Continue case on ABI18
 
 The final consumer suite passes 476 tests with zero skips.
+
+One verified current-HP data edit, 20 -> 1, sets up natural bat damage. HP then
+reaches zero, Game Over is visibly observed before Run, and Continue restores
+20 HP at the bridge/cave entrance. Gold is observed at 900 after recovery.
+The 1-HP setup is proved by RAM readback; the first rendered HUD is still cached
+and is not claimed to show 001. Zero HP, Game Over and recovered 020 are visible.
+
+| Evidence | Result |
+|---|---|
+| New case | Frames 27,490..28,249; 23,924,761 native / zero interpreted |
+| Whole replay | 834,041,172 native + 22 interpreted; total 834,041,194 |
+| New executed coverage | 832 keys absent from retained reset-route captures / 1,731,089 native hits, all already compiled |
+| Native package | Unchanged 52,754 identities / 79 MPR contexts / 258 translation units + header; zero compilation gain, no rebuild |
+| Recipe | 455 states / 187 images / 811 action rows / 177 requests; fresh exact same-package repeat |
+| Source capture | ABI18, actual post-27,490 window, 10,100 keys, complete/lossless |
+| Assist | One transaction / one changed current-HP byte; intent and commit are two journal records for that same transaction |
+| Digital audio | Raw44100 Gear: 20,823,365 PCM frames / hash `15233839849680885939` / 19,390,686 mixed-nonzero / zero runtime loss |
+| Original exclusion | Unchanged four variants / 1,009 profile hits; 22 actual prefix hits, zero case hits |
+
+The retained prefix verifies 167 nonterminal controls, 438 preterminal states,
+779 action rows and 178 images before the fresh paused boundary. Two completed
+prior code captures prove HP/mirror absence from instruction fetches before the
+CAS, and the completed new window proves absence afterward. No zero-HP, refill,
+death-flag, scene, actor, item or program-code write is used. Continue recovery
+comes from the game. Raw write counters stay zero before the CAS and one after;
+comparison views validate those phases before any control-field projection.
+
+Both executions preserve exact settled CPU/MPR/fetched bytes/source generations,
+CD/PCM, all images, capped WAV and per-source execution tiers. Immediate input
+status uses strict within-run intent validation. The fixed opening54/55 witness
+remains unchanged. Retained-history plus case is a three-capture union of 44,206
+identities, not one full raw capture or a campaign coverage claim.
+
+This is assisted bounded damage/death/Game Over/Continue qualification. Both
+this case and the retained Herb case execute without interpretation, while the
+full route still discloses 22 prefix fallbacks. Bosses, other combat phases,
+listening, hardware parity and cross-process save persistence are not qualified.
+No new source profile, generated module or build was required. Original inputs
+remain read-only and owned test processes quit normally.
+
+## Retained native Healing Herb case on ABI18
+
+The consumer suite at that milestone passed 476 tests with zero skips.
 
 The tool remains exact 6935/ABI18/schema1 with the same clean 60-file source.
 A fresh reset replay preserves the prior 26,510-frame route and adds 980 ordinary
