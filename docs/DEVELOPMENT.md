@@ -5,7 +5,44 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Current wizard defeat/reward workflow
+## Current post-reward Continue workflow
+
+Start from the actual 54,000 module and its closed 65,044-frame qualified route.
+Preserve every original guarded identity and compose only the final complete new
+capture. Separate 36 new emitted identities/39 promoted retirements from 489
+already-compiled identities/78,230 newly exercised native retirements. Compare
+against the prior actual capture, not a claim of globally first execution.
+
+Use ordinary Equipment selection and native-verified wall alignment for the door
+and reward. Reference coordinates/frame counts are navigation hints, not shared
+checkpoint positions. Require a positive room-transition image rather than a
+case label. Guide routes never authorize RAM field edits.
+
+Bind actual HP0, later visibly rendered Game Over, the subsequent ordinary Run,
+recovered 40/40 HP, empty second Sword slot and ordinary reacquisition toast/named
+slot. Continue can remove a reward; never assume it persists. The native new case
+uses no data edits to restore HP, skip quests or alter STR, equipment or program
+code.
+Independent reference refills and differing stats/positions retain their limits.
+
+Use durable bounded subprocess supervision with true exit codes, unbuffered
+stdout/stderr and exact owned-host cleanup. A clean process exit does not prove
+the intended progression. Preserve failed receipts and explicit label errata;
+never emit partial captures. Do not alter a frozen live core to recover a run.
+
+Rebuild officially once, then compare every control/state/image/HP read/CAS call,
+source byte/generation/per-key total and digital PCM in a fresh matching replay.
+The new 2,584-frame interval is native-only; the full route still retains 75
+interpreted hits in the original exclusion. Opening input intent and paused
+sampled-controller state remain distinct, with real ACKs and raw witnesses kept.
+
+Require the closed runtime qualification, both actual launcher info paths, full
+consumer suite, staged audit and reviewed diff before push. Verify public bytes
+afterward. Keep original inputs, generated game source, captures, saves and private
+coordination out of Git. Reuse dependencies and preserve qualified evidence;
+remove only unreferenced owned build intermediates through guarded cleanup.
+
+## Retained wizard defeat/reward workflow
 
 Preserve the exact ABI18 pin and all 53,302 prior guarded identities. Compose only
 the final complete original-code capture with the current profile; earlier closed

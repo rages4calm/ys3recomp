@@ -5,32 +5,32 @@ An incremental PC Engine CD consumer of
 *Ys III: Wanderers from Ys* (USA). This is an early hybrid port: unseen code
 still uses the interpreter, and the full campaign remains unfinished.
 
-The current **65,044-frame** reset route normally earns Roy's Pendant and the
-Storehouse Key, defeats the wizard and picks up the **Long Sword** through ordinary
-controls. Both the pickup message and the named Equipment slot are captured.
-Verified living-HP/max-HP and guarded vertical movement assists speed up testing;
-quest flags, equipment and program code receive no developer writes. This is
-assisted testing, separate from campaign completion.
+The current **67,628-frame** reset route normally earns Roy's Pendant and the
+Storehouse Key, defeats the wizard and obtains the Long Sword. It then tests mine
+damage, natural death, visible Game Over and ordinary Continue. Continue restores
+40/40 HP but removes the Long Sword; ordinary pickup reacquires it, confirmed by
+the toast and named Equipment slot. The retained route uses verified HP/vertical
+assists. The new post-reward sequence makes **no additional memory edits**.
 
-The official module contains **54,000 eligible identities** in 80 full MPR
-contexts, across 262 C++ translation units and one header. All 53,302 prior
-identities are preserved. All **698 additions execute**, promoting **30,879
-retirements** from interpretation to native execution in the fresh TCP/audio replay.
+The official module contains **54,036 eligible identities** in 80 full MPR
+contexts, across 262 C++ translation units and one header. All 54,000 prior
+identities are preserved. All **36 additions execute**, promoting **39 retirements**
+from interpretation to native execution. Another **489 already-compiled identities**
+execute 78,230 native retirements beyond the previous qualified route; those are
+additional execution coverage, separate from the 39 promotions.
 
-The matching route retires **1,978,101,467 native and 75 interpreted instructions**,
-down from 30,954 interpreted with the prior module on these same controls. The
-remaining 75 fallbacks stay in the original six-byte exclusion. This remains a
-hybrid port; unseen overlays and the full campaign remain unfinished.
+The new **2,584-frame post-reward sequence executes 79,905,621 native and zero
+interpreted instructions**. The full matching route retires **2,058,007,088 native
+and 75 interpreted instructions**, down from 114 interpreted with the prior module
+on these same controls. The remaining 75 fallbacks stay in the original six-byte
+exclusion. This remains a hybrid port; the full campaign is unfinished.
 
-The actual defeat effects are followed by an empty arena and settled EXP 210 to 410,
-gold 374 to 574 and natural HP/max HP 40. Zero enemy-bar pixels alone are insufficient:
-the wizard was still alive at an earlier zero-bar checkpoint. No developer write
-occurs during victory settlement or the ordinary reward pickup.
-
-All 3,334 states, 1,437 images, source identities, retirement totals, data-CAS
-journals and digital PCM match the fresh replay, allowing only proved execution
-tier promotions and validated immediate-input transport differences. Interrupted
-or failed experiments are retained separately and excluded from qualification.
+All 3,422 states, 1,486 images, source identities, retirement totals, retained
+data-CAS journals and digital PCM match the fresh rebuilt replay, allowing only
+proved execution-tier promotions and validated immediate-input transport
+differences. No developer writes resurrect HP0 or alter quest flags, STR,
+equipment or program code. Failed or incomplete experiments remain separately preserved and
+excluded from native qualification. Miner return and the next boss remain open.
 
 ## Play the local build
 
@@ -50,24 +50,24 @@ The toolkit remains pinned to ABI18 at
 `6935e46ff8aefacf8ea058a385198299c4e2cd5c`. The composed profile retains its
 original ABI17 lineage and the actual ABI18 labels of the new closed captures.
 This union represents multiple executions. It was re-emitted and rebuilt for
-the current wizard defeat/reward batch. Earlier finite migration and route proofs
-remain retained separately; newer upstream ABIs are not selected by this batch.
+the current post-reward death/Continue batch. Earlier finite migration and route
+proofs remain retained separately; newer upstream ABIs are not selected here.
 
 The shared toolkit adds explicit base HuCard startup and mapper support. Its
 authored fixtures have separate Geargrafx/native/TCP/PSG checks. **Ys III still
 uses the owner's CHD**; this batch adds no retail HuCard/CUE test or media
 conversion. The earlier full-route ABI17 media migration remains retained.
 
-Both module runs match 47,946,299 cumulative 44.1 kHz PCM frames, hash
-`4333397609570816573`, including 45,303,544 mixed-nonzero frames and zero
+Both module runs match 49,851,059 cumulative 44.1 kHz PCM frames, hash
+`11441753128665845047`, including 47,070,275 mixed-nonzero frames and zero
 synthesis loss. The WAV is capped at ten guest seconds of silent boot; later game
 audio is verified through cumulative PCM. Fast-forward SDL presentation is muted.
 No new paced-device or listening test is claimed. Independent original-program
-Geargrafx also confirms wizard defeat and the named Long Sword through ordinary
-controls. Its timing, defensive stats and audio are separate; no full-route
-independent image/audio parity is claimed.
+Geargrafx confirms the same qualitative death, Continue reward loss and ordinary
+reacquisition. Stats, checkpoint positions and timing differ; only the bounded
+Game Over text pixels are compared directly, not whole-route images or audio.
 
-The original six-byte exclusion remains across 4 profile variants / 1,213
+The original six-byte exclusion remains across 4 profile variants / 1,266
 profile hits. This route retires 75 interpreted instructions in that excluded
 span. The composed ABI18 profile is a union of observations from
 multiple runs, not one execution. The older 95,686-frame IPL-entry route passed
