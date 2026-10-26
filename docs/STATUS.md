@@ -1,6 +1,47 @@
 # Consumer status - 26 October 2026
 
-## Current mine return and corridor combat on ABI18
+## Current original-source qualification on ABI18
+
+The same 69,896-frame TCP/audio route now executes all observed retirements
+natively. Three approved original identities cover the 75 previous fallbacks.
+The historical temporary cheat identity remains omitted with explicit provenance.
+
+| Evidence | Result |
+| --- | --- |
+| Fresh rebuilt replay | 69,896 frames; 2,128,894,622 native / zero interpreted |
+| Same-controls prior build | 2,128,894,547 native / 75 interpreted |
+| Additions | Three source identities, all executed / 75 promoted retirements |
+| Preserved catalogue | All 54,043 prior identities; 54,046 total / 80 MPR |
+| Generated module | 262 translation units + one header |
+| Fresh reset-to-end captures | 50,649 source identities; zero loss/unreadable |
+| Former fallback split | 22 before the previous capture window / 53 afterward |
+| Whole recipe | 1,547 controls / 3,570 states / 1,549 images / 260 retained data-CAS |
+| Independent instruction checks | 12 authored Gear/native/interpreter cases match |
+| Digital audio | 51,522,885 frames / hash 312110894808343229 / synthesis loss 0 |
+
+All CPU state, MPRs, fetched bytes and source generations, guest/device clocks,
+RGB images, per-source total hits and digital audio match the prior build.
+At every checkpoint, the new native count equals the old native plus interpreted
+count, and the new interpreted count is zero. No other source-tier conversion
+is permitted.
+
+Original-only selection keeps full source identity, validates the restored
+journal, preserves all unaffected keys and explicitly subtracts one temporary
+identity / 101 aggregate historical hits. The derived profile is separately
+identified; raw captures, actual ABI labels and loss counters remain unchanged.
+The legacy selector defaults are unchanged. No shared runtime fork is used.
+
+Fresh Gear physical readback confirms the original bytes, with its different
+paused mapping disclosed. The authored tests cover both branch outcomes and
+compare boundaries, including registers, flags and timing. They do not establish
+whole-retail cross-context execution or hardware parity.
+
+No assists or gameplay were added. The retained mine/combat segment stays
+70,887,459 native / zero interpreted; native HP ends at 38/40. Miner, deeper-room
+arrival, the next boss, full campaign and cross-process saves remain unqualified.
+Fast-forward audio is muted; digital matching does not establish listening parity.
+
+## Retained mine return and corridor combat on ABI18
 
 The rebuilt TCP/audio replay extends the retained wizard reward, natural death,
 Continue and ordinary Long Sword reacquisition route. It opens actual Status,
