@@ -5,7 +5,37 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Current mine-return workflow
+## Current original-source workflow
+
+Preserve the actual 54,043 catalogue and use two fresh captures from reset on
+the exact 1,547-control route. The old build must independently show that every
+interpreted retirement belongs to the three approved original identities. The
+new build must convert exactly those 75 retirements, including the 22 early retirements,
+with every other source total, CPU/MPR/generation/device/audio/image unchanged.
+
+Use `select_original` with the verified shared validator and separately bound
+approval authority. Require full PC, all eight MPRs, physical bytes and original
+data. Retain all unaffected identities; omit only the historical temporary
+identity through an explicit subtraction ledger. Keep raw input and actual
+loss/ABI/completeness metadata unchanged. The derived profile is not a raw
+execution capture. Never blindly remove the exclusion from the mixed profile.
+
+Bind fresh original-byte reference readback and authored taken/untaken branch
+and compare-boundary checks against Gear/native/interpreter. Preserve differing
+reference mapping context; do not force PC/MPR or infer hardware parity.
+
+Every new checkpoint must satisfy native_new = native_old + interpreted_old,
+interpreted_new = 0, and identical total retirement and guest state. Full per-key
+counts must prove the exact three promotions. Preserve raw counters and opening
+ACK/status witnesses; validated counter views are separate comparison evidence.
+
+Keep all 260 existing data-CAS requests unchanged; add no new cheat or gameplay.
+Use one official emission/build, then the fresh full-route TCP/audio replay,
+closed formal proof, both launcher info paths, full consumer tests, staged audit
+and actual diff review before publication. Preserve old source epochs for both
+changed selector/test files and the four mutable metadata files.
+
+## Retained mine-return workflow
 
 Start from the actual 54,036 module and closed 67,628-frame qualification. Preserve
 all previous guarded identities; compose only the complete successful capture.

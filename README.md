@@ -5,33 +5,34 @@ An incremental PC Engine CD consumer of
 *Ys III: Wanderers from Ys* (USA). This is an early hybrid port: unseen code
 still uses the interpreter, and the full campaign remains unfinished.
 
-The current **69,896-frame** reset route retains the wizard defeat, Long Sword,
-mine death, Continue and ordinary reward reacquisition. It then opens Status,
-returns through the lower mine and tests **600 frames of corridor combat**.
-The new sequence uses three verified living-HP refills to the existing max HP 40;
-it makes no max-HP, quest, equipment or program edits. Native max HP remains 40.
+The current **69,896-frame** reset route now retires **2,128,894,622 native
+instructions and zero interpreted instructions**. The remaining 75 fallback
+executions are now covered by three verified original source identities.
+The historical temporary cheat identity remains excluded through an explicit
+selection ledger. This qualifies the tested route; unseen code still has an
+interpreter fallback and the full campaign remains unfinished.
 
-The official module contains **54,043 eligible identities** in 80 full MPR
-contexts, across 262 C++ translation units and one header. All 54,036 prior
-identities are preserved. All **seven additions execute**, promoting **eight
-retirements** from interpretation to native execution. Separately, **26 already
-compiled identities** execute 38 native retirements beyond the previous qualified
-route. This is measured execution coverage, not additional compilation.
+The official module contains **54,046 eligible identities** in 80 full MPR
+contexts, across 262 C++ translation units and one header. All 54,043 prior
+identities remain. All three additions execute, accounting for the 75 promotions.
+Fresh captures from reset cover all 50,649 source identities executed on this
+route, including the 22 fallbacks before the previous capture window.
 
-The new **2,268-frame sequence executes 70,887,459 native and zero interpreted
-instructions**, including 18,930,942 native retirements in the 600-frame combat
-window. The full matching route retires **2,128,894,547 native and 75 interpreted
-instructions**, down from 83 interpreted on the same controls with the prior
-module. The original six-byte exclusion remains. This is a hybrid port and the
-full campaign is unfinished.
+Every one of the 1,547 controls, 3,570 states, 1,549 images, source identities,
+retirement totals, assist journals and digital PCM matches the fresh prior-build
+baseline, allowing only the proved tier conversions and validated immediate-input
+transport differences. The route retains the wizard defeat and reward, natural
+death, Continue, ordinary reward reacquisition and mine corridor combat.
+Its 260 verified data-CAS transactions are unchanged; this batch adds no assists
+or gameplay. Miner dialogue, deeper-room arrival and the next boss remain open.
 
-All 3,570 states, 1,549 images, source identities, retirement totals, data-CAS
-journals and digital PCM match the fresh rebuilt replay, allowing only proved
-source-tier promotions and validated immediate-input transport differences.
-Status shows Level 3, STR 50, DEF 30 and NEXT 500; this does not establish a numeric
-weapon gain or reference-stat parity. Miner dialogue, deeper-room arrival and
-the next boss remain open. Incomplete probes are preserved separately and are
-excluded from emission and qualification.
+The new source selector requires exact PC, all eight MPRs, physical fetch bytes
+and restored original bytes. It preserves every unaffected identity and records
+the omitted temporary identity and its 101 historical profile hits separately.
+The raw historical profile and captures remain unchanged. Independent Gear
+readback and 12 authored Gear/native/interpreter branch and compare cases pass,
+including registers, flags, cycles and master ticks. This is bounded software
+verification, with no new listening or hardware-parity claim.
 
 ## Play the local build
 
@@ -52,7 +53,7 @@ The toolkit remains pinned to ABI18 at
 `6935e46ff8aefacf8ea058a385198299c4e2cd5c`. The composed profile retains its
 original ABI17 lineage and the actual ABI18 labels of the new closed captures.
 This union represents multiple executions. It was re-emitted and rebuilt for
-the current mine-return/corridor-combat batch. Earlier finite migration and route
+the current original-source qualification batch. Earlier finite migration and route
 proofs remain retained separately; newer upstream ABIs are not selected here.
 
 The shared toolkit adds explicit base HuCard startup and mapper support. Its
@@ -69,12 +70,11 @@ independently confirms mine return and corridor combat. Its stats, timing and
 checkpoint positions differ. Its natural max HP 40 to 50 increase is reference-only;
 the native new segment remains at max HP 40. No whole-route audio parity is claimed.
 
-The original six-byte exclusion remains across 4 profile variants / 1,319
-profile hits. This route retires 75 interpreted instructions in that excluded
-span. The composed ABI18 profile is a union of observations from
-multiple runs, not one execution. The older 95,686-frame IPL-entry route passed
-in the prior milestone; it was not repeated here and retains its disclosed
-709 assist transactions / 723 changed bytes.
+The prior whole-span exclusion has been replaced by an explicit original-only
+selection. The three verified originals are emitted; the historical temporary
+identity stays omitted. Its 101 profile hits belong to an aggregate multi-run
+profile, not this execution. The older 95,686-frame IPL-entry route remains a
+separate retained milestone and was not repeated here.
 
 The explicit `gear-good` compatibility response remains required for unknown
 `$FF` CD requests. Unknown operations and REQUEST SENSE remain unsupported.
@@ -97,7 +97,7 @@ ctest --test-dir build --output-on-failure
 If `ctest` is unavailable, run
 `python .deps/pcenginerecomp-abi18/scripts/check.py --build build/upstream`
 and `python -m unittest discover -s tests -v`. The default empty-module host
-uses interpreted execution. The consumer suite passes **488 tests with zero skips**;
+uses interpreted execution. The consumer suite passes **500 tests with zero skips**;
 retained upstream checks passed **36 shared suites / 468 Python tests, zero skips**.
 Verification requires the exact clean 60-file source digest and ABI. Historical
 captures retain their original ABI labels; fresh ABI18 execution captures are

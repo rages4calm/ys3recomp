@@ -1584,11 +1584,11 @@
     ]
   },
   "milestone_roles": {
-    "current_native": "mine_return18_milestone",
-    "current_native_extension": "mine_return18_milestone",
+    "current_native": "original_source18_milestone",
+    "current_native_extension": "original_source18_milestone",
     "historical_abi13_native_audio": "native_audio_expansion_milestone",
     "historical_abi16_migration": "abi16_compatibility_milestone",
-    "current_route": "mine_return18_milestone",
+    "current_route": "original_source18_milestone",
     "historical_abi16_native": "native_milestone",
     "historical_abi16_native_extension": "native_extension_milestone",
     "historical_ipl_route": "qualified_private_route",
@@ -1604,7 +1604,8 @@
     "retained_abi18_death_case": "assisted_death18_milestone",
     "retained_abi18_wizard_combat": "boss18_milestone",
     "retained_abi18_wizard_defeat_reward": "wizard_defeat_reward18_milestone",
-    "retained_abi18_post_reward_continue": "post_reward_continue18_milestone"
+    "retained_abi18_post_reward_continue": "post_reward_continue18_milestone",
+    "retained_abi18_mine_return": "mine_return18_milestone"
   },
   "reset_milestone": {
     "qualified": true,
@@ -2909,5 +2910,103 @@
       "stats_timing_position_or_whole_audio_parity_claimed": false
     },
     "scope": "Finite assisted mine return and corridor combat after the retained wizard reward, death, Continue and reacquisition route. Seven added identities promote eight retirements; 26 previously compiled identities add 38 native hits beyond the prior qualified source set. New 2,268-frame interval: 70,887,459 native / 0 interpreted. The 600-frame combat window has 18,930,942 native / 0 interpreted. Three living current-HP refills use the existing max HP 40. Full route: 2,128,894,547 native / 75 interpreted. No miner, deeper arrival, next boss, campaign, hardware, listening or persistence qualification."
+  },
+  "original_source18_milestone": {
+    "selected_original_code_identities": 54046,
+    "previous_selected_original_code_identities": 54043,
+    "new_emitted_source_identities": 3,
+    "new_native_promoted_retirements": 75,
+    "new_compiled_keys_not_executed": 0,
+    "frames": 69896,
+    "native_steps": 2128894622,
+    "interpreted_steps": 0,
+    "total_retired": 2128894622,
+    "native_block_steps": 319586,
+    "interpreted_block_steps": 0,
+    "guard_misses": 0,
+    "baseline_native_steps": 2128894547,
+    "baseline_interpreted_steps": 75,
+    "mpr_contexts": 80,
+    "translation_units": 262,
+    "generated_headers": 1,
+    "states": 3570,
+    "actions": 5939,
+    "image_checkpoints": 1549,
+    "control_requests": 1547,
+    "hp_reads": 1496,
+    "source_capture": {
+      "start_frame": 0,
+      "end_frame": 69896,
+      "source_identities": 50649,
+      "capacity": 65536,
+      "complete": true,
+      "dropped": 0,
+      "unreadable": 0,
+      "fresh_single_executions": true
+    },
+    "original_source_promotions": {
+      "identities": 3,
+      "retirements": 75,
+      "early_before_previous_capture_window": 22,
+      "later_window": 53,
+      "wrong_source_or_MPR_not_approved": true
+    },
+    "source_policy": {
+      "explicit_original_identity_approval": true,
+      "legacy_default_selector_unchanged": true,
+      "raw_historical_profile_identities": 54047,
+      "derived_profile_identities": 54046,
+      "temporary_identity_omitted": 1,
+      "temporary_profile_hits_explicitly_subtracted": 101,
+      "raw_capture_untouched": true,
+      "raw_loss_and_ABI_labels_preserved": true,
+      "derived_selection_is_not_raw_execution_capture": true,
+      "all_previous_emitted_identities_preserved": true
+    },
+    "assisted_progression": true,
+    "memory_write_requests": 260,
+    "additional_memory_write_requests": 0,
+    "additional_gameplay": false,
+    "additional_cold_execution_claimed": false,
+    "developer_code_edits_in_fresh_runs": 0,
+    "all_assist_aliases_excluded_before_and_after": true,
+    "prefix_input_status_protocol_validated": true,
+    "original_prefix_witness_preserved": true,
+    "all_source_total_hits_CPU_MPR_generations_CD_PCM_RGB_WAV_conserved": true,
+    "retained_new_tail": {
+      "start_frame": 67628,
+      "end_frame": 69896,
+      "frames": 2268,
+      "native_steps": 70887459,
+      "interpreted_steps": 0
+    },
+    "retained_corridor_combat": {
+      "frames": 600,
+      "native_steps": 18930942,
+      "interpreted_steps": 0
+    },
+    "independent_reference": {
+      "original_physical_bytes_readback": true,
+      "authored_Gear_native_interpreter_cases": 12,
+      "registers_flags_MPR_cycles_master_ticks_match": true,
+      "readback_context_equals_approval_context": false,
+      "cross_context_retail_execution_parity_claimed": false
+    },
+    "pcm": {
+      "sample_rate": 44100,
+      "timing": "gear-v1",
+      "frames": 51522885,
+      "pcm_hash": 312110894808343229,
+      "mixed_nonzero": 48742101,
+      "peak": 12684,
+      "discarded_frames": 0,
+      "wav_frames": 441000
+    },
+    "wav_first10seconds_boot_silent": true,
+    "new_paced_device_or_listening_check": false,
+    "full_campaign_qualified": false,
+    "crossprocess_save_persistence": false,
+    "unknown_CD_semantics_implemented": false,
+    "scope": "The same bounded 69,896-frame assisted reset route now retires 2,128,894,622 native and zero interpreted instructions. Three independently verified original source identities promote all 75 former fallbacks, including 22 before the previous capture window. The historical temporary identity remains omitted with an explicit derived-selection ledger; raw captures and loss counters stay unchanged. No additional assists, gameplay, cold-execution, campaign, hardware, listening or persistence qualification."
   }
 }
