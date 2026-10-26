@@ -1,6 +1,49 @@
 # Consumer status - 26 October 2026
 
-## Current wizard defeat and Long Sword on ABI18
+## Current post-reward death and Continue on ABI18
+
+The closed rebuilt TCP/audio replay retains the wizard defeat and reward, exits
+the cleared room, then observes mine damage, natural HP0, visible Game Over and
+ordinary Run/Continue. Continue returns 40/40 HP while removing the Long Sword.
+Ordinary pickup restores it, with the toast and named second Sword slot captured.
+
+| Evidence | Result |
+|---|---|
+| Fresh same-control replay |67,628 frames; 2,058,007,088 native / 75 interpreted|
+| New catalogue execution |36 new keys, all executed / 39 newly native retirements|
+| Additional execution coverage |489 already-compiled keys / 78,230 native hits beyond the prior route|
+| Same-route prior module |2,058,007,049 native / 114 interpreted|
+| Module |54,036 identities / 80 MPR / 262 translation units + header|
+| New post-reward interval |65,044..67,628; 2,584 frames; 79,905,621 native / zero interpreted|
+| Whole recipe |3,422 states / 1,486 images / 5,701 actions / 1,476 requests|
+| New visible outcomes |HP0, Game Over before Run, Continue 40/40, Long Sword lost then reacquired|
+| Developer writes |257 retained transactions; zero additional writes in the new interval|
+| Digital audio |49,851,059 PCM frames / hash 11441753128665845047 / synthesis loss 0|
+
+Every settled CPU/all-MPR/fetched source generation, CD/PCM value, RGB image and
+per-key retirement total matches. All 36 added keys execute; all 54,000 prior keys
+remain. The 489 already-compiled keys are additional measured execution coverage,
+not extra newly compiled identities or interpreter-to-native promotions. All 75
+fallbacks remain in the original six-byte exclusion; the entire new interval has
+zero interpretation. Source capture is complete and lossless, with every assist
+data alias excluded from original executed code.
+
+No new current/maxHP, quest, STR, equipment or program writes support this case.
+HP0 is reached naturally, and only an ordinary Run after visibly rendered Game
+Over begins Continue. The new inventory loss/reacquisition observations are
+separate from the retained wizard victory. Earlier wrong navigation labels,
+timeout and controller failures are retained but never used as qualifying source.
+
+Independent Geargrafx also shows the Long Sword disappearing after Continue and
+returning after ordinary pickup. Its four living-HP refills keep max HP40 read-only;
+the native new interval needs none. Checkpoint positions, stats and timing differ;
+the 4,810-pixel Game Over text crop matches, without claiming whole-image parity.
+
+The final consumer suite passes 488 tests with zero skips. Digital PCM and muted
+fast-forward do not establish listening/device/hardware parity. Miner return,
+the next boss, full campaign and cross-process saves remain unqualified.
+
+## Retained wizard defeat and Long Sword on ABI18
 
 The fresh matching TCP/audio route defeats the wizard and acquires the Long Sword
 with ordinary Up input. The native pickup toast and named Equipment slot are both
