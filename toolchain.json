@@ -1584,11 +1584,11 @@
     ]
   },
   "milestone_roles": {
-    "current_native": "boss18_milestone",
-    "current_native_extension": "boss18_milestone",
+    "current_native": "wizard_defeat_reward18_milestone",
+    "current_native_extension": "wizard_defeat_reward18_milestone",
     "historical_abi13_native_audio": "native_audio_expansion_milestone",
     "historical_abi16_migration": "abi16_compatibility_milestone",
-    "current_route": "boss18_milestone",
+    "current_route": "wizard_defeat_reward18_milestone",
     "historical_abi16_native": "native_milestone",
     "historical_abi16_native_extension": "native_extension_milestone",
     "historical_ipl_route": "qualified_private_route",
@@ -1601,7 +1601,8 @@
     "retained_abi18_inventory_extension": "reset_extension18_milestone",
     "retained_abi18_tigre_extension": "reset_extension18_tigre_milestone",
     "retained_abi18_herb_case": "herb18_milestone",
-    "retained_abi18_death_case": "assisted_death18_milestone"
+    "retained_abi18_death_case": "assisted_death18_milestone",
+    "retained_abi18_wizard_combat": "boss18_milestone"
   },
   "reset_milestone": {
     "qualified": true,
@@ -2588,5 +2589,105 @@
       "matched_full_route_or_stats_claimed": false
     },
     "scope": "Finite assisted normal-Pendant/Key wizard approach, clones/projectiles, incoming damage and ordinary sword damage.149 genuinely new eligible keys execute1701 newly native hits;112 further promotions were already published catalogue keys absent from the old execution baseline.474-frame boss combat is14740660N0I; fullroute1811024403N66I. No boss defeat/reward, campaign, hardware, listening, or persistence qualification. Failed prior Continue experiment remains excluded."
+  },
+  "wizard_defeat_reward18_milestone": {
+    "qualified": true,
+    "tool": {
+      "revision": "6935e46ff8aefacf8ea058a385198299c4e2cd5c",
+      "source_sha256": "9414ed390229b8d411f2f79f6c22080d68fef7b09aef2bf99db0046751e34cf0",
+      "source_files": 60,
+      "runtime_abi": 18
+    },
+    "runtime_abi": 18,
+    "descriptor_schema": 1,
+    "frames": 65044,
+    "raw_states": 3334,
+    "action_rows": 5525,
+    "images": 1437,
+    "requests": 1427,
+    "hp_samples": 1381,
+    "native_steps": 1978101467,
+    "native_block_steps": 294542,
+    "interpreter_block_steps": 0,
+    "guard_misses": 75,
+    "interpreted_steps": 75,
+    "total_retired": 1978101542,
+    "baseline_native_steps": 1978070588,
+    "baseline_interpreted_steps": 30954,
+    "execution_baseline_compiled_identities": 53302,
+    "prior_published_eligible_identities": 53302,
+    "eligible_source_identities": 54000,
+    "new_eligible_source_identities": 698,
+    "new_keys_executed": 698,
+    "new_keys_compiled_only": 0,
+    "new_native_retirements": 30879,
+    "mpr_contexts": 80,
+    "translation_units": 262,
+    "generated_headers": 1,
+    "assisted_progression": true,
+    "memory_write_requests": 257,
+    "inherited_hp_setup_writes": 1,
+    "new_data_cas_requests": 256,
+    "developer_code_edits": 0,
+    "developer_quest_or_equipment_edits": 0,
+    "all_assist_aliases_excluded_before_and_after": true,
+    "global_excluded_variants": 4,
+    "global_excluded_profile_hits": 1213,
+    "route_excluded_interpreted_hits": 75,
+    "prefix_excluded_interpreted_hits": 22,
+    "suffix_excluded_interpreted_hits": 53,
+    "capture_window": {
+      "start_frame": 28249,
+      "end_frame": 65044,
+      "source_identities": 30321,
+      "complete": true,
+      "dropped": 0,
+      "unreadable": 0
+    },
+    "prefix_input_status_protocol_validated": true,
+    "original_prefix_witness_preserved": true,
+    "settled_source_cpu_cd_pcm_rgb_wav_exact": true,
+    "per_key_total_hits_exact": true,
+    "progression": {
+      "pendant_earned_normally": true,
+      "storehouse_key_earned_normally": true,
+      "boss_defeat": true,
+      "boss_reward": true,
+      "reward_name": "Long Sword",
+      "reward_toast_and_named_equipment": true,
+      "ordinary_pickup": true,
+      "victory_exp_before_after": [
+        210,
+        410
+      ],
+      "victory_gold_before_after": [
+        374,
+        574
+      ],
+      "end_hp": 40,
+      "end_max_hp": 40,
+      "campaign_completed": false,
+      "fresh_boss_death_or_continue_qualified": false
+    },
+    "pcm": {
+      "sample_rate": 44100,
+      "timing": "gear-v1",
+      "frames": 47946299,
+      "pcm_hash": 4333397609570816573,
+      "mixed_nonzero": 45303544,
+      "peak": 12684,
+      "discarded_frames": 0,
+      "wav_frames": 441000
+    },
+    "wav_first10seconds_boot_silent": true,
+    "new_paced_device_or_listening_check": false,
+    "crossprocess_save_persistence": false,
+    "independent_reference": {
+      "wizard_defeat_observed": true,
+      "long_sword_named_in_equipment": true,
+      "ordinary_pickup": true,
+      "matched_full_route_or_stats_or_audio_claimed": false
+    },
+    "scope": "Finite assisted normal-Pendant/Key route, actual wizard defeat and ordinary Long Sword pickup confirmed by toast and named Equipment. All698 added identities execute30879 newly native retirements in a fresh TCP/digital-audio replay. Original program and quest/equipment fields receive no developer writes. No campaign, hardware, listening or persistence qualification."
   }
 }
