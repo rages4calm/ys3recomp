@@ -1,6 +1,34 @@
 # Consumer status - 26 October 2026
 
-## Current original-source qualification on ABI18
+## Current miner and deeper-boss qualification on ABI18
+
+This assisted route returns to the miner, reaches the deeper mine, observes boss
+attacks and incoming damage, defeats the boss and receives the Sunset Statue
+through ordinary game actions.
+
+| Evidence | Result |
+| --- | --- |
+| Fresh native replay | 81,504 frames; 2,492,524,812 native / zero interpreted |
+| Same-control prior module | 2,489,901,359 native / 2,623,453 interpreted |
+| Catalogue | 55,723 original identities; all 54,046 previous keys retained |
+| Additions actually executed | 1,677 identities / 2,623,453 promoted retirements |
+| Module | 81 MPR contexts / 269 translation units + 1 header |
+| Recipe | 1,919 controls / 4,359 states / 1,899 images |
+| Boss combat and reward interval | 2,096 frames; 64,737,130 native / zero interpreted |
+| Verified assists | 280 data-CAS transactions; 20 additional |
+| Digital audio | 60,079,564 frames / hash 7743071514475414998 / synthesis loss 0 |
+
+Every source hit total, settled CPU/all-MPR/fetched source generation, device
+clock, CD/PCM value and image matches. Only measured new execution tiers change.
+The derived profile starts from the already filtered catalogue; the historical
+temporary identity's omission is preserved as lineage, with no repeated
+subtraction from new captures. Raw capture labels and loss counters remain intact.
+
+Unseen code retains interpreter fallback. The full campaign and cross-process
+saves remain unfinished. Digital PCM matching does not establish listening or
+hardware parity.
+
+## Retained original-source qualification on ABI18
 
 The same 69,896-frame TCP/audio route now executes all observed retirements
 natively. Three approved original identities cover the 75 previous fallbacks.

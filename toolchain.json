@@ -1584,11 +1584,11 @@
     ]
   },
   "milestone_roles": {
-    "current_native": "original_source18_milestone",
-    "current_native_extension": "original_source18_milestone",
+    "current_native": "miner_deeper18_milestone",
+    "current_native_extension": "miner_deeper18_milestone",
     "historical_abi13_native_audio": "native_audio_expansion_milestone",
     "historical_abi16_migration": "abi16_compatibility_milestone",
-    "current_route": "original_source18_milestone",
+    "current_route": "miner_deeper18_milestone",
     "historical_abi16_native": "native_milestone",
     "historical_abi16_native_extension": "native_extension_milestone",
     "historical_ipl_route": "qualified_private_route",
@@ -1605,7 +1605,8 @@
     "retained_abi18_wizard_combat": "boss18_milestone",
     "retained_abi18_wizard_defeat_reward": "wizard_defeat_reward18_milestone",
     "retained_abi18_post_reward_continue": "post_reward_continue18_milestone",
-    "retained_abi18_mine_return": "mine_return18_milestone"
+    "retained_abi18_mine_return": "mine_return18_milestone",
+    "retained_original_source": "original_source18_milestone"
   },
   "reset_milestone": {
     "qualified": true,
@@ -3008,5 +3009,107 @@
     "crossprocess_save_persistence": false,
     "unknown_CD_semantics_implemented": false,
     "scope": "The same bounded 69,896-frame assisted reset route now retires 2,128,894,622 native and zero interpreted instructions. Three independently verified original source identities promote all 75 former fallbacks, including 22 before the previous capture window. The historical temporary identity remains omitted with an explicit derived-selection ledger; raw captures and loss counters stay unchanged. No additional assists, gameplay, cold-execution, campaign, hardware, listening or persistence qualification."
+  },
+  "miner_deeper18_milestone": {
+    "qualified": true,
+    "tool": {
+      "revision": "6935e46ff8aefacf8ea058a385198299c4e2cd5c",
+      "source_sha256": "9414ed390229b8d411f2f79f6c22080d68fef7b09aef2bf99db0046751e34cf0",
+      "source_files": 60,
+      "runtime_abi": 18
+    },
+    "runtime_abi": 18,
+    "selected_original_code_identities": 55723,
+    "previous_selected_original_code_identities": 54046,
+    "new_emitted_source_identities": 1677,
+    "new_native_promoted_retirements": 2623453,
+    "previously_compiled_newly_exercised_identities": 125,
+    "previously_compiled_newly_exercised_native_hits": 2455,
+    "frames": 81504,
+    "native_steps": 2492524812,
+    "interpreted_steps": 0,
+    "total_retired": 2492524812,
+    "native_block_steps": 378013,
+    "interpreted_block_steps": 0,
+    "guard_misses": 0,
+    "baseline_native_steps": 2489901359,
+    "baseline_interpreted_steps": 2623453,
+    "mpr_contexts": 81,
+    "translation_units": 269,
+    "generated_headers": 1,
+    "states": 4359,
+    "actions": 7287,
+    "control_requests": 1919,
+    "image_checkpoints": 1899,
+    "hp_reads": 1866,
+    "source_capture": {
+      "fresh_single_executions": true,
+      "start_frame": 0,
+      "capacity": 65536,
+      "loss": 0,
+      "baseline_source_identities": 52451,
+      "candidate_source_identities": 52451
+    },
+    "progression": {
+      "miner_return_dialogue": true,
+      "deeper_cave_arrival": true,
+      "boss_encounter_and_incoming_damage": true,
+      "head_lightning_and_sword_damage": true,
+      "boss_defeat": true,
+      "sunset_statue_reward": true,
+      "settled_victory_stats": true
+    },
+    "assisted_progression": true,
+    "memory_write_requests": 280,
+    "additional_memory_write_requests": 20,
+    "developer_code_edits": 0,
+    "developer_quest_or_equipment_edits": 0,
+    "new_max_hp_writes": 0,
+    "new_tail": {
+      "start_frame": 69896,
+      "end_frame": 81504,
+      "frames": 11608,
+      "baseline": {
+        "native": 361006737,
+        "interpreted": 2623453
+      },
+      "candidate": {
+        "native": 363630190,
+        "interpreted": 0
+      }
+    },
+    "pcm": {
+      "sample_rate": 44100,
+      "timing": "gear-v1",
+      "frames": 60079564,
+      "pcm_hash": 7743071514475414998,
+      "mixed_nonzero": 57087881,
+      "peak": 12684,
+      "discarded_frames": 0,
+      "wav_frames": 441000
+    },
+    "full_campaign_qualified": false,
+    "crossprocess_save_persistence": false,
+    "new_paced_device_or_listening_check": false,
+    "unknown_CD_semantics_implemented": false,
+    "scope": "This assisted route returns to the miner, reaches the deeper mine, observes boss attacks and incoming damage, defeats the boss and receives the Sunset Statue through ordinary game actions. Unseen code retains interpreter fallback. The full campaign and cross-process saves remain unfinished. Digital PCM matching does not establish listening or hardware parity.",
+    "execution_supervision": {
+      "mode": "direct-host-external900",
+      "external_wall_seconds": 900,
+      "controller_close_seconds": 865,
+      "descriptor_wall_seconds": 600,
+      "descriptor_wall_applied": false,
+      "internal_wall_flag_omitted": true,
+      "shared_project_run_used": false,
+      "caps_preserved": true
+    },
+    "boss_combat_and_reward_interval": {
+      "start_frame": 79408,
+      "end_frame": 81504,
+      "frames": 2096,
+      "native_steps": 64737130,
+      "interpreted_steps": 0,
+      "semantic_reviewed": true
+    }
   }
 }

@@ -5,7 +5,47 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Current original-source workflow
+## Current miner and deeper-boss workflow
+
+Start from the qualified 54,046-identity catalogue and native-only retained route.
+Use complete original-code captures with exact PC, all eight MPRs, physical
+fetch bytes and source generations. Compose the already filtered profile with
+the successful new capture. Preserve the historical selection ledger as lineage;
+do not repeat its subtraction, restore a temporary variant or drop old guards.
+
+Verify new living-HP refills independently before freezing the native harness.
+Require fresh expected bytes, read-only maximum, durable intent, exact ACK and
+readback, paused CPU/MPR/source/clock/CD/PCM invariance and full alias exclusion.
+Reject HP0, overfill, max HP, quest, item, equipment, STR and program writes.
+A naturally changed maximum is read-only evidence, not new refill authority.
+
+Use a bounded single-producer TCP decision plan with automatic closure. Keep
+source frozen; journal external decisions and every actual expanded request.
+Retry only transient local metadata-file replacement using the same serialized
+bytes. Never resend a guest control or CAS after an uncertain acknowledgement.
+Preserve failed probes and exclude their captures from emission.
+
+Require positive images for miner dialogue, room transitions, attacks, incoming
+damage, defeat and named reward. A case label or empty enemy bar alone proves
+none of those outcomes. Keep reference timing and positions separate.
+
+The current verification host omits the internal wall flag and uses a source-bound
+owned 900-second external watchdog, closing the controller at 865 seconds.
+The unchanged descriptor's 600-second wall option is explicitly not applied;
+this direct host invocation is separate from project.run. Guest frame, tick,
+step and control caps remain finite. Require the same reviewed command and
+supervision contract on both runs, with every other argument unchanged.
+
+Use the official emission/build API, then replay the exact successful controls
+through TCP with audio. Conserve every per-source total and raw state, with
+only source-proved native promotion. Qualify before selecting the launcher;
+run both info paths, final consumer tests, staged audit and actual diff review
+before pushing. Verify public bytes afterward. Keep media, generated game C++,
+captures, PCM, states, local paths and coordination private. Reuse dependencies,
+preserve replayable evidence, stop owned processes and retain guarded owner-run
+cleanup for only unbound build objects. No storage quota or accounting scan.
+
+## Retained original-source workflow
 
 Preserve the actual 54,043 catalogue and use two fresh captures from reset on
 the exact 1,547-control route. The old build must independently show that every
