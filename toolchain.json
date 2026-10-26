@@ -1584,11 +1584,11 @@
     ]
   },
   "milestone_roles": {
-    "current_native": "post_reward_continue18_milestone",
-    "current_native_extension": "post_reward_continue18_milestone",
+    "current_native": "mine_return18_milestone",
+    "current_native_extension": "mine_return18_milestone",
     "historical_abi13_native_audio": "native_audio_expansion_milestone",
     "historical_abi16_migration": "abi16_compatibility_milestone",
-    "current_route": "post_reward_continue18_milestone",
+    "current_route": "mine_return18_milestone",
     "historical_abi16_native": "native_milestone",
     "historical_abi16_native_extension": "native_extension_milestone",
     "historical_ipl_route": "qualified_private_route",
@@ -1603,7 +1603,8 @@
     "retained_abi18_herb_case": "herb18_milestone",
     "retained_abi18_death_case": "assisted_death18_milestone",
     "retained_abi18_wizard_combat": "boss18_milestone",
-    "retained_abi18_wizard_defeat_reward": "wizard_defeat_reward18_milestone"
+    "retained_abi18_wizard_defeat_reward": "wizard_defeat_reward18_milestone",
+    "retained_abi18_post_reward_continue": "post_reward_continue18_milestone"
   },
   "reset_milestone": {
     "qualified": true,
@@ -2795,5 +2796,118 @@
       "whole_route_image_audio_stats_or_position_parity_claimed": false
     },
     "scope": "Finite assisted reset route retaining wizard defeat/reward, then ordinary cleared-room exit, mine damage/death, visible Game Over, Continue restoring40/40 while losing Long Sword, and ordinary reacquisition.36 added identities execute39 newly native retirements;489 already-compiled identities execute78230 native retirements beyond the prior qualified route.2584 new frames retire79905621 native and0interpreted, with0new developer writes. Full route2058007088N75I. No miner/next boss/campaign, hardware, listening or persistence qualification."
+  },
+  "mine_return18_milestone": {
+    "selected_original_code_identities": 54043,
+    "previous_selected_original_code_identities": 54036,
+    "new_emitted_source_identities": 7,
+    "new_native_promoted_retirements": 8,
+    "previously_compiled_newly_exercised_identities": 26,
+    "previously_compiled_newly_exercised_native_hits": 38,
+    "newly_observed_source_identities_since_previous_qualified_route": 33,
+    "mpr_contexts": 80,
+    "translation_units": 262,
+    "generated_headers": 1,
+    "frames": 69896,
+    "native_steps": 2128894547,
+    "interpreted_steps": 75,
+    "total_retired": 2128894622,
+    "native_block_steps": 319586,
+    "interpreted_block_steps": 0,
+    "guard_misses": 75,
+    "baseline_native_steps": 2128894539,
+    "baseline_interpreted_steps": 83,
+    "states": 3570,
+    "actions": 5939,
+    "image_checkpoints": 1549,
+    "control_requests": 1547,
+    "hp_reads": 1496,
+    "new_tail": {
+      "start_frame": 67628,
+      "end_frame": 69896,
+      "frames": 2268,
+      "native_steps": 70887459,
+      "interpreted_steps": 0,
+      "new_developer_writes": 3
+    },
+    "corridor_combat": {
+      "start_frame": 69296,
+      "end_frame": 69896,
+      "frames": 600,
+      "native_steps": 18930942,
+      "interpreted_steps": 0
+    },
+    "progression": {
+      "retains_wizard_defeat_reward_and_death_Continue_reacquisition": true,
+      "ordinary_Status_view": true,
+      "Status": {
+        "level": 3,
+        "STR": 50,
+        "DEF": 30,
+        "NEXT": 500
+      },
+      "cleared_room_exit": true,
+      "lower_hub_descent": true,
+      "corridor_ground_combat": true,
+      "final_hp": 38,
+      "final_max_hp": 40,
+      "final_EXP": 487,
+      "final_gold": 644,
+      "native_Level4_UI_claimed": false,
+      "numeric_weapon_attack_gain_claimed": false,
+      "miner_dialogue_qualified": false,
+      "deeper_room_arrival_qualified": false,
+      "next_boss_qualified": false,
+      "native_quest_flag_claimed": false,
+      "campaign_complete": false
+    },
+    "assisted_progression": true,
+    "memory_write_requests": 260,
+    "retained_memory_write_requests": 257,
+    "new_tail_memory_write_requests": 3,
+    "new_tail_current_hp_byte_refills": 3,
+    "new_tail_max_hp_writes": 0,
+    "developer_code_edits": 0,
+    "developer_quest_or_equipment_edits": 0,
+    "readonly_actor_inspections": 8,
+    "all_assist_aliases_excluded_before_and_after": true,
+    "global_excluded_variants": 4,
+    "global_excluded_profile_hits": 1319,
+    "route_excluded_interpreted_hits": 75,
+    "prefix_excluded_interpreted_hits": 22,
+    "suffix_excluded_interpreted_hits": 53,
+    "capture_window": {
+      "start_frame": 28249,
+      "end_frame": 69896,
+      "source_identities": 30879,
+      "complete": true,
+      "dropped": 0,
+      "unreadable": 0
+    },
+    "prefix_input_status_protocol_validated": true,
+    "original_prefix_witness_preserved": true,
+    "settled_source_cpu_cd_pcm_rgb_wav_exact": true,
+    "per_key_total_hits_exact": true,
+    "pcm": {
+      "sample_rate": 44100,
+      "timing": "gear-v1",
+      "frames": 51522885,
+      "pcm_hash": 312110894808343229,
+      "mixed_nonzero": 48742101,
+      "peak": 12684,
+      "discarded_frames": 0,
+      "wav_frames": 441000
+    },
+    "wav_first10seconds_boot_silent": true,
+    "new_paced_device_or_listening_check": false,
+    "crossprocess_save_persistence": false,
+    "independent_reference": {
+      "ordinary_cleared_room_exit_hub_corridor": true,
+      "living_HP_max40_refill": true,
+      "reference_only_natural_max40_to50": true,
+      "native_max_remained40": true,
+      "stats_timing_position_or_whole_audio_parity_claimed": false
+    },
+    "scope": "Finite assisted mine return and corridor combat after the retained wizard reward, death, Continue and reacquisition route. Seven added identities promote eight retirements; 26 previously compiled identities add 38 native hits beyond the prior qualified source set. New 2,268-frame interval: 70,887,459 native / 0 interpreted. The 600-frame combat window has 18,930,942 native / 0 interpreted. Three living current-HP refills use the existing max HP 40. Full route: 2,128,894,547 native / 75 interpreted. No miner, deeper arrival, next boss, campaign, hardware, listening or persistence qualification."
   }
 }

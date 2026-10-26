@@ -1,6 +1,45 @@
 # Consumer status - 26 October 2026
 
-## Current post-reward death and Continue on ABI18
+## Current mine return and corridor combat on ABI18
+
+The rebuilt TCP/audio replay extends the retained wizard reward, natural death,
+Continue and ordinary Long Sword reacquisition route. It opens actual Status,
+exits the cleared room, descends the mine hub and reaches the long corridor for
+a bounded 600-frame ground-combat test.
+
+| Evidence | Result |
+| --- | --- |
+| Fresh same-control replay | 69,896 frames; 2,128,894,547 native / 75 interpreted |
+| New catalogue execution | Seven new keys, all executed / eight newly native retirements |
+| Additional execution coverage | 26 already-compiled keys / 38 native hits beyond the prior route |
+| Same-route prior module | 2,128,894,539 native / 83 interpreted |
+| Module | 54,043 identities / 80 MPR / 262 translation units + header |
+| New mine-return interval | 67,628..69,896; 2,268 frames; 70,887,459 native / zero interpreted |
+| Corridor combat interval | 69,296..69,896; 600 frames; 18,930,942 native / zero interpreted |
+| Whole recipe | 3,570 states / 1,549 images / 5,939 actions / 1,547 requests |
+| New developer writes | Three living current-HP byte refills to fresh read-only max HP 40 |
+| Digital audio | 51,522,885 PCM frames / hash 312110894808343229 / synthesis loss 0 |
+
+Every settled CPU/all-MPR/fetched source generation, CD/PCM value, RGB image and
+per-key total matches. All 54,036 prior identities remain. The 75 fallbacks remain
+in the historical six-byte exclusion; the new interval is native-only.
+
+The actual native Status view shows Level 3, STR 50, DEF 30 and NEXT 500. The final
+combat view shows HP 38/40, EXP 487 and gold 644. Equipment names do not establish
+a numeric weapon attack gain. Independent Geargrafx confirms the route and
+HP-only assist behavior, with differing stats and positions. Its natural max HP 50
+observation is reference-only; native max remains 40 in this segment.
+
+Assists retain fresh expected bytes, intent-before-write, ACK/readback, unchanged
+paused CPU/MPR/source/clock/CD/PCM and complete data-alias exclusion. No new
+max-HP, quest, equipment or program edits occur. Cursor blink and native slope
+alignment caused two incomplete probes; neither supplies code for this module.
+
+Miner dialogue, deeper-room arrival, the next boss, full campaign and
+cross-process saves remain unqualified. Digital PCM and muted fast-forward do
+not establish listening/device/hardware parity.
+
+## Retained post-reward death and Continue on ABI18
 
 The closed rebuilt TCP/audio replay retains the wizard defeat and reward, exits
 the cleared room, then observes mine damage, natural HP0, visible Game Over and
