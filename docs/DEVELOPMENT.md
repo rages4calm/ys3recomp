@@ -5,7 +5,39 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Current boss expansion workflow
+## Current wizard defeat/reward workflow
+
+Preserve the exact ABI18 pin and all 53,302 prior guarded identities. Compose only
+the final complete original-code capture with the current profile; earlier closed
+discovery keys are subsets, not extra accumulated executions. Interrupted captures
+are excluded. The official rebuilt module adds 698 identities, all executed for
+30,879 new native retirements in the fresh matching TCP/digital-audio replay.
+
+Earn Pendant/Key and Long Sword through ordinary controls. Verified living-HP99
+and guarded Y24/UP8 assists retain fresh expected bytes, intent, ACK/readback,
+unchanged paused CPU/MPR/source/CD/PCM and complete data-alias exclusion. HP0
+resurrection and direct quest, equipment, STR or program writes remain disabled.
+
+Zero enemy-bar pixels do not prove defeat. Retain the later actual death effects,
+wizard disappearance, two stable victory-statistic views and no-write settlement.
+Bind the Long Sword pickup toast, before/after inventory and actual named second
+sword slot to recorded responses. No inventory-memory inference is required.
+Independent reference controls establish the pickup separately, with their own
+statistics, timing and paused read/write/readback assist limits.
+
+Replay every final control and compare all raw states, images, source generations,
+CAS calls, per-key total retirements and PCM. Keep immediate accepted input intent
+distinct from paused sampled-controller state; preserve raw ACKs and the opening
+witness. The same-route prior execution baseline is the actual 53,302 module.
+
+Require the closed runtime qualification, both launcher info paths, final consumer
+suite, staged publication audit and reviewed diff before push. Keep generated game
+code and all captures/private receipts local. Digital PCM with muted fast-forward
+is separate from listening/hardware evidence. Retain a handoff and stop owned
+processes; discard only unreferenced owned build intermediates through guarded
+cleanup, preserving packages, inputs, source provenance and replayable receipts.
+
+## Retained boss combat expansion workflow
 
 Reuse the exact pinned official toolkit, immutable inputs and qualified packages.
 Compose only complete original-code captures, preserving full PC/MPR/source

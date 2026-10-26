@@ -1,6 +1,44 @@
-# Consumer status - 25 October 2026
+# Consumer status - 26 October 2026
 
-## Current wizard combat phases on ABI18
+## Current wizard defeat and Long Sword on ABI18
+
+The fresh matching TCP/audio route defeats the wizard and acquires the Long Sword
+with ordinary Up input. The native pickup toast and named Equipment slot are both
+verified, alongside a separate original-program Geargrafx defeat/reward reference.
+
+| Evidence | Result |
+|---|---|
+| Fresh same-control replay |65,044 frames; 1,978,101,467 native / 75 interpreted|
+| New catalogue execution |698 new keys, all executed / 30,879 newly native retirements|
+| Same-route prior module |1,978,070,588 native / 30,954 interpreted|
+| Module |54,000 eligible identities / 80 MPR / 262 translation units + header|
+| Whole recipe |3,334 states / 1,437 images / 5,525 actions / 1,427 requests|
+| Victory |Actual effects, wizard gone, settled EXP 210→410 / gold 374→574 / HP/max HP 40|
+| Named reward |Long Sword pickup toast and newly occupied second sword slot|
+| Data assists |1 inherited + 256 new byte-CAS requests; no quest/equipment/code edits|
+| Digital audio |47,946,299 PCM frames / hash 4333397609570816573 / loss 0|
+
+Every settled CPU/all-MPR/fetched source generation, CD/PCM value, RGB image and
+per-key retirement total matches. All 698 newly emitted keys execute; no new key
+is merely compiled. The 75 fallbacks remain in the original six-byte exclusion.
+Complete original-code capture and every assist-data alias exclusion pass.
+
+Earlier zero-bar observations still contained a living wizard. Defeat is qualified
+only by later effects, disappearance and two settled victory-statistic views.
+The natural maxHP return to 40 and ordinary Long Sword pickup involve no developer
+writes. The 257 data-CAS requests remain explicitly assisted progression.
+
+Independent Geargrafx confirms the defeat and Long Sword by named Equipment and
+ordinary acquisition, with separate stats and timing. Its paused HP assists use
+expected-read/write/readback, rather than the native runtime's atomic CAS.
+No matched whole-route reference audio or damage formula is claimed.
+
+The final consumer suite passes 488 tests with zero skips. Silent capped boot WAV
+and later digital PCM do not establish listening/device/hardware parity. Campaign,
+other bosses, unseen overlays and save persistence remain open. Failed or timed-out
+experiments remain preserved and excluded from emission/qualification.
+
+## Retained wizard combat phases on ABI18
 
 The closed matching TCP/audio route normally earns the Pendant and miner's Key,
 then observes the wizard, clones/projectiles, incoming damage and ordinary sword
