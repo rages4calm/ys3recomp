@@ -5,7 +5,34 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Current post-reward Continue workflow
+## Current mine-return workflow
+
+Start from the actual 54,036 module and closed 67,628-frame qualification. Preserve
+all previous guarded identities; compose only the complete successful capture.
+Separate seven new source keys / eight promoted retirements from 26 already-compiled
+keys / 38 newly exercised native retirements. The profile remains a multi-run union.
+
+Use bounded cursor-blink sampling before selecting actual Command rows. Status
+is row 3; verified button II backs out to Command, then gameplay. Bind actual
+Status numbers and do not infer weapon gains from a highlighted item name.
+Navigation uses the native left-slope camera 272 gate and actual corridor camera 0,
+with reviewed room images. Reference camera/frame counts are guidance.
+
+The new `refill-max40` operation changes only living current HP 1..39 to 40 after
+frame 67,628 with fresh read-only max HP bytes `2800`. Refuse HP 0, overfill, new max HP 99,
+quest/equipment/program edits and max HP 50 refills. Read-only actor inspection writes
+nothing. Preserve exact source/CPU/all-MPR/clock/CD/PCM state and every alias.
+
+Require an official rebuild and fresh same-control TCP/audio replay, all per-key
+source-tier promotions, raw input witnesses, images and ledgers. The complete
+new 2,268-frame interval is native-only after eight promotions. Keep both failed
+probes outside emission, retain their receipts and stop owned processes.
+
+Publish only after formal runtime qualification, both actual launcher info paths,
+the full consumer suite, staged publication audit and reviewed diff. Verify public
+bytes afterward. Preserve qualified evidence and reuse inputs/dependencies.
+
+## Retained post-reward Continue workflow
 
 Start from the actual 54,000 module and its closed 65,044-frame qualified route.
 Preserve every original guarded identity and compose only the final complete new

@@ -5,32 +5,33 @@ An incremental PC Engine CD consumer of
 *Ys III: Wanderers from Ys* (USA). This is an early hybrid port: unseen code
 still uses the interpreter, and the full campaign remains unfinished.
 
-The current **67,628-frame** reset route normally earns Roy's Pendant and the
-Storehouse Key, defeats the wizard and obtains the Long Sword. It then tests mine
-damage, natural death, visible Game Over and ordinary Continue. Continue restores
-40/40 HP but removes the Long Sword; ordinary pickup reacquires it, confirmed by
-the toast and named Equipment slot. The retained route uses verified HP/vertical
-assists. The new post-reward sequence makes **no additional memory edits**.
+The current **69,896-frame** reset route retains the wizard defeat, Long Sword,
+mine death, Continue and ordinary reward reacquisition. It then opens Status,
+returns through the lower mine and tests **600 frames of corridor combat**.
+The new sequence uses three verified living-HP refills to the existing max HP 40;
+it makes no max-HP, quest, equipment or program edits. Native max HP remains 40.
 
-The official module contains **54,036 eligible identities** in 80 full MPR
-contexts, across 262 C++ translation units and one header. All 54,000 prior
-identities are preserved. All **36 additions execute**, promoting **39 retirements**
-from interpretation to native execution. Another **489 already-compiled identities**
-execute 78,230 native retirements beyond the previous qualified route; those are
-additional execution coverage, separate from the 39 promotions.
+The official module contains **54,043 eligible identities** in 80 full MPR
+contexts, across 262 C++ translation units and one header. All 54,036 prior
+identities are preserved. All **seven additions execute**, promoting **eight
+retirements** from interpretation to native execution. Separately, **26 already
+compiled identities** execute 38 native retirements beyond the previous qualified
+route. This is measured execution coverage, not additional compilation.
 
-The new **2,584-frame post-reward sequence executes 79,905,621 native and zero
-interpreted instructions**. The full matching route retires **2,058,007,088 native
-and 75 interpreted instructions**, down from 114 interpreted with the prior module
-on these same controls. The remaining 75 fallbacks stay in the original six-byte
-exclusion. This remains a hybrid port; the full campaign is unfinished.
+The new **2,268-frame sequence executes 70,887,459 native and zero interpreted
+instructions**, including 18,930,942 native retirements in the 600-frame combat
+window. The full matching route retires **2,128,894,547 native and 75 interpreted
+instructions**, down from 83 interpreted on the same controls with the prior
+module. The original six-byte exclusion remains. This is a hybrid port and the
+full campaign is unfinished.
 
-All 3,422 states, 1,486 images, source identities, retirement totals, retained
-data-CAS journals and digital PCM match the fresh rebuilt replay, allowing only
-proved execution-tier promotions and validated immediate-input transport
-differences. No developer writes resurrect HP0 or alter quest flags, STR,
-equipment or program code. Failed or incomplete experiments remain separately preserved and
-excluded from native qualification. Miner return and the next boss remain open.
+All 3,570 states, 1,549 images, source identities, retirement totals, data-CAS
+journals and digital PCM match the fresh rebuilt replay, allowing only proved
+source-tier promotions and validated immediate-input transport differences.
+Status shows Level 3, STR 50, DEF 30 and NEXT 500; this does not establish a numeric
+weapon gain or reference-stat parity. Miner dialogue, deeper-room arrival and
+the next boss remain open. Incomplete probes are preserved separately and are
+excluded from emission and qualification.
 
 ## Play the local build
 
@@ -40,7 +41,8 @@ the System Card menu, choose Beginning, then Proceed at the blank-BRAM prompt.
 needs owner-supplied media and a qualified private build; generated game source,
 assets, captures and saves are excluded from Git.
 
-Arrows move; Z is button I, X is II, Shift is Select and Enter is Run.
+Arrows move; Z jumps (button I), X attacks (button II). Shift opens the
+Command menu (Select), and Enter is Run.
 Space pauses, F11 toggles fullscreen and Esc exits. The launcher verifies the
 selected inputs, module, runtime and adjacent SDL package; it downloads and
 installs nothing. `python scripts/play_local.py --info` checks readiness without
@@ -50,7 +52,7 @@ The toolkit remains pinned to ABI18 at
 `6935e46ff8aefacf8ea058a385198299c4e2cd5c`. The composed profile retains its
 original ABI17 lineage and the actual ABI18 labels of the new closed captures.
 This union represents multiple executions. It was re-emitted and rebuilt for
-the current post-reward death/Continue batch. Earlier finite migration and route
+the current mine-return/corridor-combat batch. Earlier finite migration and route
 proofs remain retained separately; newer upstream ABIs are not selected here.
 
 The shared toolkit adds explicit base HuCard startup and mapper support. Its
@@ -58,16 +60,16 @@ authored fixtures have separate Geargrafx/native/TCP/PSG checks. **Ys III still
 uses the owner's CHD**; this batch adds no retail HuCard/CUE test or media
 conversion. The earlier full-route ABI17 media migration remains retained.
 
-Both module runs match 49,851,059 cumulative 44.1 kHz PCM frames, hash
-`11441753128665845047`, including 47,070,275 mixed-nonzero frames and zero
+Both module runs match 51,522,885 cumulative 44.1 kHz PCM frames, hash
+`312110894808343229`, including 48,742,101 mixed-nonzero frames and zero
 synthesis loss. The WAV is capped at ten guest seconds of silent boot; later game
 audio is verified through cumulative PCM. Fast-forward SDL presentation is muted.
-No new paced-device or listening test is claimed. Independent original-program
-Geargrafx confirms the same qualitative death, Continue reward loss and ordinary
-reacquisition. Stats, checkpoint positions and timing differ; only the bounded
-Game Over text pixels are compared directly, not whole-route images or audio.
+No new paced-device or listening test is claimed. Original-program Geargrafx
+independently confirms mine return and corridor combat. Its stats, timing and
+checkpoint positions differ. Its natural max HP 40 to 50 increase is reference-only;
+the native new segment remains at max HP 40. No whole-route audio parity is claimed.
 
-The original six-byte exclusion remains across 4 profile variants / 1,266
+The original six-byte exclusion remains across 4 profile variants / 1,319
 profile hits. This route retires 75 interpreted instructions in that excluded
 span. The composed ABI18 profile is a union of observations from
 multiple runs, not one execution. The older 95,686-frame IPL-entry route passed
