@@ -3200,5 +3200,95 @@
       "caps_preserved": true
     },
     "interpreted_steps": 0
+  },
+  "town_return18_milestone": {
+    "qualified": true,
+    "tool": {
+      "revision": "6935e46ff8aefacf8ea058a385198299c4e2cd5c",
+      "source_sha256": "9414ed390229b8d411f2f79f6c22080d68fef7b09aef2bf99db0046751e34cf0",
+      "source_files": 60,
+      "runtime_abi": 18
+    },
+    "runtime_abi": 18,
+    "selected_original_code_identities": 56461,
+    "previous_selected_original_code_identities": 56205,
+    "new_emitted_source_identities": 256,
+    "new_native_promoted_retirements": 63794,
+    "new_compiled_keys_not_executed": 0,
+    "previously_compiled_newly_exercised_identities": 101,
+    "previously_compiled_newly_exercised_native_hits": 73059,
+    "frames": 97480,
+    "native_steps": 2973919647,
+    "native_block_steps": 457610,
+    "interpreter_block_steps": 0,
+    "guard_misses": 0,
+    "baseline_native_steps": 2973855853,
+    "baseline_interpreted_steps": 63794,
+    "mpr_contexts": 81,
+    "translation_units": 273,
+    "generated_headers": 1,
+    "states": 4478,
+    "actions": 7480,
+    "control_requests": 1977,
+    "image_checkpoints": 1948,
+    "hp_reads": 1915,
+    "source_capture": {
+      "fresh_single_executions": true,
+      "start_frame": 0,
+      "capacity": 65536,
+      "loss": 0,
+      "baseline_source_identities": 53391,
+      "candidate_source_identities": 53391
+    },
+    "progression": {
+      "gate_return_dialogue": true,
+      "lodge_entry": true,
+      "elena_dogi_scene": true,
+      "control_restored": true
+    },
+    "assisted_progression": true,
+    "memory_write_requests": 280,
+    "additional_memory_write_requests": 0,
+    "new_developer_max_hp_or_program_quest_item_equipment_str_writes": 0,
+    "hp60_refill_verified": false,
+    "new_tail": {
+      "start_frame": 89556,
+      "end_frame": 97480,
+      "frames": 7924,
+      "baseline": {
+        "native": 224825145,
+        "interpreted": 63794
+      },
+      "candidate": {
+        "native": 224888939,
+        "interpreted": 0
+      }
+    },
+    "pcm": {
+      "sample_rate": 44100,
+      "timing": "gear-v1",
+      "frames": 71856055,
+      "pcm_hash": 6791363767405779560,
+      "mixed_nonzero": 68400473,
+      "peak": 12684,
+      "discarded_frames": 0,
+      "wav_frames": 441000
+    },
+    "scope": "The assisted route returns to Sarina, observes the guard return dialogue, enters the lodge with Dogi and Elena and verifies player control after the scene with opposite-direction inputs. The new interval needs no additional assists. Unseen code retains interpreter fallback. Full campaign and cross-process saves remain unfinished. Matching digital PCM does not establish listening or hardware parity.",
+    "full_campaign_qualified": false,
+    "crossprocess_save_persistence": false,
+    "new_paced_device_or_listening_check": false,
+    "unknown_CD_semantics_implemented": false,
+    "execution_supervision": {
+      "mode": "direct-host-external900",
+      "external_wall_seconds": 900,
+      "controller_close_seconds": 865,
+      "descriptor_wall_seconds": 600,
+      "descriptor_wall_applied": false,
+      "internal_wall_flag_omitted": true,
+      "shared_project_run_used": false,
+      "caps_preserved": true
+    },
+    "interpreted_steps": 0
   }
 }

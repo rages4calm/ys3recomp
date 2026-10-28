@@ -5,17 +5,34 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Current post-statue workflow
+## Current town-return workflow
 
-The post-statue batch preserves every prior guard and promotes all 86,138 new
-fallback retirements across 482 original identities. The fresh same-control
-TCP/audio replay covers the confrontation and Mayor-safe entrance dialogue.
-No additional assists were needed; the existing 280 transactions remain exact.
-Natural HP60 is read-only, with no refill authority. All original inputs remain
-unchanged and owned verification processes are closed after each run.
+The town-return batch preserves every prior guard and promotes 63,794 fallback
+retirements across 256 original identities. The fresh same-control TCP/audio
+replay verifies the return to Sarina, lodge scene and restored player control.
+All 280 developer transactions remain unchanged; HP60 refill has no authority.
 
-Start from the qualified 56,205-identity catalogue and 89,556-frame native-only
-route.
+Start from the qualified 56,461-identity catalogue and 97,480-frame native
+route. Verify control restoration with settled opposite-direction inputs;
+autonomous actor movement alone is insufficient. Keep each failed or partial
+goal diagnostic distinct from the closed qualification. A bounded automatic
+replay may reuse exact recorded nonterminal controls with source/state/image
+checks, then add fresh ordinary actions. It does not restore native save state.
+
+Use this retail consumer as a toolkit validation driver as well as a native
+port. Preserve new source, device and input cases as regression evidence.
+Distinguish missing observed coverage from shared runtime defects; reduce
+confirmed defects and reusable testability gaps to bounded reproductions with
+exact tool, build, input, logical PC, all-MPR and source identities. Send those
+upstream, then qualify verified shared fixes in the consumer.
+
+Check the public toolkit revision, release notes and compatibility documents at
+each batch boundary. Record the exact source identity and consumer impact
+privately. Evaluate applicable new features; upgrade pins only after affected
+SDK checks, a rebuild and the retained TCP/audio route pass. Preserve each
+previous qualification independently, and protect a managed development cache
+from disposable-intermediate cleanup if incremental builds are adopted.
+
 Use complete original-code captures with exact PC, all eight MPRs, physical
 fetch bytes and source generations. Compose the already filtered profile with
 the successful new capture. Preserve the historical selection ledger as lineage;
