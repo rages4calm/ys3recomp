@@ -5,26 +5,29 @@ An incremental PC Engine CD consumer of
 *Ys III: Wanderers from Ys* (USA). This is an early hybrid port: unseen code
 still uses the interpreter, and the full campaign remains unfinished.
 
-The current **97,480-frame** TCP/audio route retires **2,973,919,647 native
-instructions and zero interpreted instructions**. It retains the Mayor rescue,
-returns to Sarina, enters the lodge with Dogi and Elena, and verifies player
-control after the scene using opposite-direction inputs.
+The current **101,248-frame** TCP/audio route retires **3,089,987,071 native
+instructions and zero interpreted instructions**. It retains the lodge scene,
+leaves Sarina, selects Alcaino on the world map and reaches the ruins exterior.
 
-The official module contains **56,461 original source identities** in
-81 full MPR contexts, across 273 C++ translation units and one header.
-All 56,205 previous identities remain; 256 additions execute for 63,794
+The official module contains **57,335 original source identities** in
+83 full MPR contexts, across 277 C++ translation units and one header.
+All 56,461 previous identities remain; 874 additions execute for 927,448
 newly native retirements on the same route. Separately,
-101 previously compiled identities execute
-73,059 native hits beyond the prior route. Emission and execution are measured
+124 previously compiled identities execute
+640 native hits beyond the prior route. Emission and execution are measured
 separately; unseen code retains interpreter fallback.
 
-The new 7,924-frame interval retires 224,888,939 native instructions
+The new 3,768-frame interval retires 116,067,424 native instructions
 and zero interpreted instructions. The fresh same-control replay matches all
-1,977 controls, 4,478 states, 1,948 images, source totals, assist journals and
+2,017 controls, 4,541 states, 1,988 images, source totals, assist journals and
 digital PCM. All 280 verified data-CAS transactions remain unchanged; the new
 interval needs no additional writes. HP60 refill remains unverified. Full campaign
 and cross-process saves remain unfinished. Digital PCM matching does not
 establish listening or hardware parity.
+
+The first hostile-room observation ends at 5/60 HP in native and 60/60 in
+the independent reference. Room-load phase, positions and other stats differ;
+the cause and combat parity remain unverified.
 
 ## Play the local build
 
@@ -45,7 +48,7 @@ The toolkit remains pinned to ABI18 at
 `6935e46ff8aefacf8ea058a385198299c4e2cd5c`. The composed profile retains its
 original ABI17 lineage and the actual ABI18 labels of the new closed captures.
 This union represents multiple executions. It was re-emitted and rebuilt for
-the current town-return batch. Earlier finite migration and route
+the current Alcaino-entry batch. Earlier finite migration and route
 proofs remain retained separately; newer upstream ABIs are not selected here.
 
 The shared toolkit adds explicit base HuCard startup and mapper support. Its
@@ -53,8 +56,8 @@ authored fixtures have separate Geargrafx/native/TCP/PSG checks. **Ys III still
 uses the owner's CHD**; this batch adds no retail HuCard/CUE test or media
 conversion. The earlier full-route ABI17 media migration remains retained.
 
-Both module runs match 71,856,055 cumulative 44.1 kHz PCM frames,
-hash `6791363767405779560`, including 68,400,473 mixed-nonzero frames
+Both module runs match 74,633,585 cumulative 44.1 kHz PCM frames,
+hash `11074858586060174213`, including 70,819,420 mixed-nonzero frames
 and zero synthesis loss. The capped ten-second WAV covers silent boot; later
 audio is verified cumulatively. Fast-forward SDL presentation is muted.
 Independent Geargrafx confirms the bounded progression and HP-only assist

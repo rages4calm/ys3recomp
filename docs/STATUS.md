@@ -1,6 +1,38 @@
 # Consumer status - 28 October 2026
 
-## Current town and lodge qualification on ABI18
+## Current Alcaino entrance qualification on ABI18
+
+The assisted route leaves the lodge and Sarina, selects Alcaino on the world map and reaches the ruins exterior. The new interval needs no additional assists.
+
+| Evidence | Result |
+| --- | --- |
+| Fresh native replay | 101,248 frames; 3,089,987,071 native / zero interpreted |
+| Same-control prior module | 3,089,059,623 native / 927,448 interpreted |
+| Catalogue | 57,335 original identities; all 56,461 previous keys retained |
+| Additions actually executed | 874 identities / 927,448 promoted retirements |
+| Other newly exercised compiled code | 124 identities / 640 native hits |
+| Module | 83 MPR contexts / 277 translation units + 1 header |
+| Recipe | 2,017 controls / 4,541 states / 1,988 images |
+| New interval | 3,768 frames; 116,067,424 native / zero interpreted |
+| Verified assists | 280 retained data-CAS transactions; zero additional |
+| Digital audio | 74,633,585 frames / hash 11074858586060174213 / synthesis loss 0 |
+
+Every source hit total, settled CPU/all-MPR/fetched source generation, device
+clock, CD/PCM value and image matches. All additions execute; none are compiled
+only. Complete lossless original-program captures preserve the historical
+temporary identity omission as lineage, with zero recurring subtraction.
+
+Independent Geargrafx confirms lodge departure, map selection and arrival at
+the Alcaino ruins exterior. Its stats, timing and position differ;
+no new developer writes were needed. HP60 refill remains disabled and unverified.
+The first hostile-room observation ends at native 5/60 HP versus reference 60/60.
+Native already shows the room at frame 101,128 while reference is still loading
+at its corresponding frame 3,648. The 55 HP drop occurs during the next 120
+neutral native frames. The cause and combat parity remain unverified.
+Unseen code retains interpreter fallback. Full campaign and cross-process saves remain unfinished. Matching digital PCM does not establish listening or hardware parity.
+The selected toolkit remains ABI18; newer upstream ABIs are not selected.
+
+## Retained town and lodge qualification on ABI18
 
 The assisted route returns to Sarina, observes the guard return dialogue, enters the lodge with Dogi and Elena and verifies player control after the scene with opposite-direction inputs. The new interval needs no additional assists.
 

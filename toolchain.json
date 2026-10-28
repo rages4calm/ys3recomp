@@ -3290,5 +3290,98 @@
       "caps_preserved": true
     },
     "interpreted_steps": 0
+  },
+  "alcaino_entry18_milestone": {
+    "qualified": true,
+    "tool": {
+      "revision": "6935e46ff8aefacf8ea058a385198299c4e2cd5c",
+      "source_sha256": "9414ed390229b8d411f2f79f6c22080d68fef7b09aef2bf99db0046751e34cf0",
+      "source_files": 60,
+      "runtime_abi": 18
+    },
+    "runtime_abi": 18,
+    "selected_original_code_identities": 57335,
+    "previous_selected_original_code_identities": 56461,
+    "new_emitted_source_identities": 874,
+    "new_native_promoted_retirements": 927448,
+    "new_compiled_keys_not_executed": 0,
+    "previously_compiled_newly_exercised_identities": 124,
+    "previously_compiled_newly_exercised_native_hits": 640,
+    "frames": 101248,
+    "native_steps": 3089987071,
+    "native_block_steps": 476155,
+    "interpreter_block_steps": 0,
+    "guard_misses": 0,
+    "baseline_native_steps": 3089059623,
+    "baseline_interpreted_steps": 927448,
+    "mpr_contexts": 83,
+    "translation_units": 277,
+    "generated_headers": 1,
+    "states": 4541,
+    "actions": 7606,
+    "control_requests": 2017,
+    "image_checkpoints": 1988,
+    "hp_reads": 1955,
+    "source_capture": {
+      "fresh_single_executions": true,
+      "start_frame": 0,
+      "capacity": 65536,
+      "loss": 0,
+      "baseline_source_identities": 54389,
+      "candidate_source_identities": 54389
+    },
+    "progression": {
+      "lodge_departure": true,
+      "town_map_selection": true,
+      "alcaino_entrance": true
+    },
+    "assisted_progression": true,
+    "memory_write_requests": 280,
+    "additional_memory_write_requests": 0,
+    "new_developer_max_hp_or_program_quest_item_equipment_str_writes": 0,
+    "hp60_refill_verified": false,
+    "new_tail": {
+      "start_frame": 97480,
+      "end_frame": 101248,
+      "frames": 3768,
+      "baseline": {
+        "native": 115139976,
+        "interpreted": 927448
+      },
+      "candidate": {
+        "native": 116067424,
+        "interpreted": 0
+      }
+    },
+    "pcm": {
+      "sample_rate": 44100,
+      "timing": "gear-v1",
+      "frames": 74633585,
+      "pcm_hash": 11074858586060174213,
+      "mixed_nonzero": 70819420,
+      "peak": 12684,
+      "discarded_frames": 0,
+      "wav_frames": 441000
+    },
+    "scope": "The assisted route leaves the lodge and Sarina, selects Alcaino on the world map and reaches the ruins exterior. The new interval needs no additional assists. Unseen code retains interpreter fallback. Full campaign and cross-process saves remain unfinished. Matching digital PCM does not establish listening or hardware parity.",
+    "full_campaign_qualified": false,
+    "crossprocess_save_persistence": false,
+    "new_paced_device_or_listening_check": false,
+    "unknown_CD_semantics_implemented": false,
+    "execution_supervision": {
+      "mode": "direct-host-external900",
+      "external_wall_seconds": 900,
+      "controller_close_seconds": 865,
+      "descriptor_wall_seconds": 600,
+      "descriptor_wall_applied": false,
+      "internal_wall_flag_omitted": true,
+      "shared_project_run_used": false,
+      "caps_preserved": true
+    },
+    "native_endpoint_hp": 5,
+    "reference_endpoint_hp": 60,
+    "readonly_max_hp": 60,
+    "reference_combat_or_timing_parity_qualified": false,
+    "interpreted_steps": 0
   }
 }
