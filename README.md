@@ -99,8 +99,11 @@ See [status](docs/STATUS.md), [development](docs/DEVELOPMENT.md) and
 [toolchain.json](toolchain.json) for measured scopes and historical milestones.
 Owner inputs remain read-only. Earlier work removed only reviewed
 compiler intermediates from its failed build, preserving qualified evidence.
-Broader cleanup plans remain unchanged and need revalidation before use.
-**Clean Old Build Files.cmd** remains unchanged.
+**Clean Old Build Files.cmd** removes unbound compiler intermediates with visible
+progress, a private receipt and a final result that stays open. It is repeatable;
+use `--no-pause --preview` to review without deleting. It preserves qualified
+packages, generated native source, inputs and replay evidence. GitHub contains
+authored source, so it cannot restore those excluded private artifacts.
 
 This consumer owns game configuration, source selection, native coverage,
 adapters and launchers. Shared CPU/device semantics, media and generation remain

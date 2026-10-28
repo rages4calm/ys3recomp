@@ -1,16 +1,12 @@
 @echo off
 setlocal
-if not exist "%~dp0.local\cleanup-20261023\plan.json" (
-  echo A reviewed local cleanup plan is not available. Request a fresh cleanup review.
-  pause
-  exit /b 1
-)
-if not exist "%~dp0.local\cleanup-20261023\Run-Reviewed-Cleanup.cmd" (
-  echo The guarded local cleanup runner is not available.
-  pause
-  exit /b 1
-)
-echo This removes about 119 MiB of reviewed old compiler intermediates only.
-echo Qualified evidence, game inputs and the current build are retained.
-call "%~dp0.local\cleanup-20261023\Run-Reviewed-Cleanup.cmd"
-exit /b %ERRORLEVEL%
+cd /d "%~dp0"
+echo Ys III build cleanup - progress and results will appear below.
+echo Game inputs, native source, executables and qualification evidence are retained.
+python -u "%~dp0scripts\clean_build_files.py" %*
+set "YS3_CLEAN_EXIT=%ERRORLEVEL%"
+echo.
+echo Cleanup exit code: %YS3_CLEAN_EXIT%
+if /i "%~1"=="--no-pause" exit /b %YS3_CLEAN_EXIT%
+pause
+exit /b %YS3_CLEAN_EXIT%
