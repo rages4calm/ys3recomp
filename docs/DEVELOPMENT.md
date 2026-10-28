@@ -925,17 +925,29 @@ past binary and present it as the one that executed. A parser-only validation fi
 can retain actual runtime evidence only with preserved executed source, exact
 single-mode argv equivalence and separate rejection tests.
 
-Reuse immutable dependencies. Remove obsolete unbound compiler intermediates
-only after reviewing exact paths against all qualified hash graphs. Retain small
-replayable receipts and stop owned processes. Do not use a workbench, per-batch
-quota or accounting workflow, and never delete unrelated files. The owner-run
-cleanup command retains its exact plan, containment/reparse/hash/protected-file
-guards and post-checks; automatic tool policy blocked agent deletion, so no
-cleanup completion is claimed.
-The existing approximately 119 MiB plan and separate approximately 63 MiB newer
-private-intermediate plan remain owner-run only. Neither was executed and the
-root cleanup CMD is unchanged. Qualified source, captures, PCM, executables,
-SDL libraries and all bound receipts remain protected.
+Reuse immutable dependencies. Avoid keeping complete historical batch copies
+solely for rollback: current plus two prior versions are sufficient unless a
+specific artifact is still needed for qualification, source lineage or replay.
+GitHub excludes generated source, executables and gameplay evidence; a Git
+commit cannot replace those artifacts. Preserve referenced evidence explicitly.
+
+The root cleanup CMD now uses `scripts/clean_build_files.py`, replacing the old
+one-use plan. It shows each phase, batches progress, writes a private journal and
+keeps the final result open. `--no-pause --preview` reviews without deleting.
+Repeated runs report any remaining work, including zero eligible files.
+The old plan's actual retained receipt records successful completion; never
+overwrite it or retry its missing targets.
+
+Read the selected qualification and historical batch protection metadata before
+reviewing regular compiler intermediates inside batch build CMakeFiles trees.
+Reject reparse ancestors, protected paths, changed files and active project
+game/build processes. Journal exact targets before deletion and verify protection
+metadata again afterward. Do not repeatedly hash thousands of unrelated media
+and gameplay artifacts to delete files that are absent from every protection
+graph. This cleanup preserves all executable packages, native source, inputs,
+dependencies, captures and receipts. It does not delete batch directories.
+Do not use a workbench, per-batch quota or accounting workflow, or delete
+unrelated files. Historical frozen cleanup helpers remain unchanged evidence.
 
 Stage explicit authored files, review the diff, then run
 `git diff --cached --check` and `python scripts/audit_public.py` before every push.
