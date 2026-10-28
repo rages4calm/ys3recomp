@@ -3383,5 +3383,144 @@
     "readonly_max_hp": 60,
     "reference_combat_or_timing_parity_qualified": false,
     "interpreted_steps": 0
+  },
+  "alcaino_combat18_milestone": {
+    "qualified": true,
+    "tool": {
+      "revision": "6935e46ff8aefacf8ea058a385198299c4e2cd5c",
+      "source_sha256": "9414ed390229b8d411f2f79f6c22080d68fef7b09aef2bf99db0046751e34cf0",
+      "source_files": 60,
+      "runtime_abi": 18
+    },
+    "runtime_abi": 18,
+    "selected_original_code_identities": 57523,
+    "previous_selected_original_code_identities": 57335,
+    "new_emitted_source_identities": 188,
+    "new_native_promoted_retirements": 6886,
+    "new_compiled_keys_not_executed": 0,
+    "previously_compiled_newly_exercised_identities": 2,
+    "previously_compiled_newly_exercised_native_hits": 3,
+    "frames": 101777,
+    "native_steps": 3106517844,
+    "native_block_steps": 478800,
+    "interpreter_block_steps": 0,
+    "guard_misses": 0,
+    "baseline_native_steps": 3106510958,
+    "baseline_interpreted_steps": 6886,
+    "mpr_contexts": 83,
+    "translation_units": 278,
+    "generated_headers": 1,
+    "states": 4736,
+    "actions": 7890,
+    "control_requests": 2114,
+    "image_checkpoints": 2085,
+    "hp_reads": 2101,
+    "source_capture": {
+      "fresh_single_executions": true,
+      "start_frame": 0,
+      "capacity": 65536,
+      "loss": 0,
+      "baseline_source_identities": 54579,
+      "candidate_source_identities": 54579
+    },
+    "progression": {
+      "incoming_damage": true,
+      "ordinary_jump_sword_combat": true,
+      "combat_EXP_gold_increases_observed": true,
+      "eastward_first_room_traversal": true
+    },
+    "assisted_progression": true,
+    "memory_write_requests": 284,
+    "additional_memory_write_requests": 4,
+    "new_developer_max_hp_or_program_quest_item_equipment_str_writes": 0,
+    "hp60_refill_verified": true,
+    "new_tail": {
+      "start_frame": 101248,
+      "end_frame": 101777,
+      "frames": 529,
+      "baseline": {
+        "native": 16523887,
+        "interpreted": 6886
+      },
+      "candidate": {
+        "native": 16530773,
+        "interpreted": 0
+      }
+    },
+    "pcm": {
+      "sample_rate": 44100,
+      "timing": "gear-v1",
+      "frames": 75023530,
+      "pcm_hash": 983883635080047048,
+      "mixed_nonzero": 71209365,
+      "peak": 12684,
+      "discarded_frames": 0,
+      "wav_frames": 441000
+    },
+    "scope": "Assisted first-room Alcaino combat verifies incoming damage, jumping and sword attacks, EXP/gold increases and eastward traversal. Four independently verified living current-HP low-byte CAS refills leave maximum HP read-only. The earlier unassisted native/reference room phase and HP difference remains unresolved. No stairs/room transition, boss defeat, full campaign, reference timing, listening or hardware parity is qualified. Unseen code retains interpreter fallback; cross-process saves remain unfinished.",
+    "full_campaign_qualified": false,
+    "crossprocess_save_persistence": false,
+    "new_paced_device_or_listening_check": false,
+    "unknown_CD_semantics_implemented": false,
+    "execution_supervision": {
+      "mode": "direct-host-external900",
+      "external_wall_seconds": 900,
+      "controller_close_seconds": 865,
+      "descriptor_wall_seconds": 600,
+      "descriptor_wall_applied": false,
+      "internal_wall_flag_omitted": true,
+      "shared_project_run_used": false,
+      "caps_preserved": true
+    },
+    "native_endpoint_hp": 60,
+    "reference_endpoint_hp": 60,
+    "readonly_max_hp": 60,
+    "reference_combat_or_timing_parity_qualified": false,
+    "interpreted_steps": 0,
+    "living_hp_assists": {
+      "current_low_byte_only": true,
+      "readonly_maximum": 60,
+      "high_bytes_zero": true,
+      "successful_refills": 4,
+      "refill_before": [
+        5,
+        30,
+        35,
+        35
+      ],
+      "target": 60,
+      "complete_ram_bytes_compared": 8192,
+      "maximum_refills_authorized": 6,
+      "maximum_new_advance_frames": 12,
+      "maximum_new_route_frames": 600,
+      "actual_new_route_frames": 529,
+      "maximum_hp_modified": false,
+      "program_modified": false,
+      "hud_refill_display_qualified": false
+    },
+    "reward_counters": {
+      "experience_low16_before": 1180,
+      "experience_low16_after": 1280,
+      "gold_low16_before": 1300,
+      "gold_low16_after": 1360
+    },
+    "baseline_closure": {
+      "completed_plan": true,
+      "controller_reason": "bounded-watchdog",
+      "manual_finish": false,
+      "additional_frames_on_closure": 0,
+      "candidate_replays_literal_closing_controls": true
+    }
+  },
+  "latest_toolkit_review": {
+    "revision": "e2e3b2f16d0ee5498556459b79803932fbe458c4",
+    "runtime_abi": 26,
+    "selected": false,
+    "features_reviewed": [
+      "explicit audio-trace comparison domains",
+      "bounded state-aware TCP routes"
+    ],
+    "migration_qualified": false,
+    "reason": "Fixed-input route misses an early shop-exit transition under queued VDC timing; upstream bounded state-aware repair is separate from complete consumer migration. Repeated Windows managed-cache publication access-denied failures retained; selected ABI18 ordinary build uses no managed cache."
   }
 }

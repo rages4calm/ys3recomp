@@ -1,6 +1,75 @@
 # Consumer status - 28 October 2026
 
-## Current Alcaino entrance qualification on ABI18
+## Current first-room Alcaino combat qualification on ABI18
+
+The assisted route retains lodge departure and the Alcaino entrance, then
+verifies incoming damage, jumping and sword attacks, increased EXP/gold and
+eastward traversal of the first hostile room. Four new current-HP-only assists
+were verified independently before native use.
+
+| Evidence | Result |
+| --- | --- |
+| Fresh native replay | 101,777 frames; 3,106,517,844 native / zero interpreted |
+| Same-control prior module | 3,106,510,958 native / 6,886 interpreted |
+| Catalogue | 57,523 original identities; all 57,335 prior keys retained |
+| Additions actually executed | 188 identities / 6,886 promoted retirements |
+| Other newly exercised compiled code | 2 identities / 3 native hits |
+| Module | 83 MPR contexts / 278 translation units + 1 header |
+| Recipe | 2,114 controls / 4,736 states / 7,890 actions / 2,085 images |
+| New interval | 529 frames; 16,530,773 native / zero interpreted |
+| Verified assists | 280 retained data-CAS transactions plus 4 current-HP CAS |
+| Visible rewards | EXP 1,180 to 1,280; gold 1,300 to 1,360 |
+| Digital audio | 75,023,530 frames / hash 983883635080047048 / synthesis loss 0 |
+
+Every actual source-key hit total, settled CPU/all-MPR/source generation,
+device clock, CD/PCM value and image matches after source-proved native
+promotion. Prefix gain is zero; all 6,886 promotions belong to the new combat
+interval. Every added identity executes. Cross-run equality uses the retained
+input-status and SDL transport comparison views. No original key is removed,
+no historical subtraction repeats, and no new identity is compiled-only.
+
+The four assists use expected-byte native CAS on the living player's current
+HP low byte: 5, 30, 35 and 35 become 60. Maximum HP and its high byte remain
+read-only. Complete 8 KiB RAM comparisons prove that only that byte changes;
+paused CPU/MPR/source/device/clock/PCM and SDL audio-host fields remain equal.
+The fresh full-reset capture excludes every mirrored HP and other assist-data
+alias from executed source. Native HUD 035 may remain stale after a raw refill
+to 60; no displayed-HP60 claim is made.
+
+The original 101,248-frame prefix and all 280 transactions match their retained
+qualification. The bounded controller closed the completed 529-frame case with
+end-case and finish at its deadline, advancing no extra frames; this was a
+recorded automatic closure, not a manual finish. All owned helpers and the game
+exited zero. The candidate replays the complete literal recipe.
+
+Independent Geargrafx confirms the bounded functional combat/traversal and
+current-HP assist scope. Different starting stats, positions and phases remain
+separate. The previous unassisted first-room HP/phase mismatch is unresolved.
+No new stairs/room transition, boss defeat, full campaign, cross-process saves,
+listening or hardware parity is qualified.
+
+## Toolkit review and migration hold
+
+The selected runtime remains ABI18 at
+`6935e46ff8aefacf8ea058a385198299c4e2cd5c`. This batch freshly passes 68
+upstream capture/emission/project tests; retained native/reference SDK fixtures
+keep their original scope. Consumer tests pass 523 cases without skips.
+
+Public toolkit revision `e2e3b2f16d0ee5498556459b79803932fbe458c4` was reviewed.
+Its ABI26 audio-domain comparer and bounded state-aware TCP route client are
+useful future tools. Separate ABI26 builds/diagnostics did not qualify the
+retained frame-based route: the queued VDC profile misses the old shop-exit
+transition. The difference appears before any developer writes. Upstream
+reproduced a bounded state-aware repair on the retained diagnostic executable;
+this is not a complete migration or a diagnosed runtime/hardware defect.
+See [upstream state routes](https://github.com/rages4calm/pcenginerecomp/blob/e2e3b2f16d0ee5498556459b79803932fbe458c4/docs/STATE_ROUTES.md).
+
+The ABI26 SDK also encountered repeated Windows cache-publication access-denied
+failures in two full suites. Focused passes and a later upstream full pass do
+not waive those failed epochs. Managed cache is unused here. Diagnostics and
+source epochs remain private; no failed ABI26 capture enters this ABI18 module.
+
+## Retained Alcaino entrance qualification on ABI18
 
 The assisted route leaves the lodge and Sarina, selects Alcaino on the world map and reaches the ruins exterior. The new interval needs no additional assists.
 
@@ -24,7 +93,7 @@ temporary identity omission as lineage, with zero recurring subtraction.
 
 Independent Geargrafx confirms lodge departure, map selection and arrival at
 the Alcaino ruins exterior. Its stats, timing and position differ;
-no new developer writes were needed. HP60 refill remains disabled and unverified.
+no new developer writes were needed. That qualification kept HP60 refills disabled and unverified.
 The first hostile-room observation ends at native 5/60 HP versus reference 60/60.
 Native already shows the room at frame 101,128 while reference is still loading
 at its corresponding frame 3,648. The 55 HP drop occurs during the next 120
