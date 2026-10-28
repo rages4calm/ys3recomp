@@ -1,6 +1,34 @@
 # Consumer status - 28 October 2026
 
-## Current post-statue qualification on ABI18
+## Current town and lodge qualification on ABI18
+
+The assisted route returns to Sarina, observes the guard return dialogue, enters the lodge with Dogi and Elena and verifies player control after the scene with opposite-direction inputs. The new interval needs no additional assists.
+
+| Evidence | Result |
+| --- | --- |
+| Fresh native replay | 97,480 frames; 2,973,919,647 native / zero interpreted |
+| Same-control prior module | 2,973,855,853 native / 63,794 interpreted |
+| Catalogue | 56,461 original identities; all 56,205 previous keys retained |
+| Additions actually executed | 256 identities / 63,794 promoted retirements |
+| Other newly exercised compiled code | 101 identities / 73,059 native hits |
+| Module | 81 MPR contexts / 273 translation units + 1 header |
+| Recipe | 1,977 controls / 4,478 states / 1,948 images |
+| New interval | 7,924 frames; 224,888,939 native / zero interpreted |
+| Verified assists | 280 retained data-CAS transactions; zero additional |
+| Digital audio | 71,856,055 frames / hash 6791363767405779560 / synthesis loss 0 |
+
+Every source hit total, settled CPU/all-MPR/fetched source generation, device
+clock, CD/PCM value and image matches. All additions execute; none are compiled
+only. Complete lossless original-program captures preserve the historical
+temporary identity omission as lineage, with zero recurring subtraction.
+
+Independent Geargrafx confirms the gate dialogue, lodge scene and restored input
+control with a reversible left/right probe. Its stats, timing and position differ;
+no new developer writes were needed. HP60 refill remains disabled and unverified.
+Unseen code retains interpreter fallback. Full campaign and cross-process saves remain unfinished. Matching digital PCM does not establish listening or hardware parity.
+The selected toolkit remains ABI18; newer upstream ABIs are not selected.
+
+## Retained post-statue qualification on ABI18
 
 The assisted route retains the Sunset Statue reward and continues through the
 Chester confrontation, automatic return to the mine entrance and dialogue
