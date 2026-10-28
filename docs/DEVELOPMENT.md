@@ -5,9 +5,17 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Current miner and deeper-boss workflow
+## Current post-statue workflow
 
-Start from the qualified 54,046-identity catalogue and native-only retained route.
+The post-statue batch preserves every prior guard and promotes all 86,138 new
+fallback retirements across 482 original identities. The fresh same-control
+TCP/audio replay covers the confrontation and Mayor-safe entrance dialogue.
+No additional assists were needed; the existing 280 transactions remain exact.
+Natural HP60 is read-only, with no refill authority. All original inputs remain
+unchanged and owned verification processes are closed after each run.
+
+Start from the qualified 56,205-identity catalogue and 89,556-frame native-only
+route.
 Use complete original-code captures with exact PC, all eight MPRs, physical
 fetch bytes and source generations. Compose the already filtered profile with
 the successful new capture. Preserve the historical selection ledger as lineage;

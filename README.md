@@ -5,27 +5,25 @@ An incremental PC Engine CD consumer of
 *Ys III: Wanderers from Ys* (USA). This is an early hybrid port: unseen code
 still uses the interpreter, and the full campaign remains unfinished.
 
-The current **81,504-frame** TCP/audio route retires **2,492,524,812 native
-instructions and zero interpreted instructions**. This assisted route returns
-to the miner, reaches the deeper mine, observes boss attacks and incoming damage,
-defeats the boss and receives the Sunset Statue through ordinary game actions.
+The current **89,556-frame** TCP/audio route retires **2,749,030,708 native
+instructions and zero interpreted instructions**. It retains the miner and deeper
+boss reward, then continues through the Chester confrontation, automatic mine
+entrance return and dialogue confirming the Mayor is safe.
 
-The official module contains **55,723 original source identities** in
-81 full MPR contexts, across 269 C++ translation units and one header.
-All 54,046 previous identities remain; 1,677 additions execute for 2,623,453
-newly native retirements on the same route. Emission and execution are measured
-separately. The historical temporary source identity remains excluded.
+The official module contains **56,205 original source identities** in
+81 full MPR contexts, across 272 C++ translation units and one header.
+All 55,723 previous identities remain; 482 additions execute for 86,138
+newly native retirements on the same route. Separately, 101 previously compiled
+identities execute 2,703 native hits beyond the prior route. Emission and
+execution are measured separately; unseen code retains interpreter fallback.
 
-The 2,096-frame boss combat and reward interval retires
-64,737,130 native instructions and zero interpreted instructions.
-
-The fresh same-control replay matches all 1,919 controls, 4,359 states,
-1,899 images, individual source totals, assist journals and digital PCM.
-The route uses 280 verified data-CAS transactions, including 20
-additional assists. Original program, quest and equipment fields receive no new
-developer writes. Unseen code retains interpreter fallback. The full campaign
-and cross-process saves remain unfinished. Digital PCM matching does not
-establish listening or hardware parity.
+The new 8,052-frame scene interval retires 256,505,896 native instructions
+and zero interpreted instructions. The fresh same-control replay matches all
+1,937 controls, 4,393 states, 1,917 images, individual source totals, assist
+journals and digital PCM. All 280 verified data-CAS transactions are retained;
+the new interval needs no additional writes. HP60 refill remains unverified.
+Full campaign and cross-process saves remain unfinished. Digital PCM matching
+does not establish listening or hardware parity.
 
 ## Play the local build
 
@@ -46,7 +44,7 @@ The toolkit remains pinned to ABI18 at
 `6935e46ff8aefacf8ea058a385198299c4e2cd5c`. The composed profile retains its
 original ABI17 lineage and the actual ABI18 labels of the new closed captures.
 This union represents multiple executions. It was re-emitted and rebuilt for
-the current miner and deeper-boss batch. Earlier finite migration and route
+the current post-statue batch. Earlier finite migration and route
 proofs remain retained separately; newer upstream ABIs are not selected here.
 
 The shared toolkit adds explicit base HuCard startup and mapper support. Its
@@ -54,8 +52,8 @@ authored fixtures have separate Geargrafx/native/TCP/PSG checks. **Ys III still
 uses the owner's CHD**; this batch adds no retail HuCard/CUE test or media
 conversion. The earlier full-route ABI17 media migration remains retained.
 
-Both module runs match 60,079,564 cumulative 44.1 kHz PCM frames,
-hash `7743071514475414998`, including 57,087,881 mixed-nonzero frames
+Both module runs match 66,014,986 cumulative 44.1 kHz PCM frames,
+hash `1782564511339026912`, including 62,741,630 mixed-nonzero frames
 and zero synthesis loss. The capped ten-second WAV covers silent boot; later
 audio is verified cumulatively. Fast-forward SDL presentation is muted.
 Independent Geargrafx confirms the bounded progression and HP-only assist
@@ -89,7 +87,7 @@ ctest --test-dir build --output-on-failure
 If `ctest` is unavailable, run
 `python .deps/pcenginerecomp-abi18/scripts/check.py --build build/upstream`
 and `python -m unittest discover -s tests -v`. The default empty-module host
-uses interpreted execution. The consumer suite passes **500 tests with zero skips**;
+uses interpreted execution. The consumer suite passes **510 tests with zero skips**;
 retained upstream checks passed **36 shared suites / 468 Python tests, zero skips**.
 Verification requires the exact clean 60-file source digest and ABI. Historical
 captures retain their original ABI labels; fresh ABI18 execution captures are
