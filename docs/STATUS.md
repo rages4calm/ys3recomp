@@ -1,6 +1,36 @@
-# Consumer status - 26 October 2026
+# Consumer status - 28 October 2026
 
-## Current miner and deeper-boss qualification on ABI18
+## Current post-statue qualification on ABI18
+
+The assisted route retains the Sunset Statue reward and continues through the
+Chester confrontation, automatic return to the mine entrance and dialogue
+confirming the Mayor is safe. The new scene needs no additional assists.
+
+| Evidence | Result |
+| --- | --- |
+| Fresh native replay | 89,556 frames; 2,749,030,708 native / zero interpreted |
+| Same-control prior module | 2,748,944,570 native / 86,138 interpreted |
+| Catalogue | 56,205 original identities; all 55,723 previous keys retained |
+| Additions actually executed | 482 identities / 86,138 promoted retirements |
+| Other newly exercised compiled code | 101 identities / 2,703 native hits |
+| Module | 81 MPR contexts / 272 translation units + 1 header |
+| Recipe | 1,937 controls / 4,393 states / 1,917 images |
+| New scene interval | 8,052 frames; 256,505,896 native / zero interpreted |
+| Verified assists | 280 retained data-CAS transactions; zero additional |
+| Digital audio | 66,014,986 frames / hash 1782564511339026912 / synthesis loss 0 |
+
+Every source hit total, settled CPU/all-MPR/fetched source generation, device
+clock, CD/PCM value and image matches. All 482 additions execute; none are
+compiled-only. Original-program capture is complete and lossless. The historical
+temporary identity remains omitted as lineage, with zero recurring subtraction.
+
+Independent Geargrafx confirms the bounded scene and Mayor-safe text with zero
+new data writes. Its stats, timing and position differ. HP remains 60/60; a refill
+to that value is not verified or enabled. The full campaign and cross-process
+saves remain unfinished. Muted fast-forward and matching digital PCM do not
+establish listening or hardware parity. The selected toolkit remains ABI18.
+
+## Retained miner and deeper-boss qualification on ABI18
 
 This assisted route returns to the miner, reaches the deeper mine, observes boss
 attacks and incoming damage, defeats the boss and receives the Sunset Statue

@@ -3111,5 +3111,94 @@
       "interpreted_steps": 0,
       "semantic_reviewed": true
     }
+  },
+  "post_statue18_milestone": {
+    "qualified": true,
+    "tool": {
+      "revision": "6935e46ff8aefacf8ea058a385198299c4e2cd5c",
+      "source_sha256": "9414ed390229b8d411f2f79f6c22080d68fef7b09aef2bf99db0046751e34cf0",
+      "source_files": 60,
+      "runtime_abi": 18
+    },
+    "runtime_abi": 18,
+    "selected_original_code_identities": 56205,
+    "previous_selected_original_code_identities": 55723,
+    "new_emitted_source_identities": 482,
+    "new_native_promoted_retirements": 86138,
+    "new_compiled_keys_not_executed": 0,
+    "previously_compiled_newly_exercised_identities": 101,
+    "previously_compiled_newly_exercised_native_hits": 2703,
+    "frames": 89556,
+    "native_steps": 2749030708,
+    "native_block_steps": 418186,
+    "interpreter_block_steps": 0,
+    "guard_misses": 0,
+    "baseline_native_steps": 2748944570,
+    "baseline_interpreted_steps": 86138,
+    "mpr_contexts": 81,
+    "translation_units": 272,
+    "generated_headers": 1,
+    "states": 4393,
+    "actions": 7355,
+    "control_requests": 1937,
+    "image_checkpoints": 1917,
+    "hp_reads": 1884,
+    "source_capture": {
+      "fresh_single_executions": true,
+      "start_frame": 0,
+      "capacity": 65536,
+      "loss": 0,
+      "baseline_source_identities": 53034,
+      "candidate_source_identities": 53034
+    },
+    "progression": {
+      "chester_confrontation": true,
+      "automatic_mine_entrance": true,
+      "mayor_safe_dialogue": true
+    },
+    "assisted_progression": true,
+    "memory_write_requests": 280,
+    "additional_memory_write_requests": 0,
+    "new_max_hp_or_program_quest_item_equipment_str_writes": 0,
+    "hp60_refill_verified": false,
+    "new_tail": {
+      "start_frame": 81504,
+      "end_frame": 89556,
+      "frames": 8052,
+      "baseline": {
+        "native": 256419758,
+        "interpreted": 86138
+      },
+      "candidate": {
+        "native": 256505896,
+        "interpreted": 0
+      }
+    },
+    "pcm": {
+      "sample_rate": 44100,
+      "timing": "gear-v1",
+      "frames": 66014986,
+      "pcm_hash": 1782564511339026912,
+      "mixed_nonzero": 62741630,
+      "peak": 12684,
+      "discarded_frames": 0,
+      "wav_frames": 441000
+    },
+    "scope": "The assisted route continues beyond the Sunset Statue reward through the Chester confrontation, automatic return to the mine entrance and dialogue confirming the Mayor is safe. The new scene needs no additional assists. Unseen code retains interpreter fallback. The full campaign and cross-process saves remain unfinished. Digital PCM matching does not establish listening or hardware parity.",
+    "full_campaign_qualified": false,
+    "crossprocess_save_persistence": false,
+    "new_paced_device_or_listening_check": false,
+    "unknown_CD_semantics_implemented": false,
+    "execution_supervision": {
+      "mode": "direct-host-external900",
+      "external_wall_seconds": 900,
+      "controller_close_seconds": 865,
+      "descriptor_wall_seconds": 600,
+      "descriptor_wall_applied": false,
+      "internal_wall_flag_omitted": true,
+      "shared_project_run_used": false,
+      "caps_preserved": true
+    },
+    "interpreted_steps": 0
   }
 }
