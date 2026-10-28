@@ -5,72 +5,75 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Current Alcaino-entry workflow
+## Current Alcaino combat workflow
 
-The Alcaino-entry batch preserves all 56,461 prior guards and promotes 927,448
-fallback retirements across 874 original identities. The fresh same-control
-TCP/audio replay verifies lodge departure, world-map selection and arrival at
-the ruins exterior. All 280 developer transactions remain unchanged; HP60 refill
-has no authority.
+The current module preserves all 57,335 previous keys and promotes 6,886
+fallback retirements across 188 original identities. The qualified route reaches
+101,777 frames; its new 529-frame combat/traversal window is native-only. Start
+future work from the qualified 57,523 catalogue and its actual replay receipt.
 
-Start from the qualified 57,335-identity catalogue and 101,248-frame native
-route. Keep failed or partial goal diagnostics separate from qualification.
-Bounded automatic replay reuses exact recorded nonterminal controls with strict
-source/state/image/audio checks before fresh ordinary actions. It does not
-restore a native machine checkpoint. Verify new assists independently before use.
-Keep the native 5/60 HP endpoint and reference 60/60 HP observation distinct;
-align equipment, actor and device phases before attributing their difference.
+Keep the exact prior-route controls, source/state/image/PCM checks and all 280
+retained assists. New current-HP assists have separate typed plans, raw native
+ACKs, readbacks, durable intent/commit records and phase-local counters. Pass
+the correct own-run HP60 context through every status/input comparison and
+full-capture validator. A full comparison-recipe length is distinct from the
+2016-control qualified boundary governing new combat capabilities. Validate
+every actual queued request before launching a generated harness.
 
-Use this retail consumer as a toolkit validation driver as well as a native
-port. Preserve new source, device and input cases as regression evidence.
-Distinguish missing observed coverage from shared runtime defects; reduce
-confirmed defects and reusable testability gaps to bounded reproductions with
-exact tool, build, input, logical PC, all-MPR and source identities. Send those
-upstream, then qualify verified shared fixes in the consumer.
+Verify assists against exact owner inputs and independent-reference evidence.
+This batch permits at most six living current-HP low-byte refills to the fresh
+read-only maximum of 60, with zero high bytes. Automatic refills use HP 1..39;
+short ordinary advances require 40..60 HP, take at most 12 frames and stop on
+HP0, a changed maximum or a required seventh refill. Reject resurrection,
+overfill, maximum-HP, quest, item, equipment, STR and program edits.
 
-Check the public toolkit revision, release notes and compatibility documents at
-each batch boundary. Record the exact source identity and consumer impact
-privately. Evaluate applicable new features; upgrade pins only after affected
-SDK checks, a rebuild and the retained TCP/audio route pass. Preserve each
-previous qualification independently, and protect a managed development cache
-from disposable-intermediate cleanup if incremental builds are adopted.
+Use the shared pure living-HP contract with complete 8 KiB RAM before/after
+comparison and raw paused CPU/all-eight-MPR/fetched-source/device/clock/PCM/SDL
+host invariance. ABI18 has no live capture-history query: bind all complete
+retained original-source footprints and the current seven-byte fetch before
+writing. The strict retained prefix has zero fallback. Require an independent
+fresh full0 capture audit of every HP and other assist-data backing alias
+before source composition, emission or qualification. Never capture temporary
+program-cheat bytes or invent per-observation source generations absent from
+the capture schema.
 
-Use complete original-code captures with exact PC, all eight MPRs, physical
-fetch bytes and source generations. Compose the already filtered profile with
-the successful new capture. Preserve the historical selection ledger as lineage;
-do not repeat its subtraction, restore a temporary variant or drop old guards.
+Keep a finite single-producer DATA plan. Root reviews the actual reached room
+before combat. Retain failed probes separately; uncertain guest controls and
+CAS acknowledgements are never resent. Retry only witnessed transient local
+metadata replacement using the same serialized bytes. Literal replay includes
+the actual recorded closing controls. A completed-plan watchdog closure must
+be explicitly proven complete and natural; a partial or failed watchdog run
+cannot become a successful gameplay qualification.
 
-Verify new living-HP refills independently before freezing the native harness.
-Require fresh expected bytes, read-only maximum, durable intent, exact ACK and
-readback, paused CPU/MPR/source/clock/CD/PCM invariance and full alias exclusion.
-Reject HP0, overfill, max HP, quest, item, equipment, STR and program writes.
-A naturally changed maximum is read-only evidence, not new refill authority.
+The direct test host omits the descriptor's 600-second internal wall option.
+Its independent external watchdog is 900 seconds, controller close is 865 and
+group watchdog is 1200. These are actual source-bound direct-host conditions,
+not project.run wall telemetry. Preserve finite frame/tick/step/control caps
+and identical selected runtime/audio inputs on both module runs.
 
-Use a bounded single-producer TCP decision plan with automatic closure. Keep
-source frozen; journal external decisions and every actual expanded request.
-Retry only transient local metadata-file replacement using the same serialized
-bytes. Never resend a guest control or CAS after an uncertain acknowledgement.
-Preserve failed probes and exclude their captures from emission.
+Use complete original-source captures with full logical PC, all MPRs and exact
+physical/source bytes. Compose the already filtered catalogue and successful
+new capture through the pinned validator, preserving historical selection
+lineage with zero recurring subtraction. Run the official emitter/build API.
+Compare every source-key total and raw guest state, permitting only proved
+native promotion and explicitly recorded transport views. Require actual
+images for damage, attacks and progression; case labels and empty bars are
+insufficient. Keep raw wrapped coordinates and separately derived views apart.
 
-Require positive images for miner dialogue, room transitions, attacks, incoming
-damage, defeat and named reward. A case label or empty enemy bar alone proves
-none of those outcomes. Keep reference timing and positions separate.
+Review current upstream source/docs each batch. ABI26 migration is held until
+a complete observed-state input route passes; toolkit state-route and audio
+trace tools were reviewed separately from this selected ABI18 qualification.
+Do not patch the toolkit's active working tree or maintain a runtime fork.
+Report focused shared-tool gaps with exact identities and bounded private
+witnesses; distinguish input-route sensitivity from a causal runtime defect.
 
-The current verification host omits the internal wall flag and uses a source-bound
-owned 900-second external watchdog, closing the controller at 865 seconds.
-The unchanged descriptor's 600-second wall option is explicitly not applied;
-this direct host invocation is separate from project.run. Guest frame, tick,
-step and control caps remain finite. Require the same reviewed command and
-supervision contract on both runs, with every other argument unchanged.
-
-Use the official emission/build API, then replay the exact successful controls
-through TCP with audio. Conserve every per-source total and raw state, with
-only source-proved native promotion. Qualify before selecting the launcher;
-run both info paths, final consumer tests, staged audit and actual diff review
-before pushing. Verify public bytes afterward. Keep media, generated game C++,
-captures, PCM, states, local paths and coordination private. Reuse dependencies,
-preserve replayable evidence, stop owned processes and retain guarded owner-run
-cleanup for only unbound build objects. No storage quota or accounting scan.
+Freeze runtime proof independently of mutable public documentation/selection.
+Qualify before launcher selection; verify both info entry points, full consumer
+tests, staged source audit and the actual cached diff before pushing. Verify
+public bytes afterward. Retain replayable private inputs/evidence and stop
+owned processes. Reuse dependencies; remove only reviewed unbound compiler
+intermediates, keeping progress and receipts visible. No storage quota or
+accounting scan.
 
 ## Retained original-source workflow
 

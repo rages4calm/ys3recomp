@@ -5,29 +5,30 @@ An incremental PC Engine CD consumer of
 *Ys III: Wanderers from Ys* (USA). This is an early hybrid port: unseen code
 still uses the interpreter, and the full campaign remains unfinished.
 
-The current **101,248-frame** TCP/audio route retires **3,089,987,071 native
-instructions and zero interpreted instructions**. It retains the lodge scene,
-leaves Sarina, selects Alcaino on the world map and reaches the ruins exterior.
+The current **101,777-frame** TCP/digital-audio route retires
+**3,106,517,844 native instructions and zero interpreted instructions**.
+It retains the lodge departure and Alcaino arrival, then verifies incoming
+damage, jumping and sword combat, increased EXP/gold and eastward travel
+across the ruins' first hostile room.
 
-The official module contains **57,335 original source identities** in
-83 full MPR contexts, across 277 C++ translation units and one header.
-All 56,461 previous identities remain; 874 additions execute for 927,448
-newly native retirements on the same route. Separately,
-124 previously compiled identities execute
-640 native hits beyond the prior route. Emission and execution are measured
-separately; unseen code retains interpreter fallback.
+The official module contains **57,523 original source identities** in
+83 full MPR contexts, across 278 C++ translation units and one header.
+All 57,335 previous identities remain; 188 additions execute for 6,886
+newly native retirements on the same route. Two previously compiled identities
+also execute three native hits beyond the prior route. Emission and execution
+are measured separately; unseen code retains interpreter fallback.
 
-The new 3,768-frame interval retires 116,067,424 native instructions
-and zero interpreted instructions. The fresh same-control replay matches all
-2,017 controls, 4,541 states, 1,988 images, source totals, assist journals and
-digital PCM. All 280 verified data-CAS transactions remain unchanged; the new
-interval needs no additional writes. HP60 refill remains unverified. Full campaign
-and cross-process saves remain unfinished. Digital PCM matching does not
-establish listening or hardware parity.
+The new 529-frame interval retires 16,530,773 native instructions and zero
+interpreted instructions. The fresh same-control replay matches all 2,114
+controls, 4,736 states, 2,085 images, source totals, assist journals and digital
+PCM. All 280 retained data-CAS transactions remain; four new independently
+verified current-HP refills change only the living player's low HP byte to
+its read-only maximum of 60. EXP rises from 1,180 to 1,280 and gold from
+1,300 to 1,360. Full campaign and cross-process saves remain unfinished.
+Digital PCM matching does not establish listening or hardware parity.
 
-The first hostile-room observation ends at 5/60 HP in native and 60/60 in
-the independent reference. Room-load phase, positions and other stats differ;
-the cause and combat parity remain unverified.
+The earlier unassisted first-room HP/phase difference remains unexplained.
+This assisted combat test does not establish whole-game reference parity.
 
 ## Play the local build
 
@@ -45,24 +46,27 @@ installs nothing. `python scripts/play_local.py --info` checks readiness without
 opening a game. Cross-process saves are not implemented.
 
 The toolkit remains pinned to ABI18 at
-`6935e46ff8aefacf8ea058a385198299c4e2cd5c`. The composed profile retains its
-original ABI17 lineage and the actual ABI18 labels of the new closed captures.
-This union represents multiple executions. It was re-emitted and rebuilt for
-the current Alcaino-entry batch. Earlier finite migration and route
-proofs remain retained separately; newer upstream ABIs are not selected here.
+`6935e46ff8aefacf8ea058a385198299c4e2cd5c`. Its composed profile retains the
+original ABI17 lineage and actual ABI18 capture labels. This multi-run source
+union was re-emitted and rebuilt for the current combat batch.
+
+Newer ABI26 tooling was reviewed separately. With its queued VDC profile, the
+old fixed-input shop-exit route misses a transition. Upstream reproduced that
+case and published [bounded state-aware TCP routes](https://github.com/rages4calm/pcenginerecomp/blob/e2e3b2f16d0ee5498556459b79803932fbe458c4/docs/STATE_ROUTES.md).
+A complete migration route remains unqualified, so this batch uses ABI18.
 
 The shared toolkit adds explicit base HuCard startup and mapper support. Its
 authored fixtures have separate Geargrafx/native/TCP/PSG checks. **Ys III still
 uses the owner's CHD**; this batch adds no retail HuCard/CUE test or media
-conversion. The earlier full-route ABI17 media migration remains retained.
+conversion. Earlier finite migration proofs remain retained separately.
 
-Both module runs match 74,633,585 cumulative 44.1 kHz PCM frames,
-hash `11074858586060174213`, including 70,819,420 mixed-nonzero frames
+Both module runs match 75,023,530 cumulative 44.1 kHz PCM frames,
+hash `983883635080047048`, including 71,209,365 mixed-nonzero frames
 and zero synthesis loss. The capped ten-second WAV covers silent boot; later
 audio is verified cumulatively. Fast-forward SDL presentation is muted.
-Independent Geargrafx confirms the bounded progression and HP-only assist
-behavior, with differing stats, positions and timing. No whole-route reference
-audio, listening or hardware parity is claimed.
+Independent Geargrafx confirms the bounded combat and HP-only assist behavior,
+with differing stats, positions and timing. No whole-route reference audio,
+listening or hardware parity is claimed.
 
 The prior whole-span exclusion has been replaced by an explicit original-only
 selection. The three verified originals are emitted; the historical temporary
@@ -91,8 +95,9 @@ ctest --test-dir build --output-on-failure
 If `ctest` is unavailable, run
 `python .deps/pcenginerecomp-abi18/scripts/check.py --build build/upstream`
 and `python -m unittest discover -s tests -v`. The default empty-module host
-uses interpreted execution. The consumer suite passes **510 tests with zero skips**;
-retained upstream checks passed **36 shared suites / 468 Python tests, zero skips**.
+uses interpreted execution. The consumer suite passes **523 tests with zero skips**;
+this batch also passes 68 upstream capture/emission/project checks. Retained
+upstream checks passed 36 shared suites / 468 Python tests, zero skips.
 Verification requires the exact clean 60-file source digest and ABI. Historical
 captures retain their original ABI labels; fresh ABI18 execution captures are
 checked as ABI18. Emission counts alone establish no runtime coverage.
