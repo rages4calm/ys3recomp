@@ -5,19 +5,21 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Current town-return workflow
+## Current Alcaino-entry workflow
 
-The town-return batch preserves every prior guard and promotes 63,794 fallback
-retirements across 256 original identities. The fresh same-control TCP/audio
-replay verifies the return to Sarina, lodge scene and restored player control.
-All 280 developer transactions remain unchanged; HP60 refill has no authority.
+The Alcaino-entry batch preserves all 56,461 prior guards and promotes 927,448
+fallback retirements across 874 original identities. The fresh same-control
+TCP/audio replay verifies lodge departure, world-map selection and arrival at
+the ruins exterior. All 280 developer transactions remain unchanged; HP60 refill
+has no authority.
 
-Start from the qualified 56,461-identity catalogue and 97,480-frame native
-route. Verify control restoration with settled opposite-direction inputs;
-autonomous actor movement alone is insufficient. Keep each failed or partial
-goal diagnostic distinct from the closed qualification. A bounded automatic
-replay may reuse exact recorded nonterminal controls with source/state/image
-checks, then add fresh ordinary actions. It does not restore native save state.
+Start from the qualified 57,335-identity catalogue and 101,248-frame native
+route. Keep failed or partial goal diagnostics separate from qualification.
+Bounded automatic replay reuses exact recorded nonterminal controls with strict
+source/state/image/audio checks before fresh ordinary actions. It does not
+restore a native machine checkpoint. Verify new assists independently before use.
+Keep the native 5/60 HP endpoint and reference 60/60 HP observation distinct;
+align equipment, actor and device phases before attributing their difference.
 
 Use this retail consumer as a toolkit validation driver as well as a native
 port. Preserve new source, device and input cases as regression evidence.
