@@ -5,12 +5,12 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Current Alcaino combat workflow
+## Current Alcaino stair-room workflow
 
-The current module preserves all 57,335 previous keys and promotes 6,886
-fallback retirements across 188 original identities. The qualified route reaches
-101,777 frames; its new 529-frame combat/traversal window is native-only. Start
-future work from the qualified 57,523 catalogue and its actual replay receipt.
+Start from the qualified 57,545 catalogue and actual 102,011-frame replay.
+All 57,523 previous keys remain; 22 additions promote 87 retirements. The new
+234-frame stair-room interval is native-only. Keep full logical PC, all eight
+MPRs, physical extents and exact source bytes distinct across overlay variants.
 
 Keep the exact prior-route controls, source/state/image/PCM checks and all 280
 retained assists. New current-HP assists have separate typed plans, raw native
@@ -21,10 +21,11 @@ full-capture validator. A full comparison-recipe length is distinct from the
 every actual queued request before launching a generated harness.
 
 Verify assists against exact owner inputs and independent-reference evidence.
-This batch permits at most six living current-HP low-byte refills to the fresh
+The retained four HP plans keep their original six-call policy. The next-room
+phase permits at most six additional calls, ten cumulative, to the fresh
 read-only maximum of 60, with zero high bytes. Automatic refills use HP 1..39;
 short ordinary advances require 40..60 HP, take at most 12 frames and stop on
-HP0, a changed maximum or a required seventh refill. Reject resurrection,
+HP0, a changed maximum or a required seventh new-phase refill. Reject resurrection,
 overfill, maximum-HP, quest, item, equipment, STR and program edits.
 
 Use the shared pure living-HP contract with complete 8 KiB RAM before/after
@@ -46,8 +47,8 @@ be explicitly proven complete and natural; a partial or failed watchdog run
 cannot become a successful gameplay qualification.
 
 The direct test host omits the descriptor's 600-second internal wall option.
-Its independent external watchdog is 900 seconds, controller close is 865 and
-group watchdog is 1200. These are actual source-bound direct-host conditions,
+Its independent external watchdog is 1200 seconds, controller close is 1165 and
+group watchdog is 1500. These are actual source-bound direct-host conditions,
 not project.run wall telemetry. Preserve finite frame/tick/step/control caps
 and identical selected runtime/audio inputs on both module runs.
 
@@ -986,3 +987,24 @@ arbitrary CMD files, private inputs, generated game source/captures/PCM, saves,
 absolute owner paths and coordination metadata remain excluded. Freeze runtime
 evidence independently from final docs/launcher/cleanup metadata, then separately
 verify the actual public commit and unchanged evidence after publication.
+
+For read-only observers, persist raw replies/readbacks before assertions. Use
+an explicitly source-bound legacy muted-audio delivery profile; keep source,
+clocks and synthesis fields strict and label unreported queue state honestly.
+Never apply observer transport allowances to HP/CAS authorization. Canonical
+cross-run HP comparison follows own-call validation and the same indexed
+paired-state tier proof; TCP serial IDs are not gameplay state.
+
+Use separate bounded readers for small controls (1 MiB), completed queue
+journals (4 MiB) and final receipts (128 MiB). Exercise generated executable
+watchdog guards and verify-only behavior. On failure stop owned helpers first;
+only an exact PID/PE hash/full argv/capture identity permits native force-close.
+A successful candidate must exit naturally with no fallback cleanup.
+
+The next focused batch is ABI26 migration using official capture import with
+original ABI labels, stable emission, an ordinary new-directory build and
+state-aware guest controls. Preserve the selected ABI18 package. Developer
+checkpoints belong to one exact executable/module; regenerated or cross-ABI
+packages need their own verified checkpoint. Imported prefix work and newly
+executed retirements remain separate. Do not replace full source qualification
+with a checkpoint or invent a general native-span speedup.

@@ -1,6 +1,72 @@
-# Consumer status - 28 October 2026
+# Consumer status - 29 October 2026
 
-## Current first-room Alcaino combat qualification on ABI18
+## Current Alcaino stair-room qualification on ABI18
+
+The assisted route retains all prior progression and first-room combat, then
+enters the next diagonal stair room and verifies downward and upward movement.
+The independent Geargrafx route confirms those bounded outcomes separately;
+its 235 frames and the native route's 234 frames are not timing parity.
+
+| Evidence | Result |
+| --- | --- |
+| Fresh native replay | 102,011 frames; 3,113,677,066 native / zero interpreted |
+| Same-control prior module | 3,113,676,979 native / 87 interpreted |
+| Catalogue | 57,545 identities; all 57,523 prior keys retained |
+| Additions executed | 22 identities / 87 promoted retirements; none compiled-only |
+| Previously compiled code newly exercised | 1 identity / 1 native hit |
+| Module | 83 MPR contexts / 278 translation units + 1 header |
+| Recipe | 2,184 controls / 4,896 states / 8,049 actions / 2,132 images |
+| New interval | 234 frames; 7,159,222 native / zero interpreted |
+| Assists | 284 retained transactions plus one living current-HP CAS |
+| Visible rewards | EXP 1,280 to 1,324; gold 1,360 to 1,380 |
+| Digital audio | 75,196,020 frames / hash 7520645438990754195 / synthesis loss 0 |
+
+Full reset captures are complete and lossless. Every observed original-source key and
+retired-hit total, CPU/all-eight-MPR/fetched-source generation, clock, CD/PCM value,
+image and capped WAV matches after proved tier conversion. All 22 additions
+execute; no previous key is removed and no historical exclusion is repeated.
+Fourteen affected shared-PC/full-MPR source-variant groups remain distinct.
+No unsupported observed variant remains in this bounded route.
+
+The additional assist changes only living current HP30 to the read-only
+maximum60. Full 8 KiB RAM comparisons and paused source/device/clock/PCM/SDL
+checks remain strict within each CAS. The four retained plans stay unchanged.
+Cross-run HP proofs validate each own call before comparing canonical TCP IDs
+and the same indexed, source-proved tier counters. Raw journals are retained.
+HUD030 can remain stale; displayed HP60 is not qualified.
+
+Read-only observers persist raw status pairs and seven stat readbacks before
+assertions. Their bounded legacy audio-delivery check permits only previously
+synthesized presentation data; it does not prove hidden queue contents or all
+unreported state. The toolkit's frozen legacy helper separately accepts all
+69 discovery pairs: one observed 12-frame delivery and 68 zero deliveries.
+The earlier missing AFTER reply supplies no retrospective delta.
+
+The discovery game closed naturally. Its feeder later failed reading the
+completed receipt through a small metadata limit; a separate bounded offline
+adjudication preserves that failed helper/group status and proves every
+control completed. Failed early candidate probes are excluded from coverage.
+The final candidate replays the literal recipe, and both its helpers and game
+exit zero with no forced cleanup. Reader bounds, watchdog guards and exact
+owned-process failure cleanup have dedicated regression checks.
+
+The selected SDK remains ABI18 at
+`6935e46ff8aefacf8ea058a385198299c4e2cd5c`. The batch passes 68 affected upstream
+capture/emission/project checks. Consumer tests remain 523 cases without skips.
+Latest reviewed toolkit public revision
+`d6b599c9e4d619fe7d81846e84a954e8386f67aa` is ABI26; runtime/emitter semantics
+are unchanged by that release. Its state-aware controls, checkpoints and
+wire-journal tools are the next migration path. The earlier shop-exit timing
+profile issue has no verified universal repair or demonstrated CPU defect.
+
+Direct TCP supervision uses an external 1,200-second host watchdog and
+1,500-second group bound; the descriptor's historical 600-second option is
+omitted. Offline proof verification has its separate 1,800-second bound.
+Unknown-CD `gear-good` remains a compatibility condition. No new boss defeat,
+full campaign, reference phase/audio parity, cross-process saves, listening or
+hardware qualification follows from this room test.
+
+## Retained first-room Alcaino combat qualification on ABI18
 
 The assisted route retains lodge departure and the Alcaino entrance, then
 verifies incoming damage, jumping and sword attacks, increased EXP/gold and
@@ -48,7 +114,7 @@ separate. The previous unassisted first-room HP/phase mismatch is unresolved.
 No new stairs/room transition, boss defeat, full campaign, cross-process saves,
 listening or hardware parity is qualified.
 
-## Toolkit review and migration hold
+## Prior toolkit review and migration hold
 
 The selected runtime remains ABI18 at
 `6935e46ff8aefacf8ea058a385198299c4e2cd5c`. This batch freshly passes 68
