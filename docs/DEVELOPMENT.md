@@ -61,9 +61,25 @@ native promotion and explicitly recorded transport views. Require actual
 images for damage, attacks and progression; case labels and empty bars are
 insufficient. Keep raw wrapped coordinates and separately derived views apart.
 
-Review current upstream source/docs each batch. ABI26 migration is held until
-a complete observed-state input route passes; toolkit state-route and audio
-trace tools were reviewed separately from this selected ABI18 qualification.
+Review current upstream source/docs each batch. The ABI26 candidate now passes
+the finite early-shop exit and exact-build checkpoint continuation. Use the
+official state-route, checkpoint, capture, paused-observation and streaming
+wire-journal APIs. Serialize keepalives through the single connection owner
+while awaiting image review; the server has a documented five-second idle lease.
+Do not use a competing background reader or resend uncertain controls.
+
+Checkpoints bind the exact executable, adjacent DLLs, module, tool, inputs and
+machine recipe. Keep imported clocks, retirements, pending PCM and source-WAV
+markers separate from newly executed suffix evidence. A module regeneration
+requires a new reset-based checkpoint. Compare fresh paused pairs strictly;
+record documented host presentation and output-window differences separately
+when comparing different processes. Preserve failed epochs independently.
+
+The ABI18 catalogue and newly captured ABI26 observations keep their original
+labels and provenance. The missing production mixed-ABI source composer is an
+upstream feature request; do not relabel captures or extend the legacy consumer
+merger to bypass it. The selected full-route build remains ABI18 until source
+composition, affected checks and the retained route pass on the new package.
 Do not patch the toolkit's active working tree or maintain a runtime fork.
 Report focused shared-tool gaps with exact identities and bounded private
 witnesses; distinguish input-route sensitivity from a causal runtime defect.

@@ -52,11 +52,16 @@ union was re-emitted and rebuilt for the current next-room batch.
 
 Current ABI26 tooling includes state-aware TCP routes, exact-build developer
 checkpoints, durable wire journals and streaming journal audits. The latest
-[reviewed toolkit](https://github.com/rages4calm/pcenginerecomp/commit/d6b599c9e4d619fe7d81846e84a954e8386f67aa)
-adds journal tools without changing the preceding ABI26 runtime/emitter
-semantics. The previous early shop-exit
-transition remains unqualified under the newer timing profile. ABI26 migration
-is next; this qualified build remains on ABI18.
+[reviewed toolkit](https://github.com/rages4calm/pcenginerecomp/commit/2e203024ae4e03984c8000783d3c762e3855b9a2)
+adds phase diagnostics without changing this candidate's ABI26 runtime/emitter
+semantics. A fresh ABI26 candidate now passes the shop exit and town dialogue
+through state-aware TCP controls with digital audio. An exact-build checkpoint
+replays the 741-frame suffix in 13.67 seconds, preserving images, guest state
+and digital PCM while keeping imported work separate. The reset route still
+retires 25 interpreted instructions across 23 new source identities. Their
+additive composition needs a supported toolkit contract that preserves the
+original ABI18 and ABI26 capture provenance; this gap has been reported upstream.
+The full Alcaino route has not migrated, so **Play remains on qualified ABI18**.
 
 The shared toolkit adds explicit base HuCard startup and mapper support. Its
 authored fixtures have separate Geargrafx/native/TCP/PSG checks. **Ys III still

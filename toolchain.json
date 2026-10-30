@@ -3514,7 +3514,7 @@
     }
   },
   "latest_toolkit_review": {
-    "revision": "d6b599c9e4d619fe7d81846e84a954e8386f67aa",
+    "revision": "2e203024ae4e03984c8000783d3c762e3855b9a2",
     "runtime_abi": 26,
     "selected": false,
     "features_reviewed": [
@@ -3525,7 +3525,7 @@
       "streaming journal audit"
     ],
     "migration_qualified": false,
-    "reason": "Current batch remains on qualified ABI18; focused ABI26 migration is next. Prior shop-exit timing-profile divergence needs state-aware qualification; no universal repair or CPU defect established."
+    "reason": "Public diagnostic release leaves candidate runtime/emitter/project sources unchanged. Finite ABI26 shop exit/checkpoint gate passes; mixed-ABI additive source composer is publicly planned, not implemented. Selected full-route launcher stays ABI18."
   },
   "alcaino_stair_room18_milestone": {
     "qualified": true,
@@ -3654,5 +3654,73 @@
     "new_paced_device_or_listening_check": false,
     "unknown_CD_semantics_implemented": false,
     "scope": "Verified-assisted next-room stairs/control only. Native234 and independent235 frame recipes are separate. Raw reported equality does not prove hidden queue/all RAM quiescence; no campaign, reference phase/audio, listening or hardware parity."
+  },
+  "abi26_checkpoint_migration_gate": {
+    "revision": "d6b599c9e4d619fe7d81846e84a954e8386f67aa",
+    "source_sha256": "6fd2b045fc235d4c26c8ad2a11683ea871adf03d43f631debcbd4df4ced30f48",
+    "runtime_abi": 26,
+    "selected": false,
+    "full_route_migration_qualified": false,
+    "module_identities": 57545,
+    "mpr_contexts": 83,
+    "stable_translation_units": 943,
+    "headers": 1,
+    "reset": {
+      "frames": 23311,
+      "native_steps": 674792529,
+      "interpreted_steps": 25,
+      "guard_misses": 25,
+      "capture_identities": 39222,
+      "capture_loss": 0,
+      "memory_writes": 0,
+      "natural_exit_code": 0,
+      "wire_requests": 9809,
+      "wire_failures": 0
+    },
+    "discovered_source": {
+      "new_identities": 23,
+      "interpreted_retirements": 25,
+      "known_catalogue_fallback_identities": 0,
+      "newly_emitted": false,
+      "native_gain_qualified": false,
+      "composition_feature_reported_upstream": true,
+      "original_input_abi_labels_preserved": true
+    },
+    "checkpoint": {
+      "exact_build_only": true,
+      "imported_frames": 22570,
+      "imported_native_steps": 652223627,
+      "imported_interpreted_steps": 14,
+      "imported_pending_pcm_frames": 28,
+      "source_wav_frames": 441000,
+      "new_frames": 741,
+      "new_native_steps": 22568902,
+      "new_interpreted_steps": 11,
+      "new_capture_identities": 11809,
+      "capture_loss": 0,
+      "seconds": 13.66998859999876,
+      "natural_exit_code": 0,
+      "wire_requests": 1683,
+      "wire_failures": 0,
+      "immediate_machine_payload_equal": true,
+      "doorway_machine_payload_equal": true,
+      "images_byte_equal": true,
+      "reported_guest_state_equal_after_explicit_host_projection": true
+    },
+    "audio": {
+      "rate": 44100,
+      "profile": "raw",
+      "timing": "gear-v1",
+      "frames": 17183386,
+      "pcm_hash": 15827572198103811262,
+      "discarded_frames": 0,
+      "device_open": true,
+      "wav_frames": 441000,
+      "fast_forward_muted": true,
+      "listening_qualified": false
+    },
+    "affected_upstream_tests": 93,
+    "affected_upstream_skips": 0,
+    "scope": "Finite unassisted shop exit and town dialogue with state-aware TCP, actual guest-latch consumption and exact-package checkpoint continuation. Imported prefix is not fresh execution. Full Alcaino migration, source additions, campaign, hardware and listening qualification remain pending."
   }
 }

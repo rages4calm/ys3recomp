@@ -1,5 +1,49 @@
 # Consumer status - 29 October 2026
 
+## ABI26 migration gate: shop exit and checkpoint continuation
+
+The new candidate uses the official stable emitter and desktop build on the
+reviewed ABI26 toolkit. The existing 57,545 source identities are retained;
+943 stable translation units plus one header are compiled. This is a separate
+migration candidate; the selected launcher and full Alcaino qualification
+remain on ABI18.
+
+| Evidence | Result |
+| --- | --- |
+| Fresh reset route | 23,311 frames; 674,792,529 native / 25 interpreted |
+| Complete original-source capture | 39,222 identities; zero loss |
+| New fallback source identities | 23 identities / all 25 interpreted retirements |
+| Previously compiled identities falling back | Zero |
+| Exact-build checkpoint prefix | 22,570 frames; 652,223,627 native / 14 interpreted imported |
+| Fresh checkpoint suffix | 741 frames; 22,568,902 native / 11 interpreted |
+| Suffix replay wall time | 13.67 seconds; natural exit zero |
+| New suffix capture | 11,809 identities; zero loss; imported origin preserved |
+| Digital audio endpoint | 17,183,386 frames / hash 15827572198103811262 / synthesis loss zero |
+| Affected upstream checks | 93 passed / zero skips |
+
+Actual images show the shop interior, outdoor doorway and Tigre Mine warning
+dialogue. Source-backed guest controller samples prove Right, Up, neutral and
+Right consumption. Both processes close naturally with no forced cleanup or
+RAM writes. Streaming wire audits show all 9,809 reset and 1,683 continuation
+requests paired, with no failures or unanswered requests.
+
+Checkpoint import preserves the exact encoded machine payload; the doorway
+payload also matches after continuation. All three images match byte for byte.
+Reported guest state and digital PCM match at the same boundaries. Across
+processes, checkpoint telemetry, fresh WAV markers and recreated SDL presentation
+are recorded separately; each process's paused-observation pairs stay strict.
+The new WAV is a capped suffix window with 28 imported pending PCM frames.
+Unthrottled SDL presentation is muted, so this establishes digital synthesis,
+not listening parity or real-time playback quality.
+
+The toolkit accepts each original ABI18 and ABI26 capture individually but
+currently lacks a supported mixed-ABI additive source-profile composer. This
+shared-tool feature gap is now [planned upstream](https://github.com/rages4calm/pcenginerecomp/blob/2e203024ae4e03984c8000783d3c762e3855b9a2/docs/ROADMAP.md#additive-observation-profiles--planned). Original
+captures retain their labels and bytes; no union is presented as an execution
+receipt. The 23 new identities are discovered, not yet newly emitted or
+native-qualified. Full-route migration, campaign, hardware and listening
+qualification remain unfinished.
+
 ## Current Alcaino stair-room qualification on ABI18
 
 The assisted route retains all prior progression and first-room combat, then
@@ -54,10 +98,10 @@ The selected SDK remains ABI18 at
 `6935e46ff8aefacf8ea058a385198299c4e2cd5c`. The batch passes 68 affected upstream
 capture/emission/project checks. Consumer tests remain 523 cases without skips.
 Latest reviewed toolkit public revision
-`d6b599c9e4d619fe7d81846e84a954e8386f67aa` is ABI26; runtime/emitter semantics
-are unchanged by that release. Its state-aware controls, checkpoints and
-wire-journal tools are the next migration path. The earlier shop-exit timing
-profile issue has no verified universal repair or demonstrated CPU defect.
+`2e203024ae4e03984c8000783d3c762e3855b9a2` is ABI26; runtime/emitter/project sources
+are unchanged from the candidate's pinned toolkit. Its state-aware controls, checkpoints and
+wire-journal tools underpin the separate finite migration gate above. That
+success does not establish a universal timing repair or a CPU defect.
 
 Direct TCP supervision uses an external 1,200-second host watchdog and
 1,500-second group bound; the descriptor's historical 600-second option is
