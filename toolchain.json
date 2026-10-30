@@ -1584,11 +1584,11 @@
     ]
   },
   "milestone_roles": {
-    "current_native": "miner_deeper18_milestone",
-    "current_native_extension": "miner_deeper18_milestone",
+    "current_native": "alcaino_stair_room18_milestone",
+    "current_native_extension": "alcaino_stair_room18_milestone",
     "historical_abi13_native_audio": "native_audio_expansion_milestone",
     "historical_abi16_migration": "abi16_compatibility_milestone",
-    "current_route": "miner_deeper18_milestone",
+    "current_route": "alcaino_stair_room18_milestone",
     "historical_abi16_native": "native_milestone",
     "historical_abi16_native_extension": "native_extension_milestone",
     "historical_ipl_route": "qualified_private_route",
@@ -1606,7 +1606,8 @@
     "retained_abi18_wizard_defeat_reward": "wizard_defeat_reward18_milestone",
     "retained_abi18_post_reward_continue": "post_reward_continue18_milestone",
     "retained_abi18_mine_return": "mine_return18_milestone",
-    "retained_original_source": "original_source18_milestone"
+    "retained_original_source": "original_source18_milestone",
+    "retained_alcaino_first_room_combat": "alcaino_combat18_milestone"
   },
   "reset_milestone": {
     "qualified": true,
@@ -3513,14 +3514,145 @@
     }
   },
   "latest_toolkit_review": {
-    "revision": "e2e3b2f16d0ee5498556459b79803932fbe458c4",
+    "revision": "d6b599c9e4d619fe7d81846e84a954e8386f67aa",
     "runtime_abi": 26,
     "selected": false,
     "features_reviewed": [
-      "explicit audio-trace comparison domains",
-      "bounded state-aware TCP routes"
+      "stable original-label capture import",
+      "state-aware TCP and exact-package checkpoints",
+      "durable raw wire journals",
+      "strict paused legacy observation profile",
+      "streaming journal audit"
     ],
     "migration_qualified": false,
-    "reason": "Fixed-input route misses an early shop-exit transition under queued VDC timing; upstream bounded state-aware repair is separate from complete consumer migration. Repeated Windows managed-cache publication access-denied failures retained; selected ABI18 ordinary build uses no managed cache."
+    "reason": "Current batch remains on qualified ABI18; focused ABI26 migration is next. Prior shop-exit timing-profile divergence needs state-aware qualification; no universal repair or CPU defect established."
+  },
+  "alcaino_stair_room18_milestone": {
+    "qualified": true,
+    "tool": {
+      "revision": "6935e46ff8aefacf8ea058a385198299c4e2cd5c",
+      "source_sha256": "9414ed390229b8d411f2f79f6c22080d68fef7b09aef2bf99db0046751e34cf0",
+      "source_files": 60,
+      "runtime_abi": 18
+    },
+    "runtime_abi": 18,
+    "selected_original_code_identities": 57545,
+    "previous_selected_original_code_identities": 57523,
+    "new_emitted_source_identities": 22,
+    "new_native_promoted_retirements": 87,
+    "new_compiled_keys_not_executed": 0,
+    "previously_compiled_newly_exercised_identities": 1,
+    "previously_compiled_newly_exercised_native_hits": 1,
+    "frames": 102011,
+    "native_steps": 3113677066,
+    "interpreted_steps": 0,
+    "native_block_steps": 480006,
+    "interpreter_block_steps": 0,
+    "guard_misses": 0,
+    "baseline_native_steps": 3113676979,
+    "baseline_interpreted_steps": 87,
+    "mpr_contexts": 83,
+    "translation_units": 278,
+    "generated_headers": 1,
+    "states": 4896,
+    "actions": 8049,
+    "control_requests": 2184,
+    "image_checkpoints": 2132,
+    "hp_reads": 2170,
+    "source_capture": {
+      "fresh_single_executions": true,
+      "start_frame": 0,
+      "capacity": 65536,
+      "loss": 0,
+      "baseline_source_identities": 54602,
+      "candidate_source_identities": 54602
+    },
+    "progression": {
+      "first_room_exit": true,
+      "staircase_or_room_transition": true,
+      "next_room_player_control": true
+    },
+    "assisted_progression": true,
+    "memory_write_requests": 285,
+    "additional_memory_write_requests": 1,
+    "new_developer_max_hp_or_program_quest_item_equipment_str_writes": 0,
+    "new_tail": {
+      "start_frame": 101777,
+      "end_frame": 102011,
+      "frames": 234,
+      "baseline": {
+        "native": 7159135,
+        "interpreted": 87
+      },
+      "candidate": {
+        "native": 7159222,
+        "interpreted": 0
+      }
+    },
+    "pcm": {
+      "sample_rate": 44100,
+      "timing": "gear-v1",
+      "frames": 75196020,
+      "pcm_hash": 7520645438990754195,
+      "mixed_nonzero": 71381855,
+      "peak": 12684,
+      "discarded_frames": 0,
+      "wav_frames": 441000
+    },
+    "living_hp_assists": {
+      "current_low_byte_only": true,
+      "readonly_maximum": 60,
+      "successful_refills": 5,
+      "refill_before": [
+        5,
+        30,
+        35,
+        35,
+        30
+      ],
+      "target": 60,
+      "new_refills": 1,
+      "maximum_new_phase_refills": 6,
+      "maximum_cumulative_refills": 10,
+      "complete_ram_bytes_compared": 8192,
+      "raw_own_call_source_PCM_SDL_invariance": true,
+      "crossrun_TCP_ID_and_source_proved_tier_canonicalization": true,
+      "hud_refill_display_qualified": false
+    },
+    "reward_counters": {
+      "experience_low16_before": 1280,
+      "experience_low16_after": 1324,
+      "gold_low16_before": 1360,
+      "gold_low16_after": 1380
+    },
+    "execution_supervision": {
+      "mode": "direct-host-external1200",
+      "external_wall_seconds": 1200,
+      "controller_close_seconds": 1165,
+      "group_wall_seconds": 1500,
+      "descriptor_wall_seconds": 600,
+      "descriptor_wall_applied": false,
+      "internal_wall_flag_omitted": true,
+      "offline_proof_wall_seconds": 1800
+    },
+    "baseline_closure": {
+      "game_natural_exit0": true,
+      "original_feeder_passed": false,
+      "original_group_passed": false,
+      "separate_post_exit_receipt_size_adjudication": true,
+      "all_71_controls_ACKed": true
+    },
+    "candidate_closure": {
+      "all_helpers_exit0": true,
+      "game_natural_exit0": true,
+      "forced_cleanup": false
+    },
+    "source_variants_preserved": 14,
+    "unsupported_observed_variants": 0,
+    "full_campaign_qualified": false,
+    "crossprocess_save_persistence": false,
+    "new_paced_device_or_listening_check": false,
+    "unknown_CD_semantics_implemented": false,
+    "scope": "Verified-assisted next-room stairs/control only. Native234 and independent235 frame recipes are separate. Raw reported equality does not prove hidden queue/all RAM quiescence; no campaign, reference phase/audio, listening or hardware parity."
   }
 }

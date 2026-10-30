@@ -5,30 +5,30 @@ An incremental PC Engine CD consumer of
 *Ys III: Wanderers from Ys* (USA). This is an early hybrid port: unseen code
 still uses the interpreter, and the full campaign remains unfinished.
 
-The current **101,777-frame** TCP/digital-audio route retires
-**3,106,517,844 native instructions and zero interpreted instructions**.
-It retains the lodge departure and Alcaino arrival, then verifies incoming
-damage, jumping and sword combat, increased EXP/gold and eastward travel
-across the ruins' first hostile room.
+The current **102,011-frame** TCP/digital-audio route retires
+**3,113,677,066 native instructions and zero interpreted instructions**.
+It retains the lodge departure and first-room combat, then enters Alcaino's
+next diagonal stair room and verifies movement down and back up its stairs.
 
-The official module contains **57,523 original source identities** in
+The official module contains **57,545 original source identities** in
 83 full MPR contexts, across 278 C++ translation units and one header.
-All 57,335 previous identities remain; 188 additions execute for 6,886
-newly native retirements on the same route. Two previously compiled identities
-also execute three native hits beyond the prior route. Emission and execution
-are measured separately; unseen code retains interpreter fallback.
+All 57,523 previous identities remain. The 22 additions execute for 87 newly
+native retirements on the same route; none is compiled-only. Source variants
+remain distinct. One previously compiled identity also executes one new hit.
+Unseen code retains interpreter fallback; full campaign coverage is unfinished.
 
-The new 529-frame interval retires 16,530,773 native instructions and zero
-interpreted instructions. The fresh same-control replay matches all 2,114
-controls, 4,736 states, 2,085 images, source totals, assist journals and digital
-PCM. All 280 retained data-CAS transactions remain; four new independently
-verified current-HP refills change only the living player's low HP byte to
-its read-only maximum of 60. EXP rises from 1,180 to 1,280 and gold from
-1,300 to 1,360. Full campaign and cross-process saves remain unfinished.
-Digital PCM matching does not establish listening or hardware parity.
+The new 234-frame interval retires 7,159,222 native instructions with zero
+fallback. The fresh same-control replay matches all 2,184 controls,
+4,896 states and 2,132 images, source totals, canonical assist proofs and digital PCM.
+All 284 retained data-CAS transactions remain; one new independently verified
+living current-HP refill changes only its low byte from 30 to the read-only
+maximum of 60. EXP rises from 1,280 to 1,324 and gold from 1,360 to 1,380.
+The HUD may remain at HP030 after the raw refill.
 
-The earlier unassisted first-room HP/phase difference remains unexplained.
-This assisted combat test does not establish whole-game reference parity.
+This is assisted, bounded room/control verification. Native and independent
+reference timings differ. The earlier unassisted first-room HP/phase difference
+remains unresolved. Full campaign, cross-process saves, listening and hardware
+parity remain unfinished.
 
 ## Play the local build
 
@@ -48,25 +48,29 @@ opening a game. Cross-process saves are not implemented.
 The toolkit remains pinned to ABI18 at
 `6935e46ff8aefacf8ea058a385198299c4e2cd5c`. Its composed profile retains the
 original ABI17 lineage and actual ABI18 capture labels. This multi-run source
-union was re-emitted and rebuilt for the current combat batch.
+union was re-emitted and rebuilt for the current next-room batch.
 
-Newer ABI26 tooling was reviewed separately. With its queued VDC profile, the
-old fixed-input shop-exit route misses a transition. Upstream reproduced that
-case and published [bounded state-aware TCP routes](https://github.com/rages4calm/pcenginerecomp/blob/e2e3b2f16d0ee5498556459b79803932fbe458c4/docs/STATE_ROUTES.md).
-A complete migration route remains unqualified, so this batch uses ABI18.
+Current ABI26 tooling includes state-aware TCP routes, exact-build developer
+checkpoints, durable wire journals and streaming journal audits. The latest
+[reviewed toolkit](https://github.com/rages4calm/pcenginerecomp/commit/d6b599c9e4d619fe7d81846e84a954e8386f67aa)
+adds journal tools without changing the preceding ABI26 runtime/emitter
+semantics. The previous early shop-exit
+transition remains unqualified under the newer timing profile. ABI26 migration
+is next; this qualified build remains on ABI18.
 
 The shared toolkit adds explicit base HuCard startup and mapper support. Its
 authored fixtures have separate Geargrafx/native/TCP/PSG checks. **Ys III still
 uses the owner's CHD**; this batch adds no retail HuCard/CUE test or media
 conversion. Earlier finite migration proofs remain retained separately.
 
-Both module runs match 75,023,530 cumulative 44.1 kHz PCM frames,
-hash `983883635080047048`, including 71,209,365 mixed-nonzero frames
+Both module runs match 75,196,020 cumulative 44.1 kHz PCM frames,
+hash `7520645438990754195`, including 71,381,855 mixed-nonzero frames
 and zero synthesis loss. The capped ten-second WAV covers silent boot; later
 audio is verified cumulatively. Fast-forward SDL presentation is muted.
-Independent Geargrafx confirms the bounded combat and HP-only assist behavior,
-with differing stats, positions and timing. No whole-route reference audio,
-listening or hardware parity is claimed.
+Independent Geargrafx confirms bounded stair entry, next-room control and the
+HP-only assist, with differing positions and timing. Reported status equality
+does not establish hidden audio-queue contents or whole-machine quiescence.
+No whole-route reference audio, listening or hardware parity is claimed.
 
 The prior whole-span exclusion has been replaced by an explicit original-only
 selection. The three verified originals are emitted; the historical temporary
