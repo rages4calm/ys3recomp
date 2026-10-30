@@ -3722,5 +3722,88 @@
     "affected_upstream_tests": 93,
     "affected_upstream_skips": 0,
     "scope": "Finite unassisted shop exit and town dialogue with state-aware TCP, actual guest-latch consumption and exact-package checkpoint continuation. Imported prefix is not fresh execution. Full Alcaino migration, source additions, campaign, hardware and listening qualification remain pending."
+  },
+  "abi26_migration_progress": {
+    "runtime_abi": 26,
+    "selected": false,
+    "full_route_migration_qualified": false,
+    "composed_native_candidate_compiled": false,
+    "reviewed_composer": {
+      "revision": "e171b398d02dccdfb3313a7f18b81c7aed3488ae",
+      "source_sha256": "510ad0dc3b2ee48bf216438ea42aeae0aaf80601f0af3885c7f878a00cc52765",
+      "source_files": 79,
+      "affected_tests": 126,
+      "skips": 0
+    },
+    "profile_preview": {
+      "source_identities": 57593,
+      "old_identities_retained": 57545,
+      "emitted": true,
+      "compiled": false,
+      "execution_evidence": false,
+      "native_gain_qualified": false,
+      "original_input_labels_and_checkpoint_origins_preserved": true
+    },
+    "actual_gameplay_build": {
+      "compiled": true,
+      "revision": "d6b599c9e4d619fe7d81846e84a954e8386f67aa",
+      "source_sha256": "6fd2b045fc235d4c26c8ad2a11683ea871adf03d43f631debcbd4df4ced30f48",
+      "source_files": 78,
+      "module_identities": 57545,
+      "stable_translation_units": 943,
+      "headers": 1,
+      "execution_tier": "hybrid"
+    },
+    "wizard_reward_observation": {
+      "assisted": true,
+      "original_program_unchanged": true,
+      "ordinary_combat_controls": true,
+      "native_qualified": false,
+      "frame": 64746,
+      "cumulative_native_steps": 1959774497,
+      "cumulative_interpreted_steps": 602,
+      "experience_before": 182,
+      "experience_after": 382,
+      "gold_before": 358,
+      "gold_after": 558,
+      "natural_hp_maximum_after": 40,
+      "TCP_digital_audio_observed": true,
+      "boss_only_retirement_count_claimed": false
+    },
+    "discovery_closure": {
+      "full_route_passed": false,
+      "natural_exit_code": 0,
+      "stopped_during_deeper_navigation": true,
+      "max50_alone_is_NPC_proof": false
+    },
+    "checkpoint_probes": {
+      "exact_build_only": true,
+      "readonly_debug_suffixes": true,
+      "imported_work_is_fresh_execution": false,
+      "cross_build_qualified": false,
+      "imported_prefix_CAS_authority": false
+    },
+    "ordinary_equipment_UI": {
+      "Select_Left_Right_verified": true,
+      "Long_Sword_rendered": true,
+      "status_level": 4,
+      "status_strength": 55,
+      "status_defense": 35,
+      "item_equipment_strength_byte_writes": false
+    },
+    "canonical_discovery_attempt": {
+      "full_route_passed": false,
+      "frame": 69891,
+      "native_steps": 2117569044,
+      "interpreter_steps": 614,
+      "stop_reason": "Consumer CAS preflight refused current fetched-bank generation change",
+      "natural_exit_code": 0,
+      "child_stopped": true,
+      "runtime_defect_established": false
+    },
+    "full_campaign_qualified": false,
+    "listening_qualified": false,
+    "hardware_qualified": false,
+    "scope": "Bounded assisted original-code ABI26 gameplay and composer preview only. Selected ABI18 pin/native milestone/Play remain unchanged; complete discovery and fresh literal native replay still required."
   }
 }

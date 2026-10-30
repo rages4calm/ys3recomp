@@ -5,7 +5,39 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Current Alcaino stair-room workflow
+## ABI26 closeout and next migration gate
+
+Keep the selected ABI18 tool, qualified native module and Play selection intact.
+The reviewed ABI26 composer at `e171b398d02dccdfb3313a7f18b81c7aed3488ae`
+passes 126 affected checks without skips. Its 57,593-identity composed/emitted
+preview is uncompiled; aggregate profile hits are not execution evidence.
+The actual gameplay build remains the 57,545-identity ABI26 baseline at
+`d6b599c9e4d619fe7d81846e84a954e8386f67aa`.
+
+Assisted original-code wizard defeat, +200 EXP / +200 gold and a natural
+level-up to maximum HP40 are observed through TCP/audio. This does not qualify a native
+ABI26 boss or the full route: that discovery run later stopped during deeper
+navigation. Preserve failed branches and actual UI/room evidence. A max50
+readback, case label or empty bar alone proves no NPC interaction or boss defeat.
+Ordinary Equipment selection has actual rendered-title and Status STR55 proof;
+never substitute equipment, STR, quest or program-byte edits.
+
+Use exact-build checkpoints for bounded read-only debug suffixes. Bind actual
+save ACK/file SHA, strict paused boundary, source history and official project
+context. Preserve imported counters and pending PCM separately. Checkpoint
+continuation does not replace complete reset-origin source history for assists
+or qualification, and new modules need new checkpoints.
+
+The remaining migration gate is a naturally closed complete discovery route,
+then one official composition/build and a fresh literal native-candidate replay
+with audio, exact source-key retirement conservation, raw state/RAM/images and
+verified assist proofs. Do not select the preview, promote partial gameplay or
+extend historical ABI17/18 helper whitelists. The final discovery attempt
+stopped safely at frame 69,891: assist preflight refused a write affecting the
+current fetched-bank generation. Preserve this failure and resolve the safe
+assist boundary before resuming; no further exploration belongs to this closeout.
+
+## Current selected ABI18 Alcaino stair-room workflow
 
 Start from the qualified 57,545 catalogue and actual 102,011-frame replay.
 All 57,523 previous keys remain; 22 additions promote 87 retirements. The new
@@ -76,13 +108,13 @@ record documented host presentation and output-window differences separately
 when comparing different processes. Preserve failed epochs independently.
 
 The ABI18 catalogue and newly captured ABI26 observations keep their original
-labels and provenance. The missing production mixed-ABI source composer is an
-upstream feature request; do not relabel captures or extend the legacy consumer
-merger to bypass it. The selected full-route build remains ABI18 until source
-composition, affected checks and the retained route pass on the new package.
-Do not patch the toolkit's active working tree or maintain a runtime fork.
-Report focused shared-tool gaps with exact identities and bounded private
-witnesses; distinguish input-route sensitivity from a causal runtime defect.
+labels and provenance. Use the supported upstream composer; its preview retains
+checkpoint origins and aggregate counts without claiming fresh execution.
+The selected full-route build remains ABI18 until composition, affected checks
+and the retained route pass on the new package. Do not patch the toolkit's active
+working tree or maintain a runtime fork. Report focused shared-tool gaps with
+exact identities and bounded private witnesses; distinguish input-route
+sensitivity from a causal runtime defect.
 
 Freeze runtime proof independently of mutable public documentation/selection.
 Qualify before launcher selection; verify both info entry points, full consumer
