@@ -50,18 +50,23 @@ The toolkit remains pinned to ABI18 at
 original ABI17 lineage and actual ABI18 capture labels. This multi-run source
 union was re-emitted and rebuilt for the current next-room batch.
 
-Current ABI26 tooling includes state-aware TCP routes, exact-build developer
-checkpoints, durable wire journals and streaming journal audits. The latest
-[reviewed toolkit](https://github.com/rages4calm/pcenginerecomp/commit/2e203024ae4e03984c8000783d3c762e3855b9a2)
-adds phase diagnostics without changing this candidate's ABI26 runtime/emitter
-semantics. A fresh ABI26 candidate now passes the shop exit and town dialogue
-through state-aware TCP controls with digital audio. An exact-build checkpoint
-replays the 741-frame suffix in 13.67 seconds, preserving images, guest state
-and digital PCM while keeping imported work separate. The reset route still
-retires 25 interpreted instructions across 23 new source identities. Their
-additive composition needs a supported toolkit contract that preserves the
-original ABI18 and ABI26 capture provenance; this gap has been reported upstream.
-The full Alcaino route has not migrated, so **Play remains on qualified ABI18**.
+The separate ABI26 migration is **still unqualified; Play remains on ABI18**.
+The [reviewed composer](https://github.com/rages4calm/pcenginerecomp/commit/e171b398d02dccdfb3313a7f18b81c7aed3488ae)
+now preserves original capture provenance, with 126 affected upstream checks
+passing without skips. A 57,593-identity profile was composed and emitted as an
+**uncompiled preview**. The ABI26 build actually used for gameplay still has
+57,545 identities on the earlier reviewed toolkit.
+
+That hybrid build has now defeated the wizard through TCP with digital audio:
+EXP 182 to 382, gold 358 to 558, and a natural level-up to maximum HP40.
+Progression used verified HP/movement data assists and ordinary combat inputs;
+game program bytes were unchanged. At the 64,746-frame reward boundary, the
+cumulative reset run had retired 1,959,774,497 native and 602 interpreted
+instructions. This is bounded assisted gameplay evidence, not an ABI26
+native-qualified boss or a successful full-route migration. The run later
+stopped during deeper navigation. Exact-build checkpoint probes and ordinary
+Equipment/Long Sword selection were also verified; no cross-build checkpoint,
+item/STR edits, campaign or listening parity is claimed.
 
 The shared toolkit adds explicit base HuCard startup and mapper support. Its
 authored fixtures have separate Geargrafx/native/TCP/PSG checks. **Ys III still

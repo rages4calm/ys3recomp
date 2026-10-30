@@ -1,6 +1,46 @@
-# Consumer status - 29 October 2026
+# Consumer status - 30 October 2026
 
-## ABI26 migration gate: shop exit and checkpoint continuation
+## ABI26 progress: composer and assisted wizard reward; migration unqualified
+
+The selected ABI18 pin, Play launcher and 102,011-frame zero-interpreter
+qualification below remain unchanged. **Full-route ABI26 migration is still
+unqualified.** The new composed ABI26 module remains uncompiled and unqualified.
+
+| Evidence | Result |
+| --- | --- |
+| Reviewed composer | `e171b398d02dccdfb3313a7f18b81c7aed3488ae`; 79 source files |
+| Affected composer/capture/emission/project checks | 126 passed; zero skips |
+| Profile preview | 57,593 identities; original input labels/origins retained; emitted but uncompiled |
+| Actual gameplay build | ABI26 `d6b599c9e4d619fe7d81846e84a954e8386f67aa`; 78 source files; 57,545 identities |
+| Wizard reward boundary | Frame 64,746; cumulative 1,959,774,497 native / 602 interpreted |
+| Actual rewards | EXP 182 to 382; gold 358 to 558; natural HP/maximum 40 |
+| Full discovery run | Did not pass; stopped during deeper navigation; natural exit zero |
+
+Actual TCP/audio observations and reviewed images show wizard combat, defeat,
+the cleared room and both rewards. Verified HP/movement data assists remain
+explicit; combat and reward progression execute the original game code with
+ordinary inputs. No item, equipped-weapon, STR or quest flags were written.
+These cumulative retirement counts describe the assisted reset prefix, not a
+boss-only execution count or native qualification. No same-route native
+candidate comparison has passed.
+
+Read-only checkpoint suffix probes bind the exact executable, package, inputs,
+module and machine recipe. Imported work remains separate from fresh execution;
+these checkpoints do not supply cross-build or full-reset CAS authority.
+Ordinary Select/Left/Right controls were separately checked within this
+build: actual Equipment/Long Sword images and Status LEVEL4 / STR55 / DEF35
+confirm selection. Failed menu/navigation branches remain failed. A maximum-HP
+value of 50 alone does not prove the miner dialogue or quest outcome.
+
+The final canonical discovery attempt stopped at frame 69,891 when the
+consumer assist preflight refused a RAM write that would change the current
+fetched-bank generation. It retired 2,117,569,044 native / 614 interpreted
+instructions cumulatively and closed naturally with exit zero. This is a
+consumer guard limitation, not an established runtime defect. No source
+regeneration or launcher selection followed. Campaign completion, native-qualified ABI26 bosses, reference/hardware
+parity, listening and cross-process saves remain unqualified.
+
+## Retained ABI26 gate: shop exit and checkpoint continuation
 
 The new candidate uses the official stable emitter and desktop build on the
 reviewed ABI26 toolkit. The existing 57,545 source identities are retained;
@@ -36,13 +76,11 @@ The new WAV is a capped suffix window with 28 imported pending PCM frames.
 Unthrottled SDL presentation is muted, so this establishes digital synthesis,
 not listening parity or real-time playback quality.
 
-The toolkit accepts each original ABI18 and ABI26 capture individually but
-currently lacks a supported mixed-ABI additive source-profile composer. This
-shared-tool feature gap is now [planned upstream](https://github.com/rages4calm/pcenginerecomp/blob/2e203024ae4e03984c8000783d3c762e3855b9a2/docs/ROADMAP.md#additive-observation-profiles--planned). Original
-captures retain their labels and bytes; no union is presented as an execution
-receipt. The 23 new identities are discovered, not yet newly emitted or
-native-qualified. Full-route migration, campaign, hardware and listening
-qualification remain unfinished.
+At this earlier gate, supported mixed-ABI additive composition was still an
+upstream feature gap. The reviewed composer above now addresses that gap while
+preserving original capture labels, bytes and checkpoint origins. Its emitted
+preview is not an execution receipt or native-gain qualification. Full-route
+migration, campaign, hardware and listening qualification remain unfinished.
 
 ## Current Alcaino stair-room qualification on ABI18
 
@@ -97,8 +135,8 @@ owned-process failure cleanup have dedicated regression checks.
 The selected SDK remains ABI18 at
 `6935e46ff8aefacf8ea058a385198299c4e2cd5c`. The batch passes 68 affected upstream
 capture/emission/project checks. Consumer tests remain 523 cases without skips.
-Latest reviewed toolkit public revision
-`2e203024ae4e03984c8000783d3c762e3855b9a2` is ABI26; runtime/emitter/project sources
+The toolkit revision reviewed for that batch,
+`2e203024ae4e03984c8000783d3c762e3855b9a2`, is ABI26; runtime/emitter/project sources
 are unchanged from the candidate's pinned toolkit. Its state-aware controls, checkpoints and
 wire-journal tools underpin the separate finite migration gate above. That
 success does not establish a universal timing repair or a CPU defect.
