@@ -3514,12 +3514,16 @@
     }
   },
   "latest_toolkit_review": {
-    "revision": "39db0626c2d76d615e0ded89ae51e52baa9a2718",
-    "runtime_abi": 26,
+    "revision": "b1ffdcc02e9b83caa14d2948f88413c1219746b1",
+    "runtime_abi": 27,
     "selected_runtime_revision": "1be93679c3318c667f97f55cb37af625a86ad875",
-    "runtime_compiler_CMake_changed_since_selected": false,
+    "runtime_compiler_CMake_changed_since_selected": true,
     "semantic_helper_consumed_separately": true,
-    "scope": "Reviewed published semantic-step helper and migration guidance; no runtime/compiler migration beyond qualified1be."
+    "selected": false,
+    "bounded_candidate_revision": "d71add52a88ab18084ecd3ea856b9b4df80a7469",
+    "candidate_source_sha256": "7c2771ff590fcd2cdfdfd51e71c8a34aab2a6a86b48d275d6071b8832647e8c4",
+    "candidate_full_route_qualified": false,
+    "scope": "Reviewed published ABI27 NEC invalid-command framing/sense profile, original-reference matrix and bounded retail checkpoint/audio qualification. All retained source keys were officially re-emitted for the candidate and own-build checkpoints verified. Full-route Play remains qualified ABI26."
   },
   "alcaino_stair_room18_milestone": {
     "qualified": true,
@@ -3930,5 +3934,45 @@
   },
   "diagnostic_pin_history": {
     "scope": "The diagnostics block retains the exact historical diagnostic-only adoption input. Current runtime selection is tool and abi26_full_route_milestone; the same unchanged helper pin now supports selected ABI26."
+  },
+  "cd_unknown_policy27_milestone": {
+    "qualified_scope": "Bounded cold boot, first unknown-command response, subsequent sector read and own-build checkpoint/audio tests only",
+    "selected": false,
+    "full_route_qualified": false,
+    "runtime_abi": 27,
+    "revision": "d71add52a88ab18084ecd3ea856b9b4df80a7469",
+    "source_files": 80,
+    "source_sha256": "7c2771ff590fcd2cdfdfd51e71c8a34aab2a6a86b48d275d6071b8832647e8c4",
+    "profile": "nec-invalid",
+    "compiled_source_identities": 57752,
+    "executed_source_identities_this_bounded_cohort": 6816,
+    "cold_prefix_frames_each_policy": 4204,
+    "cold_prefix_native_steps_each_policy": 115734126,
+    "nec_direct_fresh_frames": 60,
+    "nec_direct_native_steps": 1749499,
+    "nec_restored_fresh_frames": 12,
+    "nec_restored_native_steps": 423360,
+    "nec_received_command_bytes": 10,
+    "nec_invalid_responses": 1,
+    "nec_accepted_GOOD_responses": 0,
+    "subsequent_sector_read_observed": true,
+    "legacy_exact_per_key_retirements_preserved": true,
+    "own_policy_immediate_and_continued_checkpoint_files_equal": true,
+    "paced_fresh_frames": 120,
+    "paced_native_steps": 3689416,
+    "interpreted_steps_all_new_cases": 0,
+    "new_device_accepted_lower_bound": 87759,
+    "new_nonzero_device_accepted_lower_bound": 7896,
+    "active_dropped_frames": 0,
+    "planned_pause_tail_clear": 696,
+    "shutdown_pending_frames_separately_dropped": 2,
+    "guest_memory_writes": 0,
+    "old_checkpoint_imports": false,
+    "reference_wire_and_warm_reset_differences_retained": true,
+    "consumer_tests": 550,
+    "focused_pre_command_guard_tests": 10,
+    "focused_audio_phase_tests": 8,
+    "selected_Play_runtime_abi": 26,
+    "campaign_listening_or_hardware_qualified": false
   }
 }
