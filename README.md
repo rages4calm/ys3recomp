@@ -68,6 +68,22 @@ stopped during deeper navigation. Exact-build checkpoint probes and ordinary
 Equipment/Long Sword selection were also verified; no cross-build checkpoint,
 item/STR edits, campaign or listening parity is claimed.
 
+A separately pinned [diagnostic toolkit](https://github.com/rages4calm/pcenginerecomp/commit/1be93679c3318c667f97f55cb37af625a86ad875)
+now supplies typed paused-write validation and lossless closed-journal archives.
+The consumer assist adapter preserves expected-byte, complete source-footprint,
+backing-alias and fresh title-policy guards before its single write attempt.
+Only the declared counters and fetched-generation effects are admitted;
+all other paused fields remain strict. Diagnostic imports execute authenticated
+source bytes and reject cached helper versions.
+
+A separate checkpoint test executes 60 new neutral frames in each of two
+processes: **1,951,472 native / zero interpreted instructions per suffix**.
+Complete immediate-restore and continued checkpoint files match, with TCP
+digital audio and zero synthesis loss. The imported assisted discovery prefix
+remains unqualified. Both new closed wire journals have verified gzip copies;
+originals and their hashes are retained separately. This adopts diagnostics,
+with no new full-route or campaign qualification and no Play selection change.
+
 The shared toolkit adds explicit base HuCard startup and mapper support. Its
 authored fixtures have separate Geargrafx/native/TCP/PSG checks. **Ys III still
 uses the owner's CHD**; this batch adds no retail HuCard/CUE test or media

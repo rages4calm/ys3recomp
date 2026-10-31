@@ -3805,5 +3805,59 @@
     "listening_qualified": false,
     "hardware_qualified": false,
     "scope": "Bounded assisted original-code ABI26 gameplay and composer preview only. Selected ABI18 pin/native milestone/Play remain unchanged; complete discovery and fresh literal native replay still required."
+  },
+  "diagnostics": {
+    "repository": "https://github.com/rages4calm/pcenginerecomp",
+    "revision": "1be93679c3318c667f97f55cb37af625a86ad875",
+    "checkout": ".deps/pcenginerecomp-diagnostics43",
+    "runtime_abi": 26,
+    "source_sha256": "d17bdc9159b53b00144a388ebe45a6f7e5e7c5767b7de1989df0e50db24e213c",
+    "selected_runtime": false,
+    "helper_sha256": {
+      "scripts/dev_journal.py": "c324467266382a3d936b3becf1dee6b5b192637439a26b89384a46062d2e633b",
+      "scripts/dev_client.py": "7676201a630c256eeeff8a7bcfa07d36e55050e0741077114d49b2222d71bb52",
+      "scripts/dev_journal_audit.py": "9b9bf450c556d73f6401d6968f7e5f6f6d73f0b6f2b9c08b562cc7083eea6024",
+      "scripts/dev_observation.py": "651c1ce75b1c9cc2252b877092d1ae0b359f5e3e94749a7b0d8a2a98b54f1f10",
+      "scripts/dev_write.py": "243a8c0b16ec7aa500b83e211824ef68ef9b97ece86b9443ea4e94bcc6eb7cdf",
+      "scripts/dev_journal_archive.py": "7bc7da2df493cf679bc62735a0c7a499c861f31be68722da7f7ecab008a939f8"
+    },
+    "scope": "Separate diagnostic Python helpers only; selected ABI18 runtime and full-route qualification unchanged."
+  },
+  "diagnostic_adoption": {
+    "qualified_scope": "Bounded exact-build assisted checkpoint suffix and closed-journal diagnostic integration only",
+    "selected_runtime_changed": false,
+    "gameplay_tool_revision": "d6b599c9e4d619fe7d81846e84a954e8386f67aa",
+    "imported_prefix": {
+      "frame": 69891,
+      "ticks": 25090523226,
+      "native_steps": 2117569044,
+      "interpreter_steps": 614
+    },
+    "new_frames_per_process": 60,
+    "native_steps_per_suffix": 1951472,
+    "interpreter_steps_per_suffix": 0,
+    "ticks_per_suffix": 21536028,
+    "complete_immediate_checkpoint_equal": true,
+    "complete_continued_checkpoint_equal": true,
+    "complete_continued_core_equal": true,
+    "single_new_authorized_CAS": true,
+    "same_bank_fetch_generation_delta": 1,
+    "all_other_paused_fields_strict": true,
+    "original_and_live_footprint_bound": true,
+    "retained_prefix_qualified": false,
+    "full_route_migration_qualified": false,
+    "owner_inputs_unchanged": true,
+    "closed_journal_pairs": [
+      381,
+      271
+    ],
+    "raw_journals_retained": true,
+    "gzip_streaming_verified": true,
+    "upstream_affected_tests": 76,
+    "upstream_skips": 0,
+    "listening_or_hardware_qualified": false,
+    "consumer_tests": 547,
+    "authored_adoption_tests": 24,
+    "consumer_skips": 0
   }
 }
