@@ -1,4 +1,42 @@
-# Consumer status - 30 October 2026
+# Consumer status - 31 October 2026
+
+## Diagnostic adoption: typed assists and closed journals
+
+The diagnostic-only toolkit pin is `1be93679c3318c667f97f55cb37af625a86ad875`,
+ABI26 / source79. It is separate from the selected ABI18 runtime and the
+retained ABI26 gameplay executable. Exact Git bytes and six helper hashes are
+checked before use. Helpers execute from verified source bytes, with cached
+modules, mixed origins and bytecode substitution refused.
+
+The new consumer adapter made one freshly authorized living-HP data CAS on
+an isolated fork of the closed discovery checkpoint. Complete original and
+retained full-reset source captures plus the fresh checkpoint-window origin
+bind the footprint. Every submitted backing alias and current fetched byte is
+excluded before sending. Fresh full RAM, expected bytes, title policy, source
+clock and overflow guards precede durable intent; failures consume the
+capability, and uncertain delivery is never retried. The typed upstream
+relation admits the exact declared debug counters and seven observed fetched
+generation deltas. Other aliases' bank deltas remain predictions.
+
+| New bounded evidence | Result |
+| --- | --- |
+| Imported assisted prefix | 69,891 frames; 2,117,569,044 native / 614 interpreted; remains unqualified |
+| Writer and fresh-restorer suffix, each | 60 neutral frames; 1,951,472 native / zero interpreted; 21,536,028 ticks |
+| Endpoint | Frame 69,951; living HP40 / read-only maximum40 |
+| Checkpoint equality | Complete immediate round-trip and continued file/core bytes match |
+| Digital audio | Equal endpoint PCM hash; 44,220 new mixed nonzero frames; synthesis loss zero |
+| Closure | Both owned hosts quit naturally with exit zero; clients and streams closed |
+| New closed journals | 381 writer / 271 restorer request-reply pairs; gzip streaming audits pass |
+| Diagnostic helper checks | 76 affected upstream tests passed, zero skips |
+| Consumer checks | 547 tests passed, including 24 new authored adoption tests; zero skips |
+
+Fast-forward SDL output remains muted; this is digital audio evidence, not
+listening parity. Supplemental archive manifests bind raw journal hashes and
+separate gzip container hashes. Originals and historical receipts are retained.
+The old failed preflight remains failed historical evidence; it was not retried
+or relabeled. A new full discovery route and fresh composed-native replay are
+still required for migration. No game module, selected runtime, owner media,
+installed save, launcher or campaign milestone changed in this diagnostic batch.
 
 ## ABI26 progress: composer and assisted wizard reward; migration unqualified
 

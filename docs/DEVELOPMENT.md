@@ -5,6 +5,53 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
+## Separately pinned diagnostic helpers
+
+`toolchain.json` keeps diagnostic revision
+`1be93679c3318c667f97f55cb37af625a86ad875` separate from `tool` and the selected
+ABI18 module. `scripts/diagnostic_tools.py` requires the exact clean Git root,
+normal index flags and six explicit helper hashes. Its dedicated-process loader
+rejects cached/mixed `scripts` modules and compiles only authenticated source
+bytes, bypassing timestamp-valid bytecode. The runtime source digest alone does
+not authenticate Python scripts. Bind any local authority/planner/adapter code
+with the same source-only execution discipline in a frozen test harness.
+
+`scripts/paused_write_adapter.py` owns one new, single-use assist capability.
+The caller independently verifies executable/topology, literal authority and
+fresh title invariants, and supplies a complete original-plus-live footprint
+with a source epoch. The adapter joins that live epoch to the exact paused
+BEFORE clocks and retirements. Keep the existing full-reset capture-cache path
+strict: checkpoint assists need an explicit bound retained prefix, original
+closed capture digest/window and current lossless checkpoint origin. Imported
+prefix work is not fresh execution or inherited write authority.
+
+Before sending, retain complete RAM/source/status, exclude every byte's backing
+aliases against catalogue, live and current fetches, validate the fresh literal,
+title policy, write opt-in, consistent generations and nonoverflowing counters.
+A live durable SDK wire journal is required. Persist intent before the single
+transmission; any exception poisons the capability. Retain raw ACK, full RAM,
+source and AFTER status before calling upstream `validate_paused_write` with
+`WORK_RAM_MIRRORS`. Keep ordinary paused observations STRICT; never discard
+generation fields or add an audio-drain allowance. The relation does not prove
+unreported bank counters, title-level safety or future source exclusions.
+
+For bounded qualification, save after the write, continue in small guarded
+steps, load the saved checkpoint in a fresh exact-package process, compare full
+immediate serialization, and repeat the same controls to compare complete
+continued file/core bytes. Report imported and new work separately. Stop on
+HP0, changed maximum/actor/source authority or audio loss; no adaptive refill,
+extension or uncertain retry. A suffix is not full-route/native qualification.
+
+`scripts/archive_closed_journal.py` wraps the official offline archive and
+streaming reader. Only after actual client closure, process wait(0) and closed
+streams, bind the exact journal in a hash-bound closure receipt. Run its CLI
+with source, new destination, `--closure`, `--closure-sha256` and `--sha256`.
+It rejects duplicate/nonfinite JSON and retains the original. Supplemental
+metadata keeps raw path/hash separate from gzip path/container hash/encoding;
+streaming verification requires both original and container hashes. Never
+rewrite historical receipts, infer closure from paired frames, archive active
+logs or delete originals as part of this operation.
+
 ## ABI26 closeout and next migration gate
 
 Keep the selected ABI18 tool, qualified native module and Play selection intact.
