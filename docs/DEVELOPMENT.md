@@ -5,11 +5,59 @@ Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Separately pinned diagnostic helpers
+## Current ABI26 full-route qualification
+
+The selected runtime is public `1be93679c3318c667f97f55cb37af625a86ad875`.
+Use its official composer, stable profile emitter and project build/verify APIs.
+Keep original capture ABIs/origins and bind the exact raw profile bytes. Profile
+history can overlap; only actual fresh reset captures establish retirement
+coverage. Preserve every retained catalogue key and distinguish compiled from
+executed keys. The selected route is 102,802 frames through Alcaino stair-room
+control, with 3,122,661,937 native retirements and zero fallback; it is not full
+campaign qualification.
+
+Seal a naturally closed complete discovery before building/replaying. A literal
+semantic replay preserves controls, every settled status/RAM/image/source read,
+expected-byte CAS and actual final frame/ticks of each step. Use the separately
+pinned `scripts/dev_steps.py` at `929dcc3b9affe3af70eeaa49c6091baceb1bf056`.
+Retain and validate all progress polls within finite monotonic envelopes;
+their count and transient CPU state depend on scheduling. Do not fabricate
+transient equality, discard all status traffic or assume requested frames equal
+whole-instruction completion. Legacy journals have no wall timestamps; mark
+those deadlines unobserved, and measure candidate elapsed times explicitly.
+
+Tier conversion is narrowly N+I to N with I0 at every compared boundary and
+source key. Keep all PC/MPR/physical/byte variants. Native and discovery tool
+roots differ: bind both pins and the reviewed runtime/CMake equivalence rather
+than weakening historical same-root comparators. Whole cross-module checkpoint
+files have different contexts; compare source-bound core semantics and each
+own ACK/file. New modules need their own fresh reset and checkpoints.
+
+After the full native route, verify a fresh same-build restore: whole immediate
+serialization and continued files/cores/source keys must match. Report imported
+prefix and new suffix work separately. Disable development writes in these
+read-only forks. For paced audio, require fresh nonzero synthesis and device
+acceptance beyond all imported pending PCM. Bind source queue equations and
+live unpaused observations: intentional pause-tail clears and shutdown drains
+are presentation losses with explicit counts, not synthesis loss or a claim of
+lossless listening. Preserve failed stricter probes separately.
+
+Freeze runtime proof independently of mutable public metadata/selection. A
+historical metadata relocation must preserve exact original bytes/hash and
+whitelist only the declared nonruntime file and consumed fields. Never rewrite
+old receipts or substitute code/runtime/media hashes. Auxiliary metadata errors
+need explicit bound correction sidecars; later verification must not be described
+as an original post-run invocation. Select Play only after route, source,
+semantic, checkpoint and audio gates pass, then verify both launcher info paths.
+
+The earlier migration notes below are historical and do not change the current
+selected ABI26 qualification.
+
+## Retained diagnostic helper contract
 
 `toolchain.json` keeps diagnostic revision
-`1be93679c3318c667f97f55cb37af625a86ad875` separate from `tool` and the selected
-ABI18 module. `scripts/diagnostic_tools.py` requires the exact clean Git root,
+`1be93679c3318c667f97f55cb37af625a86ad875` separately from the selected
+runtime contract. `scripts/diagnostic_tools.py` requires the exact clean Git root,
 normal index flags and six explicit helper hashes. Its dedicated-process loader
 rejects cached/mixed `scripts` modules and compiles only authenticated source
 bytes, bypassing timestamp-valid bytecode. The runtime source digest alone does
@@ -52,7 +100,7 @@ streaming verification requires both original and container hashes. Never
 rewrite historical receipts, infer closure from paired frames, archive active
 logs or delete originals as part of this operation.
 
-## ABI26 closeout and next migration gate
+## Historical ABI26 closeout before the completed migration
 
 Keep the selected ABI18 tool, qualified native module and Play selection intact.
 The reviewed ABI26 composer at `e171b398d02dccdfb3313a7f18b81c7aed3488ae`
@@ -84,7 +132,7 @@ stopped safely at frame 69,891: assist preflight refused a write affecting the
 current fetched-bank generation. Preserve this failure and resolve the safe
 assist boundary before resuming; no further exploration belongs to this closeout.
 
-## Current selected ABI18 Alcaino stair-room workflow
+## Retained ABI18 Alcaino stair-room workflow
 
 Start from the qualified 57,545 catalogue and actual 102,011-frame replay.
 All 57,523 previous keys remain; 22 additions promote 87 retirements. The new
@@ -1096,7 +1144,7 @@ watchdog guards and verify-only behavior. On failure stop owned helpers first;
 only an exact PID/PE hash/full argv/capture identity permits native force-close.
 A successful candidate must exit naturally with no fallback cleanup.
 
-The next focused batch is ABI26 migration using official capture import with
+The completed ABI26 migration uses official capture import with
 original ABI labels, stable emission, an ordinary new-directory build and
 state-aware guest controls. Preserve the selected ABI18 package. Developer
 checkpoints belong to one exact executable/module; regenerated or cross-ABI

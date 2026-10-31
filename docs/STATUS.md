@@ -1,9 +1,71 @@
 # Consumer status - 31 October 2026
 
-## Diagnostic adoption: typed assists and closed journals
+## Selected ABI26: complete retained route, zero interpreter fallback
 
-The diagnostic-only toolkit pin is `1be93679c3318c667f97f55cb37af625a86ad875`,
-ABI26 / source79. It is separate from the selected ABI18 runtime and the
+Play now selects the verified ABI26 package at
+`1be93679c3318c667f97f55cb37af625a86ad875` (79 source files,
+SHA256 `d17bdc9159b53b00144a388ebe45a6f7e5e7c5767b7de1989df0e50db24e213c`).
+The separate semantic-step helper is pinned at
+`929dcc3b9affe3af70eeaa49c6091baceb1bf056`; its published release changes no
+runtime/compiler semantics. The previous qualified ABI18 package is retained.
+
+| Actual qualification | Result |
+| --- | --- |
+| Complete fresh reset route | 102,802 frames; 3,122,661,937 native / zero interpreted |
+| Same ABI26 discovery baseline | 3,122,658,504 native / 3,433 interpreted |
+| Per-key conversion | All 54,610 executed PC/MPR/physical/byte identities conserve total hits; 3,433 retirements promoted, including 68 block instructions |
+| Official composed module | 57,752 identities; all 57,545 old keys retained; 207 new keys compiled and executed |
+| Compiled keys not exercised here | 3,142 retained keys; no execution claim for them |
+| Emission | 83 contexts; 943 stable translation units + one header; zero unsupported/excluded observations |
+| Semantic protocol | 5,257 exact step endpoints; 94,286 sealed records; timing-dependent progress polls retained separately |
+| Render/state evidence | 535 exact guest images, strict settled statuses and raw RAM/source/device/audio comparisons |
+| Assisted transactions | 300 single-attempt literal data writes with complete RAM and typed effects |
+| Same-build checkpoint suffixes | 60 fresh frames each; 1,851,616 native / zero interpreted; complete immediate and continued file/core equality |
+| Paced audio suffix | 120 fresh frames; 3,703,226 native / zero interpreted; at least 87,720 fresh frames accepted by SDL beyond imported PCM |
+| Digital audio endpoint | 75,779,095 frames; PCM hash 6699622511181680977; synthesis loss zero |
+
+The route includes actual miner dialogue, deeper-boss combat/defeat and +600
+EXP/+600 gold, lodge return, Alcaino first-room combat and the next diagonal
+stair room. All 33 case boundaries close, but only six historical case rules
+are nonempty; labels alone are not outcome proof. Separate reviewed images and
+bound RAM/controller trajectories establish the later scenes. In the stable
+stair room, Down moves (84,20) to (108,44), Up moves to (104,40), and Down to
+(116,52), with camera (-16,0), actor0 and maximum60. This proves down/up
+movement, not a return to the staircase top. Raw HP is60 while the HUD remains
+030 at the endpoint.
+
+The early state-aware prefix and four reviewed ordinary-control overrides
+plus bounded navigation/menu/reward inputs differ from the old ABI18 recipe.
+The remaining 2,016 inherited requests and the 234-frame tail are retained.
+Total length is 791 frames beyond the old 102,011-frame qualification. Exact
+same-control conservation is between the new ABI26 discovery and candidate;
+no identical cross-ABI positions, rewards, pixels or timing are claimed.
+
+Four original captures are composed without relabeling ABI/checkpoint origins.
+The profile's overlapping historical totals are not one execution. All new
+execution counts come from the fresh reset capture and per-key comparison.
+Sixteen cross-module checkpoint cores match after only five explicitly proved
+tier-counter conversions; fingerprints/files remain distinct. Fresh same-build
+restores additionally match whole files and complete cores without projection.
+
+Full-route fast-forward audio remains muted. A separate paced-device probe
+shows zero active drops and new nonzero PCM accepted beyond39 imported frames.
+Its planned pause clears729 queued presentation frames; shutdown separately
+drains/drops seven pending frames. The exact generated/submitted/pending queue
+equation holds. An earlier overstrict zero-drop probe remains failed; it was
+not relabeled. Two auxiliary receipt prose/identity errors have explicit
+hash-bound corrections with original receipts and executed sources retained.
+These are metadata corrections, not new gameplay execution.
+
+Full campaign, listening, hardware/analog parity and cross-process game saves
+remain unfinished. The `gear-good` unknown-CD compatibility condition remains
+visible. No program/quest/item/equipped-weapon/STR bytes were edited. Owner media
+is read-only and BRAM is an explicitly blank, volatile seed.
+
+## Historical diagnostic adoption before full migration
+
+At that stage, the diagnostic-only toolkit pin was `1be93679c3318c667f97f55cb37af625a86ad875`,
+ABI26 / source79. It was separate from the then-selected ABI18 runtime and the
 retained ABI26 gameplay executable. Exact Git bytes and six helper hashes are
 checked before use. Helpers execute from verified source bytes, with cached
 modules, mixed origins and bytecode substitution refused.
@@ -35,14 +97,14 @@ listening parity. Supplemental archive manifests bind raw journal hashes and
 separate gzip container hashes. Originals and historical receipts are retained.
 The old failed preflight remains failed historical evidence; it was not retried
 or relabeled. A new full discovery route and fresh composed-native replay are
-still required for migration. No game module, selected runtime, owner media,
+still required at that stage. No game module, selected runtime, owner media,
 installed save, launcher or campaign milestone changed in this diagnostic batch.
 
-## ABI26 progress: composer and assisted wizard reward; migration unqualified
+## Historical ABI26 progress before this qualification
 
-The selected ABI18 pin, Play launcher and 102,011-frame zero-interpreter
-qualification below remain unchanged. **Full-route ABI26 migration is still
-unqualified.** The new composed ABI26 module remains uncompiled and unqualified.
+At this earlier stage, the selected ABI18 pin and 102,011-frame qualification
+were unchanged. The then-current ABI26 preview was uncompiled and the full
+migration was unqualified; the completed qualification above supersedes it.
 
 | Evidence | Result |
 | --- | --- |

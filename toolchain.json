@@ -2,11 +2,11 @@
   "schema": 1,
   "tool": {
     "repository": "https://github.com/rages4calm/pcenginerecomp",
-    "revision": "6935e46ff8aefacf8ea058a385198299c4e2cd5c",
-    "source_sha256": "9414ed390229b8d411f2f79f6c22080d68fef7b09aef2bf99db0046751e34cf0",
-    "checkout": ".deps/pcenginerecomp-abi18",
-    "runtime_abi": 18,
-    "source_policy": "Exact clean intended commit; current pin also uses the shared consumer API's exact source digest. Development overrides must explicitly supply the intended revision."
+    "revision": "1be93679c3318c667f97f55cb37af625a86ad875",
+    "source_sha256": "d17bdc9159b53b00144a388ebe45a6f7e5e7c5767b7de1989df0e50db24e213c",
+    "checkout": ".deps/pcenginerecomp-diagnostics43",
+    "runtime_abi": 26,
+    "source_policy": "Exact reviewed public ABI26 source; selected full-reset native route and same-build checkpoint/device checks qualified. Original capture ABI and checkpoint origins remain unchanged."
   },
   "initial_qualification": {
     "revision": "33fe46d4274584da5ba55b419a240f248df4158d",
@@ -3514,18 +3514,12 @@
     }
   },
   "latest_toolkit_review": {
-    "revision": "2e203024ae4e03984c8000783d3c762e3855b9a2",
+    "revision": "39db0626c2d76d615e0ded89ae51e52baa9a2718",
     "runtime_abi": 26,
-    "selected": false,
-    "features_reviewed": [
-      "stable original-label capture import",
-      "state-aware TCP and exact-package checkpoints",
-      "durable raw wire journals",
-      "strict paused legacy observation profile",
-      "streaming journal audit"
-    ],
-    "migration_qualified": false,
-    "reason": "Public diagnostic release leaves candidate runtime/emitter/project sources unchanged. Finite ABI26 shop exit/checkpoint gate passes; mixed-ABI additive source composer is publicly planned, not implemented. Selected full-route launcher stays ABI18."
+    "selected_runtime_revision": "1be93679c3318c667f97f55cb37af625a86ad875",
+    "runtime_compiler_CMake_changed_since_selected": false,
+    "semantic_helper_consumed_separately": true,
+    "scope": "Reviewed published semantic-step helper and migration guidance; no runtime/compiler migration beyond qualified1be."
   },
   "alcaino_stair_room18_milestone": {
     "qualified": true,
@@ -3859,5 +3853,82 @@
     "consumer_tests": 547,
     "authored_adoption_tests": 24,
     "consumer_skips": 0
+  },
+  "semantic_steps": {
+    "repository": "https://github.com/rages4calm/pcenginerecomp",
+    "revision": "929dcc3b9affe3af70eeaa49c6091baceb1bf056",
+    "public_release_revision": "dfcf9590d79b36039c6804e8e3c917f14b612e89",
+    "checkout": ".deps/pcenginerecomp-steps45",
+    "helper": "scripts/dev_steps.py",
+    "helper_sha256": "20b6ecf7c9193556da1678c7d0911bb181ccdc8f7d39974981b0e09aed1a6663",
+    "scope": "Source-only separately pinned pure step/progress validation; runtime/compiler unchanged."
+  },
+  "abi26_full_route_milestone": {
+    "qualified": true,
+    "selected": true,
+    "runtime_abi": 26,
+    "frames": 102802,
+    "native_steps": 3122661937,
+    "interpreted_steps": 0,
+    "baseline_native_steps": 3122658504,
+    "baseline_interpreted_steps": 3433,
+    "native_gain_on_same_ABI26_route": 3433,
+    "block_native_gain": 68,
+    "compiled_source_identities": 57752,
+    "old_source_identities_retained": 57545,
+    "new_source_identities_compiled_and_executed": 207,
+    "executed_source_identities": 54610,
+    "compiled_keys_not_exercised_this_route": 3142,
+    "mpr_contexts": 83,
+    "stable_translation_units": 943,
+    "headers": 1,
+    "unsupported_observations": 0,
+    "excluded_observations": 0,
+    "completed_route_cases": 33,
+    "nonempty_legacy_semantic_rules": 6,
+    "terminal_scene_and_actual_controller_trajectory_separately_verified": true,
+    "inherited_requests_after_state_aware_prefix": 2016,
+    "reviewed_effective_control_overrides": 4,
+    "semantic_steps": 5257,
+    "exact_guest_images": 535,
+    "memory_write_requests": 300,
+    "assisted_progression": true,
+    "program_quest_item_equipment_or_STR_byte_edits": false,
+    "old_ABI18_frame_count": 102011,
+    "cross_ABI_identical_controls_state_timing_or_rewards_claimed": false,
+    "same_build_checkpoint": {
+      "fresh_frames_per_suffix": 60,
+      "native_steps_per_suffix": 1851616,
+      "interpreted_steps_per_suffix": 0,
+      "complete_immediate_and_continued_file_core_equal": true
+    },
+    "paced_audio": {
+      "new_frames": 120,
+      "new_native_steps": 3703226,
+      "new_interpreted_steps": 0,
+      "new_mixed_nonzero_frames": 88456,
+      "imported_pending_frames": 39,
+      "active_dropped_frames": 0,
+      "planned_pause_tail_cleared_frames": 729,
+      "shutdown_pending_frames_separately_drained": 7,
+      "new_device_accepted_lower_bound": 87720,
+      "synthesis_discarded_frames": 0,
+      "listening_or_hardware_qualified": false
+    },
+    "digital_audio": {
+      "frames": 75779095,
+      "pcm_hash": 6699622511181680977,
+      "mixed_nonzero": 71964477,
+      "synthesis_discarded_frames": 0,
+      "full_route_SDL_fast_forward_muted": true,
+      "capped_boot_WAV_only": true
+    },
+    "new_full_campaign_qualification": false,
+    "crossprocess_game_save_persistence": false,
+    "unknown_CD_gear_good_compatibility_required": true,
+    "scope": "Verified-assisted full reset route through miner, deeper-boss reward, town/lodge, Alcaino first combat room and diagonal stair-room down/up movement. New same-control ABI26 discovery/native replay; preserve old catalogue, not every retained key newly executed. No campaign, listening or hardware parity."
+  },
+  "diagnostic_pin_history": {
+    "scope": "The diagnostics block retains the exact historical diagnostic-only adoption input. Current runtime selection is tool and abi26_full_route_milestone; the same unchanged helper pin now supports selected ABI26."
   }
 }

@@ -1,148 +1,104 @@
 # Ys III native-port project
 
-An incremental PC Engine CD consumer of
-[pcenginerecomp](https://github.com/rages4calm/pcenginerecomp), starting with
-*Ys III: Wanderers from Ys* (USA). This is an early hybrid port: unseen code
-still uses the interpreter, and the full campaign remains unfinished.
+An incremental PC Engine CD native port of *Ys III: Wanderers from Ys* (USA),
+built with [pcenginerecomp](https://github.com/rages4calm/pcenginerecomp).
+**ABI26 is now selected.** The qualified **102,802-frame** reset route retires
+**3,122,661,937 native instructions and zero interpreted instructions**.
+The full campaign remains unfinished; unseen code retains interpreter fallback.
 
-The current **102,011-frame** TCP/digital-audio route retires
-**3,113,677,066 native instructions and zero interpreted instructions**.
-It retains the lodge departure and first-room combat, then enters Alcaino's
-next diagonal stair room and verifies movement down and back up its stairs.
+The route covers herb use, damage/death/continue, mine combat and equipment,
+the wizard and deeper-mine boss rewards, miner dialogue, town/lodge return,
+Alcaino's first combat room and downward/upward movement in its next diagonal
+stair room. It uses verified HP/movement development assists and original game
+code. This is bounded assisted verification, not campaign completion.
 
-The official module contains **57,545 original source identities** in
-83 full MPR contexts, across 278 C++ translation units and one header.
-All 57,523 previous identities remain. The 22 additions execute for 87 newly
-native retirements on the same route; none is compiled-only. Source variants
-remain distinct. One previously compiled identity also executes one new hit.
-Unseen code retains interpreter fallback; full campaign coverage is unfinished.
+The new module contains **57,752 source identities** in 83 full MPR contexts,
+across 943 stable C++ translation units and one header. All 57,545 previous
+identities remain; all 207 additions execute. The fresh route exercises 54,610
+identities; 3,142 retained compiled keys are not exercised by this route.
+Compared with the same ABI26 discovery controls, **3,433 interpreted retirements
+are now native**, including 68 block instructions. No source variant was
+excluded or unsupported. Emission totals alone are not execution evidence.
 
-The new 234-frame interval retires 7,159,222 native instructions with zero
-fallback. The fresh same-control replay matches all 2,184 controls,
-4,896 states and 2,132 images, source totals, canonical assist proofs and digital PCM.
-All 284 retained data-CAS transactions remain; one new independently verified
-living current-HP refill changes only its low byte from 30 to the read-only
-maximum of 60. EXP rises from 1,280 to 1,324 and gold from 1,360 to 1,380.
-The HUD may remain at HP030 after the raw refill.
+Actual TCP comparisons preserve exact settled CPU/source/device state, RAM,
+535 guest images and digital PCM. All 5,257 frame steps retain bounded progress
+polls and match the actual paused endpoint; polling cadence may differ.
+All 300 data-CAS assists have literal authority, alias/footprint exclusions,
+full RAM readbacks and typed write-effect proofs. No program, quest, item,
+equipped-weapon or STR bytes were edited.
 
-This is assisted, bounded room/control verification. Native and independent
-reference timings differ. The earlier unassisted first-room HP/phase difference
-remains unresolved. Full campaign, cross-process saves, listening and hardware
-parity remain unfinished.
+The new ABI26 route is 791 frames longer than the retained ABI18 route because
+its early state-aware prefix and reviewed navigation/menu controls differ.
+Its terminal room and down/up control capability are verified separately;
+positions, rewards and timing are not cross-ABI parity claims.
 
 ## Play the local build
 
 In a prepared checkout, double-click **Play Ys III.cmd**. Press Enter/Run at
 the System Card menu, choose Beginning, then Proceed at the blank-BRAM prompt.
-**Native Files.cmd** opens the privately generated C++ folder. A fresh clone
+**Native Files.cmd** opens the selected generated C++ folder. A fresh clone
 needs owner-supplied media and a qualified private build; generated game source,
 assets, captures and saves are excluded from Git.
 
 Arrows move; Z jumps (button I), X attacks (button II). Shift opens the
-Command menu (Select), and Enter is Run.
-Space pauses, F11 toggles fullscreen and Esc exits. The launcher verifies the
-selected inputs, module, runtime and adjacent SDL package; it downloads and
-installs nothing. `python scripts/play_local.py --info` checks readiness without
-opening a game. Cross-process saves are not implemented.
+Command menu (Select), and Enter is Run. Space pauses, F11 toggles fullscreen
+and Esc exits. The launcher verifies the selected inputs, module, runtime and
+adjacent SDL package; it downloads and installs nothing.
+`python scripts/play_local.py --info` checks readiness without opening a game.
+Guest saves are volatile; cross-process game saves are not implemented.
 
-The toolkit remains pinned to ABI18 at
-`6935e46ff8aefacf8ea058a385198299c4e2cd5c`. Its composed profile retains the
-original ABI17 lineage and actual ABI18 capture labels. This multi-run source
-union was re-emitted and rebuilt for the current next-room batch.
+The selected [ABI26 toolkit](https://github.com/rages4calm/pcenginerecomp/commit/1be93679c3318c667f97f55cb37af625a86ad875)
+uses the official provenance-preserving composer and stable emitter.
+The [semantic step validator](https://github.com/rages4calm/pcenginerecomp/commit/929dcc3b9affe3af70eeaa49c6091baceb1bf056)
+is separately pinned. Shared CPU/device semantics and generation remain
+upstream; this project owns game configuration, coverage and verification.
 
-The separate ABI26 migration is **still unqualified; Play remains on ABI18**.
-The [reviewed composer](https://github.com/rages4calm/pcenginerecomp/commit/e171b398d02dccdfb3313a7f18b81c7aed3488ae)
-now preserves original capture provenance, with 126 affected upstream checks
-passing without skips. A 57,593-identity profile was composed and emitted as an
-**uncompiled preview**. The ABI26 build actually used for gameplay still has
-57,545 identities on the earlier reviewed toolkit.
+## Audio and checkpoints
 
-That hybrid build has now defeated the wizard through TCP with digital audio:
-EXP 182 to 382, gold 358 to 558, and a natural level-up to maximum HP40.
-Progression used verified HP/movement data assists and ordinary combat inputs;
-game program bytes were unchanged. At the 64,746-frame reward boundary, the
-cumulative reset run had retired 1,959,774,497 native and 602 interpreted
-instructions. This is bounded assisted gameplay evidence, not an ABI26
-native-qualified boss or a successful full-route migration. The run later
-stopped during deeper navigation. Exact-build checkpoint probes and ordinary
-Equipment/Long Sword selection were also verified; no cross-build checkpoint,
-item/STR edits, campaign or listening parity is claimed.
+Both full-route runs match 75,779,095 cumulative 44.1 kHz PCM frames,
+hash `6699622511181680977`, including 71,964,477 mixed-nonzero frames and zero
+synthesis loss. The capped ten-second WAV covers boot; later sound is verified
+cumulatively. Full-route fast-forward SDL presentation is muted.
 
-A separately pinned [diagnostic toolkit](https://github.com/rages4calm/pcenginerecomp/commit/1be93679c3318c667f97f55cb37af625a86ad875)
-now supplies typed paused-write validation and lossless closed-journal archives.
-The consumer assist adapter preserves expected-byte, complete source-footprint,
-backing-alias and fresh title-policy guards before its single write attempt.
-Only the declared counters and fetched-generation effects are admitted;
-all other paused fields remain strict. Diagnostic imports execute authenticated
-source bytes and reject cached helper versions.
-
-A separate checkpoint test executes 60 new neutral frames in each of two
-processes: **1,951,472 native / zero interpreted instructions per suffix**.
-Complete immediate-restore and continued checkpoint files match, with TCP
-digital audio and zero synthesis loss. The imported assisted discovery prefix
-remains unqualified. Both new closed wire journals have verified gzip copies;
-originals and their hashes are retained separately. This adopts diagnostics,
-with no new full-route or campaign qualification and no Play selection change.
-
-The shared toolkit adds explicit base HuCard startup and mapper support. Its
-authored fixtures have separate Geargrafx/native/TCP/PSG checks. **Ys III still
-uses the owner's CHD**; this batch adds no retail HuCard/CUE test or media
-conversion. Earlier finite migration proofs remain retained separately.
-
-Both module runs match 75,196,020 cumulative 44.1 kHz PCM frames,
-hash `7520645438990754195`, including 71,381,855 mixed-nonzero frames
-and zero synthesis loss. The capped ten-second WAV covers silent boot; later
-audio is verified cumulatively. Fast-forward SDL presentation is muted.
-Independent Geargrafx confirms bounded stair entry, next-room control and the
-HP-only assist, with differing positions and timing. Reported status equality
-does not establish hidden audio-queue contents or whole-machine quiescence.
-No whole-route reference audio, listening or hardware parity is claimed.
-
-The prior whole-span exclusion has been replaced by an explicit original-only
-selection. The three verified originals are emitted; the historical temporary
-identity stays omitted. Its 101 profile hits belong to an aggregate multi-run
-profile, not this execution. The older 95,686-frame IPL-entry route remains a
-separate retained milestone and was not repeated here.
+Fresh same-build checkpoint restores match complete immediate and continued
+checkpoint files and machine cores. Each 60-frame suffix executes 1,851,616
+native instructions with zero fallback. A separate paced 120-frame check
+executes 3,703,226 native instructions and accepts at least 87,720 newly
+generated PCM frames into SDL beyond imported audio. Active playback has zero
+reported drops; 729 frames cleared at the planned pause and seven at shutdown
+are accounted separately. This is device-submission evidence, not listening or
+hardware parity. Closed journals have verified lossless archives; originals
+and historical failures remain retained privately.
 
 The explicit `gear-good` compatibility response remains required for unknown
 `$FF` CD requests. Unknown operations and REQUEST SENSE remain unsupported.
-Deterministic reset is not hardware power-on certification. Earlier finite
-Geargrafx menu/audio/CPU checks do not establish whole-retail timing, listening,
-analog quality or hardware parity.
+Deterministic reset and finite reference checks do not establish hardware,
+whole-campaign or analog-audio parity.
 
 ## Build without game inputs
 
 Requires Python 3.11+, CMake 3.20+, a C++20 compiler, Ninja and Git.
 
 ```sh
-git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-abi18
-git -C .deps/pcenginerecomp-abi18 checkout --detach 6935e46ff8aefacf8ea058a385198299c4e2cd5c
+git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-diagnostics43
+git -C .deps/pcenginerecomp-diagnostics43 checkout --detach 1be93679c3318c667f97f55cb37af625a86ad875
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++
 cmake --build build --parallel 4
 ctest --test-dir build --output-on-failure
 ```
 
-If `ctest` is unavailable, run
-`python .deps/pcenginerecomp-abi18/scripts/check.py --build build/upstream`
-and `python -m unittest discover -s tests -v`. The default empty-module host
-uses interpreted execution. The consumer suite passes **523 tests with zero skips**;
-this batch also passes 68 upstream capture/emission/project checks. Retained
-upstream checks passed 36 shared suites / 468 Python tests, zero skips.
-Verification requires the exact clean 60-file source digest and ABI. Historical
-captures retain their original ABI labels; fresh ABI18 execution captures are
-checked as ABI18. Emission counts alone establish no runtime coverage.
+The default empty-module host uses interpreted execution. The consumer suite
+passes 547 tests without skips; this migration passes 126 affected upstream
+profile/capture/emission/project checks. Historical captures retain their
+original ABI labels and checkpoint origins.
 
 See [status](docs/STATUS.md), [development](docs/DEVELOPMENT.md) and
 [toolchain.json](toolchain.json) for measured scopes and historical milestones.
-Owner inputs remain read-only. Earlier work removed only reviewed
-compiler intermediates from its failed build, preserving qualified evidence.
-**Clean Old Build Files.cmd** removes unbound compiler intermediates with visible
-progress, a private receipt and a final result that stays open. It is repeatable;
-use `--no-pause --preview` to review without deleting. It preserves qualified
+Owner inputs remain read-only. **Clean Old Build Files.cmd** removes unbound
+compiler intermediates with visible progress and a private receipt; use
+`--no-pause --preview` to review without deleting. It preserves qualified
 packages, generated native source, inputs and replay evidence. GitHub contains
-authored source, so it cannot restore those excluded private artifacts.
+authored source and cannot restore excluded private artifacts.
 
-This consumer owns game configuration, source selection, native coverage,
-adapters and launchers. Shared CPU/device semantics, media and generation remain
-upstream. Authored code is MIT licensed; that grants no rights to game, firmware
-or game-derived output.
+Authored code is MIT licensed; that grants no rights to game, firmware or
+game-derived output.
