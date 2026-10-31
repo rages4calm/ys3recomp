@@ -53,6 +53,13 @@ The [semantic step validator](https://github.com/rages4calm/pcenginerecomp/commi
 is separately pinned. Shared CPU/device semantics and generation remain
 upstream; this project owns game configuration, coverage and verification.
 
+A separate **ABI27 candidate** now tests the toolkit's opt-in
+[`nec-invalid` CD profile](https://github.com/rages4calm/pcenginerecomp/commit/d71add52a88ab18084ecd3ea856b9b4df80a7469)
+through the first unknown command and subsequent disc read.
+Fresh checkpoint restores and paced audio pass with zero interpreter fallback.
+The legacy response profile also retains exact source-key retirement counts.
+This is a bounded toolkit test; **Play remains on the fully qualified ABI26 build**.
+
 ## Audio and checkpoints
 
 Both full-route runs match 75,779,095 cumulative 44.1 kHz PCM frames,
@@ -71,7 +78,8 @@ hardware parity. Closed journals have verified lossless archives; originals
 and historical failures remain retained privately.
 
 The explicit `gear-good` compatibility response remains required for unknown
-`$FF` CD requests. Unknown operations and REQUEST SENSE remain unsupported.
+`$FF` CD requests; accepting them does not implement their operations.
+The toolkit models fixed-format REQUEST SENSE responses.
 Deterministic reset and finite reference checks do not establish hardware,
 whole-campaign or analog-audio parity.
 
@@ -88,7 +96,7 @@ ctest --test-dir build --output-on-failure
 ```
 
 The default empty-module host uses interpreted execution. The consumer suite
-passes 547 tests without skips; this migration passes 126 affected upstream
+passes 550 tests without skips; the ABI26 migration passes 126 affected upstream
 profile/capture/emission/project checks. Historical captures retain their
 original ABI labels and checkpoint origins.
 
@@ -99,6 +107,7 @@ compiler intermediates with visible progress and a private receipt; use
 `--no-pause --preview` to review without deleting. It preserves qualified
 packages, generated native source, inputs and replay evidence. GitHub contains
 authored source and cannot restore excluded private artifacts.
+Numbered candidate build folders use the same cleanup protections.
 
 Authored code is MIT licensed; that grants no rights to game, firmware or
 game-derived output.

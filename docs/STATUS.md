@@ -62,6 +62,46 @@ remain unfinished. The `gear-good` unknown-CD compatibility condition remains
 visible. No program/quest/item/equipped-weapon/STR bytes were edited. Owner media
 is read-only and BRAM is an explicitly blank, volatile seed.
 
+## Separate ABI27 CD-policy candidate: bounded retail checks
+
+The candidate uses `d71add52a88ab18084ecd3ea856b9b4df80a7469`, ABI27 / source80,
+SHA256 `7c2771ff590fcd2cdfdfd51e71c8a34aab2a6a86b48d275d6071b8832647e8c4`.
+All 57,752 retained identities are officially composed, re-emitted and compiled;
+original capture ABI/checkpoint labels remain unchanged. This bounded cohort
+executes 6,816 distinct source identities, all from that compiled catalogue.
+It does not qualify the full ABI27 route or change the selected ABI26 package.
+
+Closed-route characterization found 27 uses of the BIOS `$FF`
+bus-resynchronization byte. The legacy profile accepts one byte with GOOD.
+The new opt-in `nec-invalid` profile receives a complete group-framed command
+and supplies CHECK CONDITION / illegal-request sense. These are distinct explicit
+policies; neither implements an unknown operation or establishes hardware parity.
+
+| Actual new ABI27 evidence | Result |
+| --- | --- |
+| Each policy's unassisted cold prefix | 4,204 frames; 115,734,126 native / zero interpreted; no unknown attempt yet |
+| NEC direct continuation | 60 fresh frames; 1,749,499 native / zero interpreted |
+| NEC own-checkpoint continuation | 12 fresh frames; 423,360 native / zero interpreted |
+| Actual NEC response / caller | One ten-byte invalid command, zero accepted GOOD responses; BIOS proceeds to a real sector read |
+| Legacy direct / restored suffixes | 1,751,039 / 424,900 native, zero interpreted; all per-key hits match the retained ABI26 captures |
+| Same-build checkpoint files | Complete immediate and continued bytes match separately for both policies |
+| Paced NEC suffix | 120 fresh frames; 3,689,416 native / zero interpreted |
+| Fresh device audio | At least 87,759 new PCM frames accepted by SDL, including at least 7,896 new nonzero frames |
+| Audio loss accounting | Zero active drops; 696 planned pause-tail frames and two shutdown frames counted separately |
+| Consumer checks | 550 passed; ten focused pre-command guards and eight audio-phase checks also passed |
+| Shared frozen release checks | 1,478 Python tests without skips, 66 C++ suites and 12 fresh-process audio checkpoint cases passed |
+
+All candidate hosts exit naturally with code zero. No development RAM writes,
+program edits, cross-policy or cross-ABI checkpoint imports were used. The older
+strict-policy baseline deliberately faults at the first unknown byte with exit
+code 3; its closed
+forensic journals remain distinct from successful routes. New closed journals
+have verified lossless archives with originals retained. NEC and legacy timing
+and instruction totals differ; no cross-policy numeric parity is claimed.
+Full campaign, ABI27 full-route, listening and hardware qualification remain open.
+Cleanup also recognizes numbered candidate build folders, with synthetic checks
+that protected objects, executables and similarly named backup folders survive.
+
 ## Historical diagnostic adoption before full migration
 
 At that stage, the diagnostic-only toolkit pin was `1be93679c3318c667f97f55cb37af625a86ad875`,

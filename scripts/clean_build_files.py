@@ -22,6 +22,10 @@ BATCH = re.compile(r"batch-\d{3}")
 EXTENSIONS = {".obj", ".o", ".pch", ".gch", ".ilk", ".idb"}
 
 
+def build_root_name(name):
+    return name.startswith("build") or re.fullmatch(r"candidate-[0-9]+", name) is not None
+
+
 def say(message):
     print(message, flush=True)
 
@@ -144,8 +148,8 @@ def candidates(root, protected):
             continue
         safe_path(batch, local)
         say("  Checking compiler files: " + batch.name)
-        for build in sorted(batch.glob("build*")):
-            if not build.is_dir():
+        for build in sorted(batch.iterdir()):
+            if not build_root_name(build.name) or not build.is_dir():
                 continue
             safe_path(build, batch)
             for directory, dirs, files in os.walk(build, followlinks=False):
@@ -177,7 +181,7 @@ def remove_target(target, root, protected):
     path = safe_path(Path(target["path"]), root / ".local")
     relative = path.relative_to(root / ".local")
     if (len(relative.parts) < 4 or not BATCH.fullmatch(relative.parts[0])
-            or not relative.parts[1].startswith("build") or "CMakeFiles" not in relative.parts[2:-1]
+            or not build_root_name(relative.parts[1]) or "CMakeFiles" not in relative.parts[2:-1]
             or path.suffix.casefold() not in EXTENSIONS or path in protected):
         raise ValueError("Refused cleanup target: " + str(path))
     info = path.stat()

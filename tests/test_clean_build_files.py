@@ -47,6 +47,37 @@ class CleanupTests(unittest.TestCase):
             cleanup.remove_target(self.target(), self.root, {self.obj})
         self.assertTrue(self.obj.exists())
 
+    def test_numbered_candidate_object_is_discovered_and_removed(self):
+        path = self.batch / 'candidate-01/desktop/build/CMakeFiles/game.dir/sample.obj'
+        path.parent.mkdir(parents=True)
+        path.write_bytes(b'authored candidate compiler object')
+        found = {Path(item['path']) for item in cleanup.candidates(self.root, set())}
+        self.assertIn(path, found)
+        cleanup.remove_target(self.target(path), self.root, set())
+        self.assertFalse(path.exists())
+
+    def test_candidate_protected_object_and_executable_stay(self):
+        path = self.batch / 'candidate-01/desktop/build/CMakeFiles/game.dir/sample.obj'
+        path.parent.mkdir(parents=True)
+        path.write_bytes(b'bound candidate object')
+        exe = path.with_suffix('.exe')
+        exe.write_bytes(b'authored package fixture')
+        self.assertNotIn(path, {Path(item['path']) for item in cleanup.candidates(self.root, {path})})
+        for target, protected in ((path, {path}), (exe, set())):
+            with self.assertRaisesRegex(ValueError, 'Refused'):
+                cleanup.remove_target(self.target(target), self.root, protected)
+            self.assertTrue(target.exists())
+
+    def test_candidate_backup_names_are_not_build_roots(self):
+        for name in ('candidate-backup', 'candidate-01-old', 'candidates'):
+            path = self.batch / name / 'build/CMakeFiles/game.dir/sample.obj'
+            path.parent.mkdir(parents=True)
+            path.write_bytes(b'preserved authored fixture')
+            self.assertNotIn(path, {Path(item['path']) for item in cleanup.candidates(self.root, set())})
+            with self.assertRaisesRegex(ValueError, 'Refused'):
+                cleanup.remove_target(self.target(path), self.root, set())
+            self.assertTrue(path.exists())
+
     def test_changed_object_stays(self):
         target = self.target()
         self.obj.write_bytes(b'changed after review')

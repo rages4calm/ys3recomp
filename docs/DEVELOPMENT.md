@@ -53,6 +53,34 @@ semantic, checkpoint and audio gates pass, then verify both launcher info paths.
 The earlier migration notes below are historical and do not change the current
 selected ABI26 qualification.
 
+## Experimental ABI27 CD-policy checks
+
+ABI27 changes runtime state layout and checkpoint identity. Retain the qualified
+ABI26 package and its complete reset route. Re-emit every retained native source
+identity through the official ABI27 tools and build a separate ordinary package;
+do not relabel old captures or import old checkpoints by a compatibility waiver.
+
+The selected route still uses `gear-good`. The experimental `nec-invalid` profile
+instead receives a complete unknown CDB according to its group length and returns
+an invalid-command response with sense. Default fault behavior and unsupported
+known-command faults remain explicit. A negative response implements protocol
+handling, not the unknown operation. Original Gear's one-byte GOOD response and
+the independent reference's framing/status/message differences must remain visible.
+The toolkit retains raw status/message bytes 02/02 versus original Beetle's 01/00,
+and clears a partial CDB on warm reset where that reference retains it. These
+observed differences remain explicit limits on reference and hardware claims.
+
+Start each policy from an independently verified cold boot. Before the first
+unknown attempt, only the two reviewed ABI27 status additions, exact policy and
+zero invalid-response count, differ from the retained prefix contract. Reject any
+attempt, origin, nonzero counter or unreviewed field; keep all raw replies. After
+the command, compare own-build direct/restored full checkpoint files without that
+projection and prove actual subsequent disc-read progress. Imported work and
+fresh source retirements remain separate. Use real paced audio and bind the queue
+equation, active-drop observations, pause clear, shutdown drain and a conservative
+new-nonzero acceptance lower bound. Such a bounded suffix cannot select Play or
+qualify a full route. Preserve expected-fault forensic journals separately.
+
 ## Retained diagnostic helper contract
 
 `toolchain.json` keeps diagnostic revision
