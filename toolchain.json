@@ -2,11 +2,11 @@
   "schema": 1,
   "tool": {
     "repository": "https://github.com/rages4calm/pcenginerecomp",
-    "revision": "1be93679c3318c667f97f55cb37af625a86ad875",
-    "source_sha256": "d17bdc9159b53b00144a388ebe45a6f7e5e7c5767b7de1989df0e50db24e213c",
-    "checkout": ".deps/pcenginerecomp-diagnostics43",
-    "runtime_abi": 26,
-    "source_policy": "Exact reviewed public ABI26 source; selected full-reset native route and same-build checkpoint/device checks qualified. Original capture ABI and checkpoint origins remain unchanged."
+    "revision": "d71add52a88ab18084ecd3ea856b9b4df80a7469",
+    "source_sha256": "7c2771ff590fcd2cdfdfd51e71c8a34aab2a6a86b48d275d6071b8832647e8c4",
+    "checkout": ".deps/pcenginerecomp-abi27-unknown46",
+    "runtime_abi": 27,
+    "source_policy": "Exact reviewed public ABI27 source80; selected NEC-invalid fresh reset route and separate native checkpoint extension, own-file restores and paced SDL audio qualified. Original captures retain their ABI/origin and counts; failed receipts stay failed."
   },
   "initial_qualification": {
     "revision": "33fe46d4274584da5ba55b419a240f248df4158d",
@@ -3869,7 +3869,7 @@
   },
   "abi26_full_route_milestone": {
     "qualified": true,
-    "selected": true,
+    "selected": false,
     "runtime_abi": 26,
     "frames": 102802,
     "native_steps": 3122661937,
@@ -3933,7 +3933,7 @@
     "scope": "Verified-assisted full reset route through miner, deeper-boss reward, town/lodge, Alcaino first combat room and diagonal stair-room down/up movement. New same-control ABI26 discovery/native replay; preserve old catalogue, not every retained key newly executed. No campaign, listening or hardware parity."
   },
   "diagnostic_pin_history": {
-    "scope": "The diagnostics block retains the exact historical diagnostic-only adoption input. Current runtime selection is tool and abi26_full_route_milestone; the same unchanged helper pin now supports selected ABI26."
+    "scope": "Historical diagnostic-only adoption input retained unchanged. Current runtime selection is tool and abi27_full_route_milestone; the separately pinned diagnostic helper identity remains unchanged."
   },
   "cd_unknown_policy27_milestone": {
     "qualified_scope": "Bounded cold boot, first unknown-command response, subsequent sector read and own-build checkpoint/audio tests only",
@@ -3974,5 +3974,97 @@
     "focused_audio_phase_tests": 8,
     "selected_Play_runtime_abi": 26,
     "campaign_listening_or_hardware_qualified": false
+  },
+  "abi27_full_route_milestone": {
+    "qualified": true,
+    "selected": true,
+    "runtime_abi": 27,
+    "tool_revision": "d71add52a88ab18084ecd3ea856b9b4df80a7469",
+    "tool_source_sha256": "7c2771ff590fcd2cdfdfd51e71c8a34aab2a6a86b48d275d6071b8832647e8c4",
+    "source_files": 80,
+    "native_full_cold": true,
+    "source_reference_kind": "separately admitted checkpoint-linked original source",
+    "source_full_cold": false,
+    "reconstruction_capture_counted": false,
+    "failed_receipts_relabelled": false,
+    "frames": 104745,
+    "native_steps": 3209517525,
+    "interpreted_steps": 0,
+    "baseline_native_steps": 3209510626,
+    "baseline_interpreted_steps": 6899,
+    "native_gain_on_same_ABI27_controls": 6899,
+    "block_native_gain": 0,
+    "compiled_source_identities": 58002,
+    "old_source_identities_retained": 57752,
+    "new_source_identities_compiled_and_executed": 250,
+    "new_additions_executed_main": 245,
+    "new_additions_executed_only_extension": 5,
+    "executed_main_source_identities": 53516,
+    "executed_union_source_identities": 53528,
+    "compiled_keys_not_exercised_by_these_checks": 4474,
+    "mpr_contexts": 83,
+    "stable_translation_units": 947,
+    "headers": 1,
+    "unsupported_observations": 0,
+    "excluded_observations": 0,
+    "source_inputs": 7,
+    "profile_bytes": 121417027,
+    "raw_input_bytes": 43513842,
+    "profile_contributions": 239346,
+    "public_capacity_limits_unchanged": true,
+    "semantic_steps": 5523,
+    "sealed_semantic_records": 108460,
+    "memory_write_requests": 309,
+    "assisted_progression": true,
+    "program_quest_item_equipment_or_STR_byte_edits": false,
+    "unknown_CD_policy": "nec-invalid",
+    "unknown_CD_operations_implemented": false,
+    "campaign_listening_or_hardware_qualified": false,
+    "crossprocess_game_save_persistence": false,
+    "optional_native_checkpoint_extension": {
+      "frames": 432,
+      "native_steps": 13795134,
+      "interpreted_steps": 0,
+      "native_gain": 7,
+      "source_identities": 7799,
+      "identities_absent_main": 12,
+      "newly_compiled_identities": 5,
+      "previously_compiled_first_executed_identities": 7,
+      "new_guest_writes": 0,
+      "canonical_main_counts_unchanged": true
+    },
+    "same_build_checkpoint": {
+      "frames_each": 60,
+      "native_steps_each": 1836171,
+      "interpreted_steps": 0,
+      "whole_immediate_file_equal": true,
+      "whole_continued_file_equal": true,
+      "whole_CORE_equal": true
+    },
+    "paced_audio": {
+      "frames": 120,
+      "native_steps": 3672293,
+      "interpreted_steps": 0,
+      "generated_frames": 88457,
+      "submitted_frames": 88487,
+      "imported_pending_frames": 40,
+      "pending_after": 10,
+      "new_device_accepted_lower_bound": 87760,
+      "fresh_nonzero_accepted_lower_bound": 86742,
+      "active_drops": 0,
+      "planned_pause_tail_clear": 687,
+      "shutdown_pending_separately_dropped": 10,
+      "exact_queue_equation": true,
+      "synthesis_loss": 0
+    },
+    "digital_audio": {
+      "frames": 77211351,
+      "pcm_hash": 5475582767500413829,
+      "mixed_nonzero": 73602418,
+      "discarded_frames": 0,
+      "capped_boot_wav_frames": 441000,
+      "fast_forward_presentation_muted": true
+    },
+    "scope": "Fresh assisted native reset through actual Alcaino combat frontier plus a separate read-only own-checkpoint combat extension; actual wizard defeat/Long Sword, miner and deeper-mine boss progression. Prior ABI26 staircase evidence remains historical, not borrowed for this endpoint. Whole campaign, analog/listening/hardware and persistent game saves remain unfinished."
   }
 }

@@ -1,8 +1,69 @@
 # Consumer status - 31 October 2026
 
-## Selected ABI26: complete retained route, zero interpreter fallback
+## Selected ABI27: fresh native route and Alcaino combat extension
 
-Play now selects the verified ABI26 package at
+Play selects public toolkit `d71add52a88ab18084ecd3ea856b9b4df80a7469`,
+ABI27, source80 SHA256
+`7c2771ff590fcd2cdfdfd51e71c8a34aab2a6a86b48d275d6071b8832647e8c4`.
+The current CD policy is `nec-invalid`; qualified ABI26 and ABI18 are retained.
+
+| Actual verification | Result |
+| --- | --- |
+| Fresh single-process reset | 104,745 frames; 3,209,517,525 native / zero interpreted |
+| Same-policy source reference | 3,209,510,626 native / 6,899 interpreted; independently admitted prefix and checkpoint tail |
+| Per-key main-route conversion | All 53,516 identities conserve hits; 6,899 retirements promoted; block gain zero |
+| Separate read-only extension | 432 frames; 13,795,134 native / zero interpreted; seven retirements promoted |
+| Compiled module | 58,002 identities; all 57,752 prior keys retained; all 250 additions compiled and executed |
+| Executed union | 53,528 identities; 4,474 compiled keys not exercised by these checks |
+| Extension-only execution | 12 identities absent from main: five new compilations and seven retained keys |
+| Official emission | 83 MPR contexts; 947 stable C++ units + one header; zero unsupported/excluded |
+| Main protocol | 108,460 records; 5,523 bounded steps; all 309 literal data assists typed and read back |
+| Same-build checkpoint repeats | 60 fresh frames each; 1,836,171 native / zero interpreted; whole immediate and continued files/cores equal |
+| Paced-device suffix | 120 frames; 3,672,293 native / zero interpreted; at least 87,760 fresh frames accepted beyond imported audio |
+| Fresh nonzero device acceptance | Conservative lower bound 86,742 frames; zero active drops |
+| Digital main-route audio | 77,211,351 frames; PCM hash 5475582767500413829; synthesis loss zero |
+
+Of the 250 additions, 245 execute on the main route and five only in the
+extension. Its 7,799-key window overlaps main; imported work and overlapping
+identities are not added wholesale to main totals. Checkpoint and paced suffixes
+add no unique keys beyond the 53,528-key union. Seven untouched source inputs
+produce 239,346 contributions within unchanged public limits.
+
+The route includes wizard defeat, natural reward/Long Sword acquisition and
+equipment, miner dialogue, deeper-mine boss combat/rewards, town/lodge return
+and Alcaino combat. All 33 case outcomes match the same-policy source; six
+historical case rules are nonempty. Actual images and RAM establish scenes.
+The endpoint is a green cave combat ledge, not the prior ABI26 stair scene.
+The read-only extension advances farther in that area with HP59→46, maximum60
+and quest unchanged. It makes no new-room or campaign-completion claim.
+
+The source is explicitly checkpoint-linked: a closed reset prefix plus a
+disjoint 126-frame own-checkpoint tail. Reconstruction is proof-only, excluded
+from compilation history and retirement totals. Failed source and replay runs
+remain failed. The final qualified native process starts from reset and completes
+the entire route. Link/final cores match under exactly five tier-counter
+conversions and one typed WAV-file scalar relation; all other CORE bytes and
+52 other HOST bytes are strict. Prefix checkpoint cores are independently
+checked; no converted hybrid checkpoint is imported. The optional no-WAV files
+compare all 60 HOST bytes strictly.
+
+Full-route fast-forward SDL presentation is muted. Paced audio separately proves
+`40 + 88,457 = 88,487 + 10`; its 687-frame planned pause clear and ten-frame
+shutdown drain are accounted separately. New nonzero PCM reaches SDL, without
+a listening or analog/hardware-parity claim. The capped 441,000-frame boot WAV
+also matches. Owner media is read-only; blank-seed saves remain volatile.
+
+The selected policy receives complete unknown CDBs and returns invalid-command
+status with sense; unknown operations are not implemented. Independent-reference
+wire/status/message/reset differences remain visible. No program, quest, item,
+equipped-weapon or STR bytes were edited. Full campaign, hardware, listening
+and cross-process save persistence remain unfinished.
+
+# Historical qualification notes
+
+## Prior ABI26: complete retained route, zero interpreter fallback
+
+That qualification selected the verified ABI26 package at
 `1be93679c3318c667f97f55cb37af625a86ad875` (79 source files,
 SHA256 `d17bdc9159b53b00144a388ebe45a6f7e5e7c5767b7de1989df0e50db24e213c`).
 The separate semantic-step helper is pinned at

@@ -1,11 +1,72 @@
 # Consumer development
 
+## Current ABI27 qualification and checkpoint-first iteration
+
+Use public `d71add52a88ab18084ecd3ea856b9b4df80a7469` (ABI27,
+source80/`7c2771ff590fcd2cdfdfd51e71c8a34aab2a6a86b48d275d6071b8832647e8c4`),
+the official composer and stable emitter. The 58,002-key module retains all
+57,752 prior keys; all 250 additions execute. Its fresh reset route retires
+3,209,517,525 native / zero interpreted over 104,745 frames. A separate own-native
+checkpoint window adds 432 frames and seven native promotions. It is bounded
+assisted verification through Alcaino combat, not complete-campaign proof.
+
+Use exact-build checkpoints for discovery and harness debugging. Reserve a fresh
+complete native reset qualifier for a finished module or ABI migration. Do not
+repeat known prefixes merely to debug a tail. A continuation cannot be relabeled
+a single-process cold run. Source may use an explicitly audited linked prefix
+and tail: authenticate original raw controls, typed write journals, actual own
+file/ACK/paused checkpoint joins, full RAM/images/source/device/audio and
+nonoverlapping source windows. Reconstruction contributes no source history or
+retirement totals. Failed criteria/flags stay unchanged. Native selection still
+requires a successful fresh reset plus source, checkpoint and paced-device gates.
+
+Live TCP capture rows expose source IDs, PC, all MPRs, physical spans and hit
+counts, without encoded instruction bytes. Use them for bounded footprint and
+within-process evidence. Canonical cross-process byte-variant equality uses
+authentic closed captures, preserving PC/MPR/physical/data identities. Never
+invent historical bytes from current RAM, collapse variants by PC or feed live
+rows into an encoded-byte snapshot API. Preflight unsupported query requirements
+before contacting the host; omit an unused snapshot for a zero-query tail.
+
+Keep each segment's original IDs and raw origins, namespace replay IDs and
+checkpoint filenames, and retain actual progress polls through the pinned
+semantic validator. Require exact settled state and per-key Nold+Iold→Nnew/I0.
+Capture sums are derived expectations, never forged raw captures. Seven original
+profile inputs retain exact labels and all prior keys; no public capacity grows.
+Retrospectively exclude every assist's backing aliases across original, compiled
+and future fetched source. Never capture temporary program-cheat bytes.
+
+Checkpoints belong to their own exact build. Independently derive host file
+identity from source context, package, media and normalized command. Verify the
+file/body/ACK and CPU/MPR/input/write/PCM metadata. Source-to-native CORE comparisons
+admit exactly five reviewed tier counters. A no-WAV source versus capped native
+file admits only the typed HOST WAV-writer scalar after authentic own file/ACK/
+status/context/command joins; the other 52 HOST bytes are strict. Both no-WAV
+extension files compare all 60 HOST bytes strictly. Never rewrite/import a
+converted checkpoint.
+
+For same-build proof, make a real no-WAV cut, compare whole immediate serialization
+and replay the same 60 frames to compare complete continued files/cores/RAM/images
+and source hits. Bind imported PCM/WAV metadata to the actual ACK with type-strict
+equality: Python bool/int equality is insufficient. Disable new writes while
+preserving imported counters. Paced audio validates that typed origin before,
+after and on every running/final poll, fresh nonzero device acceptance beyond
+imported PCM, zero active drops, the exact queue equation and separate planned
+pause clears/shutdown drains. Do not promote this to lossless listening.
+
+Retain ABI26 fallback. ABI27 selects `nec-invalid`, replacing historical
+`gear-good`: complete unknown CDB framing/sense handling is implemented, unknown
+operations are not. Reference wire/status/message/reset differences stay visible.
+Public files remain authored; generated code, media, captures, checkpoint data,
+receipt paths and peer coordination stay private. Remove only unbound compiler
+intermediates after owned processes close; preserve hash-bound replay evidence.
+
 Read the pinned toolkit's ownership and architecture documents before integration.
 Keep its active checkout untouched. This repository owns game configuration,
 source selection, adapters, coverage, launchers and bounded gameplay checks.
 CPU/device/audio semantics, media, generation and reusable hosts remain upstream.
 
-## Current ABI26 full-route qualification
+## Historical ABI26 full-route qualification
 
 The selected runtime is public `1be93679c3318c667f97f55cb37af625a86ad875`.
 Use its official composer, stable profile emitter and project build/verify APIs.
