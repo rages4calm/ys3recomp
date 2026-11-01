@@ -2,46 +2,44 @@
 
 ## Current ABI28 qualification and checkpoint-first iteration
 
-Use public `a96e7891c33690d41f6fe12ce1904fe160a0c9a2` (ABI28,
-source82/`995ecfa893ee74ea046b758cbccfe0ab1baa57ecbec21c8a4c7313f06aca533a`),
-the official profile-v1 composer and stable emitter. Select `runtime.cd_timing`
-explicitly as `fixed`; `gear-distance` is a separate opt-in timeline. The
-58,032-key module retains all 58,031 previous keys and executes its sole addition.
-A fresh 104,745-frame reset retires 3,209,517,525 native / zero interpreted.
-Own-native checkpoint extensions cover 432, 2,232 and 960 frames. The last
-retires 30,980,373 native / zero interpreted, promoting one retirement. This is
-bounded assisted verification, not campaign proof.
+Use public `9d219b7a27fa67ff3f31a124e5d449b7eaf1789b` (ABI28, 84 source files,
+SHA256 `74b4a39c59ac5ee0fd40ea54af9b7099aa2aa0f5dbce5b3107df2bf2e6ef35ac`), the official profile composer,
+stable emitter and recoverable public project build/resume commands. Select
+`runtime.cd_timing = fixed` explicitly. The 58,035-key module preserves all 58,032
+prior identities and executes three new variants in a 1,716-frame own-native
+cavern window. The fresh retained reset and 432/2,232/960-frame windows pass too.
 
-Compose the original eight inputs plus the one genuine new unassisted probe
-capture. Exact-byte preflight must reproduce the retained profile and predict
-actual serialization. The nine-input catalogue fits unchanged public limits;
-do not compose every overlapping navigation capture. Preserve original ABI labels,
-origins and producer counts. Composer tooling does not replace a qualified runtime.
+Compose the nine retained original inputs and three genuine short TCP captures.
+Preserve complete encoded PC/all-eight-MPR/physical/data identities and original
+capture bytes, ABI labels, origins and counts. Exact-byte preflight must match
+actual serialization. Do not raise limits, privately filter rows, or count
+overlapping histories as new execution. Four deeper variants await upstream
+additive composition support; they are discovery, not native qualification.
 
-Validate actual receipt ancestry, checkpoint origins, immutable input graph,
-source context and package before a checkpoint-linked extension. Reuse closed
-same-build ancestors when debugging an adapter. A frozen failed controller stays
-failed; fix it in a separately versioned controller. An ABI27/28 capture-reply
-comparison projects only the typed ABI tag locally; raw replies and source
-captures stay unchanged. Never infer encoded bytes from live source rows.
+For interrupted builds use a fresh official `project build --recoverable`
+contract, then `project resume` against that same descriptor and directory.
+Let the owned guardian drain; preserve busy refusals and failed receipts.
+Keep delta checkpoints and admission records immutable. Never transplant
+objects, remove locks by hand, relabel old evidence or bypass the public builder.
 
-Load frozen helpers through reviewed source-only import closures before any SDK
-import. Pin the actual closure, loaders and every diagnostic leaf used; `-B`
-alone does not prevent stale cache reads. Old-source verification runs in a
-separate source-only process, without mixing SDK modules. Bind every actual
-save ACK/file/status/context, with type-strict integer equality.
+Bind actual producer identity separately from decoder/layout provenance. The
+producer's 61 compiled-source files match the original ABI28 decoder's
+82-file source closure. Join the verified official build binding to the actual package
+before producer fingerprinting. This does not convert or import an older build's
+checkpoint. New executables generate their own full-route checkpoint lineage.
 
-For ABI27-to-ABI28 fixed timing, admit the source-derived inserted fixed zero
-field and five tier counters only. Walk the variable layout; do not hardcode a
-retail offset or relabel decoded structures. Compare all remaining CORE bytes
-strictly. All 26 main checkpoints and all three cuts in each assisted extension
-are checked. Same-build compares whole files. Cross-ABI states are read-only
-comparison inputs, never converted or imported.
+Use source-only authenticated SDK closures before importing official modules;
+`-B` does not prevent stale bytecode reads. Original ABI27 and older ABI28 source
+verification use separate processes and preserved SDKs. Bind every diagnostic
+leaf, helper, actual save ACK/file/status/context and typed audio origin.
 
-After power loss, preserve partial compiler logs. If the public builder refuses
-an existing output directory, use a fresh official build directory and bind its
-genuine receipt; do not transplant objects or bypass the public build contract.
-Report reusable build-resume requirements upstream.
+ABI27-to-ABI28 fixed comparisons admit only the source-derived inserted zero
+timing field and five tier counters; all other CORE bytes remain strict. For
+same-ABI source conversion compare all other CORE bytes and all 60 HOST bytes.
+Same-build restores compare whole files. Verify every control's settled CPU,
+device, source, full RAM, PNG and PCM state plus exact per-key retirement counts.
+Keep the DevClient connected through natural completion: disconnect intentionally
+clears remote buttons. Do not diagnose different input lifetimes as emulation bugs.
 
 Use exact-build checkpoints for discovery and harness debugging. Reserve a fresh
 complete native reset qualifier for a finished module or ABI migration. Do not

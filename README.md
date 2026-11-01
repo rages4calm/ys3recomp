@@ -2,35 +2,27 @@
 
 An incremental PC Engine CD native port of *Ys III: Wanderers from Ys* (USA),
 built with [pcenginerecomp](https://github.com/rages4calm/pcenginerecomp).
-**ABI28 with fixed CD timing is selected.** The verified **104,745-frame** reset route retires
-**3,209,517,525 native instructions and zero interpreted instructions**.
-The full campaign remains unfinished; unseen code retains interpreter fallback.
+**ABI28 with fixed CD timing is selected.** The verified **104,745-frame** reset
+route retires **3,209,517,525 native instructions and zero interpreted instructions**.
+The campaign remains unfinished; unseen code retains interpreter fallback.
 
 The assisted route covers item use, damage/death/continue, mine combat,
-the wizard's defeat, Long Sword acquisition and equipment, miner dialogue,
-the deeper-mine boss and rewards, town/lodge return and Alcaino combat.
-Separate own-native checkpoint extensions cover **432** combat frames,
-**2,232** stair/combat frames and **960** new waterfall cavern frames. These
-are bounded assisted checks, not campaign completion or one continuous cold run.
+the wizard's defeat and Long Sword reward, miner dialogue, the deeper-mine boss,
+town/lodge return and Alcaino combat. Separate own-native checkpoint windows
+cover **432**, **2,232**, **960** and **1,716** frames. These are bounded checks,
+not campaign completion or one continuous cold run. The newest window continues
+beyond the waterfall through cavern traversal and combat; the next boss is unverified.
 
-The official module contains **58,032 source identities** in 83 MPR contexts,
-across 947 C++ translation units and one header. All 58,031 previous identities
-remain; the one addition compiles and executes. The checks exercise **53,576**
-identities; 4,456 compiled keys remain unexercised. No captured variant is excluded
-or unsupported. Compilation alone is not execution evidence.
+The official module contains **58,035 source identities**, retaining all 58,032
+previous keys and adding three that compile and execute. Across 83 MPR contexts,
+947 C++ units and one header, **53,606 identities execute** in the qualified route;
+4,429 compiled keys remain unexercised. Unsupported and excluded observations are zero.
 
-TCP verification compares settled CPU/source/device state, full RAM, guest
-images and digital PCM. The fresh main route retains 5,523 bounded steps and
-309 typed data assists. The three extensions retire 13,795,134, 70,860,852 and
-**30,980,373 native instructions**, respectively, with **zero interpreted
-instructions**. The new waterfall window promotes its reference's sole
-interpreted retirement and matches all 89 controls and 94 RAM/image observations.
-
-The waterfall window includes one verified living-HP refill, 28 to 60, leaving
-the natural maximum unchanged. Its unassisted checkpoints are retained. Assists
-require exact expected bytes, full RAM readbacks, source-alias exclusions and
-typed write-effect proofs. No program, quest, item, equipment or STR bytes were
-edited. Imported prefixes and overlapping source histories are not new execution.
+The new 1,716-frame window retires **54,249,829 native / zero interpreted** instructions,
+promoting three interpreted reference retirements. All 35 controls and 37 full
+RAM/image observations match the authentic reference; no new data or code writes
+occur in this window. Retained verified data assists remain labeled separately.
+TCP checks compare CPU/source/device state, RAM, images and digital PCM.
 
 ## Play the local build
 
@@ -62,12 +54,12 @@ Keyboard controls remain available for pause, fullscreen and exit. The shared
 host's virtual-device checks cover mapping, hot-plugging and input release;
 physical-controller verification is separate.
 
-The selected [ABI28 toolkit](https://github.com/rages4calm/pcenginerecomp/commit/a96e7891c33690d41f6fe12ce1904fe160a0c9a2)
+The selected [ABI28 toolkit](https://github.com/rages4calm/pcenginerecomp/commit/9d219b7a27fa67ff3f31a124e5d449b7eaf1789b)
 uses the official provenance-preserving composer and stable emitter.
 The [semantic step validator](https://github.com/rages4calm/pcenginerecomp/commit/929dcc3b9affe3af70eeaa49c6091baceb1bf056)
 is separately pinned. Shared CPU/device semantics and generation remain
 upstream; this project owns game configuration, coverage and verification.
-The qualified ABI27 build is retained.
+The prior qualified ABI28 build is retained.
 
 ## Audio and checkpoints
 
@@ -100,8 +92,8 @@ the historical `gear-good` response is not the selected policy.
 Requires Python 3.11+, CMake 3.20+, a C++20 compiler, Ninja and Git.
 
 ```sh
-git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-abi28-timing48
-git -C .deps/pcenginerecomp-abi28-timing48 checkout --detach a96e7891c33690d41f6fe12ce1904fe160a0c9a2
+git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-recovery50-delta
+git -C .deps/pcenginerecomp-recovery50-delta checkout --detach 9d219b7a27fa67ff3f31a124e5d449b7eaf1789b
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++
 cmake --build build --parallel 4
 ctest --test-dir build --output-on-failure
