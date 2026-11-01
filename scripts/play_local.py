@@ -148,6 +148,9 @@ def main():
         print('Executable:', package['binary'])
         print('Controls: Arrows move; Z = I; X = II; Shift = Select; Enter = Run;')
         print('          Space = Pause; F11 = Fullscreen; Esc = Exit.')
+        print('Controller: D-pad/left stick = Move; A/Cross = Jump; B/Circle = Attack;')
+        print('            Back/Select = Command menu; Start = Run. Connect before or during play.')
+        print('            Keep the game window focused to receive controller input.')
         print('Guest saves are volatile; closing the game discards this session\'s save changes.')
         print('Direct manual host: visible, paced; guest step/tick limits remain; no 10-minute wall timeout.')
         if args.info:

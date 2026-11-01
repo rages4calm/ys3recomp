@@ -47,6 +47,21 @@ adjacent SDL package; it downloads and installs nothing.
 `python scripts/play_local.py --info` checks readiness without opening a game.
 Guest saves are volatile; cross-process game saves are not implemented.
 
+**Controllers:** the host automatically uses the first SDL-recognized gamepad,
+including one connected during play. Keep the game window focused.
+
+| Controller input | Ys III action |
+| --- | --- |
+| D-pad or left stick | Move |
+| A / Cross (bottom face button) | Jump / button I |
+| B / Circle (right face button) | Attack / button II |
+| Back / Select | Command menu |
+| Start | Run / confirm |
+
+Keyboard controls remain available for pause, fullscreen and exit. The shared
+host's virtual-device checks cover mapping, hot-plugging and input release;
+physical-controller verification is separate.
+
 The selected [ABI28 toolkit](https://github.com/rages4calm/pcenginerecomp/commit/a96e7891c33690d41f6fe12ce1904fe160a0c9a2)
 uses the official provenance-preserving composer and stable emitter.
 The [semantic step validator](https://github.com/rages4calm/pcenginerecomp/commit/929dcc3b9affe3af70eeaa49c6091baceb1bf056)
