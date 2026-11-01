@@ -1,63 +1,71 @@
-# Consumer status - 31 October 2026
+# Consumer status - 1 November 2026
 
-## Selected ABI27: fresh native route and Alcaino combat extension
+## Selected ABI27: native Alcaino stairs and cavern extension
 
 Play selects public toolkit `d71add52a88ab18084ecd3ea856b9b4df80a7469`,
 ABI27, source80 SHA256
 `7c2771ff590fcd2cdfdfd51e71c8a34aab2a6a86b48d275d6071b8832647e8c4`.
-The current CD policy is `nec-invalid`; qualified ABI26 and ABI18 are retained.
+The CD policy remains `nec-invalid`. Qualified prior builds are retained.
 
 | Actual verification | Result |
 | --- | --- |
 | Fresh single-process reset | 104,745 frames; 3,209,517,525 native / zero interpreted |
-| Same-policy source reference | 3,209,510,626 native / 6,899 interpreted; independently admitted prefix and checkpoint tail |
-| Per-key main-route conversion | All 53,516 identities conserve hits; 6,899 retirements promoted; block gain zero |
-| Separate read-only extension | 432 frames; 13,795,134 native / zero interpreted; seven retirements promoted |
-| Compiled module | 58,002 identities; all 57,752 prior keys retained; all 250 additions compiled and executed |
-| Executed union | 53,528 identities; 4,474 compiled keys not exercised by these checks |
-| Extension-only execution | 12 identities absent from main: five new compilations and seven retained keys |
-| Official emission | 83 MPR contexts; 947 stable C++ units + one header; zero unsupported/excluded |
-| Main protocol | 108,460 records; 5,523 bounded steps; all 309 literal data assists typed and read back |
-| Same-build checkpoint repeats | 60 fresh frames each; 1,836,171 native / zero interpreted; whole immediate and continued files/cores equal |
-| Paced-device suffix | 120 frames; 3,672,293 native / zero interpreted; at least 87,760 fresh frames accepted beyond imported audio |
-| Fresh nonzero device acceptance | Conservative lower bound 86,742 frames; zero active drops |
+| Retained own-native extension | 432 frames; 13,795,134 native / zero interpreted |
+| New stair/combat own-native extension | 2,232 frames; 70,860,852 native / zero interpreted |
+| New same-control source reference | 70,860,521 native / 331 interpreted |
+| New per-key conversion | All 13,152 identities conserve hits; 331 retirements promoted; block gain zero |
+| Compiled module | 58,031 identities; all 58,002 previous keys retained; all 29 additions compiled and executed |
+| Executed union | 53,568 identities; 4,463 compiled keys not exercised |
+| Newly exercised beyond prior checks | 29 new compilations and 11 retained identities |
+| Official emission | 83 MPR contexts; 947 C++ units + one header; zero unsupported/excluded |
+| Main protocol | 108,460 records; 5,523 bounded steps; 309 typed data assists |
+| New-window protocol | 195 exact controls; 200 full-RAM/image observations; one typed living-HP refill |
+| Same-build checkpoint repeats | 60 fresh frames each; 1,836,171 native / zero interpreted; whole immediate/continued files and cores equal |
+| Paced audio | 120 frames; 3,672,293 native / zero interpreted; at least 87,719 fresh device-accepted frames |
+| Fresh nonzero device acceptance | Conservative lower bound 86,701 frames; zero active drops |
 | Digital main-route audio | 77,211,351 frames; PCM hash 5475582767500413829; synthesis loss zero |
 
-Of the 250 additions, 245 execute on the main route and five only in the
-extension. Its 7,799-key window overlaps main; imported work and overlapping
-identities are not added wholesale to main totals. Checkpoint and paced suffixes
-add no unique keys beyond the 53,528-key union. Seven untouched source inputs
-produce 239,346 contributions within unchanged public limits.
+The new continuous reference starts at the qualified native frontier, traverses
+the ledge and stairs, exercises combat and reaches a waterfall cavern section.
+Guest images and full RAM establish that transition; no additional disc read
+occurs there. It ends with HP52, natural maximum60 and quest state unchanged.
+One new current-HP-only refill restores a living character; the unassisted
+checkpoint remains intact. It is assisted progression, not a campaign claim.
 
-The route includes wizard defeat, natural reward/Long Sword acquisition and
-equipment, miner dialogue, deeper-mine boss combat/rewards, town/lodge return
-and Alcaino combat. All 33 case outcomes match the same-policy source; six
-historical case rules are nonempty. Actual images and RAM establish scenes.
-The endpoint is a green cave combat ledge, not the prior ABI26 stair scene.
-The read-only extension advances farther in that area with HP59→46, maximum60
-and quest unchanged. It makes no new-room or campaign-completion claim.
+Eight original captures retain their ABIs, checkpoint origins and per-producer
+counts. They produce 252,498 contributions, 126,156,528 profile bytes and
+45,319,084 raw-input bytes within unchanged public limits. Exact-byte preflight
+reproduces the retained profile and predicts the actual composed size/hash.
+Overlapping debug captures are not added to the catalogue. Historical profile
+contributions are not fresh execution totals.
 
-The source is explicitly checkpoint-linked: a closed reset prefix plus a
-disjoint 126-frame own-checkpoint tail. Reconstruction is proof-only, excluded
-from compilation history and retirement totals. Failed source and replay runs
-remain failed. The final qualified native process starts from reset and completes
-the entire route. Link/final cores match under exactly five tier-counter
-conversions and one typed WAV-file scalar relation; all other CORE bytes and
-52 other HOST bytes are strict. Prefix checkpoint cores are independently
-checked; no converted hybrid checkpoint is imported. The optional no-WAV files
-compare all 60 HOST bytes strictly.
+The final module passes one fresh reset qualifier followed by its own native
+checkpoint extensions. No hybrid or cross-module checkpoint is imported. The
+new endpoint is at lifetime frame107409; that segmented continuation is not
+relabeled a single-process cold run. The main source remains an explicitly
+admitted reset prefix plus disjoint checkpoint tail, with reconstruction excluded.
+Original failed receipts remain failed. A new adapter's metadata-only failure
+before guest launch is also retained; a separate adapter version follows the
+genuine main-to-extension receipt chain.
 
-Full-route fast-forward SDL presentation is muted. Paced audio separately proves
-`40 + 88,457 = 88,487 + 10`; its 687-frame planned pause clear and ten-frame
-shutdown drain are accounted separately. New nonzero PCM reaches SDL, without
-a listening or analog/hardware-parity claim. The capped 441,000-frame boot WAV
-also matches. Owner media is read-only; blank-seed saves remain volatile.
+Every new settled state, RAM image, guest image and per-key retirement matches
+its source. Final machine cores compare under the existing five tier-counter
+relations; both new no-WAV checkpoint HOST sections compare all 60 bytes strictly.
+The fresh main retains its independently checked link/final checkpoint and typed
+WAV-file scalar relation. Emission counts alone remain insufficient.
 
-The selected policy receives complete unknown CDBs and returns invalid-command
-status with sense; unknown operations are not implemented. Independent-reference
+Paced audio proves `40 + 88,457 = 88,487 + 10`. Its 728-frame planned pause
+clear and ten-frame shutdown drain are accounted separately. Fresh nonzero PCM
+reaches SDL with zero active drops. Full-route fast-forward presentation is muted;
+digital PCM and the capped boot WAV are separate checks. Listening and analog/
+hardware parity are not established. Owner media remains read-only; guest saves
+remain volatile.
+
+The selected unknown-CD policy returns invalid-command status with sense for
+complete unknown CDBs; those operations are not implemented. Independent-reference
 wire/status/message/reset differences remain visible. No program, quest, item,
-equipped-weapon or STR bytes were edited. Full campaign, hardware, listening
-and cross-process save persistence remain unfinished.
+equipped-weapon or STR bytes were edited. Full campaign and cross-process save
+persistence remain unfinished.
 
 # Historical qualification notes
 

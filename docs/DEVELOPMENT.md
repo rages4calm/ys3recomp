@@ -4,11 +4,26 @@
 
 Use public `d71add52a88ab18084ecd3ea856b9b4df80a7469` (ABI27,
 source80/`7c2771ff590fcd2cdfdfd51e71c8a34aab2a6a86b48d275d6071b8832647e8c4`),
-the official composer and stable emitter. The 58,002-key module retains all
-57,752 prior keys; all 250 additions execute. Its fresh reset route retires
-3,209,517,525 native / zero interpreted over 104,745 frames. A separate own-native
-checkpoint window adds 432 frames and seven native promotions. It is bounded
-assisted verification through Alcaino combat, not complete-campaign proof.
+the official profile-v1 composer and stable emitter. The 58,031-key module
+retains all 58,002 previous keys; all 29 additions execute. Its fresh reset
+route retires 3,209,517,525 native / zero interpreted over 104,745 frames.
+Separate own-native checkpoint windows cover 432 retained frames and 2,232
+new stair/combat frames. The latter retires 70,860,852 native / zero interpreted,
+promoting 331 retirements. It is bounded assisted verification, not campaign proof.
+
+Use exact-byte composition preflight with the original baseline captures and
+one continuous new reference window. Compare its retained profile digest and
+predicted serialization with the actual composed bytes. The current eight-input
+catalogue fits existing limits; do not compose every overlapping navigation probe.
+Composer-only tooling does not replace the qualified emitter/runtime pin.
+
+For a checkpoint extension whose receipt delegates build metadata to a genuine
+main parent, bind and validate that ancestry explicitly: main receipt, actual
+main checkpoint origin, immutable extension input graph, package/context and
+the extension's own saved endpoint. Do not invent an official receipt or borrow
+metadata from an unrelated run. Correct a frozen adapter in a new version and
+reuse successfully closed same-build ancestors; a metadata-only fix needs no
+additional cold replay.
 
 Use exact-build checkpoints for discovery and harness debugging. Reserve a fresh
 complete native reset qualifier for a finished module or ABI migration. Do not
@@ -31,7 +46,7 @@ before contacting the host; omit an unused snapshot for a zero-query tail.
 Keep each segment's original IDs and raw origins, namespace replay IDs and
 checkpoint filenames, and retain actual progress polls through the pinned
 semantic validator. Require exact settled state and per-key Nold+Iold→Nnew/I0.
-Capture sums are derived expectations, never forged raw captures. Seven original
+Capture sums are derived expectations, never forged raw captures. Eight original
 profile inputs retain exact labels and all prior keys; no public capacity grows.
 Retrospectively exclude every assist's backing aliases across original, compiled
 and future fetched source. Never capture temporary program-cheat bytes.
