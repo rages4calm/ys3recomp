@@ -9,26 +9,30 @@ The full campaign remains unfinished; unseen code retains interpreter fallback.
 The assisted route covers item use, damage/death/continue, mine combat,
 the wizard's defeat, Long Sword acquisition and equipment, miner dialogue,
 the deeper-mine boss and rewards, town/lodge return and Alcaino combat.
-A separate read-only **432-frame** native checkpoint extension advances farther
-through that combat area. These are bounded checks, not campaign completion.
-The earlier ABI26 staircase check remains historical evidence for that build;
-the current endpoint is the actual Alcaino combat frontier.
+Separate own-native checkpoint extensions cover the retained **432-frame**
+combat window and a new **2,232-frame** stair traversal/combat window into a
+waterfall cavern section. These are bounded checks, not campaign completion.
 
-The official module contains **58,002 source identities** in 83 MPR contexts,
-across 947 C++ translation units and one header. All 57,752 previous identities
-remain, and all **250 additions compile and execute** across the route and
-extension. The two checks exercise 53,528 identities; 4,474 retained compiled
-keys are not exercised here. No observed source variant is excluded or unsupported.
-Compilation alone is not execution evidence.
+The official module contains **58,031 source identities** in 83 MPR contexts,
+across 947 C++ translation units and one header. All 58,002 previous identities
+remain, and all **29 additions compile and execute**. The checks exercise 53,568
+identities; 4,463 compiled keys are not exercised here. No observed source variant
+is excluded or unsupported. Compilation alone is not execution evidence.
 
 TCP verification compares settled CPU/source/device state, full RAM, guest
-images and digital PCM. All 5,523 main-route steps have bounded progress checks;
-6,899 previously interpreted retirements become native on the same ABI27 controls.
-The separate extension promotes seven more retirements, executing 13,795,134
-native instructions with zero fallback. Its imported prefix is not counted again.
-All 309 main-route assists have exact-byte authority, full RAM readbacks,
-source-alias exclusions and typed write-effect proofs. No program, quest,
-item, equipped-weapon or STR bytes were edited.
+images and digital PCM. The fresh main route retains all 5,523 bounded steps
+and 309 typed data assists. The retained extension executes 13,795,134 native
+instructions with zero fallback. The new extension executes **70,860,852 native
+instructions and zero interpreted instructions**, promoting all **331** prior
+interpreted retirements across 29 added identities. Its 195 controls and 200
+RAM/image observations match the authentic source reference.
+
+The new window includes one verified living-HP refill with the natural maximum
+left unchanged. Its unassisted checkpoint is retained. All assists have exact
+expected-byte authority, full RAM readbacks, source-alias exclusions and typed
+write-effect proofs. No program, quest, item, equipped-weapon or STR bytes were
+edited. Imported prefixes and overlapping source histories are not counted as
+new execution.
 
 ## Play the local build
 
