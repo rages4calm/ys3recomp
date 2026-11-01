@@ -1,29 +1,47 @@
 # Consumer development
 
-## Current ABI27 qualification and checkpoint-first iteration
+## Current ABI28 qualification and checkpoint-first iteration
 
-Use public `d71add52a88ab18084ecd3ea856b9b4df80a7469` (ABI27,
-source80/`7c2771ff590fcd2cdfdfd51e71c8a34aab2a6a86b48d275d6071b8832647e8c4`),
-the official profile-v1 composer and stable emitter. The 58,031-key module
-retains all 58,002 previous keys; all 29 additions execute. Its fresh reset
-route retires 3,209,517,525 native / zero interpreted over 104,745 frames.
-Separate own-native checkpoint windows cover 432 retained frames and 2,232
-new stair/combat frames. The latter retires 70,860,852 native / zero interpreted,
-promoting 331 retirements. It is bounded assisted verification, not campaign proof.
+Use public `a96e7891c33690d41f6fe12ce1904fe160a0c9a2` (ABI28,
+source82/`995ecfa893ee74ea046b758cbccfe0ab1baa57ecbec21c8a4c7313f06aca533a`),
+the official profile-v1 composer and stable emitter. Select `runtime.cd_timing`
+explicitly as `fixed`; `gear-distance` is a separate opt-in timeline. The
+58,032-key module retains all 58,031 previous keys and executes its sole addition.
+A fresh 104,745-frame reset retires 3,209,517,525 native / zero interpreted.
+Own-native checkpoint extensions cover 432, 2,232 and 960 frames. The last
+retires 30,980,373 native / zero interpreted, promoting one retirement. This is
+bounded assisted verification, not campaign proof.
 
-Use exact-byte composition preflight with the original baseline captures and
-one continuous new reference window. Compare its retained profile digest and
-predicted serialization with the actual composed bytes. The current eight-input
-catalogue fits existing limits; do not compose every overlapping navigation probe.
-Composer-only tooling does not replace the qualified emitter/runtime pin.
+Compose the original eight inputs plus the one genuine new unassisted probe
+capture. Exact-byte preflight must reproduce the retained profile and predict
+actual serialization. The nine-input catalogue fits unchanged public limits;
+do not compose every overlapping navigation capture. Preserve original ABI labels,
+origins and producer counts. Composer tooling does not replace a qualified runtime.
 
-For a checkpoint extension whose receipt delegates build metadata to a genuine
-main parent, bind and validate that ancestry explicitly: main receipt, actual
-main checkpoint origin, immutable extension input graph, package/context and
-the extension's own saved endpoint. Do not invent an official receipt or borrow
-metadata from an unrelated run. Correct a frozen adapter in a new version and
-reuse successfully closed same-build ancestors; a metadata-only fix needs no
-additional cold replay.
+Validate actual receipt ancestry, checkpoint origins, immutable input graph,
+source context and package before a checkpoint-linked extension. Reuse closed
+same-build ancestors when debugging an adapter. A frozen failed controller stays
+failed; fix it in a separately versioned controller. An ABI27/28 capture-reply
+comparison projects only the typed ABI tag locally; raw replies and source
+captures stay unchanged. Never infer encoded bytes from live source rows.
+
+Load frozen helpers through reviewed source-only import closures before any SDK
+import. Pin the actual closure, loaders and every diagnostic leaf used; `-B`
+alone does not prevent stale cache reads. Old-source verification runs in a
+separate source-only process, without mixing SDK modules. Bind every actual
+save ACK/file/status/context, with type-strict integer equality.
+
+For ABI27-to-ABI28 fixed timing, admit the source-derived inserted fixed zero
+field and five tier counters only. Walk the variable layout; do not hardcode a
+retail offset or relabel decoded structures. Compare all remaining CORE bytes
+strictly. All 26 main checkpoints and all three cuts in each assisted extension
+are checked. Same-build compares whole files. Cross-ABI states are read-only
+comparison inputs, never converted or imported.
+
+After power loss, preserve partial compiler logs. If the public builder refuses
+an existing output directory, use a fresh official build directory and bind its
+genuine receipt; do not transplant objects or bypass the public build contract.
+Report reusable build-resume requirements upstream.
 
 Use exact-build checkpoints for discovery and harness debugging. Reserve a fresh
 complete native reset qualifier for a finished module or ABI migration. Do not
@@ -45,8 +63,8 @@ before contacting the host; omit an unused snapshot for a zero-query tail.
 
 Keep each segment's original IDs and raw origins, namespace replay IDs and
 checkpoint filenames, and retain actual progress polls through the pinned
-semantic validator. Require exact settled state and per-key Nold+Iold→Nnew/I0.
-Capture sums are derived expectations, never forged raw captures. Eight original
+semantic validator. Require exact settled state and per-key Nold+Iold -> Nnew/I0.
+Capture sums are derived expectations, never forged raw captures. Nine original
 profile inputs retain exact labels and all prior keys; no public capacity grows.
 Retrospectively exclude every assist's backing aliases across original, compiled
 and future fetched source. Never capture temporary program-cheat bytes.
@@ -56,7 +74,7 @@ identity from source context, package, media and normalized command. Verify the
 file/body/ACK and CPU/MPR/input/write/PCM metadata. Source-to-native CORE comparisons
 admit exactly five reviewed tier counters. A no-WAV source versus capped native
 file admits only the typed HOST WAV-writer scalar after authentic own file/ACK/
-status/context/command joins; the other 52 HOST bytes are strict. Both no-WAV
+status/context/command joins; the other 52 HOST bytes are strict. All no-WAV
 extension files compare all 60 HOST bytes strictly. Never rewrite/import a
 converted checkpoint.
 
@@ -69,7 +87,7 @@ after and on every running/final poll, fresh nonzero device acceptance beyond
 imported PCM, zero active drops, the exact queue equation and separate planned
 pause clears/shutdown drains. Do not promote this to lossless listening.
 
-Retain ABI26 fallback. ABI27 selects `nec-invalid`, replacing historical
+Retain ABI27 fallback. ABI28 selects `nec-invalid`, replacing historical
 `gear-good`: complete unknown CDB framing/sense handling is implemented, unknown
 operations are not. Reference wire/status/message/reset differences stay visible.
 Public files remain authored; generated code, media, captures, checkpoint data,

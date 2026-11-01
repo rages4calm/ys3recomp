@@ -1,71 +1,79 @@
 # Consumer status - 1 November 2026
 
-## Selected ABI27: native Alcaino stairs and cavern extension
+## Selected ABI28: fixed timing and native waterfall cavern coverage
 
-Play selects public toolkit `d71add52a88ab18084ecd3ea856b9b4df80a7469`,
-ABI27, source80 SHA256
-`7c2771ff590fcd2cdfdfd51e71c8a34aab2a6a86b48d275d6071b8832647e8c4`.
-The CD policy remains `nec-invalid`. Qualified prior builds are retained.
+Play selects public toolkit `a96e7891c33690d41f6fe12ce1904fe160a0c9a2`, ABI28,
+source82 SHA256 `995ecfa893ee74ea046b758cbccfe0ab1baa57ecbec21c8a4c7313f06aca533a`. CD timing is explicitly `fixed`; unknown-CD policy
+remains `nec-invalid`. The qualified ABI27 build remains available privately.
 
 | Actual verification | Result |
 | --- | --- |
 | Fresh single-process reset | 104,745 frames; 3,209,517,525 native / zero interpreted |
-| Retained own-native extension | 432 frames; 13,795,134 native / zero interpreted |
-| New stair/combat own-native extension | 2,232 frames; 70,860,852 native / zero interpreted |
-| New same-control source reference | 70,860,521 native / 331 interpreted |
-| New per-key conversion | All 13,152 identities conserve hits; 331 retirements promoted; block gain zero |
-| Compiled module | 58,031 identities; all 58,002 previous keys retained; all 29 additions compiled and executed |
-| Executed union | 53,568 identities; 4,463 compiled keys not exercised |
-| Newly exercised beyond prior checks | 29 new compilations and 11 retained identities |
+| Retained own-native combat extension | 432 frames; 13,795,134 native / zero interpreted |
+| Retained own-native stair/combat extension | 2,232 frames; 70,860,852 native / zero interpreted |
+| New waterfall own-native extension | 960 frames; 30,980,373 native / zero interpreted |
+| Waterfall authentic ABI27 reference | 30,980,372 native / one interpreted |
+| New per-key conversion | 7,784 identities conserve hits; sole interpreted retirement promoted |
+| Compiled module | 58,032 identities; all 58,031 previous keys retained; one addition compiled and executed |
+| Executed union | 53,576 identities; 4,456 compiled keys unexercised |
+| First exercised beyond prior qualification | One new compilation and seven retained identities |
 | Official emission | 83 MPR contexts; 947 C++ units + one header; zero unsupported/excluded |
 | Main protocol | 108,460 records; 5,523 bounded steps; 309 typed data assists |
-| New-window protocol | 195 exact controls; 200 full-RAM/image observations; one typed living-HP refill |
-| Same-build checkpoint repeats | 60 fresh frames each; 1,836,171 native / zero interpreted; whole immediate/continued files and cores equal |
+| Waterfall protocol | 89 controls; 94 full RAM/image observations; one living-HP refill |
+| Main cross-ABI checkpoint comparisons | All 26 pass under the source-derived fixed-timing relation |
+| Each assisted extension's checkpoint comparisons | All three cuts pass; all 60 HOST bytes strict |
+| Own-build checkpoint repeats | 60 fresh frames each; 1,836,171 native / zero interpreted; whole immediate/continued files and CORE equal |
 | Paced audio | 120 frames; 3,672,293 native / zero interpreted; at least 87,719 fresh device-accepted frames |
 | Fresh nonzero device acceptance | Conservative lower bound 86,701 frames; zero active drops |
 | Digital main-route audio | 77,211,351 frames; PCM hash 5475582767500413829; synthesis loss zero |
 
-The new continuous reference starts at the qualified native frontier, traverses
-the ledge and stairs, exercises combat and reaches a waterfall cavern section.
-Guest images and full RAM establish that transition; no additional disc read
-occurs there. It ends with HP52, natural maximum60 and quest state unchanged.
-One new current-HP-only refill restores a living character; the unassisted
-checkpoint remains intact. It is assisted progression, not a campaign claim.
+The new continuous window descends through the waterfall cavern and exercises
+lower-platform combat. Full RAM and guest images match the authentic reference.
+It ends with HP56, natural maximum60 and unchanged quest state; no area-exit
+claim is made. A retained unassisted cut has HP34; six genuine frames before the
+safe refill boundary incur damage to HP28. The exact expected-byte assist is
+28 to 60. No maximum-HP, program, progression, inventory, equipment or STR edits
+are admitted. Assisted progression is not campaign completion.
 
-Eight original captures retain their ABIs, checkpoint origins and per-producer
-counts. They produce 252,498 contributions, 126,156,528 profile bytes and
-45,319,084 raw-input bytes within unchanged public limits. Exact-byte preflight
-reproduces the retained profile and predicts the actual composed size/hash.
-Overlapping debug captures are not added to the catalogue. Historical profile
-contributions are not fresh execution totals.
+Nine original captures retain their ABI labels, checkpoint origins and producer
+counts: the prior eight plus one genuine unassisted probe capture containing the
+sole new source variant. They compose 257,485 contributions, 127,924,412 profile
+bytes and 45,985,052 raw-input bytes within unchanged public limits. Exact-byte
+preflight matches the actual serialization. Overlapping exploratory captures
+are excluded from composition. Historical contributions are not execution totals.
 
-The final module passes one fresh reset qualifier followed by its own native
-checkpoint extensions. No hybrid or cross-module checkpoint is imported. The
-new endpoint is at lifetime frame107409; that segmented continuation is not
-relabeled a single-process cold run. The main source remains an explicitly
-admitted reset prefix plus disjoint checkpoint tail, with reconstruction excluded.
-Original failed receipts remain failed. A new adapter's metadata-only failure
-before guest launch is also retained; a separate adapter version follows the
-genuine main-to-extension receipt chain.
+The final candidate passes one fresh reset and three contiguous own-native
+checkpoint windows, reaching lifetime frame108369 and 3,325,153,884 native /
+zero interpreted instructions. This segmented continuation is not relabeled a
+single-process cold run. The main source remains an explicitly admitted reset
+prefix plus disjoint checkpoint tail; reconstruction is excluded. The failed
+first migration replay remains failed: it stopped at a capture-reply ABI tag
+comparison. A separately frozen comparison adapter admits only that typed tag
+change; raw captures and historical labels are unchanged. The final fresh replay
+passes all 26 independently checked checkpoints and all source/device checks.
 
-Every new settled state, RAM image, guest image and per-key retirement matches
-its source. Final machine cores compare under the existing five tier-counter
-relations; both new no-WAV checkpoint HOST sections compare all 60 bytes strictly.
-The fresh main retains its independently checked link/final checkpoint and typed
-WAV-file scalar relation. Emission counts alone remain insufficient.
+ABI28 selects the explicit fixed CD timeline. The cross-ABI CORE relation locates
+one inserted zero fixed-timing field using source-derived structure and admits
+only the existing five tier counters; all other CORE bytes compare strictly.
+All no-WAV extension HOST sections compare all 60 bytes strictly. Main link/final
+checks admit only the actual-ACK-backed WAV-writer scalar; the other 52 HOST bytes
+remain strict. No cross-ABI checkpoint is imported, converted or rewritten.
+The source-only helper loader verifies executed bytes independently of stale
+Python caches. Same-build restores use genuine ABI28 own files.
 
-Paced audio proves `40 + 88,457 = 88,487 + 10`. Its 728-frame planned pause
-clear and ten-frame shutdown drain are accounted separately. Fresh nonzero PCM
-reaches SDL with zero active drops. Full-route fast-forward presentation is muted;
-digital PCM and the capped boot WAV are separate checks. Listening and analog/
-hardware parity are not established. Owner media remains read-only; guest saves
-remain volatile.
+Paced audio proves `40 + 88,457 = 88,487 + 10`. Its planned 728-frame pause
+clear and ten-frame shutdown drain are accounted separately. Every running poll
+checks typed origin/window/queue counters. Fresh nonzero PCM reaches SDL with
+zero active drops. Full-route fast-forward presentation is muted; digital PCM
+and the capped boot WAV are separate checks. Listening and hardware parity are
+not established. The separate opt-in `gear-distance` timeline is not qualified
+by this fixed-timing native route.
 
-The selected unknown-CD policy returns invalid-command status with sense for
-complete unknown CDBs; those operations are not implemented. Independent-reference
-wire/status/message/reset differences remain visible. No program, quest, item,
-equipped-weapon or STR bytes were edited. Full campaign and cross-process save
-persistence remain unfinished.
+The selected unknown-CD policy handles complete unknown CDB framing and returns
+invalid-command status with sense; unknown operations remain unimplemented.
+Independent-reference differences remain visible. Owner media stays read-only;
+guest saves remain volatile. Full campaign and cross-process save persistence
+remain unfinished.
 
 # Historical qualification notes
 
