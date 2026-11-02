@@ -68,6 +68,25 @@ class CleanupTests(unittest.TestCase):
                 cleanup.remove_target(self.target(target), self.root, protected)
             self.assertTrue(target.exists())
 
+    def test_unnumbered_candidate_matches_current_build_layout(self):
+        directory = self.batch / 'candidate/desktop/build/CMakeFiles/game.dir'
+        directory.mkdir(parents=True)
+        disposable = directory / 'disposable.obj'
+        protected = directory / 'protected.obj'
+        executable = directory / 'game.exe'
+        for path in (disposable, protected, executable):
+            path.write_bytes(b'authored cleanup fixture')
+        found = {Path(item['path']) for item in cleanup.candidates(self.root, {protected})}
+        self.assertIn(disposable, found)
+        self.assertNotIn(protected, found)
+        self.assertNotIn(executable, found)
+        cleanup.remove_target(self.target(disposable), self.root, {protected})
+        self.assertFalse(disposable.exists())
+        for path in (protected, executable):
+            with self.assertRaisesRegex(ValueError, 'Refused'):
+                cleanup.remove_target(self.target(path), self.root, {protected})
+            self.assertTrue(path.exists())
+
     def test_candidate_backup_names_are_not_build_roots(self):
         for name in ('candidate-backup', 'candidate-01-old', 'candidates'):
             path = self.batch / name / 'build/CMakeFiles/game.dir/sample.obj'

@@ -10,9 +10,10 @@ unfinished; unseen code retains interpreter fallback.
 
 The assisted route covers item use, damage/death/continue, mine combat,
 the wizard's defeat and Long Sword reward, miner dialogue, the deeper-mine boss,
-town/lodge return and Alcaino combat. The fourteen continuation windows cover
+town/lodge return and a return to Tigre Mine. The fourteen continuation windows cover
 **432 / 2,232 / 960 / 1,716 / 504 / 678 / 522 / 336 / 342 / 288 / 336 / 960 / 330 / 432 frames** through deeper cavern traversal
-and combat. These are bounded checkpoint-linked checks; the next boss is unverified.
+and combat in Tigre Mine. These are bounded checkpoint-linked checks; actual
+Alcaino discovery is described separately below; its next boss remains unverified.
 
 The new official module contains **58,041 source identities**, retaining all
 58,039 prior keys. Both additions execute natively in a separate 546-frame branch.
@@ -39,6 +40,13 @@ zero observed active drops. Repeat, audio and exploratory forks are excluded
 from route totals and coverage. Other exploratory forks retain nine additional
 uncompiled variants, outside the qualified route. No campaign, listening or
 hardware claim.
+
+Separate assisted discovery now reaches the real **Alcaino** destination and
+collects the **Small Shield** chest reward. That route still uses interpreter
+fallback; its reward-window and paced TCP/audio counts are recorded in
+[STATUS](docs/STATUS.md#new-alcaino-discovery-small-shield-acquired). The official
+composer's profile-size refusal has been reported upstream. Play remains on the
+qualified ABI28 build while the new code awaits composition and qualification.
 
 ## Play the local build
 

@@ -8,6 +8,13 @@
     "runtime_abi": 28,
     "source_policy": "Reviewed public C51 ABI28 additive profile-v2 producer with unchanged runtime. The new 58041-key module retains all 58039 prior keys, establishes its own reset/forward lineage, and qualifies a separate new-key witness plus fresh checkpoint/paced audio. Original source labels and failures are preserved."
   },
+  "progression_label_correction": {
+    "date": "2026-11-02",
+    "area": "Tigre Mine",
+    "previous_post_lodge_area_label": "Alcaino",
+    "named_inventory": "Roy's Pendant already held at the selected endpoint",
+    "scope": "Historical narrative correction only. Earlier post-lodge Alcaino, ruins and waterfall labels do not prove those destinations. Original numerical qualifications remain unchanged. New assisted Alcaino Small Shield discovery is separate and not native-qualified; no Alcaino boss or campaign completion is claimed."
+  },
   "initial_qualification": {
     "revision": "33fe46d4274584da5ba55b419a240f248df4158d",
     "runtime_abi": 12,

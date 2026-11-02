@@ -1,6 +1,72 @@
 # Consumer status - 2 November 2026
 
-## Selected ABI28: two new native variants and cavern progression
+## Progression correction
+
+Named inventory checks in the selected native build and the retained original
+reference both show Roy's Pendant already owned at the frame 114,813 checkpoint.
+The blue cavern and pendant chest are in **Tigre Mine**, not Alcaino. Earlier
+Alcaino, ruins and waterfall labels for the post-lodge route were mistaken;
+those historical narrative labels do not establish progression to those areas.
+The retained instruction, checkpoint, RAM, image and audio measurements keep
+their original scope and values. This correction does not imply a new pendant
+reward or an Alcaino boss defeat.
+
+A separate read-only replay from the selected build's own mine-boss checkpoint
+returns to town in 15,976 frames: **502,785,218 native / zero interpreted**.
+It matches 43 settled source CPU/device statuses, 17 RGB observations and
+14 complete RAM observations. This is a checkpoint navigation check, excluded
+from the selected forward totals; it is not a new full native qualification.
+
+## New Alcaino discovery: Small Shield acquired
+
+A separate assisted discovery route now enters the actual lodge, completes the
+Dogi/Elena scene, selects the named **ALCAINO** destination and traverses its
+exterior, jungle and stair rooms. The named chest popup confirms **Small Shield**
+acquisition at frame 123,300; a living own-build checkpoint is saved at 123,318.
+The 102-frame pickup window retires **3,074,682 native / 81,082 interpreted**
+instructions, with no developer writes in that window. Earlier traversal uses
+verified living-HP refills and a referenced, paired horizontal-position edit.
+The Small Shield is subsequently selected through the equipment menu; the
+status screen confirms DEF 40 to 50. No equipment, item, quest, experience,
+maximum-HP or program bytes were edited.
+The route returns upstairs and reaches the blue-curtain room at frame 126,274,
+with a living own-build checkpoint. This is assisted discovery, excluded from
+the selected native route below.
+
+A fresh 120-frame paced TCP/audio fork after the reward retires **3,594,477 native
+/ 159,341 interpreted** instructions. It generates 88,456 PCM frames, with a
+fresh nonzero device-acceptance lower bound of 88,165 frames and zero observed
+active drops. The planned pause clears 288 frames; three pending shutdown frames
+are accounted for separately. This verifies bounded digital audio delivery,
+without a listening, hardware, native-only or campaign claim. The next Alcaino
+boss remains unverified.
+
+A second paced TCP/audio fork at the blue-curtain checkpoint passes 120 frames:
+**3,912,767 native / 5,273 interpreted**, 88,456 generated PCM frames and a fresh
+nonzero device-acceptance lower bound of 85,064 frames. Observed active drops
+remain zero; 687 planned-pause frames and 24 shutdown-pending frames are separate.
+It does not advance the saved discovery parent or qualify the cut-scene or boss.
+
+The first lodge/map/Alcaino capture composition discovers 179 additional full
+source identities but exceeds the official 128 MiB serialized-profile limit.
+The refusal is retained and reported upstream; no history pruning, private
+limit increase or weakened MPR guards were used. Further discovery remains
+captured privately rather than being presented as newly qualified native code.
+RomAtlas-style analysis of authenticated banked snapshots helped locate the
+actual stair cells; static analysis is not execution coverage.
+
+The latest reviewed toolkit adds opt-in checkpoint reference execution at
+[ABI29](https://github.com/rages4calm/pcenginerecomp/commit/81b5c231e452c6879d58585c8863012e438f1d55).
+An isolated, unselected consumer build passed a bounded intro fixture upstream:
+3002 native boot frames and two 120-frame own-checkpoint branches, with
+3,204,842 retirements each in native versus interpreter execution. The branches
+match complete CPU/device state with only declared execution counters treated
+separately, all 188 encoded source counts, RAM, pixels and captured PCM. Fresh
+nonzero SDL delivery was also checked. This is an internal bounded comparison;
+it is not independent-console evidence, a selected ABI29 migration or Alcaino
+qualification. Play continues to use the qualified ABI28 build.
+
+## Selected ABI28: two new native variants and Tigre cavern traversal
 
 The new selected build keeps toolkit `cd5bff67b323098979345f76d5b87075fc628e72`,
 ABI28, source84 SHA256
@@ -24,7 +90,8 @@ and checkpoint lineage. No old-build checkpoint was imported.
 | Fresh paced audio | 120 frames; 3,739,261 native / zero interpreted; fresh nonzero PCM accepted by SDL |
 
 The forward route follows the stairs into the next cavern room and its combat
-and treasure-chest area. The chest reward and next boss remain unverified.
+and treasure-chest area. The pendant was already owned; the separate Alcaino
+discovery above is excluded from this native qualification. Its next boss remains unverified.
 Mine/wizard/boss/town/lodge milestones remain from earlier assisted verification.
 The canonical route retains 315 validated data edits, with no new forward writes.
 
