@@ -1,5 +1,44 @@
 # Consumer development
 
+## Story labels and checkpoint navigation
+
+The post-lodge cavern route previously labeled Alcaino is Tigre Mine. Named
+inventory and original-reference observations identify its pendant chest;
+Roy's Pendant was already held at the selected endpoint. Treat older area
+labels as historical mistakes, while preserving original numerical receipts.
+Verify destination names and named inventory before assigning story progress.
+The status page records the correction without promoting exploratory forks.
+
+Use an actual earlier same-build checkpoint and a retained control suffix when
+that is shorter than walking back. A selected cut of a closed run must remain
+explicitly labeled; it is not a newly executed run. Preserve original failures,
+compare actual new work and do not add overlapping navigation to forward totals.
+
+The newly published toolkit evidence helpers support immutable snapshots and
+receipt consistency in a separate parent process. Their generic consistency
+seal is not native qualification. Keep the pinned guest SDK isolated. The
+selected ABI28 host cannot switch an own checkpoint to an interpreter-only tier;
+that requires a separately verified upstream feature and a new build lineage.
+
+The authored read-only `scripts/ys3_state.py` adapter reads authenticated 8 KiB
+WRAM snapshots: observed HP bytes, separate position low/high arrays, cached
+actor coordinates and camera offsets. It reports a raw context byte without
+inventing quest semantics. Synthetic layout tests cover distinct X/Y high bytes,
+wrapping, cache mismatches and non-player actor context. The reader neither
+authenticates a checkpoint nor grants write authority or native qualification.
+
+For banked stair discovery, analyze the complete authenticated physical snapshot
+under explicitly recorded MPR contexts. A static alternate mapping is not a
+historical CPU mapping. Use the observed game controls to confirm a transition;
+retain original failures and do not promote a death branch to a living checkpoint.
+
+The latest upstream reference-execution feature has a separate, bounded ABI29
+intro fixture; see STATUS for scope. It does not change the selected ABI28 pin.
+Profile composition currently refuses the initial new lodge/Alcaino captures at
+the official 128 MiB serialization limit. Keep the refusal and full histories.
+A shorter genuine source episode can reduce duplicate capture input; synthetic
+merging, private history pruning and raised admission limits are not substitutes.
+
 ## Current ABI28 qualification and checkpoint-first iteration
 
 Use public `cd5bff67b323098979345f76d5b87075fc628e72` (ABI28, 84 source files,
@@ -1279,6 +1318,8 @@ overwrite it or retry its missing targets.
 
 Read the selected qualification and historical batch protection metadata before
 reviewing regular compiler intermediates inside batch build CMakeFiles trees.
+Both `candidate` and numbered `candidate-N` build roots are recognized; backup
+names are excluded. This includes the current generated-build layout.
 Reject reparse ancestors, protected paths, changed files and active project
 game/build processes. Journal exact targets before deletion and verify protection
 metadata again afterward. Do not repeatedly hash thousands of unrelated media

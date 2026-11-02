@@ -23,7 +23,8 @@ EXTENSIONS = {".obj", ".o", ".pch", ".gch", ".ilk", ".idb"}
 
 
 def build_root_name(name):
-    return name.startswith("build") or re.fullmatch(r"candidate-[0-9]+", name) is not None
+    return (name.startswith("build") or name == "candidate"
+            or re.fullmatch(r"candidate-[0-9]+", name) is not None)
 
 
 def say(message):
