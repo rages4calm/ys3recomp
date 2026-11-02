@@ -1,49 +1,56 @@
 # Consumer status - 2 November 2026
 
-## Selected ABI28: checkpoint-native cavern continuation
+## Selected ABI28: two new native variants and cavern progression
 
-Play keeps the qualified additive build at public toolkit
-`cd5bff67b323098979345f76d5b87075fc628e72`, ABI28, 84 source files,
-SHA256 `16679df8f6758cbac67e97dc2a3cb20d327ee80631e3cce25601dc0672b0734a`.
-CD timing is `fixed`; unknown-CD policy is `nec-invalid`. The existing selected
-executable and immutable launcher qualification are preserved.
+The new selected build keeps toolkit `cd5bff67b323098979345f76d5b87075fc628e72`,
+ABI28, source84 SHA256
+`16679df8f6758cbac67e97dc2a3cb20d327ee80631e3cce25601dc0672b0734a`.
+CD timing is `fixed`; unknown-CD policy is `nec-invalid`. This is an official
+additive composition, emission and rebuilt executable, with its own fresh reset
+and checkpoint lineage. No old-build checkpoint was imported.
 
 | Actual verification | Result |
 | --- | --- |
 | Fresh reset | 104,745 frames; 3,209,517,525 native / zero interpreted |
-| Twelve own-native windows | 432 / 2,232 / 960 / 1,716 / 504 / 678 / 522 / 336 / 342 / 288 / 336 / 960 frames; zero interpreted |
-| Checkpoint-linked endpoint | 114,051 frames; 3,503,969,331 native / zero interpreted |
-| Compiled module | 58,039 identities; unchanged; no new emission or rebuild |
-| Executed union | 53,616 identities; 4,423 compiled keys unexercised |
-| Latest native gain | Two previously compiled full source identities first exercised |
-| Latest three windows | 1,584 frames; 49,685,371 native / zero interpreted |
-| Source comparison | Six separate original/native raw gates; all 27 full RAM/image cuts per role |
-| Latest assists | No new developer writes; inherited 315 validated data edits retained |
-| Final checkpoint repeat | Both 60-frame branches: 1,882,945 native / zero interpreted; whole immediate/continued files, CORE/HOST/RAM/pixels/per-key counts equal |
-| Final paced audio | 120 frames; fresh nonzero PCM accepted by SDL; zero observed active drops |
+| Fourteen forward checkpoint windows | 432 / 2,232 / 960 / 1,716 / 504 / 678 / 522 / 336 / 342 / 288 / 336 / 960 / 330 / 432 frames |
+| Forward endpoint | 114,813 frames; 3,527,737,024 native / zero interpreted |
+| Newly compiled identities | Two additions; both execute once natively in the auxiliary test |
+| Official module | 58,041 identities; all 58,039 prior keys retained; 83 MPR contexts; 947 C++ units and one header |
+| Executed identities | 53,621 forward; 53,623 including the auxiliary test; 4,418 compiled keys unexercised |
+| Retained keys newly exercised | Five |
+| New forward progress | 762 frames; 23,767,693 native / zero interpreted; no new developer writes |
+| Separate auxiliary branch | 546 frames; 17,139,991 native / zero interpreted; two prior fallback retirements converted |
+| Fresh checkpoint repeat | Both 60-frame branches: 1,869,682 native / zero interpreted; complete immediate/continued files, CORE/HOST/RAM/pixels/per-key counts equal |
+| Fresh paced audio | 120 frames; 3,739,261 native / zero interpreted; fresh nonzero PCM accepted by SDL |
 
-The final queue equation, accepted PCM bounds and separate planned pause/shutdown
-accounting are recorded in the structured qualification summary. Imported PCM is
-excluded from fresh acceptance. Listening and hardware remain unqualified.
+The forward route follows the stairs into the next cavern room and its combat
+and treasure-chest area. The chest reward and next boss remain unverified.
+Mine/wizard/boss/town/lodge milestones remain from earlier assisted verification.
+The canonical route retains 315 validated data edits, with no new forward writes.
 
-Thirteen canonical windows count once. The last three include resumed CD loading
-and a rendered cavern room. Further movement exercises two uncompiled byte/MPR
-variants with two interpreted retirements. The original source reproduces its
-full RAM, images and encoded counts in a bounded discovery comparison. That fork
-and subsequent navigation are excluded from qualified totals, and are not a
-toolkit semantic-defect claim. Exact area naming and the next boss remain unverified.
+The auxiliary test restores the new executable's own checkpoint at frame 114,051.
+It does not become a parent of the forward continuation and is excluded from
+forward frames and lifetime instruction totals. Its source receipt retains its
+original two interpreted instructions; new native execution is proved separately.
+All 16 captures contribute to the explicitly labeled qualified test union.
 
-This is a fresh reset followed by same-build checkpoint continuations, not one
-continuous cold process or campaign completion. Repeat/audio/exploratory forks
-are excluded. No older build's checkpoint is imported and no new code is edited.
-The unchanged profile-v2 module selects 260,563 of 264,174 original contributions
-within unchanged public limits. Producer source84 remains distinct from original
-source82, SHA256 `995ecfa893ee74ea046b758cbccfe0ab1baa57ecbec21c8a4c7313f06aca533a`.
+Audio accounts for 6 imported + 88,456 new = 88,446 submitted + 16 pending frames.
+Fresh accepted and fresh nonzero lower bounds are 87,753 frames. Observed active
+drops are zero; planned pause clearing and shutdown draining remain separate.
+No listening or hardware qualification is claimed.
 
-The toolkit's captured-Q development requires ABI29 and separate qualification;
-it is not selected here. Read-only metadata inspection found no declared captured
-subchannels on this disc's 25 tracks. The selected-build regression does not prove
-captured-Q behavior. Owner media remains read-only; guest saves remain volatile.
+Other exploratory forks preserve nine additional uncompiled variants, with their
+own original-source comparisons and verified HP assists. They are excluded from
+the selected native route, its counts and qualification. The current profile
+selects 260,565 of 270,232 original contributions within unchanged public limits.
+Source84 producer and historical source82 decoder remain distinct. Original and
+failed/refused receipts retain their original status and context.
+
+The new shared gap report and RomAtlas structural checks support future discovery;
+catalog membership and static boundaries are separate from execution evidence.
+Captured-Q development remains ABI29 and is not selected. This disc declares no
+captured subchannels. Owner inputs are read-only; guest saves remain volatile.
+The campaign remains unfinished.
 
 # Historical qualification notes
 

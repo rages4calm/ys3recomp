@@ -5,18 +5,19 @@
 Use public `cd5bff67b323098979345f76d5b87075fc628e72` (ABI28, 84 source files,
 SHA256 `16679df8f6758cbac67e97dc2a3cb20d327ee80631e3cce25601dc0672b0734a`), official additive
 profile-v2 composition, stable emission and project build/resume commands.
-Select `runtime.cd_timing = fixed` explicitly. The 58,039-key module preserves all
-58,035 prior identities and executes four additions in the new 504/522-frame
-windows. All thirteen qualified route windows have zero interpreted retirements. The newest
-288/336/960-frame windows extend execution coverage without changing the module or
-rebuilding. Keep the selected package stable while verifying that continuation.
+Select `runtime.cd_timing = fixed` explicitly. The new 58,041-key module preserves
+all 58,039 prior identities. Both additions execute natively in an auxiliary
+546-frame branch. The fresh reset and fourteen checkpoint windows reach
+114,813 frames with zero interpreted retirements. The two new forward windows
+add 330/432 frames; their shared-prefix auxiliary test is counted separately.
+New modules establish their own startup/checkpoint lineage before selection.
 
 Use the official composer stage contract: preserve the stage-zero contributions
 and select later-stage winners only for complete identities absent earlier.
 Retain every original encoded capture and its ABI, PC, all eight MPRs, physical
 span, bytes, counts and checkpoint origin. Do not privately prune rows, relabel
 raw captures, raise limits or count overlapping histories as new execution.
-The current profile selects 260,563 of 264,174 original contributions.
+The current profile selects 260,565 of 270,232 original contributions.
 
 Producer source84 is authenticated separately from the unchanged original
 source82 decoder/layout. The new producer preserves the 60 runtime/CMake files;
@@ -35,9 +36,16 @@ bank snapshots; never merge conflicting capture epochs into a fabricated image.
 Keep the selected toolkit stable unless an affected feature or demonstrated bug
 justifies an upgrade.
 
-A later exploratory fork has two uncompiled source variants and two interpreted
-retirements. Preserve those original encoded observations for the next official
-additive composition; exclude discovery from the qualified union and endpoint.
+The newer shared [discovery diagnostics](https://github.com/rages4calm/pcenginerecomp/blob/d235f007cd80c35401bd97510816402517c8e568/docs/NATIVE_DISCOVERY.md)
+provide emitted-membership gap reports and RomAtlas structural checks. Run them
+separately from the selected C51 producer; using an offline diagnostic does not
+change the runtime pin or original retired instruction counts.
+
+The two earlier observed variants are compiled and independently witnessed in
+the new module. Separate exploratory forks retain nine further missing variants.
+Preserve original byte/MPR identities and use the shared emitted-membership gap
+report where helpful; its catalog classification does not alter original retired
+counts. Keep overlapping auxiliary work out of forward route totals.
 The toolkit's captured-Q work changes the ABI and remains separate from this
 selected ABI28 regression. This disc declares no captured subchannel data.
 
