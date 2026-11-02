@@ -1,59 +1,39 @@
 # Consumer status - 1 November 2026
 
-## Selected ABI28: native cavern continuation and verified build recovery
+## Selected ABI28: additive native coverage through deeper cavern combat
 
-Play selects public toolkit `9d219b7a27fa67ff3f31a124e5d449b7eaf1789b`, ABI28,
-84 source files, SHA256 `74b4a39c59ac5ee0fd40ea54af9b7099aa2aa0f5dbce5b3107df2bf2e6ef35ac`.
+Play selects public toolkit `cd5bff67b323098979345f76d5b87075fc628e72`, ABI28,
+84 source files, SHA256 `16679df8f6758cbac67e97dc2a3cb20d327ee80631e3cce25601dc0672b0734a`.
 CD timing is `fixed`; unknown-CD policy is `nec-invalid`.
 
 | Actual verification | Result |
 | --- | --- |
 | Fresh reset | 104,745 frames; 3,209,517,525 native / zero interpreted |
-| Retained own-native windows | 432 / 2,232 / 960 frames; 13,795,134 / 70,860,852 / 30,980,373 native; zero interpreted |
-| New cavern own-native window | 1,716 frames; 54,249,829 native / zero interpreted |
-| Authentic cavern source | 54,249,826 native / three interpreted |
-| New source comparisons | 12,895 full encoded identities conserve per-key hits |
-| New controls and observations | 35 controls; 37 full RAM/image cuts; no new writes |
-| Compiled module | 58,035 identities; all 58,032 prior keys retained; three additions executed |
-| Executed union | 53,606 identities; 4,429 compiled keys unexercised |
-| Newly exercised | Three new compilations and 27 retained keys |
+| Seven own-native windows | 432 / 2,232 / 960 / 1,716 / 504 / 678 / 522 frames; zero interpreted |
+| Checkpoint-linked endpoint | 111,789 frames; 3,433,175,577 native / zero interpreted |
+| Compiled module | 58,039 identities; all 58,035 prior keys retained; four additions executed |
+| Executed union | 53,613 identities; 4,426 compiled keys unexercised |
+| Newly exercised | Four additions and three retained keys |
 | Official emission | 83 MPR contexts; 947 C++ units + one header; zero unsupported/excluded |
-| Main protocol | 108,460 records; 5,523 bounded steps; 309 verified data assists |
-| Main checkpoint comparisons | All 26 pass; complete CORE relation and typed HOST checks |
-| Same-build checkpoint repeat | Whole immediate and continued files, RAM, PNG and per-key hits equal |
-| Paced audio | 120 fresh native frames; nonzero new PCM accepted by SDL; zero active drops |
+| Late source conversions | Three interpreted retirements in 504 frames and one in 522 become native |
+| Assisted continuation | 678 frames; three verified one-byte position/HP edits; all 22 observation cuts |
+| Final checkpoint repeat | 522 frames each; whole immediate/final files, CORE/HOST, RAM, pixels and 6,851 per-key counts equal |
+| Paced audio | 120 fresh native frames; nonzero new PCM accepted by SDL; zero observed active drops |
 
-The four separate own-native windows reach lifetime frame 110,085 and
-3,379,403,713 native / zero interpreted instructions. The newest window ends
-with HP 34, natural maximum 60 and unchanged quest state. It requires no new
-assist. Each retained assisted extension uses one verified living-HP refill,
-with its natural maximum unchanged. The next boss and exact area naming remain
-unqualified; exploratory position/HP/flight assists and deeper captures are separate discovery evidence.
+The canonical route includes 314 validated data edits. Repeat and prefix/audio
+forks are excluded from its totals and executed union. This is a fresh reset
+followed by separate same-build checkpoint continuations, not one continuous
+cold process or campaign completion. No older-build checkpoint is imported.
 
-Twelve original compiler inputs compose 260,559 contributions, 129,004,741 profile
-bytes and 46,390,497 raw-input bytes. Three authentic short captures supply the
-three new byte variants. No raw capture is rewritten or pruned. Public limits
-are unchanged. Four deeper variants remain captured but unpromoted: their
-overlapping contribution history exceeds the current composer limit. A reusable
-provenance-preserving additive composition feature was requested upstream.
-
-The new Python build-recovery pin preserves the original ABI28 runtime, CMake
-and emitter bytes across 61 compiled-source files. Its producer has 84 source
-files; the checkpoint decoder retains its original 82-file provenance. The
-actual candidate build was interrupted after at least 416 durable objects and
-more than 64 MiB of aggregate checkpoint history. Bounded delta records, public
-same-contract resume, retained object hashes/mtimes/Ninja entries, the final
-package and fresh native TCP boot/own-checkpoint repeat are independently checked.
-Earlier failed recovery epochs remain failed and preserve their receipts.
-
-The final module passes a fresh retained reset, separate own-build extensions,
-digital audio and capped boot WAV comparisons, whole-file restore checks and
-paced SDL audio. Full-route child PATH includes a compiler toolchain alias.
-The separate 900/60-frame package test uses only Git and Windows PATH entries.
-Actual adjacent SDL loading is verified separately. Fresh PCM/device acceptance
-is separate from muted fast-forward presentation. Listening, hardware parity, campaign completion, gear-distance
-timing and cross-process save persistence remain unqualified. Owner inputs stay
-read-only; guest saves are volatile.
+Official profile-v2 composition preserves all original captures and stage-zero
+contributions, adding four absent full identities in a later stage. It selects
+260,563 contributions from 264,174 original contributions within unchanged public
+limits. Producer and decoder provenance stay separate. The actual ordinary build,
+source/package invariance and all eight raw route audits pass independently.
+The prior qualified ABI28 build is retained; historical recovery/failure evidence
+is unchanged. Exact area naming, next boss, listening, hardware timing and
+cross-process saves remain unqualified. Owner media stays read-only and guest
+saves remain volatile.
 
 # Historical qualification notes
 

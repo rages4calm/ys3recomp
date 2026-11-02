@@ -2,19 +2,26 @@
 
 ## Current ABI28 qualification and checkpoint-first iteration
 
-Use public `9d219b7a27fa67ff3f31a124e5d449b7eaf1789b` (ABI28, 84 source files,
-SHA256 `74b4a39c59ac5ee0fd40ea54af9b7099aa2aa0f5dbce5b3107df2bf2e6ef35ac`), the official profile composer,
-stable emitter and recoverable public project build/resume commands. Select
-`runtime.cd_timing = fixed` explicitly. The 58,035-key module preserves all 58,032
-prior identities and executes three new variants in a 1,716-frame own-native
-cavern window. The fresh retained reset and 432/2,232/960-frame windows pass too.
+Use public `cd5bff67b323098979345f76d5b87075fc628e72` (ABI28, 84 source files,
+SHA256 `16679df8f6758cbac67e97dc2a3cb20d327ee80631e3cce25601dc0672b0734a`), official additive
+profile-v2 composition, stable emission and project build/resume commands.
+Select `runtime.cd_timing = fixed` explicitly. The 58,039-key module preserves all
+58,035 prior identities and executes four additions in the new 504/522-frame
+windows. All eight qualified route windows have zero interpreted retirements.
 
-Compose the nine retained original inputs and three genuine short TCP captures.
-Preserve complete encoded PC/all-eight-MPR/physical/data identities and original
-capture bytes, ABI labels, origins and counts. Exact-byte preflight must match
-actual serialization. Do not raise limits, privately filter rows, or count
-overlapping histories as new execution. Four deeper variants await upstream
-additive composition support; they are discovery, not native qualification.
+Use the official composer stage contract: preserve the stage-zero contributions
+and select later-stage winners only for complete identities absent earlier.
+Retain every original encoded capture and its ABI, PC, all eight MPRs, physical
+span, bytes, counts and checkpoint origin. Do not privately prune rows, relabel
+raw captures, raise limits or count overlapping histories as new execution.
+The current profile selects 260,563 of 264,174 original contributions.
+
+Producer source84 is authenticated separately from the unchanged original
+source82 decoder/layout. The new producer preserves the 60 runtime/CMake files;
+profile-emission changes are upstream. Bind actual official build and package
+before fingerprinting. Reuse the qualified candidate's own checkpoint for
+navigation and tail debugging. No old-build import or repeated reset is needed
+to promote immutable already-qualified evidence to Play.
 
 For interrupted builds use a fresh official `project build --recoverable`
 contract, then `project resume` against that same descriptor and directory.
@@ -23,8 +30,8 @@ Keep delta checkpoints and admission records immutable. Never transplant
 objects, remove locks by hand, relabel old evidence or bypass the public builder.
 
 Bind actual producer identity separately from decoder/layout provenance. The
-producer's 61 compiled-source files match the original ABI28 decoder's
-82-file source closure. Join the verified official build binding to the actual package
+producer's runtime/CMake closure is checked against the original ABI28
+decoder's 82-file source closure. Join the verified official build binding to the actual package
 before producer fingerprinting. This does not convert or import an older build's
 checkpoint. New executables generate their own full-route checkpoint lineage.
 
