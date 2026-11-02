@@ -2,27 +2,31 @@
 
 An incremental PC Engine CD native port of *Ys III: Wanderers from Ys* (USA),
 built with [pcenginerecomp](https://github.com/rages4calm/pcenginerecomp).
-**ABI28 with fixed CD timing is selected.** The verified **104,745-frame** reset
-route retires **3,209,517,525 native instructions and zero interpreted instructions**.
-The campaign remains unfinished; unseen code retains interpreter fallback.
+**ABI28 with additive profile composition and fixed CD timing is selected.**
+The fresh **104,745-frame** reset retires **3,209,517,525 native / zero interpreted**
+instructions. Seven separate own-checkpoint windows reach frame **111,789** and
+**3,433,175,577 native / zero interpreted** instructions. The campaign remains
+unfinished; unseen code retains interpreter fallback.
 
 The assisted route covers item use, damage/death/continue, mine combat,
 the wizard's defeat and Long Sword reward, miner dialogue, the deeper-mine boss,
-town/lodge return and Alcaino combat. Separate own-native checkpoint windows
-cover **432**, **2,232**, **960** and **1,716** frames. These are bounded checks,
-not campaign completion or one continuous cold run. The newest window continues
-beyond the waterfall through cavern traversal and combat; the next boss is unverified.
+town/lodge return and Alcaino combat. The seven continuation windows cover
+**432 / 2,232 / 960 / 1,716 / 504 / 678 / 522 frames** through deeper cavern traversal
+and combat. These are bounded checkpoint-linked checks; the next boss is unverified.
 
-The official module contains **58,035 source identities**, retaining all 58,032
-previous keys and adding three that compile and execute. Across 83 MPR contexts,
-947 C++ units and one header, **53,606 identities execute** in the qualified route;
-4,429 compiled keys remain unexercised. Unsupported and excluded observations are zero.
+The official module contains **58,039 source identities**, retaining all 58,035
+prior keys and adding four that compile and execute. Across 83 MPR contexts,
+947 C++ units and one header, **53,613 identities execute** in the qualified route;
+4,426 compiled keys remain unexercised. Three retained identities are newly
+exercised too. Unsupported and excluded observations are zero.
 
-The new 1,716-frame window retires **54,249,829 native / zero interpreted** instructions,
-promoting three interpreted reference retirements. All 35 controls and 37 full
-RAM/image observations match the authentic reference; no new data or code writes
-occur in this window. Retained verified data assists remain labeled separately.
-TCP checks compare CPU/source/device state, RAM, images and digital PCM.
+The additive composer preserves original raw captures and earlier contributions
+within unchanged public limits. All eight route windows pass independent TCP
+source, CPU/device, checkpoint, full RAM, image and digital-audio comparisons.
+The 678-frame assisted window uses three verified one-byte position/HP edits.
+The final 522-frame window repeats from the same own checkpoint with exact
+whole files and all 6,851 encoded per-key counts. Repeat and audio forks are
+excluded from route totals and coverage. No campaign, listening or hardware claim.
 
 ## Play the local build
 
@@ -54,7 +58,7 @@ Keyboard controls remain available for pause, fullscreen and exit. The shared
 host's virtual-device checks cover mapping, hot-plugging and input release;
 physical-controller verification is separate.
 
-The selected [ABI28 toolkit](https://github.com/rages4calm/pcenginerecomp/commit/9d219b7a27fa67ff3f31a124e5d449b7eaf1789b)
+The selected [ABI28 toolkit](https://github.com/rages4calm/pcenginerecomp/commit/cd5bff67b323098979345f76d5b87075fc628e72)
 uses the official provenance-preserving composer and stable emitter.
 The [semantic step validator](https://github.com/rages4calm/pcenginerecomp/commit/929dcc3b9affe3af70eeaa49c6091baceb1bf056)
 is separately pinned. Shared CPU/device semantics and generation remain
@@ -92,8 +96,8 @@ the historical `gear-good` response is not the selected policy.
 Requires Python 3.11+, CMake 3.20+, a C++20 compiler, Ninja and Git.
 
 ```sh
-git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-recovery50-delta
-git -C .deps/pcenginerecomp-recovery50-delta checkout --detach 9d219b7a27fa67ff3f31a124e5d449b7eaf1789b
+git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-additive51
+git -C .deps/pcenginerecomp-additive51 checkout --detach cd5bff67b323098979345f76d5b87075fc628e72
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++
 cmake --build build --parallel 4
 ctest --test-dir build --output-on-failure
