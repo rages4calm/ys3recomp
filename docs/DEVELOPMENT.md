@@ -7,8 +7,8 @@ SHA256 `16679df8f6758cbac67e97dc2a3cb20d327ee80631e3cce25601dc0672b0734a`), offi
 profile-v2 composition, stable emission and project build/resume commands.
 Select `runtime.cd_timing = fixed` explicitly. The 58,039-key module preserves all
 58,035 prior identities and executes four additions in the new 504/522-frame
-windows. All ten qualified route windows have zero interpreted retirements. The newest
-336/342-frame windows extend execution coverage without changing the module or
+windows. All thirteen qualified route windows have zero interpreted retirements. The newest
+288/336/960-frame windows extend execution coverage without changing the module or
 rebuilding. Keep the selected package stable while verifying that continuation.
 
 Use the official composer stage contract: preserve the stage-zero contributions
@@ -24,6 +24,22 @@ profile-emission changes are upstream. Bind actual official build and package
 before fingerprinting. Reuse the qualified candidate's own checkpoint for
 navigation and tail debugging. No old-build import or repeated reset is needed
 to promote immutable already-qualified evidence to Play.
+
+Collect a coherent bounded gameplay segment before qualification. Rank actual
+fallback hits against exact compiled identities, then investigate declared code
+roots and unresolved transfers with the existing bank-aware analyzer. The
+[RomAtlas](https://github.com/weisserw/romatlas) approach used by Lagoon is useful
+for structural discovery and independent decode checks; static candidates remain
+separate from compiled and executed coverage. Use authenticated contemporaneous
+bank snapshots; never merge conflicting capture epochs into a fabricated image.
+Keep the selected toolkit stable unless an affected feature or demonstrated bug
+justifies an upgrade.
+
+A later exploratory fork has two uncompiled source variants and two interpreted
+retirements. Preserve those original encoded observations for the next official
+additive composition; exclude discovery from the qualified union and endpoint.
+The toolkit's captured-Q work changes the ABI and remains separate from this
+selected ABI28 regression. This disc declares no captured subchannel data.
 
 Require separate actual raw admission of original and native roles for each new
 window. Admit the read-only parent before an assisted child. Revalidate the

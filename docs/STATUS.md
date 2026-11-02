@@ -1,49 +1,49 @@
-# Consumer status - 1 November 2026
+# Consumer status - 2 November 2026
 
-## Selected ABI28: checkpoint-native cavern return
+## Selected ABI28: checkpoint-native cavern continuation
 
-Play uses the qualified additive build at public toolkit
+Play keeps the qualified additive build at public toolkit
 `cd5bff67b323098979345f76d5b87075fc628e72`, ABI28, 84 source files,
 SHA256 `16679df8f6758cbac67e97dc2a3cb20d327ee80631e3cce25601dc0672b0734a`.
 CD timing is `fixed`; unknown-CD policy is `nec-invalid`. The existing selected
-executable and launcher selection are preserved; new coverage is supplemental.
+executable and immutable launcher qualification are preserved.
 
 | Actual verification | Result |
 | --- | --- |
 | Fresh reset | 104,745 frames; 3,209,517,525 native / zero interpreted |
-| Nine own-native windows | 432 / 2,232 / 960 / 1,716 / 504 / 678 / 522 / 336 / 342 frames; zero interpreted |
-| Checkpoint-linked endpoint | 112,467 frames; 3,454,283,960 native / zero interpreted |
-| Compiled module | 58,039 identities; all 58,035 prior keys retained; four earlier additions executed |
-| Executed union | 53,614 identities; 4,425 compiled keys unexercised |
-| Latest native gain | One previously compiled identity first exercised; no new emission or rebuild |
-| Latest two windows | 678 frames; 21,108,383 native / zero interpreted; 7,794 window-union identities |
-| Source comparisons | Separate original/native raw admission for both windows; all 40 full RAM/image cuts |
-| Latest assist | One expected-byte current-HP refill, 30 to 60; natural maximum 60 unchanged |
-| Final checkpoint repeat | Both 60-frame branches: 1,866,468 native / zero interpreted; complete files/state/RAM/pixels/per-key counts equal |
-| Final paced audio | 120 frames; 3,732,624 native / zero interpreted; fresh nonzero PCM accepted by SDL |
+| Twelve own-native windows | 432 / 2,232 / 960 / 1,716 / 504 / 678 / 522 / 336 / 342 / 288 / 336 / 960 frames; zero interpreted |
+| Checkpoint-linked endpoint | 114,051 frames; 3,503,969,331 native / zero interpreted |
+| Compiled module | 58,039 identities; unchanged; no new emission or rebuild |
+| Executed union | 53,616 identities; 4,423 compiled keys unexercised |
+| Latest native gain | Two previously compiled full source identities first exercised |
+| Latest three windows | 1,584 frames; 49,685,371 native / zero interpreted |
+| Source comparison | Six separate original/native raw gates; all 27 full RAM/image cuts per role |
+| Latest assists | No new developer writes; inherited 315 validated data edits retained |
+| Final checkpoint repeat | Both 60-frame branches: 1,882,945 native / zero interpreted; whole immediate/continued files, CORE/HOST/RAM/pixels/per-key counts equal |
+| Final paced audio | 120 frames; fresh nonzero PCM accepted by SDL; zero observed active drops |
 
-The latest assist is one actual byte edit within a declared ceiling of two;
-all original, compiled, live, current and future code footprints exclude all
-four backing aliases. Maximum HP, program, quest and equipment fields receive
-no new writes. The canonical route includes 315 validated data edits in total.
+The final queue equation, accepted PCM bounds and separate planned pause/shutdown
+accounting are recorded in the structured qualification summary. Imported PCM is
+excluded from fresh acceptance. Listening and hardware remain unqualified.
 
-The final audio queue equation is 30 imported + 88,456 new generated = 88,446
-submitted + 40 pending. Fresh accepted and fresh nonzero accepted lower bounds
-are 87,729 frames. Observed active drops are zero; the planned pause clear of
-687 and shutdown tail of 40 are separate. Listening and hardware remain unqualified.
+Thirteen canonical windows count once. The last three include resumed CD loading
+and a rendered cavern room. Further movement exercises two uncompiled byte/MPR
+variants with two interpreted retirements. The original source reproduces its
+full RAM, images and encoded counts in a bounded discovery comparison. That fork
+and subsequent navigation are excluded from qualified totals, and are not a
+toolkit semantic-defect claim. Exact area naming and the next boss remain unverified.
 
-Ten canonical windows are counted once. Earlier 522-frame repeat, fresh 60-frame
-branches, paced audio and subsequent exploration are excluded from the route
-and coverage union. This is a fresh reset followed by same-build checkpoint
-continuations, not one continuous cold process or campaign completion. No older
-build's checkpoint is imported. Exact area naming and the next boss are unverified.
-
+This is a fresh reset followed by same-build checkpoint continuations, not one
+continuous cold process or campaign completion. Repeat/audio/exploratory forks
+are excluded. No older build's checkpoint is imported and no new code is edited.
 The unchanged profile-v2 module selects 260,563 of 264,174 original contributions
-within unchanged public limits. All raw captures and earlier contributions remain
-preserved. Producer and decoder identities stay separate. Original source82,
-SHA256 `995ecfa893ee74ea046b758cbccfe0ab1baa57ecbec21c8a4c7313f06aca533a`,
-is not relabeled as the source84 producer. Prior qualification and failed/refused
-attempts remain unchanged. Owner media is read-only; guest saves remain volatile.
+within unchanged public limits. Producer source84 remains distinct from original
+source82, SHA256 `995ecfa893ee74ea046b758cbccfe0ab1baa57ecbec21c8a4c7313f06aca533a`.
+
+The toolkit's captured-Q development requires ABI29 and separate qualification;
+it is not selected here. Read-only metadata inspection found no declared captured
+subchannels on this disc's 25 tracks. The selected-build regression does not prove
+captured-Q behavior. Owner media remains read-only; guest saves remain volatile.
 
 # Historical qualification notes
 
