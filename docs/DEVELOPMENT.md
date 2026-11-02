@@ -7,7 +7,9 @@ SHA256 `16679df8f6758cbac67e97dc2a3cb20d327ee80631e3cce25601dc0672b0734a`), offi
 profile-v2 composition, stable emission and project build/resume commands.
 Select `runtime.cd_timing = fixed` explicitly. The 58,039-key module preserves all
 58,035 prior identities and executes four additions in the new 504/522-frame
-windows. All eight qualified route windows have zero interpreted retirements.
+windows. All ten qualified route windows have zero interpreted retirements. The newest
+336/342-frame windows extend execution coverage without changing the module or
+rebuilding. Keep the selected package stable while verifying that continuation.
 
 Use the official composer stage contract: preserve the stage-zero contributions
 and select later-stage winners only for complete identities absent earlier.
@@ -22,6 +24,18 @@ profile-emission changes are upstream. Bind actual official build and package
 before fingerprinting. Reuse the qualified candidate's own checkpoint for
 navigation and tail debugging. No old-build import or repeated reset is needed
 to promote immutable already-qualified evidence to Play.
+
+Require separate actual raw admission of original and native roles for each new
+window. Admit the read-only parent before an assisted child. Revalidate the
+literal controls, original code corpus, exact own-parent ACK/context, full RAM
+and images, encoded per-key counts and typed write effects. A bounded comparator
+or metadata preflight is insufficient to establish actual raw execution.
+
+Before fresh checkpoint/audio tests, dereference closed role gates, source and
+native parent links, current project/package, exact frontier file/ACK, and the
+canonical captured union. Hash every consumed dependency before and after;
+reject pending or unsupported legacy delegation. Keep immutable selection and
+qualification metadata stable while downstream raw audits depend on their bytes.
 
 For interrupted builds use a fresh official `project build --recoverable`
 contract, then `project resume` against that same descriptor and directory.
