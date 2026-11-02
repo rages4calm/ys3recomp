@@ -4,29 +4,35 @@ An incremental PC Engine CD native port of *Ys III: Wanderers from Ys* (USA),
 built with [pcenginerecomp](https://github.com/rages4calm/pcenginerecomp).
 **ABI28 with additive profile composition and fixed CD timing is selected.**
 The fresh **104,745-frame** reset retires **3,209,517,525 native / zero interpreted**
-instructions. Seven separate own-checkpoint windows reach frame **111,789** and
-**3,433,175,577 native / zero interpreted** instructions. The campaign remains
+instructions. Nine separate own-checkpoint windows reach frame **112,467** and
+**3,454,283,960 native / zero interpreted** instructions. The campaign remains
 unfinished; unseen code retains interpreter fallback.
 
 The assisted route covers item use, damage/death/continue, mine combat,
 the wizard's defeat and Long Sword reward, miner dialogue, the deeper-mine boss,
-town/lodge return and Alcaino combat. The seven continuation windows cover
-**432 / 2,232 / 960 / 1,716 / 504 / 678 / 522 frames** through deeper cavern traversal
+town/lodge return and Alcaino combat. The nine continuation windows cover
+**432 / 2,232 / 960 / 1,716 / 504 / 678 / 522 / 336 / 342 frames** through deeper cavern traversal
 and combat. These are bounded checkpoint-linked checks; the next boss is unverified.
 
 The official module contains **58,039 source identities**, retaining all 58,035
 prior keys and adding four that compile and execute. Across 83 MPR contexts,
-947 C++ units and one header, **53,613 identities execute** in the qualified route;
-4,426 compiled keys remain unexercised. Three retained identities are newly
+947 C++ units and one header, **53,614 identities execute** in the qualified route;
+4,425 compiled keys remain unexercised. Four retained identities are newly
 exercised too. Unsupported and excluded observations are zero.
 
 The additive composer preserves original raw captures and earlier contributions
-within unchanged public limits. All eight route windows pass independent TCP
+within unchanged public limits. All ten route windows pass independent TCP
 source, CPU/device, checkpoint, full RAM, image and digital-audio comparisons.
-The 678-frame assisted window uses three verified one-byte position/HP edits.
-The final 522-frame window repeats from the same own checkpoint with exact
-whole files and all 6,851 encoded per-key counts. Repeat and audio forks are
-excluded from route totals and coverage. No campaign, listening or hardware claim.
+The latest **336 + 342 frames** retire **21,108,383 native / zero interpreted**
+instructions and exercise one more previously compiled identity; no new emission
+or rebuild was needed. They include one guarded living-HP refill from 30 to 60.
+The earlier single 678-frame section retains its three verified position/HP edits.
+
+Fresh tests at the new endpoint compare whole immediate and continued checkpoint
+files, CORE/HOST, RAM, pixels and per-key counts over two 60-frame branches.
+A separate paced 120-frame run confirms fresh nonzero PCM accepted by SDL with
+zero observed active drops. Repeat, audio and exploratory forks are excluded
+from route totals and coverage. No campaign, listening or hardware claim.
 
 ## Play the local build
 
