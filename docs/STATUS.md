@@ -1,4 +1,28 @@
-# Consumer status - 8 November 2026
+# Consumer status - 9 November 2026
+
+## 9 November: historical artifact cleanup
+
+The local project was reduced from **53.1 GiB to 3.03 GiB**, removing about
+**50 GiB**. Obsolete executable copies, generated build output and unneeded older
+run data were deleted. Nothing was moved to the Desktop or another folder.
+The current and one prior qualified build remain ready to use, together with
+required source ancestry and the separate toolkit observer fixture.
+
+Required closed verification evidence occupies about **640 MiB compressed**
+inside the private project directory. Each retained original path and SHA256 is
+indexed; every archive entry was read back before loose copies were removed.
+The unchanged current 5,450-file proof, prior 4,372-file proof and 368-file
+observer proof all verify across loose and archived bytes. Historical summaries
+remain, but older unreferenced raw runs were retired and are not currently
+replayable qualifications.
+
+Play and Native Files readiness pass with the same selected executable and
+module. No game/runtime contract changed and no campaign replay was needed.
+All **567 consumer tests** pass, including nine new evidence-tool tests covering
+exact restoration, verification without extraction, changed data, duplicate or
+nonfinite JSON, path escapes and refusal to overwrite existing files. The root
+cleanup CMD now explicitly states that it handles compiler intermediates;
+historical evidence retention is a separate operation.
 
 ## 8 November: post-reward native coverage
 

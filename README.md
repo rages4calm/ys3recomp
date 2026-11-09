@@ -145,9 +145,12 @@ See [status](docs/STATUS.md), [development](docs/DEVELOPMENT.md) and
 
 Owner inputs remain read-only. **Clean Old Build Files.cmd** removes unbound
 compiler intermediates with visible progress and a private receipt; use
-`--no-pause --preview` to review without deleting. It preserves qualified
-packages, generated native source, inputs and replay evidence. GitHub contains
-authored source and cannot restore excluded private artifacts.
+`--no-pause --preview` to review without deleting. This command handles compiler
+files; it does not retire historical test runs. The current and one prior
+qualified build remain ready to use. Required closed verification records are
+compressed inside `.local/evidence-history`, with per-file hashes and an index.
+Obsolete build copies are deleted rather than moved elsewhere on the drive.
+GitHub contains authored source and cannot restore excluded private artifacts.
 
 Authored code is MIT licensed; that grants no rights to game, firmware or
 game-derived output.
