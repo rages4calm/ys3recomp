@@ -1,4 +1,122 @@
-# Consumer status - 2 November 2026
+# Consumer status - 8 November 2026
+
+## 8 November: native volcano boss qualification
+
+Play now selects the rebuilt **59,249-key** official C51 ABI28 module. It retains
+all 58,041 prior identities and adds **1,208**, every one witnessed executing
+natively in the boss encounter. Stable emission remains 947 C++ units, one header
+and 83 MPR contexts, with zero unsupported or excluded observations.
+
+The new executable passes its own **104,745-frame reset / 3,209,517,525 native /
+zero interpreted** route and all retained checkpoint windows through **114,813 /
+3,527,737,024 native / zero interpreted**. The separate auxiliary branch remains
+excluded from forward totals. The complete native witness union, including the
+two boss windows, is **54,835 keys**; 4,414 compiled keys remain unexercised.
+
+From its own town checkpoint, the new build replays the actual assisted route
+through the Small Shield chest, Chester's pit sequence and the volcano. Every
+stage matches original CPU timing, all eight MPRs, fetched source, complete RAM,
+pixels and all non-tier CORE/HOST bytes. This prefix remains mixed execution.
+The subsequent **300 + 1,464 boss frames** retire **54,081,800 native / zero new
+interpreted** instructions, converting **2,887,781** prior interpreted retirements
+with exact full-source-key counts. The snake disappears and the named **Stone
+Idol** popup appears at frame **136,384**, HP/max HP **80/80**. Its lifetime counters
+are **4,135,808,556 native / 8,691,740 interpreted**; imported prefix fallback is
+explicitly retained. Ten verified living-current-HP refills occur in the two boss
+windows. Boss HP, maximum HP, EXP, gold, items, quest and program bytes are untouched.
+
+Two fresh 60-frame attack branches each retire **1,861,027 native / zero new
+interpreted** instructions, matching whole immediate and continued checkpoint
+files, CORE/HOST, RAM, pixels, per-key counts and guest PCM hashes. Separate paced
+120-frame checks cover the retained frontier and the active boss encounter with
+fresh nonzero PCM accepted by SDL and zero observed active drops. Imported PCM,
+planned pause clearing and shutdown tails are accounted separately. These forks
+are excluded from route totals. A separate offline process audits actual raw TCP
+steps, expected-byte writes, decoder/file/ACK joins and complete encoded tier
+conservation. No new independent-console, hardware or listening claim is made.
+
+Two harness failures remain preserved: a retained test's preflight encountered an
+unfinished concurrent capture, and the first completed native boss run's post-run
+checker passed a string where its API requires a Path. The former resumed from
+the last passed checkpoint after source guests closed; only the short boss window
+was repeated for the latter. The corrected runs and their separate audits pass.
+The earlier post-reward audio probe failure described below also stays failed.
+
+The consumer's **558 tests** and **72 affected frozen-toolkit tests** pass without
+skips. The latest reviewed toolkit main is
+[`8355fa6`](https://github.com/rages4calm/pcenginerecomp/commit/8355fa64543c0e338b74a2eaa6cd4e25c054592f):
+its diagnostic case parser changes no runtime, emitter or ABI semantics. The
+consumer retains its verified C51 pin. The unchanged profile-size limit still
+blocks a combined broader traversal module; the focused report remains upstream.
+Next work starts from the living own-build Stone Idol checkpoint. Existing HP
+assists admit maximum 60/70 only; maximum 80 and the new raw context need a new
+review before any further assist. Post-reward exploratory audio has nine
+uncompiled source variants, outside the qualified windows. This is a bounded
+assisted encounter, not all boss behavior, death paths or campaign completion.
+
+## 8 November: volcano boss and Stone Idol
+
+Assisted discovery continues from the living blue-curtain checkpoint. Chester's
+capture and pit sequence completes, followed by the volcano traversal, descent
+and flame-arc rooms. The snake boss is defeated: its displayed health empties,
+the enemy disappears, and settled EXP changes from 2,024 to 3,024 and gold from
+1,902 to 2,902. The named **Stone Idol** reward popup is visible in the living
+own-build checkpoint at frame **136,384**, with HP/max HP **80/80**.
+
+| Actual new work | Native / interpreted retirements |
+| --- | --- |
+| Chester sequence, 4,338 frames | 136,981,296 / 1,439,963 |
+| Two boss windows, 300 + 1,464 frames | 51,194,019 / 2,887,781 |
+| Complete discovery continuation, 10,110 frames | 312,753,034 / 8,370,343 |
+
+These are mixed-tier discovery counts, excluded from the selected native-only
+route below. The continuation uses 25 verified one-byte living-HP refills;
+item, equipment, boss HP, quest, EXP, gold, maximum HP and program bytes are
+untouched. Combat naturally raises maximum HP from 60 to 70; the existing policy
+refuses a refill when that change occurs. The refusal stays failed. A new child
+imports the actual living checkpoint saved before the rejected write. A narrowed
+policy admits the observed maximum of 70 while retaining a refill target of 60.
+The boss reward naturally raises maximum HP to 80 and restores living HP.
+
+An independent offline audit checks complete encoded source/window conservation,
+paired actual TCP journals and unchanged frozen inputs for every discovery
+window, including the retained failed write-refusal episode. It verifies all
+actual writes target only the current-HP byte and that none of its four physical
+aliases appears in executed code. This is internal source and transport evidence;
+there is no new independent-console, hardware or campaign qualification.
+
+The post-reward paced TCP run advances **120 frames / 3,756,698 native /
+11,256 interpreted** retirements. Its original probe **fails** because it requires
+unchanged unknown-CD counters and observes one additional `$FF` command. That
+command receives the configured `nec-invalid` response; accepted unknown-command
+responses remain zero. A separate offline audit of the completed run passes
+raw request/poll/checkpoint/source joins and digital-audio delivery: **88,456**
+generated PCM frames, fresh accepted lower bound **88,012**, fresh nonzero
+accepted lower bound **44,061**, and zero observed active drops. The planned pause
+clears 407 frames; 37 pending shutdown frames are accounted for separately.
+The failed probe is preserved. This does not implement or hardware-qualify an
+unknown command, establish listening quality or qualify native-only execution.
+
+Native preparation also advances. A narrower original Chester capture fits the
+unchanged composer limit: **59,274 full identities**, preserving all 58,041 prior
+identities and adding **1,233**, in a **133,596,029-byte** profile. Official stable
+emission produces 947 C++ units with zero excluded or unsupported observations;
+the generated artifact hashes pass review. This module is **emitted, uncompiled,
+unexecuted and unselected**. No new native execution gain is claimed.
+
+A separate genuine continuous town-to-Alcaino source episode advances 17,116
+frames / 474,753,655 native / 5,752 interpreted instructions without developer
+writes. Its entire endpoint checkpoint file, complete RAM and PNG match the
+original contemporaneous cut exactly. That capture still exceeds the official
+128 MiB profile serialization limit. Both the refusal and narrower success are
+reported upstream; no synthetic history merge, pruning, raised bound or weakened
+MPR guard is used. History bundles remain a queued toolkit feature.
+
+At the discovery stage, the reviewed toolkit revision was
+[`45c243b`](https://github.com/rages4calm/pcenginerecomp/commit/45c243bab3d847bfb92a683bce61390dc3ef6709).
+Its additions are CPU vector diagnostics; runtime/emitter/ABI semantics remain
+unchanged. The consumer pin remains C51 ABI28. The narrower boss alternative is
+now compiled and qualified as described above; this Chester module stays unselected.
 
 ## Progression correction
 

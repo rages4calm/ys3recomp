@@ -13,19 +13,20 @@ the wizard's defeat and Long Sword reward, miner dialogue, the deeper-mine boss,
 town/lodge return and a return to Tigre Mine. The fourteen continuation windows cover
 **432 / 2,232 / 960 / 1,716 / 504 / 678 / 522 / 336 / 342 / 288 / 336 / 960 / 330 / 432 frames** through deeper cavern traversal
 and combat in Tigre Mine. These are bounded checkpoint-linked checks; actual
-Alcaino discovery is described separately below; its next boss remains unverified.
+Alcaino progression and the newly qualified volcano boss are described below.
 
-The new official module contains **58,041 source identities**, retaining all
-58,039 prior keys. Both additions execute natively in a separate 546-frame branch.
-Across the forward route and that auxiliary test, **53,623 identities execute**;
-53,621 execute in the forward route. Another 4,418 compiled keys remain unexercised.
-Five retained identities are newly exercised. The module has 83 MPR contexts,
-947 C++ units and one header, with zero unsupported or excluded observations.
+The selected official module contains **59,249 source identities**, retaining all
+58,041 prior keys and adding **1,208**. Every addition executes natively during the
+volcano boss encounter. Across the retained route, auxiliary test and two boss
+windows, **54,835 identities execute natively**; 4,414 compiled keys remain
+unexercised. The retained forward route still exercises 53,621 identities. The
+module has 83 MPR contexts, 947 C++ units and one header, with zero unsupported
+or excluded observations.
 
 The additive composer preserves original raw captures and earlier contributions
 within unchanged public limits. The new executable passes its own fresh reset
 and checkpoint route, with independent TCP source, CPU/device, full RAM, image
-and digital-audio comparisons. The latest **330 + 432 forward frames** retire
+and digital-audio comparisons. The retained **330 + 432 forward frames** retire
 **23,767,693 native / zero interpreted** instructions without new developer writes.
 The auxiliary 546-frame branch retires **17,139,991 native / zero interpreted**;
 its two previously interpreted instructions now execute natively. That branch is
@@ -33,20 +34,29 @@ excluded from forward frame and lifetime totals. Earlier assisted progression
 retains a verified living-HP refill from 30 to 60.
 The earlier single 678-frame section retains its three verified position/HP edits.
 
-Fresh tests at the new endpoint compare whole immediate and continued checkpoint
-files, CORE/HOST, RAM, pixels and per-key counts over two 60-frame branches.
-A separate paced 120-frame run confirms fresh nonzero PCM accepted by SDL with
-zero observed active drops. Repeat, audio and exploratory forks are excluded
-from route totals and coverage. Other exploratory forks retain nine additional
-uncompiled variants, outside the qualified route. No campaign, listening or
+Fresh tests at an active boss checkpoint compare whole immediate and continued
+checkpoint files, CORE/HOST, RAM, pixels and per-key counts over two 60-frame
+branches. Separate paced 120-frame runs at that checkpoint and the retained
+frontier confirm fresh nonzero PCM accepted by SDL with zero observed active drops.
+Repeat, audio and exploratory forks are excluded
+from route totals and coverage. Exploratory forks and the mixed traversal retain
+uncompiled variants outside the qualified windows. No campaign, listening or
 hardware claim.
 
-Separate assisted discovery now reaches the real **Alcaino** destination and
-collects the **Small Shield** chest reward. That route still uses interpreter
-fallback; its reward-window and paced TCP/audio counts are recorded in
-[STATUS](docs/STATUS.md#new-alcaino-discovery-small-shield-acquired). The official
-composer's profile-size refusal has been reported upstream. Play remains on the
-qualified ABI28 build while the new code awaits composition and qualification.
+The new build also reaches the Small Shield chest, completes Chester's capture
+and pit sequence, defeats the **volcano snake boss**, and collects the **Stone
+Idol**. The two assisted boss windows retire **54,081,800 native / zero new
+interpreted** instructions over **1,764 frames**, converting **2,887,781** former
+interpreter retirements. Their original source, CPU/device state, full RAM and
+images match. Fresh checkpoint repeats and paced TCP/SDL audio checks pass.
+
+The traversal to that boss still uses fallback. The reward checkpoint retains
+**8,691,740 imported interpreted** instructions; it is not an all-native campaign
+route. The retained reset/forward route above remains zero interpreted. Larger
+compositions still hit the reported toolkit profile-size limit. See
+[STATUS](docs/STATUS.md#8-november-native-volcano-boss-qualification) for the
+separate source, native and audio evidence, including preserved failures.
+Play now uses this qualified 59,249-key build.
 
 ## Play the local build
 

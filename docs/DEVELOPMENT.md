@@ -39,6 +39,43 @@ the official 128 MiB serialization limit. Keep the refusal and full histories.
 A shorter genuine source episode can reduce duplicate capture input; synthetic
 merging, private history pruning and raised admission limits are not substitutes.
 
+## Current discovery boundary
+
+The selected 59,249-key build now owns the Stone Idol reward checkpoint after
+the volcano snake boss. The two boss windows are zero-new-interpreter execution;
+the checkpoint retains 8,691,740 interpreted retirements from its mixed traversal
+prefix. Do not describe that lineage as an all-native campaign route. All 1,208
+additional compiled identities execute in the boss windows. The alternative
+59,274-key Chester emission remains unselected; profiles were not merged.
+
+Use the actual new-build checkpoint; never import an older module's checkpoint.
+Its HP/max HP is 80/80 and raw context is 112. The reviewed target-60 HP assist
+only admits observed maximum 60/70 in the earlier context. Review fresh evidence
+before extending it. Preserve original failures and distinguish a valid saved cut
+from a passed original episode. Keep future post-reward variants outside current
+qualification until generated, compiled and actually executed.
+
+Closed-capture helpers must take an explicit immutable capture set or wait for
+concurrent source guests to close. A glob can find an unfinished capture from
+another route. Refuse at preflight and resume from the last passed own checkpoint;
+do not relax completeness checks or repeat an already qualified reset prefix.
+
+Use short controls through room transitions. An automatic 120-frame idle after
+camera wrap exposed Adol to fireballs; camera wrap alone does not prove an area
+transition. Save living unassisted cuts before edits. A natural maximum-HP change
+can invalidate an already prepared refill policy before its write; preserve the
+refusal and authenticate the saved cut rather than promoting a failed receipt.
+The observed 70-HP maximum is read-only; the narrowed assist still writes only
+current HP to 60. Later natural changes require their own review.
+
+An audio verifier's phase restriction is distinct from delivery evidence. The
+post-reward probe retains its original failure on an additional known `$FF`
+command under `nec-invalid`. A separate offline audit reconstructs the actual
+completed run and accounts for that negative response, actual PCM queues and
+source work. Neither record is a hardware or native-only qualification. Keep
+original failures visible; do not rewrite them as passes or silently permit a
+new unknown-command success profile.
+
 ## Current ABI28 qualification and checkpoint-first iteration
 
 Use public `cd5bff67b323098979345f76d5b87075fc628e72` (ABI28, 84 source files,

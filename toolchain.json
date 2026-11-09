@@ -6,7 +6,7 @@
     "source_sha256": "16679df8f6758cbac67e97dc2a3cb20d327ee80631e3cce25601dc0672b0734a",
     "checkout": ".deps/pcenginerecomp-additive51",
     "runtime_abi": 28,
-    "source_policy": "Reviewed public C51 ABI28 additive profile-v2 producer with unchanged runtime. The new 58041-key module retains all 58039 prior keys, establishes its own reset/forward lineage, and qualifies a separate new-key witness plus fresh checkpoint/paced audio. Original source labels and failures are preserved."
+    "source_policy": "Reviewed public C51 ABI28 additive profile-v2 producer with unchanged runtime. Selected 59249-key official module preserves all 58041 prior keys; its own reset and retained forward route remain zero interpreted. All 1208 new identities execute in two assisted boss windows with zero additional interpreted instructions; the separate town-to-boss prefix remains mixed. Fresh same-build checkpoint/PCM/TCP audits pass. Historical failures and source labels remain visible."
   },
   "progression_label_correction": {
     "date": "2026-11-02",
@@ -3521,16 +3521,14 @@
     }
   },
   "latest_toolkit_review": {
-    "revision": "b1ffdcc02e9b83caa14d2948f88413c1219746b1",
-    "runtime_abi": 27,
-    "selected_runtime_revision": "1be93679c3318c667f97f55cb37af625a86ad875",
-    "runtime_compiler_CMake_changed_since_selected": true,
-    "semantic_helper_consumed_separately": true,
+    "revision": "8355fa64543c0e338b74a2eaa6cd4e25c054592f",
+    "runtime_abi": 29,
+    "selected_runtime_revision": "cd5bff67b323098979345f76d5b87075fc628e72",
+    "selected_runtime_abi": 28,
+    "runtime_emitter_or_ABI_changed_since_previous_review": false,
+    "diagnostic_parser_only": true,
     "selected": false,
-    "bounded_candidate_revision": "d71add52a88ab18084ecd3ea856b9b4df80a7469",
-    "candidate_source_sha256": "7c2771ff590fcd2cdfdfd51e71c8a34aab2a6a86b48d275d6071b8832647e8c4",
-    "candidate_full_route_qualified": false,
-    "scope": "Reviewed published ABI27 NEC invalid-command framing/sense profile, original-reference matrix and bounded retail checkpoint/audio qualification. All retained source keys were officially re-emitted for the candidate and own-build checkpoints verified. Full-route Play remains qualified ABI26."
+    "scope": "Reviewed latest public diagnostic native-case input validation and its source/tests. No runtime/emitter change from prior reviewed main; no new consumer pin migration. The 72 affected frozen C51 tests pass. History-bundle/profile-size gap remains open."
   },
   "alcaino_stair_room18_milestone": {
     "qualified": true,
@@ -4518,5 +4516,44 @@
     "qualified_test_capture_count": 16,
     "further_unqualified_discovery_variants": 9,
     "new_RAM_image_cuts_scope": "27 per role across the 330/432-frame forward windows, including initial/control/final cuts"
+  },
+  "abi28_volcano_boss_native_extension": {
+    "runtime_abi": 28,
+    "compiled_source_identities": 59249,
+    "prior_compiled_source_identities": 58041,
+    "new_compiled_and_executed_identities": 1208,
+    "executed_union_source_identities": 54835,
+    "compiled_keys_not_exercised": 4414,
+    "mpr_contexts": 83,
+    "emitted_CPP_units": 947,
+    "emitted_headers": 1,
+    "profile_bytes": 133918890,
+    "profile_sha256": "e236f27211d89d58248b9302be15242e8762c1225af95265f68a022170ebb5a8",
+    "fresh_reset_frames": 104745,
+    "fresh_reset_native_steps": 3209517525,
+    "fresh_reset_interpreted_steps": 0,
+    "retained_forward_frames": 114813,
+    "retained_forward_native_steps": 3527737024,
+    "retained_forward_interpreted_steps": 0,
+    "boss_frames": 1764,
+    "boss_native_steps": 54081800,
+    "boss_interpreted_steps": 0,
+    "boss_promoted_interpreted_steps": 2887781,
+    "boss_current_HP_byte_edits": 10,
+    "reward": "Stone Idol",
+    "reward_frame": 136384,
+    "reward_lifetime_native_steps": 4135808556,
+    "reward_imported_interpreted_steps": 8691740,
+    "checkpoint_repeat_frames_each": 60,
+    "checkpoint_repeat_native_each": 1861027,
+    "paced_frames_each": 120,
+    "active_audio_drops_observed": 0,
+    "consumer_tests": 558,
+    "affected_frozen_toolkit_tests": 72,
+    "compiled_module_unchanged": false,
+    "cross_build_checkpoint_imports": 0,
+    "mixed_prefix_excluded_from_native_qualified_union": true,
+    "campaign_listening_or_hardware_qualified": false,
+    "scope": "Selected official C51 module. Its own reset and retained forward route remain entirely native. Separate assisted boss windows execute every added identity and match original source, state, images and device evidence. The traversal prefix remains mixed and is excluded from the native qualified key union. Checkpoint repeatability and paced digital audio pass. This does not qualify all boss behavior, death paths, a complete campaign, listening, hardware or persistent saves."
   }
 }
