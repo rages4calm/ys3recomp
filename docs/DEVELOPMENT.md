@@ -1355,11 +1355,27 @@ past binary and present it as the one that executed. A parser-only validation fi
 can retain actual runtime evidence only with preserved executed source, exact
 single-mode argv equivalence and separate rejection tests.
 
-Reuse immutable dependencies. Avoid keeping complete historical batch copies
-solely for rollback: current plus two prior versions are sufficient unless a
-specific artifact is still needed for qualification, source lineage or replay.
+Reuse immutable dependencies. Keep the current and one prior runnable qualified
+build, required source ancestry and the latest separate toolkit fixture. Retire
+older unreferenced build/run data while retaining historical summaries. Complete
+older batch folders are not required for rollback.
 GitHub excludes generated source, executables and gameplay evidence; a Git
 commit cannot replace those artifacts. Preserve referenced evidence explicitly.
+
+Closed raw proof can be stored inside `.local/evidence-history` rather than kept
+loose. Before deleting a loose copy, read every archived byte back and verify its
+original SHA256. The index binds each original relative path and digest to its
+archive. Qualification receipts and selected package bytes remain unchanged.
+Keep living continuation checkpoints and operational inputs available directly.
+Do not create Desktop backup folders or move obsolete artifacts elsewhere.
+
+`python scripts/private_evidence.py --verify QUALIFICATION.json` verifies all
+referenced loose or archived bytes without extracting the archive. Use
+`--restore .local/batch-NNN/RELATIVE_FILE` for one explicitly needed file; a
+changed existing file, altered archive, path escape or existing temporary file
+is refused. Never expand the entire archive to resume ordinary development.
+Historical summaries whose older raw runs were retired are not currently
+replayable qualifications. Do not relabel them as freshly verified.
 
 The root cleanup CMD now uses `scripts/clean_build_files.py`, replacing the old
 one-use plan. It shows each phase, batches progress, writes a private journal and

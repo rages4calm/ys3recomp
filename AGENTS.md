@@ -26,6 +26,13 @@ needs a separate implementation and test.
 Do not use a per-batch storage quota, budget scanner or accounting workflow.
 Reuse immutable inputs/dependencies, preserve qualified evidence, retain
 replayable receipts and stop owned processes. Do not delete unrelated files.
+Keep the current and one prior qualified runnable build, required source ancestry
+and the latest separate toolkit fixture. Store their closed raw evidence under
+`.local/evidence-history` with verified per-file hashes instead of loose copies;
+older unreferenced build/run data may be retired, retaining historical summaries.
+Never relocate obsolete files to the Desktop or another project/folder. Use
+`scripts/private_evidence.py` to verify archived proof without expanding it, or
+restore only explicitly needed files. Do not unpack an entire history archive.
 
 Use TCP guest controls/captures for bounded verification. Keep built, executed,
 rendered, independent-reference and native-qualified evidence separate. Report
