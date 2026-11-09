@@ -41,19 +41,34 @@ merging, private history pruning and raised admission limits are not substitutes
 
 ## Current discovery boundary
 
-The selected 59,249-key build now owns the Stone Idol reward checkpoint after
-the volcano snake boss. The two boss windows are zero-new-interpreter execution;
-the checkpoint retains 8,691,740 interpreted retirements from its mixed traversal
-prefix. Do not describe that lineage as an all-native campaign route. All 1,208
-additional compiled identities execute in the boss windows. The alternative
-59,274-key Chester emission remains unselected; profiles were not merged.
+The selected 59,258-key build owns the post-reward frame-136,505 checkpoint.
+The boss and subsequent 48-frame return windows are zero-new-interpreter work;
+8,691,740 interpreted retirements remain imported from mixed traversal. All nine
+new identities execute in the return window. The alternative Chester profile and
+generated C++ were retired; original captures, receipts and regeneration commands
+remain private. Keep historical emission readiness distinct from current files.
 
-Use the actual new-build checkpoint; never import an older module's checkpoint.
-Its HP/max HP is 80/80 and raw context is 112. The reviewed target-60 HP assist
-only admits observed maximum 60/70 in the earlier context. Review fresh evidence
-before extending it. Preserve original failures and distinguish a valid saved cut
-from a passed original episode. Keep future post-reward variants outside current
-qualification until generated, compiled and actually executed.
+Use the actual same-build checkpoint, never an older module checkpoint. Its
+HP/max HP remains 80/80 and raw context 112. The newly reviewed assist admits
+living current HP below 60, target 60 and observed maximum 80 in this context,
+with original independent field mapping, full-RAM expected bytes and all source
+alias guards intact. Failed deaths and unstable vertical-position experiments do
+not establish a return route or next-boss progression.
+
+Use the official capture start gate for a genuine smaller execution window when
+the full capture composition exceeds 128 MiB. Join the actual gate boundary to
+paused TCP counters; do not relabel a gated capture as the entire process suffix.
+Preserve full original captures and refusal receipts. The current profile has
+38,803 bytes of headroom; future additions need official admission again.
+
+The separate ABI29 bus-observer fixture is unselected and cannot lend checkpoints
+to C51. Regenerate marked native code, use explicit scalar span one, and bind the
+actual producer's canonical source digest. Verify a fresh own checkpoint and
+observed/unobserved whole-state equality. Only four tier counters differ for
+reference execution; guards remain strict. Complete 256-call trace prefixes do
+not establish whole-frame bus coverage. Fresh WAV producers reset their output
+cursor; use an origin without an old WAV producer for whole-file restore equality.
+Preserve failed harness and exact source-digest refusals without re-labeling them.
 
 Closed-capture helpers must take an explicit immutable capture set or wait for
 concurrent source guests to close. A glob can find an unfinished capture from

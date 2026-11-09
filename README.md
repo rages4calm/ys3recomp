@@ -15,13 +15,13 @@ town/lodge return and a return to Tigre Mine. The fourteen continuation windows 
 and combat in Tigre Mine. These are bounded checkpoint-linked checks; actual
 Alcaino progression and the newly qualified volcano boss are described below.
 
-The selected official module contains **59,249 source identities**, retaining all
-58,041 prior keys and adding **1,208**. Every addition executes natively during the
-volcano boss encounter. Across the retained route, auxiliary test and two boss
-windows, **54,835 identities execute natively**; 4,414 compiled keys remain
-unexercised. The retained forward route still exercises 53,621 identities. The
-module has 83 MPR contexts, 947 C++ units and one header, with zero unsupported
-or excluded observations.
+The selected official module contains **59,258 source identities**, retaining all
+59,249 prior keys and adding **nine**. Every addition executes natively in the
+post-reward return window. Across the retained route, auxiliary, boss and
+post-reward windows, **54,844 identities execute natively**;
+4,414 compiled keys remain unexercised. The retained forward route exercises
+53,621 identities. The module has 83 MPR contexts, 947 C++ units and one header, with zero unsupported or excluded
+observations.
 
 The additive composer preserves original raw captures and earlier contributions
 within unchanged public limits. The new executable passes its own fresh reset
@@ -34,9 +34,9 @@ excluded from forward frame and lifetime totals. Earlier assisted progression
 retains a verified living-HP refill from 30 to 60.
 The earlier single 678-frame section retains its three verified position/HP edits.
 
-Fresh tests at an active boss checkpoint compare whole immediate and continued
+Fresh tests at the post-reward checkpoint compare whole immediate and continued
 checkpoint files, CORE/HOST, RAM, pixels and per-key counts over two 60-frame
-branches. Separate paced 120-frame runs at that checkpoint and the retained
+branches. Separate paced 120-frame runs at the reward popup and the retained
 frontier confirm fresh nonzero PCM accepted by SDL with zero observed active drops.
 Repeat, audio and exploratory forks are excluded
 from route totals and coverage. Exploratory forks and the mixed traversal retain
@@ -54,9 +54,14 @@ The traversal to that boss still uses fallback. The reward checkpoint retains
 **8,691,740 imported interpreted** instructions; it is not an all-native campaign
 route. The retained reset/forward route above remains zero interpreted. Larger
 compositions still hit the reported toolkit profile-size limit. See
-[STATUS](docs/STATUS.md#8-november-native-volcano-boss-qualification) for the
+[STATUS](docs/STATUS.md#8-november-post-reward-native-coverage) for the
 separate source, native and audio evidence, including preserved failures.
-Play now uses this qualified 59,249-key build.
+The post-reward 48-frame return window now retires **1,577,731 native / zero new
+interpreted** instructions, promoting all nine remaining variants in that window.
+The separate reward-popup audio check also passes with zero new interpreted work.
+Its single known negative FF command response is explicitly checked. This does
+not implement unknown-command semantics or qualify all remaining traversal.
+Play now uses this qualified 59,258-key build.
 
 ## Play the local build
 

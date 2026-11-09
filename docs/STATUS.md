@@ -1,5 +1,68 @@
 # Consumer status - 8 November 2026
 
+## 8 November: post-reward native coverage
+
+Play selects the rebuilt **59,258-key** C51 ABI28 module. It preserves all 59,249
+prior identities and adds nine from two genuine, disjoint one-frame capture
+windows. The official capture gate records the second window's actual start;
+no synthetic capture merging, discarded history or raised size limit is used.
+The composed profile is 134,178,925 bytes, 38,803 below the unchanged 128 MiB
+limit. Stable emission remains 947 C++ units, one header and 83 MPR contexts.
+
+The new executable passes its own full retained reset (**104,745 frames /
+3,209,517,525 native / zero interpreted**) and all fourteen forward windows
+through **114,813 / 3,527,737,024 native / zero interpreted**. The separate
+auxiliary branch stays excluded from forward totals. Both assisted boss windows
+again pass at **54,081,800 native / zero new interpreted** over 1,764 frames.
+The post-reward 48-frame return window passes at **1,577,731 native / zero new
+interpreted**, converting all nine prior interpreted retirements with exact
+PC/all-MPR/physical-address/encoded-byte key counts. All non-tier CORE/HOST bytes,
+CPU timing, complete RAM and images match the original route.
+The native witness union is **54,844 keys**; 4,414 compiled identities remain
+unexercised. Mixed traversal and repeat/audio forks remain outside that union.
+
+The own-build checkpoint at frame **136,505** retains **8,691,740 imported
+interpreted** retirements from the mixed prefix. It is a post-reward checkpoint,
+not an all-native campaign. Two fresh 60-frame checkpoint branches pass whole
+immediate/continued checkpoint, CORE/HOST, RAM, pixels, source-count and PCM checks.
+Separate paced 120-frame frontier and reward-popup checks pass, with zero observed
+active drops and fresh nonzero PCM accepted by SDL beyond imported pending audio.
+The reward check retires **3,767,954 native / zero new interpreted**.
+It explicitly checks the one known negative FF response, with no accepted unknown
+commands. The original post-reward audio failure remains failed; this is a new
+qualified build and separately audited run. Original-probe source counts,
+non-tier CORE/HOST, full RAM and guest PCM/WAV match; that failed probe did not
+produce a final screenshot.
+
+Assisted discovery returned from the flame corridor to a ledge. Two deaths and
+unstable vertical-position experiments remain separate from the qualified route;
+no next boss or successful ledge traversal is claimed. Original-reference field
+mapping and current 80/80 HP/context evidence support the narrowly reviewed living
+current-HP refill to 60. Maximum HP, quest, item, EXP, program and boss bytes are
+untouched. A read-only control probe confirms button I jumps and button II attacks.
+The unused alternative Chester generated profile/C++ output was retired while
+preserving original captures, receipts and exact regeneration instructions.
+Guarded compiler cleanup retains qualified packages and replayable evidence.
+
+The consumer's **558 tests** and **72 affected frozen-toolkit tests** pass without
+skips. The reviewed public toolkit media update is
+[`eb89a37`](https://github.com/rages4calm/pcenginerecomp/commit/eb89a37a9ae52c64bc01b0d9c0ff9a25b9c6d505);
+its CHD bounds work does not change this selected C51 runtime or emitter.
+
+A separate unselected ABI29 fixture tests the new software bus observer at
+frozen producer `0222955`,
+using the verified canonical committed-source digest. Observed/unobserved cold
+0-to-1 runs each retire 19,632 native instructions; own-checkpoint 1-to-2 runs
+retire 27,780 natively or 27,780 through same-executable reference mode. Tracing
+preserves whole checkpoints, CORE/HOST, RAM, pixels and guest PCM. Native/reference
+comparison changes only four tier counters; guards and remaining machine state
+stay exact. Resume WAV bytes match. Each trace is a complete **256-call prefix**,
+with 15,932 cold data accesses or 84 resume data accesses. Native/reference resume
+traces match exactly. These are bounded software-callback observations, not
+full-frame electrical bus, hardware, listening or campaign qualification. Results
+were reported upstream; Play retains C51. Harness and source-pin refusals are
+preserved separately.
+
 ## 8 November: native volcano boss qualification
 
 Play now selects the rebuilt **59,249-key** official C51 ABI28 module. It retains
@@ -1195,7 +1258,7 @@ different comparisons.
 | Migration raw input-status difference | Exactly state204: old prior mask1, new released mask0 | Transport-only observation; all other guest fields static within each run, every settled state exact |
 | Additional CHD gate | 5,526 frames / 20 states / two images / 177 sectors | 152,630,394 native / zero interpreted; 4,073,415 PCM / 3,307,345 mixed-nonzero; two `$FF` responses |
 | Source exclusions | Four variants / 984 profile hits across the original six-byte span | Actual new route: three excluded identities / three interpreted hits |
-| Visible progression | Arrival/town traversal/shop entry; Healing Herb100G, gold1000Ã¢â€ â€™900, HP020 | No inventory/equipping, campaign or boss-victory claim |
+| Visible progression | Arrival/town traversal/shop entry; Healing Herb100G, gold1000 to 900, HP020 | No inventory/equipping, campaign or boss-victory claim |
 | CUE scope | Synthetic checks and six independent Gear fixtures; finite authored native/TCP cases | No retail CUE run, conversion, extraction, whole-game native-only, hardware or listening claim |
 | Tests | 452 consumer tests; 35 shared suites / 420 Python tests; zero skips | Exact clean source verification and separate native/migration qualifications |
 | Historical evidence | Prior14,680 reset qualification, paced silent-menu check and95,686 IPL route retained | Older IPL route was not repeated; inherited709 assists/723bytes stay historical |
