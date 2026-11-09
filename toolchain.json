@@ -6,7 +6,7 @@
     "source_sha256": "16679df8f6758cbac67e97dc2a3cb20d327ee80631e3cce25601dc0672b0734a",
     "checkout": ".deps/pcenginerecomp-additive51",
     "runtime_abi": 28,
-    "source_policy": "Reviewed public C51 ABI28 additive profile-v2 producer with unchanged runtime. Selected 59249-key official module preserves all 58041 prior keys; its own reset and retained forward route remain zero interpreted. All 1208 new identities execute in two assisted boss windows with zero additional interpreted instructions; the separate town-to-boss prefix remains mixed. Fresh same-build checkpoint/PCM/TCP audits pass. Historical failures and source labels remain visible."
+    "source_policy": "Reviewed public C51 ABI28 additive producer. Selected 59258-key official module preserves 59249 and executes all 9 post-reward additions. Fresh reset/retained forward and separate boss/postreward scopes remain zero-new-interpreted; imported mixed prefix explicit. TCP/checkpoint/source and paced SDL audio audits pass. Isolated ABI29 observer fixture is unselected."
   },
   "progression_label_correction": {
     "date": "2026-11-02",
@@ -3521,14 +3521,14 @@
     }
   },
   "latest_toolkit_review": {
-    "revision": "8355fa64543c0e338b74a2eaa6cd4e25c054592f",
+    "revision": "eb89a37a9ae52c64bc01b0d9c0ff9a25b9c6d505",
     "runtime_abi": 29,
     "selected_runtime_revision": "cd5bff67b323098979345f76d5b87075fc628e72",
     "selected_runtime_abi": 28,
-    "runtime_emitter_or_ABI_changed_since_previous_review": false,
-    "diagnostic_parser_only": true,
     "selected": false,
-    "scope": "Reviewed latest public diagnostic native-case input validation and its source/tests. No runtime/emitter change from prior reviewed main; no new consumer pin migration. The 72 affected frozen C51 tests pass. History-bundle/profile-size gap remains open."
+    "media_bounds_review": true,
+    "runtime_emitter_or_ABI_changed_in_media_update": false,
+    "scope": "Reviewed public CHD synthetic-gap and integer/hunk bounds changes; selected C51 unchanged. Separate explicitly frozen 0222955 ABI29 bus observer tested in isolation, not a selected migration."
   },
   "alcaino_stair_room18_milestone": {
     "qualified": true,
@@ -4555,5 +4555,47 @@
     "mixed_prefix_excluded_from_native_qualified_union": true,
     "campaign_listening_or_hardware_qualified": false,
     "scope": "Selected official C51 module. Its own reset and retained forward route remain entirely native. Separate assisted boss windows execute every added identity and match original source, state, images and device evidence. The traversal prefix remains mixed and is excluded from the native qualified key union. Checkpoint repeatability and paced digital audio pass. This does not qualify all boss behavior, death paths, a complete campaign, listening, hardware or persistent saves."
+  },
+  "abi28_postreward_native_extension": {
+    "runtime_abi": 28,
+    "compiled_source_identities": 59258,
+    "prior_compiled_source_identities": 59249,
+    "new_compiled_and_executed_identities": 9,
+    "executed_union_source_identities": 54844,
+    "compiled_keys_not_exercised": 4414,
+    "profile_bytes": 134178925,
+    "profile_sha256": "5c20670944641419f8cd7b98f8564744df78b36bb41d950eb0c0148c10f4a07d",
+    "postreward_frames": 48,
+    "postreward_native_steps": 1577731,
+    "postreward_interpreted_steps": 0,
+    "promoted_interpreted_steps": 9,
+    "checkpoint_frame": 136505,
+    "imported_interpreted_steps": 8691740,
+    "paced_reward_native_steps": 3767954,
+    "paced_reward_interpreted_steps": 0,
+    "paced_frames_each": 120,
+    "negative_FF_response_delta": 1,
+    "accepted_unknown_commands": 0,
+    "consumer_tests": 558,
+    "affected_frozen_toolkit_tests": 72,
+    "campaign_listening_or_hardware_qualified": false
+  },
+  "isolated_bus_observer_fixture": {
+    "runtime_abi": 29,
+    "selected": false,
+    "revision": "0222955b815d7cf2ca3d1952a9199c5b4dae3111",
+    "source_sha256": "a2e0ef2279e6a4675e6bf7ff6fbfc75457b380bd47872831674078a21140f977",
+    "source_files": 91,
+    "cold_frames": 1,
+    "cold_native_steps": 19632,
+    "resume_frames": 1,
+    "resume_native_steps": 27780,
+    "resume_reference_steps": 27780,
+    "trace_calls": 256,
+    "cold_data_events": 15932,
+    "resume_data_events": 84,
+    "observer_whole_checkpoint_equal": true,
+    "resume_native_reference_trace_equal": true,
+    "scope": "Bounded software callback prefixes; no whole-frame bus, hardware, listening, campaign or selected consumer migration qualification."
   }
 }
