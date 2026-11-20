@@ -3,24 +3,25 @@
 An incremental PC Engine CD native port of *Ys III: Wanderers from Ys* (USA),
 built with [pcenginerecomp](https://github.com/rages4calm/pcenginerecomp).
 **ABI29 with observation-history v2 and shared native emission is selected.**
-Adol defeats the volcano snake, collects the Stone Idol, returns through the
-flames, and climbs out of the cavern by the upper east passage. The Stone
-Idol bridge and the next boss are still ahead of the qualified route.
+Adol uses the Stone Idol to solidify the lava, crosses the new bridge, and
+reaches a volcanic corridor on the far side. The castle staircase and Elena
+are ahead of the qualified route.
 
-The linked checkpoint at frame **140,587** records **4,278,635,157 native
-and zero interpreted** instructions. The final **1,154 frames** use controller
-inputs alone, starting from the previously assisted return-slope checkpoint.
+The linked checkpoint at frame **144,439** records **4,401,667,800 native and
+zero interpreted** instructions. The final **3,852 frames** retire
+**123,032,643 native instructions** and include 17 verified HP refills.
+The Stone Idol event and bridge formation use ordinary controller inputs.
 The separate **104,745-frame** cold replay records **3,209,517,525 native and
 zero interpreted** instructions. The retained forward branch reaches
 **114,813 frames** with the prior native counts.
 
-The module contains **63,813 source identities**. All **139 additions** execute
-on the climb and exit, converting **4,447** fallback retirements. The verified
-route union exercises **60,861 identities**.
+The module contains **64,806 source identities**. All **993 additions**
+execute on the new segment, converting **1,390,916** fallback
+retirements. The verified route union exercises **61,862 identities**.
 Unseen game code uses interpreter fallback.
 
 The new segment matches the same-build interpreter's RAM, guest pixels,
-digital audio, and exact source counts at the recorded checkpoints. A separate
+digital audio, and exact source counts at 74 recorded checkpoints. A
 paced TCP check confirmed fresh SDL audio acceptance on the selected package.
 Unknown CD commands receive the `nec-invalid` response.
 
@@ -66,7 +67,8 @@ physical-controller verification is separate.
 The selected [ABI29 toolkit](https://github.com/rages4calm/pcenginerecomp/commit/6a4c547aec434c504e90092262b2ee66fcba3998)
 provides history-v2 preparation, feedback, shared emission and same-build reference
 execution. Shared CPU/device semantics and generation remain upstream; this project
-owns game configuration, coverage and verification. The prior ABI28 build is retained.
+owns game configuration, coverage and verification. The previous qualified
+ABI29 build is retained.
 
 ## Audio and checkpoints
 

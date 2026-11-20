@@ -1,5 +1,26 @@
 # Consumer status - 20 November 2026
 
+## 20 November: native Stone Idol and lava bridge
+
+Adol advances to the lava shore and automatically raises the Stone Idol. The
+bridge forms in stages and control returns when the lava finishes solidifying.
+Adol crosses the bridge, fights through the far corridor, and reaches the next
+room at **frame 144,439** with **60/80 HP**. The castle staircase and Elena
+remain beyond the qualified checkpoint.
+
+The 3,852-frame segment retires **123,032,643 native and zero interpreted**
+instructions. All 993 added exact source identities execute, replacing
+1,390,916 previous fallback retirements. There are 17 independently
+verified current-HP refills on the approach and far-side corridors. The item
+activation, bridge animation, and crossing use ordinary controller inputs.
+
+The same-build interpreter agrees across 74 cuts for literal controller and
+write effects, full RAM, guest pixels, PCM, and exact source counts. The rebuilt
+candidate reproduces the route and preserves exact retirements across 29
+retained roles. A separate paced 120-frame TCP check confirms fresh nonzero
+PCM acceptance by SDL. All 567 consumer and 126 affected toolkit
+tests pass.
+
 ## 20 November: native climb and exit from the volcano cavern
 
 Adol uses the pointed rock in the middle of the cavern to reach the upper

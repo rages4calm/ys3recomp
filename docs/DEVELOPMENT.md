@@ -39,19 +39,28 @@ capture capacity 262,144. Resolve operational paths through project verification
 feedback places its consumer under the returned consumer directory. History-v2
 supersedes the historical inline-profile 128 MiB blocker without modifying it.
 
+## Game UI workflow
+
+Use the Game UI/UX skill for HUDs, menus and gamepad navigation. Use the
+gamedev skill collection for related disciplines. Follow the recomp-ui runtime
+overlay contract when integrating in-game settings.
+[Game UI/UX skill](https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/main/skills/disciplines/game-ui-ux/SKILL.md) ·
+[Gamedev skill collection](https://github.com/gamedev-skills/awesome-gamedev-agent-skills) ·
+[recomp-ui runtime overlay](https://github.com/RetroPortingToolKit/recomp-ui#in-game-settings-overlay)
+
 ## Current discovery boundary
 
-The selected 63,813-key ABI29 build owns the frame-140,587 checkpoint after
-the volcanic cavern's upper east exit. The linked route records 4,278,635,157
-native and zero interpreted instructions. All 139 added identities execute on
-the 1,154-frame controller-only continuation. Preserve the checkpoint's exact
-build identity and reference capability.
+The selected 64,806-key ABI29 build owns the frame-144,439 checkpoint
+in the corridor beyond the Stone Idol bridge. The linked route records
+4,401,667,800 native and zero interpreted instructions. All 993 added
+identities execute on the 3,852-frame continuation. The source approach
+and corridors use 17 verified current-HP refills.
 
-The exit checkpoint has 60/80 HP and raw context 112. The verified climb
-uses the central spire to reach the right bank. The herb shelf is a side
-alcove. For discovery toward the Stone Idol bridge, use the same-build
-checkpoint and retain exact controls. HP assists require independently verified
-field evidence, full RAM expected bytes and source alias guards.
+The Stone Idol activates automatically after Adol reaches the trigger on the
+rocky shore. Wait for the bridge to finish forming before trying to move.
+Start further discovery from the current exact-build checkpoint and retain
+the controls. Any HP assist requires independently verified field evidence,
+full RAM expected bytes and source alias guards.
 
 The historical ABI29 bus-observer fixture is separate and cannot lend checkpoints
 to the current build. Regenerate marked native code, use explicit scalar span one, and bind the

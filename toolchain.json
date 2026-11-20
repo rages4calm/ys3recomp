@@ -4703,5 +4703,27 @@
     "consumer_tests": 567,
     "affected_toolkit_tests": 126,
     "scope": "Controller-only continuation from the assisted volcanic slope through the upper east exit. Same-build interpreter, cold and retained route replay, exact source counts and a paced SDL check pass. The lava lake is separate assisted exploration."
+  },
+  "stone_idol_bridge_native": {
+    "date": "2026-11-20",
+    "tool_revision": "6a4c547aec434c504e90092262b2ee66fcba3998",
+    "frames": 3852,
+    "native": 123032643,
+    "interpreted": 0,
+    "previous_interpreted": 1390916,
+    "added_source_identities": 993,
+    "added_source_identities_exercised": 993,
+    "compiled_source_identities": 64806,
+    "witnessed_source_identities": 61862,
+    "unexercised_source_identities": 2944,
+    "matched_interpreter_cuts": 74,
+    "retained_route_roles": 29,
+    "verified_current_hp_refills": 17,
+    "frontier_frame": 144439,
+    "linked_native": 4401667800,
+    "linked_interpreted": 0,
+    "consumer_tests": 567,
+    "affected_toolkit_tests": 126,
+    "scope": "Assisted continuation from the volcanic east exit through the automatic Stone Idol event, bridge crossing and far-side corridor. Same-build interpreter, cold and retained route replay, exact source counts and a paced SDL check pass."
   }
 }
