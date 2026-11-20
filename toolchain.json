@@ -4663,5 +4663,25 @@
     "distinct_presented_images": 8,
     "true_widescreen_game_renderer_implemented": false,
     "scope": "Read-only own-build checkpoint smoke checks, not new progression or coverage, independent shader mathematics/backend matrix or complete remaster qualification. Display16:9 stretches original view. Manual launcher defaults remain unchanged."
+  },
+  "volcano_return_native": {
+    "date": "2026-11-20",
+    "tool_revision": "6a4c547aec434c504e90092262b2ee66fcba3998",
+    "frames": 2928,
+    "native": 93613082,
+    "interpreted": 0,
+    "prior_interpreted": 1264,
+    "added_source_identities": 23,
+    "added_source_identities_exercised": 23,
+    "compiled_source_identities": 63674,
+    "witnessed_source_identities": 60721,
+    "unexercised_source_identities": 2953,
+    "verified_hp_refills": 18,
+    "frontier_frame": 139433,
+    "linked_native": 4241912194,
+    "linked_interpreted": 0,
+    "consumer_tests": 567,
+    "affected_toolkit_tests": 126,
+    "scope": "Assisted volcano return through the flame corridor to the return slope. Same-build reference, retained route replay, exact per-source execution, and separate paced TCP audio pass. The later shelf and next boss remain beyond the selected frontier."
   }
 }

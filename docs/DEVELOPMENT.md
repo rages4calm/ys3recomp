@@ -41,16 +41,18 @@ supersedes the historical inline-profile 128 MiB blocker without modifying it.
 
 ## Current discovery boundary
 
-The selected 63,651-key ABI29 build owns the post-reward frame-136,505 checkpoint,
-with 4,148,299,112 native and zero interpreted retirements. All 4,393 additions
-execute in the linked boss traversal; the next boss remains unvisited. Preserve
-the new checkpoint's exact reference capability and source/build identity.
+The selected 63,674-key ABI29 build owns the frame-139,433 checkpoint on the
+volcanic return slope. The linked route records 4,241,912,194 native and zero
+interpreted instructions. Its final 2,928 frames include 18 verified current-HP
+refills. All 23 additions execute on the return route. Preserve the checkpoint's
+exact build identity and reference capability.
 
-HP/max HP remains 80/80 and raw context 112. Historical minimal assist authority
-still requires original field evidence, full-RAM expected bytes and all source
-alias guards. Failed deaths and unstable vertical-position experiments do not
-establish a living return route. Reuse an authenticated own-build cut and retained
-control suffix instead of replaying the whole game for each discovery.
+The living return-slope checkpoint has 60/80 HP and raw context 112. A separate
+mixed-tier route reached a higher shelf. The shelf, pit exit and next boss are
+outside the qualified frontier. Start discovery from an authenticated
+same-build checkpoint and retain the controller inputs for replay. Any HP
+assist requires original field evidence, full-RAM expected bytes and source
+alias guards.
 
 The historical ABI29 bus-observer fixture is separate and cannot lend checkpoints
 to the current build. Regenerate marked native code, use explicit scalar span one, and bind the

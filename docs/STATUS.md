@@ -1,5 +1,31 @@
 # Consumer status - 20 November 2026
 
+## 20 November: native return through the volcano
+
+Adol crosses the flame corridor after collecting the Stone Idol and reaches
+the volcanic return slope. The linked checkpoint advances 2,928 frames to
+frame 139,433. The final section of the climb and the exit toward the pit
+remain open, and the next boss is still ahead.
+
+The rebuilt module adds 23 source identities, all exercised in this route.
+The new section runs **93,613,082 native instructions with zero fallback**,
+converting all 1,264 interpreter retirements measured in the selected prior
+build. It starts with 240 frames of ordinary controls and includes 18
+verified living current-HP refills farther into the route. The selected
+checkpoint records **4,241,912,194 total native and zero interpreted**
+instructions along its linked lineage.
+
+Same-build interpreter checks on the prior module matched the route's controls,
+CPU, full RAM, guest frames, PCM and source counts. The new build reproduced
+the actual control and write requests, their RAM effects, and exact source
+counts. Guest frames and digital audio matched at the recorded cuts. Fresh
+cold and checkpoint replays of the retained routes also passed. A
+separate paced TCP smoke check confirmed fresh audio reached the SDL device.
+
+Later exploration reached a higher shelf and recorded more fallback for
+follow-up. The shelf still needs native qualification. The 567 consumer tests
+and 126 affected toolkit tests passed.
+
 ## 20 November: presentation readiness and remaster direction
 
 The selected ABI29 revision still matches the latest public toolkit main.

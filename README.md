@@ -3,30 +3,26 @@
 An incremental PC Engine CD native port of *Ys III: Wanderers from Ys* (USA),
 built with [pcenginerecomp](https://github.com/rages4calm/pcenginerecomp).
 **ABI29 with observation-history v2 and shared native emission is selected.**
-The assisted route reaches the **volcano snake's defeat and Stone Idol reward**.
-The next boss has not been reached; the campaign remains unfinished.
+The assisted route defeats the volcano snake, collects the Stone Idol, and
+returns through the flames to the **volcanic slope**.
+The climb back to the pit and the next boss are still ahead.
 
-The current own-build checkpoint at frame **136,505** records **4,148,299,112
-native / zero interpreted** instructions. This is a cold Town checkpoint followed
-by linked continuation, not a single-process campaign run. The separately replayed
-**104,745-frame** cold route records **3,209,517,525 native / zero interpreted**;
-the retained forward route reaches **114,813 / 3,527,737,024 native / zero interpreted**.
-Verified historical assists cover navigation, HP, combat, death/continue and rewards.
+The linked checkpoint at frame **139,433** records **4,241,912,194 native
+and zero interpreted** instructions. It starts at the build's own cold Town
+checkpoint and follows the assisted route through the Stone Idol and the
+volcano return. The separate **104,745-frame** cold replay records
+**3,209,517,525 native and zero interpreted** instructions. The retained
+forward branch reaches **114,813 frames** with the same prior native counts.
 
-The official module contains **63,651 source identities**, preserving all 59,258
-prior keys and adding **4,393**. Every addition executes natively. The verified
-route union exercises **60,693 identities**; **2,958 compiled keys remain
-unexercised**. Shared emission produces **48 C++ units**, compared with 947 before.
-The former **8,691,740 interpreted retirements** in the linked boss traversal now
-execute natively. Unseen game code retains interpreter fallback.
+The module contains **63,674 source identities**. All **23 additions** execute
+on the new route, which converts **1,264** prior fallback retirements to native.
+The verified route union exercises **60,721 identities**.
+Unseen game code continues to use interpreter fallback.
 
-TCP source, CPU/timing, recorded RAM, pixels and guest digital audio match the
-original verified route. Fresh own-build native/repeat/interpreter forks compare
-whole machine state with only four execution-tier counters normalized. Two paced
-120-frame TCP runs confirm fresh nonzero SDL audio acceptance with zero observed
-active drops. These are bounded assisted and internal-reference checks, not
-campaign completion, listening, independent-console or hardware qualification.
-The selected unknown-CD policy remains `nec-invalid`; unknown operations are unimplemented.
+The return matched the prior run's CPU timing, recorded RAM, guest pixels,
+digital audio, and exact source counts. A paced 120-frame TCP check confirmed
+fresh SDL audio acceptance with zero observed active drops on the selected
+build. Unknown CD commands receive the `nec-invalid` response.
 
 See [STATUS](docs/STATUS.md) for the migration and historical evidence. Generated
 source and qualified builds are private local artifacts; this repository contains
