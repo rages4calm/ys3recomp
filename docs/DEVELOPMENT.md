@@ -41,18 +41,17 @@ supersedes the historical inline-profile 128 MiB blocker without modifying it.
 
 ## Current discovery boundary
 
-The selected 63,674-key ABI29 build owns the frame-139,433 checkpoint on the
-volcanic return slope. The linked route records 4,241,912,194 native and zero
-interpreted instructions. Its final 2,928 frames include 18 verified current-HP
-refills. All 23 additions execute on the return route. Preserve the checkpoint's
-exact build identity and reference capability.
+The selected 63,813-key ABI29 build owns the frame-140,587 checkpoint after
+the volcanic cavern's upper east exit. The linked route records 4,278,635,157
+native and zero interpreted instructions. All 139 added identities execute on
+the 1,154-frame controller-only continuation. Preserve the checkpoint's exact
+build identity and reference capability.
 
-The living return-slope checkpoint has 60/80 HP and raw context 112. A separate
-mixed-tier route reached a higher shelf. The shelf, pit exit and next boss are
-outside the qualified frontier. Start discovery from an authenticated
-same-build checkpoint and retain the controller inputs for replay. Any HP
-assist requires original field evidence, full-RAM expected bytes and source
-alias guards.
+The exit checkpoint has 60/80 HP and raw context 112. The verified climb
+uses the central spire to reach the right bank. The herb shelf is a side
+alcove. For discovery toward the Stone Idol bridge, use the same-build
+checkpoint and retain exact controls. HP assists require independently verified
+field evidence, full RAM expected bytes and source alias guards.
 
 The historical ABI29 bus-observer fixture is separate and cannot lend checkpoints
 to the current build. Regenerate marked native code, use explicit scalar span one, and bind the

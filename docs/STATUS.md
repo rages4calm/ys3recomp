@@ -1,5 +1,28 @@
 # Consumer status - 20 November 2026
 
+## 20 November: native climb and exit from the volcano cavern
+
+Adol uses the pointed rock in the middle of the cavern to reach the upper
+east bank. The route climbs the bank and loads the next volcanic room at
+**frame 140,587**, with **60/80 HP**. The continuation uses ordinary
+controller inputs. Its origin is the earlier assisted return-slope checkpoint.
+
+The new module adds **139 exercised source identities**. The **1,154-frame**
+continuation retires **36,722,963 native / zero interpreted**, converting all
+**4,447** prior interpreter retirements. The linked checkpoint contains
+**4,278,635,157 native / zero interpreted** instructions. The union of
+verified routes exercises 60,861 of 63,813 compiled
+identities.
+
+Same-build interpreter replays agree across 45 observed cuts for full RAM,
+guest pixels, PCM, and exact source counts. The candidate replay also matches
+those cuts and preserves exact per-source retirements across 25 retained
+roles. The fresh 120-frame TCP device check passed with nonzero PCM accepted
+by SDL. All 567 consumer and 126 affected toolkit tests passed.
+
+Separate assisted exploration reached the lava lake. The Stone Idol bridge
+sequence is farther than the qualified exit checkpoint.
+
 ## 20 November: native return through the volcano
 
 Adol crosses the flame corridor after collecting the Stone Idol and reaches

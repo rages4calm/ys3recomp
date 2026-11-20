@@ -4683,5 +4683,25 @@
     "consumer_tests": 567,
     "affected_toolkit_tests": 126,
     "scope": "Assisted volcano return through the flame corridor to the return slope. Same-build reference, retained route replay, exact per-source execution, and separate paced TCP audio pass. The later shelf and next boss remain beyond the selected frontier."
+  },
+  "volcano_east_exit_native": {
+    "date": "2026-11-20",
+    "tool_revision": "6a4c547aec434c504e90092262b2ee66fcba3998",
+    "frames": 1154,
+    "native": 36722963,
+    "interpreted": 0,
+    "previous_interpreted": 4447,
+    "added_source_identities": 139,
+    "added_source_identities_exercised": 139,
+    "compiled_source_identities": 63813,
+    "witnessed_source_identities": 60861,
+    "unexercised_source_identities": 2952,
+    "new_assists": 0,
+    "frontier_frame": 140587,
+    "linked_native": 4278635157,
+    "linked_interpreted": 0,
+    "consumer_tests": 567,
+    "affected_toolkit_tests": 126,
+    "scope": "Controller-only continuation from the assisted volcanic slope through the upper east exit. Same-build interpreter, cold and retained route replay, exact source counts and a paced SDL check pass. The lava lake is separate assisted exploration."
   }
 }

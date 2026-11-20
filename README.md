@@ -3,26 +3,26 @@
 An incremental PC Engine CD native port of *Ys III: Wanderers from Ys* (USA),
 built with [pcenginerecomp](https://github.com/rages4calm/pcenginerecomp).
 **ABI29 with observation-history v2 and shared native emission is selected.**
-The assisted route defeats the volcano snake, collects the Stone Idol, and
-returns through the flames to the **volcanic slope**.
-The climb back to the pit and the next boss are still ahead.
+Adol defeats the volcano snake, collects the Stone Idol, returns through the
+flames, and climbs out of the cavern by the upper east passage. The Stone
+Idol bridge and the next boss are still ahead of the qualified route.
 
-The linked checkpoint at frame **139,433** records **4,241,912,194 native
-and zero interpreted** instructions. It starts at the build's own cold Town
-checkpoint and follows the assisted route through the Stone Idol and the
-volcano return. The separate **104,745-frame** cold replay records
-**3,209,517,525 native and zero interpreted** instructions. The retained
-forward branch reaches **114,813 frames** with the same prior native counts.
+The linked checkpoint at frame **140,587** records **4,278,635,157 native
+and zero interpreted** instructions. The final **1,154 frames** use controller
+inputs alone, starting from the previously assisted return-slope checkpoint.
+The separate **104,745-frame** cold replay records **3,209,517,525 native and
+zero interpreted** instructions. The retained forward branch reaches
+**114,813 frames** with the prior native counts.
 
-The module contains **63,674 source identities**. All **23 additions** execute
-on the new route, which converts **1,264** prior fallback retirements to native.
-The verified route union exercises **60,721 identities**.
-Unseen game code continues to use interpreter fallback.
+The module contains **63,813 source identities**. All **139 additions** execute
+on the climb and exit, converting **4,447** fallback retirements. The verified
+route union exercises **60,861 identities**.
+Unseen game code uses interpreter fallback.
 
-The return matched the prior run's CPU timing, recorded RAM, guest pixels,
-digital audio, and exact source counts. A paced 120-frame TCP check confirmed
-fresh SDL audio acceptance with zero observed active drops on the selected
-build. Unknown CD commands receive the `nec-invalid` response.
+The new segment matches the same-build interpreter's RAM, guest pixels,
+digital audio, and exact source counts at the recorded checkpoints. A separate
+paced TCP check confirmed fresh SDL audio acceptance on the selected package.
+Unknown CD commands receive the `nec-invalid` response.
 
 See [STATUS](docs/STATUS.md) for the migration and historical evidence. Generated
 source and qualified builds are private local artifacts; this repository contains
