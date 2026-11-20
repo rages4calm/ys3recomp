@@ -3,27 +3,26 @@
 An incremental PC Engine CD native port of *Ys III: Wanderers from Ys* (USA),
 built with [pcenginerecomp](https://github.com/rages4calm/pcenginerecomp).
 **ABI29 with observation-history v2 and shared native emission is selected.**
-Adol uses the Stone Idol to solidify the lava, crosses the new bridge, and
-reaches a volcanic corridor on the far side. The castle staircase and Elena
-are ahead of the qualified route.
+Adol climbs the castle stairs, meets Elena, takes the hidden passage behind
+the statue and reaches the winged boss in Alcaino Ruins. The qualified
+checkpoint stops at the opening of the fight with **52/90 HP**.
 
-The linked checkpoint at frame **144,439** records **4,401,667,800 native and
-zero interpreted** instructions. The final **3,852 frames** retire
-**123,032,643 native instructions** and include 17 verified HP refills.
-The Stone Idol event and bridge formation use ordinary controller inputs.
-The separate **104,745-frame** cold replay records **3,209,517,525 native and
-zero interpreted** instructions. The retained forward branch reaches
-**114,813 frames** with the prior native counts.
+The linked checkpoint at frame **159,130** records **4,857,779,187 native and
+zero interpreted** instructions. The final **14,691 frames** retire
+**456,111,387 native instructions**. Two verified HP refills occur before the
+climb. The stairs, Elena scene and passage use ordinary controller inputs.
+The separate cold replay reaches **104,745 frames** with **3,209,517,525
+native and zero interpreted** instructions.
 
-The module contains **64,806 source identities**. All **993 additions**
-execute on the new segment, converting **1,390,916** fallback
-retirements. The verified route union exercises **61,862 identities**.
-Unseen game code uses interpreter fallback.
+The module contains **67,620 source identities**. All **2,814 additions**
+run on the new segment, converting **2,295,708** fallback retirements.
+The verified route union exercises **64,684 identities**. Unseen game
+code uses interpreter fallback.
 
-The new segment matches the same-build interpreter's RAM, guest pixels,
-digital audio, and exact source counts at 74 recorded checkpoints. A
-paced TCP check confirmed fresh SDL audio acceptance on the selected package.
-Unknown CD commands receive the `nec-invalid` response.
+The continuation matches the same-build interpreter at 135 checkpoints for
+RAM, guest pixels, digital PCM, and exact source counts. A paced TCP check during
+Elena's voiced scene confirmed fresh audio acceptance by SDL. Unknown CD
+commands receive the `nec-invalid` response.
 
 See [STATUS](docs/STATUS.md) for the migration and historical evidence. Generated
 source and qualified builds are private local artifacts; this repository contains

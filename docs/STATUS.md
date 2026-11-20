@@ -1,5 +1,25 @@
 # Consumer status - 20 November 2026
 
+## 20 November: native castle stairs, Elena and winged boss entrance
+
+Adol climbs from the volcanic corridor to the stone stairs, meets Elena,
+waits through the voiced scene, and takes the passage behind the statue.
+The winged boss is visible with a full health bar at **frame 159,130**.
+Adol enters the encounter at **52/90 HP**.
+
+The 14,691-frame segment retires **456,111,387 native and zero interpreted**
+instructions, replacing 2,295,708 fallback retirements. All 2,814 new
+exact source identities execute. Two independently verified current-HP refills
+occur on the approach. The remainder uses controller input alone, and the
+maximum HP rises naturally from 80 to 90.
+
+Same-build interpreter replays agree across 135 cuts for literal inputs and
+writes, full RAM, guest pixels, PCM and exact retirements. The candidate
+reproduces those results and preserves exact retirements on 34 retained
+roles. A separate paced 120-frame TCP replay during Elena's dialogue confirms
+fresh nonzero PCM acceptance by SDL. All 567 consumer and 126
+affected toolkit tests pass.
+
 ## 20 November: native Stone Idol and lava bridge
 
 Adol advances to the lava shore and automatically raises the Stone Idol. The

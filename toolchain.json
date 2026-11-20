@@ -4725,5 +4725,27 @@
     "consumer_tests": 567,
     "affected_toolkit_tests": 126,
     "scope": "Assisted continuation from the volcanic east exit through the automatic Stone Idol event, bridge crossing and far-side corridor. Same-build interpreter, cold and retained route replay, exact source counts and a paced SDL check pass."
+  },
+  "alcaino_winged_boss_entrance_native": {
+    "date": "2026-11-20",
+    "tool_revision": "6a4c547aec434c504e90092262b2ee66fcba3998",
+    "frames": 14691,
+    "native": 456111387,
+    "interpreted": 0,
+    "previous_interpreted": 2295708,
+    "added_source_identities": 2814,
+    "added_source_identities_exercised": 2814,
+    "compiled_source_identities": 67620,
+    "witnessed_source_identities": 64684,
+    "unexercised_source_identities": 2936,
+    "matched_interpreter_cuts": 135,
+    "retained_route_roles": 34,
+    "verified_current_hp_refills": 2,
+    "frontier_frame": 159130,
+    "linked_native": 4857779187,
+    "linked_interpreted": 0,
+    "consumer_tests": 567,
+    "affected_toolkit_tests": 126,
+    "scope": "Assisted continuation up the stairs, through Elena's voiced scene and the hidden passage to the winged boss entrance. Same-build interpreter, cold and retained route replay, exact source counts and paced SDL overlap pass."
   }
 }

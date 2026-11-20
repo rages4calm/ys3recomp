@@ -50,17 +50,16 @@ overlay contract when integrating in-game settings.
 
 ## Current discovery boundary
 
-The selected 64,806-key ABI29 build owns the frame-144,439 checkpoint
-in the corridor beyond the Stone Idol bridge. The linked route records
-4,401,667,800 native and zero interpreted instructions. All 993 added
-identities execute on the 3,852-frame continuation. The source approach
-and corridors use 17 verified current-HP refills.
+The selected 67,620-key ABI29 build owns the frame-159,130 checkpoint
+at the winged boss entrance with 52/90 HP. The linked route records
+4,857,779,187 native and zero interpreted instructions. All 2,814 added source
+identities execute during the 14,691-frame continuation.
 
-The Stone Idol activates automatically after Adol reaches the trigger on the
-rocky shore. Wait for the bridge to finish forming before trying to move.
-Start further discovery from the current exact-build checkpoint and retain
-the controls. Any HP assist requires independently verified field evidence,
-full RAM expected bytes and source alias guards.
+The route uses two verified current-HP refills before the climb. The host
+records the natural maximum-HP increase, and subsequent controls use no further
+refills. In the statue room, wait for Elena to leave, approach the revealed
+entrance and press Up. Preserve the boss entrance checkpoint and start combat
+tests on owning-build forks.
 
 The historical ABI29 bus-observer fixture is separate and cannot lend checkpoints
 to the current build. Regenerate marked native code, use explicit scalar span one, and bind the
