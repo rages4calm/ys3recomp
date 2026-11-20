@@ -154,10 +154,10 @@ class ToolIdentityTests(unittest.TestCase):
 class ManifestTests(unittest.TestCase):
     def test_published_identity_and_inputs(self):
         manifest = json.loads((ROOT / "toolchain.json").read_text(encoding="utf-8"))
-        self.assertEqual(manifest["tool"]["runtime_abi"], 28)
-        self.assertEqual(manifest["tool"]["revision"], "cd5bff67b323098979345f76d5b87075fc628e72")
+        self.assertEqual(manifest["tool"]["runtime_abi"], 29)
+        self.assertEqual(manifest["tool"]["revision"], "6a4c547aec434c504e90092262b2ee66fcba3998")
         self.assertEqual(manifest["tool"]["source_sha256"],
-                         "16679df8f6758cbac67e97dc2a3cb20d327ee80631e3cce25601dc0672b0734a")
+                         "7438f003c3f1ce4706fa5c708ce8a446a0ebb51c7d41ae6d0220314f3c918cd8")
         for item in manifest["inputs"].values():
             self.assertRegex(item["sha256"], r"^[0-9a-f]{64}$")
             self.assertEqual(item["access"], "read-only")

@@ -1,4 +1,45 @@
-# Consumer status - 9 November 2026
+# Consumer status - 20 November 2026
+
+## 20 November: ABI29 history migration and native boss traversal
+
+The selected toolkit is public revision `6a4c547aec434c504e90092262b2ee66fcba3998`
+(111 source files). Official history-v2 preparation and feedback preserve the
+original histories and all 59,258 prior keys, adding 4,393 genuine source identities.
+All additions execute natively; the 63,651-key module has 48 shared C++ units and
+46,798 translated bodies. The actual history capacity is 1,048,576; runtime
+captures use 262,144. No legacy inline size limit was raised or history pruned.
+
+The player-facing milestone remains the volcano snake's defeat and Stone Idol.
+The fresh own-build lineage now reaches frame 136,505 with **4,148,299,112 native /
+zero interpreted**, converting the former 8,691,740 interpreted retirements.
+It starts from the cold route's own Town checkpoint at 100,214, then replays the
+original verified continuation and assists. It is not a single-process cold
+136,505-frame run. The independent cold 104,745-frame route and retained forward
+114,813-frame route also pass, at 3,209,517,525 and 3,527,737,024 native / zero
+interpreted respectively. Overlapping branches are excluded from route totals.
+The native witness union is 60,693 keys; 2,958 compiled keys remain unexercised.
+No next boss or campaign completion is claimed.
+
+Separate raw TCP audits compare literal controls and expected-byte assists,
+original PC/all MPR/source identity, CPU timing, full RAM at every write, recorded
+RAM/image checkpoints, guest PCM and exact per-key tier promotion. Old sparse
+RAM observations are not relabeled as complete snapshots. ABI28 opaque machine
+serialization is not guessed into ABI29. Two fresh 60-frame native forks and a
+same-build interpreter fork instead establish strict whole CORE/HOST parity,
+except four tier counters; the guard remains strict. RAM, pixels, PCM and source
+counts match. Fresh paced reward/frontier runs confirm nonzero SDL acceptance
+and zero observed active drops. These are internal digital and device checks,
+not independent console, analog or listening evidence.
+
+All 567 consumer tests pass. The affected upstream checks pass: 126 Python tests, 75 C++ suites and 12
+fresh-process PSG cases. The full upstream Python suite was not rerun. Original
+local harness preflight/import and metadata mistakes remain recorded separately;
+no confirmed shared-tool defect required upstream contact. New presentation,
+rewind and captured-Q features are not qualified by this migration. The owner
+media retains synthesized default Q and the selected `nec-invalid` unknown-CD policy.
+
+Earlier dated sections below describe their original selected builds and limits.
+The ABI29 history workflow supersedes their inline-profile composition blocker.
 
 ## 9 November: historical artifact cleanup
 

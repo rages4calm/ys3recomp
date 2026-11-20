@@ -14,11 +14,11 @@ that is shorter than walking back. A selected cut of a closed run must remain
 explicitly labeled; it is not a newly executed run. Preserve original failures,
 compare actual new work and do not add overlapping navigation to forward totals.
 
-The newly published toolkit evidence helpers support immutable snapshots and
-receipt consistency in a separate parent process. Their generic consistency
-seal is not native qualification. Keep the pinned guest SDK isolated. The
-selected ABI28 host cannot switch an own checkpoint to an interpreter-only tier;
-that requires a separately verified upstream feature and a new build lineage.
+The selected ABI29 host supports same-build reference execution. New development
+checkpoints are reference-enabled and bound to the exact build, media and machine
+context. Select scalar span one and use the toolkit's official reference controls;
+never import ABI28 checkpoints or normalize their opaque serializer by guesswork.
+Only the four tier counters differ in the qualified native/reference comparison.
 
 The authored read-only `scripts/ys3_state.py` adapter reads authenticated 8 KiB
 WRAM snapshots: observed HP bytes, separate position low/high arrays, cached
@@ -32,37 +32,28 @@ under explicitly recorded MPR contexts. A static alternate mapping is not a
 historical CPU mapping. Use the observed game controls to confirm a transition;
 retain original failures and do not promote a death branch to a living checkpoint.
 
-The latest upstream reference-execution feature has a separate, bounded ABI29
-intro fixture; see STATUS for scope. It does not change the selected ABI28 pin.
-Profile composition currently refuses the initial new lodge/Alcaino captures at
-the official 128 MiB serialization limit. Keep the refusal and full histories.
-A shorter genuine source episode can reduce duplicate capture input; synthetic
-merging, private history pruning and raised admission limits are not substitutes.
+Use the pinned toolkit's official `prepare-project` and `prepare-feedback` with
+observation-history v2 and shared emission. Keep every admitted history member
+and stage intact. The current consumer history capacity is 1,048,576 and runtime
+capture capacity 262,144. Resolve operational paths through project verification;
+feedback places its consumer under the returned consumer directory. History-v2
+supersedes the historical inline-profile 128 MiB blocker without modifying it.
 
 ## Current discovery boundary
 
-The selected 59,258-key build owns the post-reward frame-136,505 checkpoint.
-The boss and subsequent 48-frame return windows are zero-new-interpreter work;
-8,691,740 interpreted retirements remain imported from mixed traversal. All nine
-new identities execute in the return window. The alternative Chester profile and
-generated C++ were retired; original captures, receipts and regeneration commands
-remain private. Keep historical emission readiness distinct from current files.
+The selected 63,651-key ABI29 build owns the post-reward frame-136,505 checkpoint,
+with 4,148,299,112 native and zero interpreted retirements. All 4,393 additions
+execute in the linked boss traversal; the next boss remains unvisited. Preserve
+the new checkpoint's exact reference capability and source/build identity.
 
-Use the actual same-build checkpoint, never an older module checkpoint. Its
-HP/max HP remains 80/80 and raw context 112. The newly reviewed assist admits
-living current HP below 60, target 60 and observed maximum 80 in this context,
-with original independent field mapping, full-RAM expected bytes and all source
-alias guards intact. Failed deaths and unstable vertical-position experiments do
-not establish a return route or next-boss progression.
+HP/max HP remains 80/80 and raw context 112. Historical minimal assist authority
+still requires original field evidence, full-RAM expected bytes and all source
+alias guards. Failed deaths and unstable vertical-position experiments do not
+establish a living return route. Reuse an authenticated own-build cut and retained
+control suffix instead of replaying the whole game for each discovery.
 
-Use the official capture start gate for a genuine smaller execution window when
-the full capture composition exceeds 128 MiB. Join the actual gate boundary to
-paused TCP counters; do not relabel a gated capture as the entire process suffix.
-Preserve full original captures and refusal receipts. The current profile has
-38,803 bytes of headroom; future additions need official admission again.
-
-The separate ABI29 bus-observer fixture is unselected and cannot lend checkpoints
-to C51. Regenerate marked native code, use explicit scalar span one, and bind the
+The historical ABI29 bus-observer fixture is separate and cannot lend checkpoints
+to the current build. Regenerate marked native code, use explicit scalar span one, and bind the
 actual producer's canonical source digest. Verify a fresh own checkpoint and
 observed/unobserved whole-state equality. Only four tier counters differ for
 reference execution; guards remain strict. Complete 256-call trace prefixes do
@@ -91,9 +82,9 @@ source work. Neither record is a hardware or native-only qualification. Keep
 original failures visible; do not rewrite them as passes or silently permit a
 new unknown-command success profile.
 
-## Current ABI28 qualification and checkpoint-first iteration
+## Historical ABI28 qualification and checkpoint-first iteration
 
-Use public `cd5bff67b323098979345f76d5b87075fc628e72` (ABI28, 84 source files,
+The historical build used public `cd5bff67b323098979345f76d5b87075fc628e72` (ABI28, 84 source files,
 SHA256 `16679df8f6758cbac67e97dc2a3cb20d327ee80631e3cce25601dc0672b0734a`), official additive
 profile-v2 composition, stable emission and project build/resume commands.
 Select `runtime.cd_timing = fixed` explicitly. The new 58,041-key module preserves
@@ -138,7 +129,8 @@ Preserve original byte/MPR identities and use the shared emitted-membership gap
 report where helpful; its catalog classification does not alter original retired
 counts. Keep overlapping auxiliary work out of forward route totals.
 The toolkit's captured-Q work changes the ABI and remains separate from this
-selected ABI28 regression. This disc declares no captured subchannel data.
+selected ABI28 regression. This disc declares no captured subchannel data. The current ABI29 build still uses
+synthesized default Q.
 
 Require separate actual raw admission of original and native roles for each new
 window. Admit the read-only parent before an assisted child. Revalidate the

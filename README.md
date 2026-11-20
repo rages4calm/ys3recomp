@@ -2,66 +2,35 @@
 
 An incremental PC Engine CD native port of *Ys III: Wanderers from Ys* (USA),
 built with [pcenginerecomp](https://github.com/rages4calm/pcenginerecomp).
-**ABI28 with additive profile composition and fixed CD timing is selected.**
-The fresh **104,745-frame** reset retires **3,209,517,525 native / zero interpreted**
-instructions. Fourteen separate own-checkpoint windows reach frame **114,813** and
-**3,527,737,024 native / zero interpreted** instructions. The campaign remains
-unfinished; unseen code retains interpreter fallback.
+**ABI29 with observation-history v2 and shared native emission is selected.**
+The assisted route reaches the **volcano snake's defeat and Stone Idol reward**.
+The next boss has not been reached; the campaign remains unfinished.
 
-The assisted route covers item use, damage/death/continue, mine combat,
-the wizard's defeat and Long Sword reward, miner dialogue, the deeper-mine boss,
-town/lodge return and a return to Tigre Mine. The fourteen continuation windows cover
-**432 / 2,232 / 960 / 1,716 / 504 / 678 / 522 / 336 / 342 / 288 / 336 / 960 / 330 / 432 frames** through deeper cavern traversal
-and combat in Tigre Mine. These are bounded checkpoint-linked checks; actual
-Alcaino progression and the newly qualified volcano boss are described below.
+The current own-build checkpoint at frame **136,505** records **4,148,299,112
+native / zero interpreted** instructions. This is a cold Town checkpoint followed
+by linked continuation, not a single-process campaign run. The separately replayed
+**104,745-frame** cold route records **3,209,517,525 native / zero interpreted**;
+the retained forward route reaches **114,813 / 3,527,737,024 native / zero interpreted**.
+Verified historical assists cover navigation, HP, combat, death/continue and rewards.
 
-The selected official module contains **59,258 source identities**, retaining all
-59,249 prior keys and adding **nine**. Every addition executes natively in the
-post-reward return window. Across the retained route, auxiliary, boss and
-post-reward windows, **54,844 identities execute natively**;
-4,414 compiled keys remain unexercised. The retained forward route exercises
-53,621 identities. The module has 83 MPR contexts, 947 C++ units and one header, with zero unsupported or excluded
-observations.
+The official module contains **63,651 source identities**, preserving all 59,258
+prior keys and adding **4,393**. Every addition executes natively. The verified
+route union exercises **60,693 identities**; **2,958 compiled keys remain
+unexercised**. Shared emission produces **48 C++ units**, compared with 947 before.
+The former **8,691,740 interpreted retirements** in the linked boss traversal now
+execute natively. Unseen game code retains interpreter fallback.
 
-The additive composer preserves original raw captures and earlier contributions
-within unchanged public limits. The new executable passes its own fresh reset
-and checkpoint route, with independent TCP source, CPU/device, full RAM, image
-and digital-audio comparisons. The retained **330 + 432 forward frames** retire
-**23,767,693 native / zero interpreted** instructions without new developer writes.
-The auxiliary 546-frame branch retires **17,139,991 native / zero interpreted**;
-its two previously interpreted instructions now execute natively. That branch is
-excluded from forward frame and lifetime totals. Earlier assisted progression
-retains a verified living-HP refill from 30 to 60.
-The earlier single 678-frame section retains its three verified position/HP edits.
+TCP source, CPU/timing, recorded RAM, pixels and guest digital audio match the
+original verified route. Fresh own-build native/repeat/interpreter forks compare
+whole machine state with only four execution-tier counters normalized. Two paced
+120-frame TCP runs confirm fresh nonzero SDL audio acceptance with zero observed
+active drops. These are bounded assisted and internal-reference checks, not
+campaign completion, listening, independent-console or hardware qualification.
+The selected unknown-CD policy remains `nec-invalid`; unknown operations are unimplemented.
 
-Fresh tests at the post-reward checkpoint compare whole immediate and continued
-checkpoint files, CORE/HOST, RAM, pixels and per-key counts over two 60-frame
-branches. Separate paced 120-frame runs at the reward popup and the retained
-frontier confirm fresh nonzero PCM accepted by SDL with zero observed active drops.
-Repeat, audio and exploratory forks are excluded
-from route totals and coverage. Exploratory forks and the mixed traversal retain
-uncompiled variants outside the qualified windows. No campaign, listening or
-hardware claim.
-
-The new build also reaches the Small Shield chest, completes Chester's capture
-and pit sequence, defeats the **volcano snake boss**, and collects the **Stone
-Idol**. The two assisted boss windows retire **54,081,800 native / zero new
-interpreted** instructions over **1,764 frames**, converting **2,887,781** former
-interpreter retirements. Their original source, CPU/device state, full RAM and
-images match. Fresh checkpoint repeats and paced TCP/SDL audio checks pass.
-
-The traversal to that boss still uses fallback. The reward checkpoint retains
-**8,691,740 imported interpreted** instructions; it is not an all-native campaign
-route. The retained reset/forward route above remains zero interpreted. Larger
-compositions still hit the reported toolkit profile-size limit. See
-[STATUS](docs/STATUS.md#8-november-post-reward-native-coverage) for the
-separate source, native and audio evidence, including preserved failures.
-The post-reward 48-frame return window now retires **1,577,731 native / zero new
-interpreted** instructions, promoting all nine remaining variants in that window.
-The separate reward-popup audio check also passes with zero new interpreted work.
-Its single known negative FF command response is explicitly checked. This does
-not implement unknown-command semantics or qualify all remaining traversal.
-Play now uses this qualified 59,258-key build.
+See [STATUS](docs/STATUS.md) for the migration and historical evidence. Generated
+source and qualified builds are private local artifacts; this repository contains
+the authored consumer project, configuration, launchers and synthetic tests.
 
 ## Play the local build
 
@@ -93,46 +62,36 @@ Keyboard controls remain available for pause, fullscreen and exit. The shared
 host's virtual-device checks cover mapping, hot-plugging and input release;
 physical-controller verification is separate.
 
-The selected [ABI28 toolkit](https://github.com/rages4calm/pcenginerecomp/commit/cd5bff67b323098979345f76d5b87075fc628e72)
-uses the official provenance-preserving composer and stable emitter.
-The [semantic step validator](https://github.com/rages4calm/pcenginerecomp/commit/929dcc3b9affe3af70eeaa49c6091baceb1bf056)
-is separately pinned. Shared CPU/device semantics and generation remain
-upstream; this project owns game configuration, coverage and verification.
-The prior qualified ABI28 build is retained.
+The selected [ABI29 toolkit](https://github.com/rages4calm/pcenginerecomp/commit/6a4c547aec434c504e90092262b2ee66fcba3998)
+provides history-v2 preparation, feedback, shared emission and same-build reference
+execution. Shared CPU/device semantics and generation remain upstream; this project
+owns game configuration, coverage and verification. The prior ABI28 build is retained.
 
 ## Audio and checkpoints
 
-The fresh native reset is compared with an explicitly checkpoint-linked ABI27
-source reference. Original captures retain their ABI, checkpoint origin and
-retirement counts; reconstruction is excluded from compilation history and
-execution totals. Failed runs remain failed. The final native qualifier starts
-from reset in one process. Discovery and debugging use exact-build checkpoints.
+Use exact-build checkpoints and explicit reference capability. Original ABI28
+captures remain source evidence; their checkpoints are never imported into ABI29.
+Fresh native/repeat/reference forks compare the entire current machine core with
+only four tier counters normalized. The guard and all other CORE/HOST bytes,
+RAM, pixels, source counts and guest PCM remain strict.
 
-The ABI27-to-ABI28 comparison admits the source-derived fixed-timing field and
-five tier counters; all other machine-core bytes remain strict. All 26 main-route
-checkpoint comparisons pass. Historical captures keep their original labels;
-no cross-ABI checkpoint is converted or imported. `gear-distance` remains a
-separate opt-in timeline without this native-route qualification.
+Separate paced 120-frame runs verify fresh nonzero PCM accepted by SDL beyond
+imported audio, with zero active drops. Planned pause clears and shutdown drains
+are counted separately. The fast-forward route compares guest digital PCM; it
+does not claim a newly captured boot WAV or listening/hardware parity.
 
-Same-build restores match whole immediate and continued checkpoint files and
-machine cores over 60 fresh native frames. A separate paced 120-frame check
-verifies fresh nonzero PCM accepted by SDL beyond imported audio, with zero
-active drops. Planned pause clears and shutdown drains are counted separately.
-The main route's fast-forward presentation is muted; its digital PCM and capped
-boot WAV are compared independently. This is not listening or hardware parity.
-
-The selected `nec-invalid` CD policy receives complete unknown commands and
-returns an invalid-command response with sense. It does not implement those
-unknown operations. Differences from independent references remain documented;
-the historical `gear-good` response is not the selected policy.
+The selected `nec-invalid` CD policy returns an invalid-command response with
+sense for unknown commands. It does not implement those operations. Historical
+`gear-good` qualifications keep their original compatibility labels; that response
+profile is not selected. Default synthesized Q remains in use for this disc.
 
 ## Build without game inputs
 
 Requires Python 3.11+, CMake 3.20+, a C++20 compiler, Ninja and Git.
 
 ```sh
-git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-additive51
-git -C .deps/pcenginerecomp-additive51 checkout --detach cd5bff67b323098979345f76d5b87075fc628e72
+git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-current51
+git -C .deps/pcenginerecomp-current51 checkout --detach 6a4c547aec434c504e90092262b2ee66fcba3998
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++
 cmake --build build --parallel 4
 ctest --test-dir build --output-on-failure

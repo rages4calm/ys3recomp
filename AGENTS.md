@@ -53,6 +53,9 @@ metadata. The owner authorized messaging only the specific toolkit chat recorded
 there. One report per material change; no unchanged pinging. Reports must name
 tool/build/input identities, execution tier, PC/MPR/source, bounded recipe,
 expected/observed behavior, independent evidence and limits, and private receipts.
+Do not send routine progress, completion or coordination messages. Contact the
+toolkit chat or open an upstream issue only for a concrete shared defect or
+blocker that needs upstream action; investigate locally first.
 
 Subagents may be used with explicit file ownership. They share this checkout;
 never revert others' work. Run meaningful synthetic tests, affected upstream
