@@ -4635,5 +4635,33 @@
     "progression": "Volcano snake defeated and Stone Idol collected; next boss not reached. Original verified assists replayed, no new assist policy. Canonical cold Town checkpoint plus linked own-build continuation, not a single-process cold campaign run.",
     "full_upstream_python_suite_run": false,
     "consumer_tests": 567
+  },
+  "presentation_readiness": {
+    "date": "2026-11-20",
+    "tool_revision": "6a4c547aec434c504e90092262b2ee66fcba3998",
+    "same_selected_build": true,
+    "forks": 8,
+    "frames_per_fork": 60,
+    "native_instructions_per_fork": 1838044,
+    "interpreted_instructions_per_fork": 0,
+    "guest_writes": 0,
+    "modes": [
+      "integer",
+      "square",
+      "4:3",
+      "16:9"
+    ],
+    "shaders": [
+      "off",
+      "sharp",
+      "crt",
+      "smooth",
+      "lcd"
+    ],
+    "whole_ending_checkpoint_equal": true,
+    "guest_RAM_RGB_PCM_equal": true,
+    "distinct_presented_images": 8,
+    "true_widescreen_game_renderer_implemented": false,
+    "scope": "Read-only own-build checkpoint smoke checks, not new progression or coverage, independent shader mathematics/backend matrix or complete remaster qualification. Display16:9 stretches original view. Manual launcher defaults remain unchanged."
   }
 }

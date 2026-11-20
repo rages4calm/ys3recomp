@@ -1,5 +1,26 @@
 # Consumer status - 20 November 2026
 
+## 20 November: presentation readiness and remaster direction
+
+The selected ABI29 revision still matches the latest public toolkit main.
+Eight read-only own-build TCP forks exercise integer, fractional square-pixel,
+4:3 and 16:9 output, plus Sharp, CRT, Smooth and LCD shaders. Every 60-frame
+fork retires **1,838,044 native / zero interpreted** instructions without new
+memory writes. Whole ending checkpoints, guest RAM, guest pixels and digital
+PCM match across all eight runs. Completed SDL-present captures are distinct.
+Raw journal audits validate the actual steps, source counts, checkpoint ACKs
+and clean process exits. Visual inspection confirms rendered gameplay output.
+This is a bounded presentation readiness check, not additional story progress,
+coverage, an independent shader-math/backend matrix or whole-game qualification.
+
+The [remaster direction](REMASTER_DIRECTION.md) records the intended polished
+native PC experience. The current Ys III view remains original-size game content;
+16:9 display mode stretches it. True widescreen needs a game-specific renderer,
+camera/room rules and HUD placement using the existing shared callback interface.
+A unified options interface and persistent saves also remain implementation work.
+Manual Play defaults and the qualified native build are unchanged. No confirmed
+shared-tool defect required an upstream issue or chat message.
+
 ## 20 November: ABI29 history migration and native boss traversal
 
 The selected toolkit is public revision `6a4c547aec434c504e90092262b2ee66fcba3998`

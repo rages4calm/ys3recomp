@@ -32,6 +32,11 @@ See [STATUS](docs/STATUS.md) for the migration and historical evidence. Generate
 source and qualified builds are private local artifacts; this repository contains
 the authored consumer project, configuration, launchers and synthetic tests.
 
+The [remaster direction](docs/REMASTER_DIRECTION.md) targets true widescreen,
+coherent presentation and options, comfortable controller use and dependable
+saves while preserving the game's art and gameplay. Those improvements continue
+alongside native coverage; their individual readiness remains explicit.
+
 ## Play the local build
 
 In a prepared checkout, double-click **Play Ys III.cmd**. Press Enter/Run at
