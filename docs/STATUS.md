@@ -1,4 +1,49 @@
-# Consumer status - 26 November 2026
+# Consumer status - 27 November 2026
+
+## 27 November - winged boss defeated and Moon Statue received
+
+Adol finishes the winged boss and receives the Moon Statue. The original game
+names the reward at frames 163,835 and 164,075. The qualified continuation ends
+at frame 164,251 with 90 HP, after opening Equipment.
+The return to Elena and Chester remains ahead.
+
+The 3,794-frame continuation runs 121,514,843 native instructions
+and zero interpreted instructions, replacing 7,304 fallback
+retirements. Its own-build linked lineage records 5,021,591,966 native
+and zero interpreted instructions. Earlier aiming and teleport experiments are
+separate discovery branches and are excluded from these progression totals.
+The selected route uses 9 verified current-HP refills,
+a boss-HP reduction from 233 to 9, and a second reduction from 7 to 3 at an
+independently verified successful hit. Ordinary attacks execute the lethal
+hit and the original death and reward logic.
+
+The toolkit upgrades to public `1c765dcd96923e806bf8009245d8fe4d1e16c402` with ABI29,
+118 source files and source SHA256 `17eb1bb582ffbaf1ae9b338e05e5218a1e370c117eb4a08208f0ee49ea87fa10`.
+It builds a fresh checkpoint lineage and preserves all 50 retained roles,
+including the prior natural Game Over branch. Original-program interpreter
+checks match full RAM, guest pixels, digital PCM, literal controls and edits,
+and exact source retirements. The paced 120-frame defeat-sequence overlap
+confirms fresh nonzero PCM accepted by SDL. All 567 consumer
+and 338 affected Python checks pass. The focused
+C++ disc-origin, desktop and TCP suites also pass.
+
+Bulk overlay discovery uses 256 authenticated roots from the paused boss RAM.
+It derives 1,681 static identities, including 78 absent from the prior module,
+without advancing or writing the guest. The new mixed module emits
+68,387 identities. The verified route union witnesses
+65,396; 2,991 compiled identities remain unexercised, including the
+78 declared-only identities. The analysis retains 2,692 explicit frontiers.
+Returns, possible code writes and unknown mappings remain conservative boundaries.
+A wider partitioned root plan is prepared separately. The selected bounded
+sweep avoids repeated admission of a larger graph during this qualification.
+
+Disc-origin queries retain original PC, all MPRs, physical bytes and diagnostic
+epochs. Restored RAM starts with unknown ancestry. These diagnostics supply
+source provenance when known. They do not add execution counts.
+
+The optional new GPU shader probes retain a startup failure caused by unavailable
+WinPixEventRuntime.dll. The selected shader-off game route and ordinary SDL
+software tests pass. Those new GPU shader presets remain unqualified locally.
 
 ## 26 November: native winged-boss combat, Healing Herb and Game Over
 

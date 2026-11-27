@@ -33,7 +33,7 @@ historical CPU mapping. Use the observed game controls to confirm a transition;
 retain original failures and do not promote a death branch to a living checkpoint.
 
 Use the pinned toolkit's official `prepare-project` and `prepare-feedback` with
-observation-history v2 and shared emission. Keep every admitted history member
+observation-history v2, mixed live-overlay declarations and shared emission. Keep every admitted history member
 and stage intact. The current consumer history capacity is 1,048,576 and runtime
 capture capacity 262,144. Resolve operational paths through project verification;
 feedback places its consumer under the returned consumer directory. History-v2
@@ -50,14 +50,31 @@ overlay contract when integrating in-game settings.
 
 ## Current discovery boundary
 
-The selected 68,059-key ABI29 build owns the frame-160,457 living
-checkpoint in the winged boss fight with 90/90 HP. The route reaches the crest,
-records both directions of damage, and uses a Healing Herb to recover. The
-separate natural-death fork starts at the earlier 4-HP checkpoint and reaches
-Game Over. Keep that branch separate from the living route and its totals.
+The selected 68,387-identity mixed ABI29 module owns the
+frame-164,251 checkpoint after the winged boss defeat and Moon Statue.
+The game names the reward in the verified source and candidate route. The
+Equipment menu is open at this checkpoint. Use ordinary controls to return
+to the arena and continue toward Elena and Chester.
 
-The boss remains alive. Use the exact owning-build checkpoint for combat and
-monitor both gauges to verify the next phase and the Moon Statue reward.
+Collect gaps across coherent bounded scenarios, then prepare one combined
+build. Reuse exact owning-build checkpoints and deterministic successful hit
+windows. Release buttons for actual guest frames when a new input edge is
+needed. A remote clear immediately followed by a set can remain held from
+the game's perspective.
+
+Use the official live-overlay capture, discovery and composition interfaces
+with genuine history. Seed original PC/MPR/source-byte matches from authentic
+paused RAM and keep each source epoch's provenance. Direct branch expansion
+can add unplayed candidates. Report declared, observed, executed and unresolved
+counts separately. Static candidates do not manufacture capture retirements.
+Use the official block RAM reader for complete paused observations.
+
+The retained private route is replayed on the upgraded toolkit's own lineage.
+The new module combines original observed code with guarded live-overlay
+candidates. Check all compiled physical source spans before development edits,
+including declared entries. The verified boss assists leave it alive for
+ordinary lethal attacks. Earlier aiming and position experiments stay separate
+from the selected living route and its totals.
 
 The historical ABI29 bus-observer fixture is separate and cannot lend checkpoints
 to the current build. Regenerate marked native code, use explicit scalar span one, and bind the

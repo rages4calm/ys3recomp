@@ -2,34 +2,40 @@
 
 An incremental PC Engine CD native port of *Ys III: Wanderers from Ys* (USA),
 built with [pcenginerecomp](https://github.com/rages4calm/pcenginerecomp).
-**ABI29 with observation-history v2 and shared native emission is selected.**
-Adol trades hits with the winged boss in Alcaino Ruins and uses a Healing
-Herb to recover from **4 to 90 HP**. The qualified living checkpoint is at
-frame **160,457**. Defeating the boss and earning the Moon Statue remain ahead.
+**Adol defeats the winged boss in Alcaino Ruins and receives the Moon Statue.**
+The game displays the named reward, and the qualified checkpoint reaches
+frame **164,251** with **90 HP**.
 
-The new **1,327-frame** combat and recovery stretch retires **42,297,936
-native and zero interpreted** instructions using controller inputs alone.
-The linked checkpoint records **4,900,077,123 native and zero interpreted**.
-A separate **1,226-frame** branch from 4 HP reaches Game Over with
-**39,282,912 native and zero interpreted** instructions.
+The assisted **3,794-frame** continuation retires **121,514,843
+native and zero interpreted instructions**, converting 7,304
+previous fallback retirements. The linked own-build route records
+**5,021,591,966 native and zero interpreted** instructions.
+Verified assists include 9 current-HP refills and two
+boss-HP reductions that preserve ordinary attacks for the finishing blows.
 
-The module contains **68,059 source identities**. All **439 additions**
-execute across these branches. The verified route union exercises **65,141**
-identities. Unseen code uses interpreter fallback.
+The latest selected toolkit is ABI29 revision
+[`1c765dc`](https://github.com/rages4calm/pcenginerecomp/commit/1c765dcd96923e806bf8009245d8fe4d1e16c402).
+Its 118 runtime and tooling source files match the final public update
+[`5a8e325`](https://github.com/rages4calm/pcenginerecomp/commit/5a8e325860966b338bb13f10e09a65669c60eb64).
+It supplies disc-source diagnostics, live-overlay branch discovery, input profiles
+and presentation controls.
+A bulk read-only sweep adds candidates from authentic paused RAM, alongside
+all genuine execution history. The module contains **68,387 source
+identities**, of which **65,396** execute across the verified route
+union. **2,991 compiled identities remain unexercised**, including the
+78 declared-only identities. Unseen source variants retain interpreter fallback.
 
-Both branches match the same-build interpreter at 73 cuts for RAM, guest
-pixels, digital PCM, and exact source retirements. A paced TCP check during
-the boss fight confirms fresh audio acceptance by SDL. Unknown CD commands
-receive the `nec-invalid` response.
+Same-build interpreter comparisons match the controls, full RAM, guest pixels,
+digital PCM and exact retired source identities. The upgraded build replays
+the retained routes and natural Game Over branch. A separate paced TCP check
+during the defeat sequence verifies fresh nonzero audio accepted by SDL.
+Unknown CD commands receive the `nec-invalid` response.
 
-See [STATUS](docs/STATUS.md) for the migration and historical evidence. Generated
-source and qualified builds are private local artifacts; this repository contains
-the authored consumer project, configuration, launchers and synthetic tests.
-
-The [remaster direction](docs/REMASTER_DIRECTION.md) targets true widescreen,
-coherent presentation and options, comfortable controller use and dependable
-saves while preserving the game's art and gameplay. Those improvements continue
-alongside native coverage; their individual readiness remains explicit.
+See [STATUS](docs/STATUS.md) for measured scopes and historical evidence.
+Generated game source and qualified builds are private local artifacts.
+The repository contains authored consumer source, configuration, launchers and
+synthetic tests. The [remaster direction](docs/REMASTER_DIRECTION.md) records
+presentation, controller and save improvements and their individual readiness.
 
 ## Play the local build
 
@@ -61,9 +67,9 @@ Keyboard controls remain available for pause, fullscreen and exit. The shared
 host's virtual-device checks cover mapping, hot-plugging and input release;
 physical-controller verification is separate.
 
-The selected [ABI29 toolkit](https://github.com/rages4calm/pcenginerecomp/commit/6a4c547aec434c504e90092262b2ee66fcba3998)
-provides history-v2 preparation, feedback, shared emission and same-build reference
-execution. Shared CPU/device semantics and generation remain upstream; this project
+The selected [ABI29 toolkit](https://github.com/rages4calm/pcenginerecomp/commit/1c765dcd96923e806bf8009245d8fe4d1e16c402)
+provides mixed live-overlay and history preparation, feedback, shared emission
+and same-build reference execution. Shared CPU/device semantics and generation remain upstream; this project
 owns game configuration, coverage and verification. The previous qualified
 ABI29 build is retained.
 
@@ -90,8 +96,8 @@ profile is not selected. Default synthesized Q remains in use for this disc.
 Requires Python 3.11+, CMake 3.20+, a C++20 compiler, Ninja and Git.
 
 ```sh
-git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-current51
-git -C .deps/pcenginerecomp-current51 checkout --detach 6a4c547aec434c504e90092262b2ee66fcba3998
+git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-current58c
+git -C .deps/pcenginerecomp-current58c checkout --detach 1c765dcd96923e806bf8009245d8fe4d1e16c402
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++
 cmake --build build --parallel 4
 ctest --test-dir build --output-on-failure
