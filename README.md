@@ -3,26 +3,24 @@
 An incremental PC Engine CD native port of *Ys III: Wanderers from Ys* (USA),
 built with [pcenginerecomp](https://github.com/rages4calm/pcenginerecomp).
 **ABI29 with observation-history v2 and shared native emission is selected.**
-Adol climbs the castle stairs, meets Elena, takes the hidden passage behind
-the statue and reaches the winged boss in Alcaino Ruins. The qualified
-checkpoint stops at the opening of the fight with **52/90 HP**.
+Adol trades hits with the winged boss in Alcaino Ruins and uses a Healing
+Herb to recover from **4 to 90 HP**. The qualified living checkpoint is at
+frame **160,457**. Defeating the boss and earning the Moon Statue remain ahead.
 
-The linked checkpoint at frame **159,130** records **4,857,779,187 native and
-zero interpreted** instructions. The final **14,691 frames** retire
-**456,111,387 native instructions**. Two verified HP refills occur before the
-climb. The stairs, Elena scene and passage use ordinary controller inputs.
-The separate cold replay reaches **104,745 frames** with **3,209,517,525
-native and zero interpreted** instructions.
+The new **1,327-frame** combat and recovery stretch retires **42,297,936
+native and zero interpreted** instructions using controller inputs alone.
+The linked checkpoint records **4,900,077,123 native and zero interpreted**.
+A separate **1,226-frame** branch from 4 HP reaches Game Over with
+**39,282,912 native and zero interpreted** instructions.
 
-The module contains **67,620 source identities**. All **2,814 additions**
-run on the new segment, converting **2,295,708** fallback retirements.
-The verified route union exercises **64,684 identities**. Unseen game
-code uses interpreter fallback.
+The module contains **68,059 source identities**. All **439 additions**
+execute across these branches. The verified route union exercises **65,141**
+identities. Unseen code uses interpreter fallback.
 
-The continuation matches the same-build interpreter at 135 checkpoints for
-RAM, guest pixels, digital PCM, and exact source counts. A paced TCP check during
-Elena's voiced scene confirmed fresh audio acceptance by SDL. Unknown CD
-commands receive the `nec-invalid` response.
+Both branches match the same-build interpreter at 73 cuts for RAM, guest
+pixels, digital PCM, and exact source retirements. A paced TCP check during
+the boss fight confirms fresh audio acceptance by SDL. Unknown CD commands
+receive the `nec-invalid` response.
 
 See [STATUS](docs/STATUS.md) for the migration and historical evidence. Generated
 source and qualified builds are private local artifacts; this repository contains

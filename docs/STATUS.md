@@ -1,4 +1,23 @@
-# Consumer status - 20 November 2026
+# Consumer status - 26 November 2026
+
+## 26 November: native winged-boss combat, Healing Herb and Game Over
+
+Adol lands four points of damage and takes three 16-point hits, reducing his HP
+from 52 to 4. Equipping the Healing Herb and pressing Run restores 90/90 HP
+in the living branch at frame 160,457. A separate fork from 4 HP takes a fatal
+hit and shows Game Over at frame 161,377. Both use ordinary controller inputs.
+
+The living segment retires **42,297,936 native and zero interpreted**
+instructions in 1,327 frames, replacing 17,187 fallback retirements. The
+separate Game Over fork retires **39,282,912 native and zero interpreted**
+instructions in 1,226 frames, replacing 1,654,690 fallback retirements.
+All 439 added exact source identities execute across the two branches.
+
+The same-build interpreter matches RAM, guest pixels, PCM, and exact source
+counts at 73 recorded cuts. The candidate preserves exact retirements across
+46 retained roles. The 120-frame paced boss-room TCP check confirms fresh
+nonzero PCM acceptance by SDL. All 567 consumer and 126 affected toolkit tests
+pass. The boss remains alive at the living checkpoint.
 
 ## 20 November: native castle stairs, Elena and winged boss entrance
 

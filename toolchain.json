@@ -4747,5 +4747,34 @@
     "consumer_tests": 567,
     "affected_toolkit_tests": 126,
     "scope": "Assisted continuation up the stairs, through Elena's voiced scene and the hidden passage to the winged boss entrance. Same-build interpreter, cold and retained route replay, exact source counts and paced SDL overlap pass."
+  },
+  "alcaino_winged_boss_combat_and_recovery_native": {
+    "date": "2026-11-26",
+    "tool_revision": "6a4c547aec434c504e90092262b2ee66fcba3998",
+    "frames": 1327,
+    "native": 42297936,
+    "interpreted": 0,
+    "previous_interpreted": 17187,
+    "added_source_identities": 439,
+    "added_source_identities_exercised": 439,
+    "compiled_source_identities": 68059,
+    "witnessed_source_identities": 65141,
+    "matched_interpreter_cuts": 73,
+    "retained_route_roles": 46,
+    "verified_memory_writes": 0,
+    "frontier_frame": 160457,
+    "frontier_hp": 90,
+    "linked_native": 4900077123,
+    "linked_interpreted": 0,
+    "auxiliary_game_over": {
+      "frames": 1226,
+      "native": 39282912,
+      "interpreted": 0,
+      "previous_interpreted": 1654690,
+      "endpoint_frame": 161377
+    },
+    "consumer_tests": 567,
+    "affected_toolkit_tests": 126,
+    "scope": "Controller-only winged-boss combat and Healing Herb recovery with a separate natural Game Over fork. Same-build interpreter, retained route replay and paced SDL overlap pass."
   }
 }

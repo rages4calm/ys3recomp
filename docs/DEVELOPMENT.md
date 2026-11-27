@@ -50,16 +50,14 @@ overlay contract when integrating in-game settings.
 
 ## Current discovery boundary
 
-The selected 67,620-key ABI29 build owns the frame-159,130 checkpoint
-at the winged boss entrance with 52/90 HP. The linked route records
-4,857,779,187 native and zero interpreted instructions. All 2,814 added source
-identities execute during the 14,691-frame continuation.
+The selected 68,059-key ABI29 build owns the frame-160,457 living
+checkpoint in the winged boss fight with 90/90 HP. The route reaches the crest,
+records both directions of damage, and uses a Healing Herb to recover. The
+separate natural-death fork starts at the earlier 4-HP checkpoint and reaches
+Game Over. Keep that branch separate from the living route and its totals.
 
-The route uses two verified current-HP refills before the climb. The host
-records the natural maximum-HP increase, and subsequent controls use no further
-refills. In the statue room, wait for Elena to leave, approach the revealed
-entrance and press Up. Preserve the boss entrance checkpoint and start combat
-tests on owning-build forks.
+The boss remains alive. Use the exact owning-build checkpoint for combat and
+monitor both gauges to verify the next phase and the Moon Statue reward.
 
 The historical ABI29 bus-observer fixture is separate and cannot lend checkpoints
 to the current build. Regenerate marked native code, use explicit scalar span one, and bind the
