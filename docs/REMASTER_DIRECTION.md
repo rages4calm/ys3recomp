@@ -42,7 +42,7 @@ and expiry before implementing a 2x option. Preserve original behavior when off;
 keep enabled-run evidence distinct from original-program qualification.
 
 The selected toolkit now provides the supported
-[title-adapter and launch-settings API](https://github.com/rages4calm/pcenginerecomp/blob/824bb7afaa9d0f35c25c7a8c834c22fdaaafb3a8/docs/TITLE_ADAPTERS.md),
+[title-adapter and launch-settings API](https://github.com/rages4calm/pcenginerecomp/blob/25ead81d73ac3ea555db6d5d25e4171ce9f5cd0c/docs/TITLE_ADAPTERS.md),
 completing [toolkit issue 47](https://github.com/rages4calm/pcenginerecomp/issues/47).
 Game-specific verified hit and earned-reward rules and CompanionLauncher choices
 remain unimplemented. Keep the vanilla native-coverage package adapter-free;

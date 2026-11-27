@@ -88,31 +88,52 @@ and natural story progression remain separate evidence classes.
 
 ## Current discovery boundary
 
-The new SDK is `824bb7afaa9d0f35c25c7a8c834c22fdaaafb3a8`, ABI29,
-127 source files, source SHA256
-`8a5fdb41a5385451d40b04dcca6f06ecc3a0343b4587a4e22358d6a8f9e64f07`.
-Its audited cold baseline owns the Time Ring frontier at frame 186,482 with
-90/90 HP and 5,686,836,373 native / zero interpreted instructions. It freshly
-executes 66,373 identities rather than importing old-SDK checkpoint counters.
-The original 411 verified historical assists remain explicit.
+The selected SDK is `25ead81d73ac3ea555db6d5d25e4171ce9f5cd0c`, ABI29,
+130 source files, source SHA256
+`37df6dad3b173ba3501f01631cd6474a90d480e928e07c718d7490fe332f7b97`.
+One fused audited build includes the migration and all collected source gaps.
+Its new cold baseline reaches frame 197,076 with 6,021,101,711 native / zero
+interpreted instructions and 66,692 executed identities, matching original
+HOST/CORE and source counts. The 418 historical assists remain explicit.
 
-The qualified Tigre endpoint is frame 197,076, alive at 88 HP after lower-passage
-and NPC/chest-room dialogue. The chest remains closed. Three local position
-placements and one HP55-to90 heal use seven expected-byte edits; preserve the
-unassisted cuts and replay those same transactions in the independent reference.
-The 69,689-identity native module passes its 10,594-frame assisted route with
-334,265,338 native / zero interpreted instructions and all nine source/reference
-boundaries. Fresh 120-frame native/repeat/reference forks and 600-frame paced
-SDL audio pass separately. Fresh current-binary witnesses number 22,583, with
-47,106 unexercised; imported baseline witnesses are 66,373. The mixed lineage
-witnesses 66,692, leaving 2,997 unexercised, including all 162 declared-only
-entries. Of 375 newly compiled identities, 291 newly observed gaps execute and
-84 static-only candidates remain unexercised. Keep these evidence classes separate.
-The linked 6,021,101,711 native total combines packages and is not a fresh
-current-binary cold campaign.
+The living endpoint is frame 220,716 at the Plate Mail chest, with 90/100 HP.
+Power Ring, Crystal, Tablet and Plate Mail are collected; Plate Mail and Power
+Ring are equipped. The boss remains ahead. The selected 23,640-frame route
+executes 737,438,604 native / zero interpreted instructions with 124 literal
+expected-byte position/HP edits. MAX HP, experience, gold and quest flags are
+unchanged by assists. Fifteen own-build waypoints, strict reference parity,
+120-frame repeat forks and 600-frame paced SDL audio pass.
+
+The module contains 71,919 emitted / 71,767 observed / 2,619 declared identities,
+with 152 declared-only. Of 2,230 added emitted identities,
+2,087 execute and 143 remain unexercised. Fresh current-binary
+qualification witnesses 69,619, leaving 2,300 compiled identities unexercised.
+The same-binary lifetime is 6,758,540,315 native / zero interpreted, combining
+a cold prefix and restored suffixes rather than a continuous campaign.
+
+One selected discovery prefix has no persisted original per-key count oracle.
+Preserve its literal wire boundary, checkpoint state, aggregate totals and full
+capture upper counts. Require exact fresh whole-route native/reference encoded
+counts; do not invent original per-phase counts.
+
+Position edits synchronize both persistent and temporary actor copies using
+reviewed source mappings, expected full RAM, ordered CAS, field readback and
+exclusion of code across all mirrors. A raw flag byte is not a memory-layout
+selector. Preserve narrow role policies and explicitly qualify any expanded
+reviewed state set. These are development assists, not shipped gameplay options.
+
+Equipment remembers its selected category. Use movement-only near friendly
+NPCs; attack can retrigger dialogue. Narration may keep streaming ADPCM while
+CDDA is paused, and a repeated sampled PC may be a coroutine yield. Check actual
+DMA/sector progress and source waits before reporting a deadlock.
+
+SAVE/LOAD menu exercise does not prove usable saves. Official source-bound BRAM
+diagnostics use only the owning executable and checkpoint, offline with zero
+retirements and no live restore/TCP/presentation. Opaque extraction does not
+validate original-game save format or implement player persistence.
 
 Use the supported
-[additive checkpoint continuation](https://github.com/rages4calm/pcenginerecomp/blob/824bb7afaa9d0f35c25c7a8c834c22fdaaafb3a8/docs/CHECKPOINT_CONTINUATIONS.md)
+[additive checkpoint continuation](https://github.com/rages4calm/pcenginerecomp/blob/25ead81d73ac3ea555db6d5d25e4171ce9f5cd0c/docs/CHECKPOINT_CONTINUATIONS.md)
 under the identical SDK path/revision/source, machine/media/reference recipe and
 audited compiler/dependency closure. Preserve the source checkpoint and use the
 official admission and launch APIs. Subsequent module-only extensions qualify
@@ -120,20 +141,17 @@ only the fresh suffix plus native/repeat/reference and paced audio; SDK, lowerin
 compiler or machine/media-policy changes require a new baseline. Equal ABI
 numbers or module membership alone do not authorize transfer.
 
-The current collection method expands 256 source-matched roots in the actual
-paused mine overlay and combines nine phases into one extension. All root
-identities retain logical PC, every MPR, physical source and original bytes.
-Broader loader selectors or arbitrary room presets remain unimplemented. Local
-verified position edits are development assists, not a generic room loader.
-The flat qualification uses one admitted package context and two fresh guests
-for native/reference, retaining explicit assist boundaries without repeated
-project admission at each phase. The closed pair takes 192.23s with one 23.09s
-admission; record this bounded measurement without claiming a controlled speedup.
+Combine coherent source-discovery areas before one extension. Retain logical
+PC, all MPRs, physical source and original bytes for every identity. Broader loader
+selectors or arbitrary room presets remain unimplemented. The flat qualifier
+uses one admitted package context and two continuous native/reference guests,
+with explicit semantic and assist boundaries. The latest pair closes in 732.13s
+with one 34.90s admission; these are bounded measurements, not a speedup proof.
 Recheck byte closures and membership at every
 required operation; the new SDK performs scoped verified-input reuse internally.
 
 Keep the vanilla coverage lineage adapter-free. The optional
-[title-adapter API](https://github.com/rages4calm/pcenginerecomp/blob/824bb7afaa9d0f35c25c7a8c834c22fdaaafb3a8/docs/TITLE_ADAPTERS.md)
+[title-adapter API](https://github.com/rages4calm/pcenginerecomp/blob/25ead81d73ac3ea555db6d5d25e4171ce9f5cd0c/docs/TITLE_ADAPTERS.md)
 supports separate enhancement builds with exact source sites and initial launch
 settings. Adapter-bearing packages, including compiled-pristine adapters, cannot
 use cross-package continuation in this version. Enhanced HOSTv2 binds settings

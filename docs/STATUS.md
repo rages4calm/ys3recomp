@@ -1,5 +1,78 @@
 # Consumer status - 27 November 2026
 
+## 27 November - Tigre Mine rewards and hot-path SDK qualification
+
+Power Ring, Crystal, Tablet and Plate Mail are collected. Plate Mail and Power
+Ring are equipped. The selected living endpoint is frame 220,716 with 90/100 HP
+at the Plate Mail chest. The next boss has not been reached. SAVE/LOAD menus
+were exercised; usable original-game saves remain unverified.
+
+The selected ABI29 SDK is
+[`25ead81`](https://github.com/rages4calm/pcenginerecomp/commit/25ead81d73ac3ea555db6d5d25e4171ce9f5cd0c),
+source SHA256 `37df6dad3b173ba3501f01631cd6474a90d480e928e07c718d7490fe332f7b97`,
+130 source files. It includes inactive-adapter hot-path removal and official
+source-bound offline BRAM extraction. The throughput benchmark was inconclusive.
+The subsequent checkpoint-report update is reviewed but not adopted in this
+frozen producer. No throughput improvement or portable-save claim is made.
+
+One fused preparation and audited cache-miss build retain all 69,689 previous
+identities and add 2,230 emitted identities. The resulting module contains
+71,919 emitted / 71,767 observed / 2,619 declared, with 152 declared-only.
+The 2,240 new observation memberships include ten formerly declared-only entries.
+Only 2,087 of the new emitted identities execute in qualification;
+143 remain unexercised. No new static declarations were added.
+
+One new-SDK cold reconstruction executes 6,021,101,711 native / zero interpreted
+instructions over 197,076 frames, witnessing 66,692 identities. Full original
+HOST/CORE, exact source counts, 1,068 RGB checks, twenty semantic checks and
+418 historical expected-byte assists match. No old checkpoint is rebound.
+The new 23,640-frame native route executes 737,438,604 native / zero interpreted
+instructions, replacing 14,358,536 original fallback retirements. Its fifteen
+own-build waypoints compare full RAM, RGB, digital PCM and machine state with
+the independent reference. Fresh native/reference guards remain zero; only four
+tier counters are normalized. Historical source joins separately project their
+old guard counter and do not weaken the fresh comparison.
+
+One selected original discovery prefix lacks saved per-key retirement counts.
+Its exact checkpoint state, aggregate retirement total and full-capture per-key
+upper bounds are checked. Fresh whole-route native/reference encoded source
+counts match exactly. This is not an unavailable original-prefix per-key oracle.
+
+| Execution scope | Witnessed identities | Unexercised compiled identities |
+| --- | ---: | ---: |
+| Fresh current-binary qualification |69,619|2,300|
+| New story route alone |25,706|Separate route scope|
+| Current-binary cold baseline |66,692|Separate baseline scope|
+
+The 6,758,540,315 native / zero interpreted lifetime combines this binary's cold
+prefix with its restored assisted suffix. It is not continuous campaign proof.
+The 124 new expected-byte edits synchronize reviewed position copies or refill
+living HP. No MAX HP, experience, money or quest flags are edited. Natural game
+execution raises MAX HP from 90 to 100 and awards the Tablet.
+
+Fresh 120-frame native/repeat/reference forks pass, including byte-identical
+native/repeat checkpoints. The 600-frame paced SDL check executes 18,702,174
+native / zero interpreted instructions, accepts at least
+441,703 fresh nonzero PCM frames and observes zero unexpected
+active drops. Its 542 planned pause-tail frames are accounted separately.
+This is bounded delivery evidence, not listening or hardware equivalence.
+
+The official offline BRAM diagnostic exports identical 2,048-byte images from
+the qualified native/reference endpoints, with zero guest retirements and no
+live restore, TCP or presentation. The images remain opaque: extraction does
+not prove a usable original-game save or portable persistence.
+
+Collection combines coherent areas before one build; the forward pair uses one
+34.90-second admission and two continuous guests, closing in 732.13 seconds.
+This is a bounded timing observation, not a controlled comparative benchmark.
+No shared toolkit defect was confirmed during this batch.
+
+All 86 affected consumer tests pass. Play selects this build. Cleanup archives
+2,638 closed raw-proof and obsolete-package files with per-file hash readback
+before removing their loose copies, and retires the unused SDK clone. Current
+and prior qualified runnable builds, required ancestry, fixtures and all selected
+waypoints remain available.
+
 ## 27 November - New toolkit baseline and Tigre Mine qualification
 
 The new ABI29 pin is
