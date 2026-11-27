@@ -127,6 +127,28 @@ class CleanupTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'changed'):
             cleanup.protection(self.root)
 
+    def test_historical_text_audit_is_preserved_with_graph(self):
+        audit = self.batch / 'publication-audit01.json'
+        audit.write_bytes(b'Audited 89 staged/tracked files, 1579907 bytes; 0 problems\r\n')
+        (self.batch / 'historical.json').write_text(json.dumps({'path': str(self.obj)}))
+        protected, snapshots = cleanup.protection(self.root)
+        self.assertIn(audit, protected)
+        self.assertEqual(snapshots[audit], cleanup.digest(audit))
+        self.assertIn(self.obj, protected)
+        self.assertEqual(list(cleanup.candidates(self.root, protected)), [])
+
+    def test_unknown_or_unsuccessful_text_metadata_refuses_cleanup(self):
+        for name, raw in (
+                ('historical.json', b'Audited 1 staged/tracked files, 2 bytes; 0 problems\n'),
+                ('publication-audit01.json', b'Audited 1 staged/tracked files, 2 bytes; 1 problems\n'),
+                ('publication-audit01.json', b'{broken')):
+            path = self.batch / name
+            path.write_bytes(raw)
+            with self.assertRaisesRegex(ValueError, name):
+                cleanup.protection(self.root)
+            self.assertTrue(self.obj.exists())
+            path.unlink()
+
     def test_reparse_attribute_rejected(self):
         real = Path.lstat
         class Fake:

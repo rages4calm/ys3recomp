@@ -2,11 +2,12 @@
   "schema": 1,
   "tool": {
     "repository": "https://github.com/rages4calm/pcenginerecomp",
-    "revision": "1c765dcd96923e806bf8009245d8fe4d1e16c402",
-    "source_sha256": "17eb1bb582ffbaf1ae9b338e05e5218a1e370c117eb4a08208f0ee49ea87fa10",
-    "checkout": ".deps/pcenginerecomp-current58c",
+    "revision": "d14ce0763271a66a2a7d9d7be5f100774c897d51",
+    "source_sha256": "2346d6fe1fdf95932b072e8ce15ee192206d36f60678797322d44c0b4949e96d",
+    "source_files": 123,
+    "checkout": ".deps/pcenginerecomp-current60",
     "runtime_abi": 29,
-    "source_policy": "Reviewed clean ABI29 source. Official mixed overlay/history preparation and shared emission. One own-build canonical lineage and native return through Elena/Chester to the outside of Alcaino. Original-program parity, strict same-build frontier forks and paced SDL audio pass. Earlier checkpoint assists remain explicit; unseen variants retain fallback."
+    "source_policy": "Reviewed clean ABI29 source. One audited cold baseline and supported additive native-module continuation with exact compiler/dependency closure. Native Sarina return and Time Ring exchange, strict current-package reference/repeat forks and paced SDL audio pass. Imported baseline work and fresh destination execution remain separate; earlier assists and unseen-source fallback remain explicit."
   },
   "progression_label_correction": {
     "date": "2026-11-02",
@@ -4817,6 +4818,129 @@
     "bulk_overlay_keys_absent_from_prior": 78,
     "bulk_overlay_unresolved_frontiers": 2692,
     "scope": "Assisted winged boss defeat and named Moon Statue reward. New own-build lineage, retained routes including Game Over, exact original-program reference parity and separate paced TCP SDL audio. Discovery-only aiming and teleport branches excluded from progression totals. Declared unexercised keys remain explicit."
+  },
+  "sarina_time_ring_native": {
+    "date": "2026-11-27",
+    "tool_revision": "d14ce0763271a66a2a7d9d7be5f100774c897d51",
+    "passed": true,
+    "frames": 12655,
+    "native": 364331034,
+    "interpreted": 0,
+    "prior_interpreted": 87262,
+    "added_keys": 518,
+    "added_keys_exercised": 518,
+    "compiled_keys": 69314,
+    "observed_keys": 69236,
+    "declared_keys": 1681,
+    "declared_only_unexercised": 78,
+    "time_ring_reward_frame": 185562,
+    "endpoint": 186482,
+    "endpoint_hp": 90,
+    "new_memory_writes": 0,
+    "baseline_cold": {
+      "frame": 173827,
+      "native": 5322505339,
+      "interpreted": 0,
+      "audited_build": true,
+      "complete_HOST_CORE_matches_prior": true
+    },
+    "continuation": {
+      "supported_additive_module_admission": true,
+      "zero_retirement_destination_checkpoint": true,
+      "whole_HOST_CORE_equal": true,
+      "old_ordinary_checkpoints_rebound": false,
+      "imported_native": 5322505339,
+      "fresh_destination_native": 364331034,
+      "fresh_destination_interpreted": 0
+    },
+    "linked_native": 5686836373,
+    "linked_interpreted": 0,
+    "linked_scope": "Qualified multi-package lineage; not a single current-binary cold campaign.",
+    "coverage": {
+      "current_binary_fresh_witnessed_union": 25206,
+      "current_binary_unexercised": 44108,
+      "imported_baseline_witnessed_union": 65651,
+      "mixed_qualified_lineage_witnessed_union": 66373,
+      "mixed_lineage_unexercised": 2941,
+      "new_route_witnessed_union": 20538,
+      "declared_only_unexercised": 78
+    },
+    "original_reference_dense_boundaries": 71,
+    "original_reference_persisted_boundaries": 27,
+    "candidate_input_steps": 71,
+    "candidate_semantic_checkpoints": 6,
+    "same_build_fork_frames": 120,
+    "paced_audio": {
+      "frames": 600,
+      "no_WAV": true,
+      "fresh_nonzero_device_accepted_lower_bound": 441438,
+      "active_dropped_frames": 0,
+      "planned_pause_tail_frames": 814,
+      "startup_counter_harness_failure_preserved": true,
+      "settled_initial_retest_passed": true
+    },
+    "current_binary_auxiliary_cold_entry": {
+      "frames": 1802,
+      "native": 51263972,
+      "interpreted": 0,
+      "fresh_interpreter_reference_passed": true,
+      "full_RAM_RGB_PCM_source_and_HOST_CORE_four_tier_comparison": true,
+      "full_cold_prefix_requalified": false
+    },
+    "checks": {
+      "affected_upstream_python": 251,
+      "affected_consumer": 35,
+      "authored_host_python": 21,
+      "affected_native_suites": 5,
+      "cached_admission": 7,
+      "startup_audio": 7,
+      "path_parser": 6,
+      "scope": "Scoped affected checks; 49 consumer tests pass after launcher and pin integration, including 14 launcher contract cases.",
+      "post_promotion_consumer": 49,
+      "launcher_contract": 14
+    },
+    "offline_CD_load_map": {
+      "existing_root_declaration_verified": true,
+      "new_execution_coverage": false,
+      "broad_loader_selector_available": false,
+      "room_warp_available": false
+    },
+    "campaign_complete": false,
+    "scope": "Controller-only return to Sarina, named Time Ring exchange and living outdoor frontier. Fresh destination execution, imported baseline and mixed-package witnesses remain distinct. No new assists, named mine-key award, full campaign, listening or hardware equivalence claim."
+  },
+  "planned_game_options": {
+    "implemented": false,
+    "exposed": false,
+    "CompanionLauncher_integration": "planned",
+    "post_hit_invulnerability_multiplier": 2,
+    "requested_post_hit_frames": [
+      20,
+      40
+    ],
+    "PCE_post_hit_timer_verified": false,
+    "EXP_multipliers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "gold_multipliers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "multiplier_1_means_off": true,
+    "gameplay_adapter_issue": "https://github.com/rages4calm/pcenginerecomp/issues/47",
+    "performance_request": "https://github.com/rages4calm/pcenginerecomp/issues/48"
   },
   "alcaino_return_native": {
     "date": "2026-11-27",

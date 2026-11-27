@@ -14,10 +14,12 @@ that is shorter than walking back. A selected cut of a closed run must remain
 explicitly labeled; it is not a newly executed run. Preserve original failures,
 compare actual new work and do not add overlapping navigation to forward totals.
 
-The selected ABI29 host supports same-build reference execution. New development
-checkpoints are reference-enabled and bound to the exact build, media and machine
-context. Select scalar span one and use the toolkit's official reference controls;
-never import ABI28 checkpoints or normalize their opaque serializer by guesswork.
+The selected ABI29 host supports same-build reference execution. Ordinary restore
+remains bound to the exact build, media and machine context. The separately
+audited additive-module continuation described below preserves an admitted
+source checkpoint without privately changing its identity. New development
+checkpoints are reference-enabled. Select scalar span one and use the toolkit's
+official reference controls; never import ABI28 checkpoints or normalize their opaque serializer by guesswork.
 Only the four tier counters differ in the qualified native/reference comparison.
 
 The authored read-only `scripts/ys3_state.py` adapter reads authenticated 8 KiB
@@ -86,10 +88,43 @@ and natural story progression remain separate evidence classes.
 
 ## Current discovery boundary
 
-The selected 68,796-identity mixed ABI29 module owns the frame-173,827
-checkpoint outside Alcaino Ruins after the Moon Statue return scene with
-Elena and Chester. Adol has 90/90 HP and movement is restored. Return to town
-is the next progression target. The new segment uses no additional assists.
+The selected 69,314-identity mixed ABI29 module owns the frame-186,482 checkpoint
+outside the Sarina mayor's house with 90/90 HP. The mayor awards the Time Ring
+at frame 185,562. The new 12,655-frame route uses no additional assists.
+Confirm later dialogue and inventory before naming the next story milestone.
+
+The selected toolkit is `d14ce0763271a66a2a7d9d7be5f100774c897d51`, ABI29,
+123 source files, source SHA256
+`2346d6fe1fdf95932b072e8ce15ee192206d36f60678797322d44c0b4949e96d`.
+One audited cold baseline reaches frame 173,827. The supported
+[additive checkpoint continuation](https://github.com/rages4calm/pcenginerecomp/blob/d14ce0763271a66a2a7d9d7be5f100774c897d51/docs/CHECKPOINT_CONTINUATIONS.md)
+then admits the native-only extension under the identical SDK path/revision/source,
+machine/media/reference recipe and audited compiler/dependency closure. Preserve
+the original source checkpoint; use the official admission and launch APIs.
+The zero-retirement destination checkpoint preserves the entire HOST/CORE payload.
+Older ordinary-build receipts cannot be retroactively admitted, and equal ABI
+numbers or module membership alone do not authorize transfer.
+
+For subsequent supported module-only extensions, qualify the fresh destination
+suffix, native/repeat/reference forks and paced audio without repeating the
+full cold route. Engine, lowering, compiler or machine/media-policy changes
+require a new baseline. Imported 5,322,505,339 native retirements and fresh
+364,331,034 destination retirements stay separate. Their linked total is a
+multi-package lineage, not one binary's cold campaign. The current binary's
+separate 1,802-frame cold-entry smoke does not establish its full cold prefix.
+
+The current binary freshly witnesses 25,206 identities; 44,108 compiled identities
+remain unexercised by it. Imported baseline witnesses number 65,651. The separately
+named mixed qualified lineage witnesses 66,373, leaving 2,941 unexercised,
+including 78 declared-only identities. Keep those evidence classes separate.
+
+One verified existing-root offline CD-load declaration supplies no new executed
+coverage. Broader loader selectors and room presets remain unimplemented.
+The real consumer's repeated admission cost is tracked in
+[toolkit issue 48](https://github.com/rages4calm/pcenginerecomp/issues/48);
+do not promise a universal speedup or weaken source/compiler/dependency checks.
+Reuse one immutable admitted context for same-package bounded forks, rechecking
+its complete byte closure and package before each fresh owned process.
 
 Collect gaps across coherent bounded scenarios, then prepare one combined
 build. Reuse exact owning-build checkpoints and deterministic successful hit
@@ -104,7 +139,8 @@ can add unplayed candidates. Report declared, observed, executed and unresolved
 counts separately. Static candidates do not manufacture capture retirements.
 Use the official block RAM reader for complete paused observations.
 
-The retained private route is replayed on the upgraded toolkit's own lineage.
+The retained private route is replayed once to establish an upgraded toolkit's
+audited baseline; supported additive extensions retain that qualified prefix.
 The new module combines original observed code with guarded live-overlay
 candidates. Check all compiled physical source spans before development edits,
 including declared entries. The verified boss assists leave it alive for
@@ -235,8 +271,10 @@ a single-process cold run. Source may use an explicitly audited linked prefix
 and tail: authenticate original raw controls, typed write journals, actual own
 file/ACK/paused checkpoint joins, full RAM/images/source/device/audio and
 nonoverlapping source windows. Reconstruction contributes no source history or
-retirement totals. Failed criteria/flags stay unchanged. Native selection still
-requires a successful fresh reset plus source, checkpoint and paced-device gates.
+retirement totals. Failed criteria/flags stay unchanged. For this historical
+ABI28 workflow, native selection required a successful fresh reset plus source,
+checkpoint and paced-device gates. The current audited module-only continuation
+policy above is a separate supported path.
 
 Live TCP capture rows expose source IDs, PC, all MPRs, physical spans and hit
 counts, without encoded instruction bytes. Use them for bounded footprint and

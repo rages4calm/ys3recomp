@@ -28,6 +28,26 @@ alongside presentation work.
 - Keep startup, settings and returning to play straightforward. Packaging and
   first-run setup must explain the required owner-supplied media clearly.
 
+## Planned launcher and game options
+
+Integrate CompanionLauncher for a consistent startup/settings flow. The owner
+also requests optional doubled post-hit invulnerability and limited EXP/gold
+multiplier cheats. Each multiplier should start at 1x (off), with 2x through 8x
+as the planned choices. These controls are not implemented or exposed in Ys III.
+
+The requested invulnerability target is described as 20 to 40 frames, but the
+actual USA PC Engine CD timer and update cadence remain unverified. Identify
+and independently verify the original damage eligibility, timer initialization
+and expiry before implementing a 2x option. Preserve original behavior when off;
+keep enabled-run evidence distinct from original-program qualification.
+
+These options require the supported title gameplay adapter and launch-settings
+API tracked in [toolkit issue 47](https://github.com/rages4calm/pcenginerecomp/issues/47).
+Use the Game UI/UX and gamedev skills with the
+[recomp-ui overlay contract](https://github.com/RetroPortingToolKit/recomp-ui#in-game-settings-overlay)
+for menus and controller navigation. Presentation callbacks are not gameplay
+mutation hooks; do not fork the shared runtime to expose unfinished options.
+
 ## Implementation and acceptance
 
 Use the shared toolkit's desktop presentation, renderer callbacks, controller

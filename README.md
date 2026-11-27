@@ -2,35 +2,36 @@
 
 An incremental PC Engine CD native port of *Ys III: Wanderers from Ys* (USA),
 built with [pcenginerecomp](https://github.com/rages4calm/pcenginerecomp).
-**Adol returns to Elena and Chester after receiving the Moon Statue.**
-Their scene completes and Adol reaches the outside of Alcaino Ruins at
-frame **173,827**, with **90/90 HP** and movement restored.
+**Adol returns to Sarina and receives the Time Ring from the mayor.**
+The exchange occurs at frame **185,562**. Adol reaches the outside of the
+mayor's house at frame **186,482**, with **90/90 HP**.
 
-The new **9,576-frame** continuation retires **300,913,373 native and zero
-interpreted instructions**, replacing 42,412 fallback retirements. All **409
-new source identities execute**. The segment uses ordinary controller inputs;
-its starting checkpoint retains the earlier verified development assists.
-The linked own-build route records **5,322,505,339 native and zero
-interpreted** instructions.
+The new **12,655-frame** route retires **364,331,034 native and zero interpreted
+instructions**, replacing 87,262 fallback retirements. All **518 new source
+identities execute**. It uses ordinary controls with no new assists; earlier
+verified assists remain part of its ancestry.
 
-The module contains **68,796 guarded source identities**. The new segment
-executes 16,353 exact identities. The new build's verified execution union covers
-**65,651** identities; **3,145** compiled identities remain unexercised, including
-the 78 declared-only identities. Unseen source variants retain interpreter fallback.
+The module contains **69,314 guarded source identities**. Fresh execution by
+this binary witnesses **25,206** identities; **44,108** remain unexercised by it.
+The separately named mixed-package qualified lineage witnesses 66,373, including
+imported baseline evidence. Its 2,941 unexercised identities include 78 declared-only
+entries. Unseen source variants retain interpreter fallback.
 
-The selected ABI29 toolkit remains
-[`1c765dc`](https://github.com/rages4calm/pcenginerecomp/commit/1c765dcd96923e806bf8009245d8fe4d1e16c402).
-Its 118 runtime/tooling files match reviewed public revision
-[`e62cb5a`](https://github.com/rages4calm/pcenginerecomp/commit/e62cb5a1d55be8af641d7cefd1d995e19661a262).
-The module was extended once from the two closed source captures and rebuilt
-once. One admitted process replays the retained canonical lineage; the new
-scenario keeps all 49 input steps with five semantic checkpoints.
+The selected ABI29 toolkit is
+[`d14ce07`](https://github.com/rages4calm/pcenginerecomp/commit/d14ce0763271a66a2a7d9d7be5f100774c897d51),
+with 123 runtime/tooling source files. One new audited cold baseline reaches
+frame 173,827 with 5,322,505,339 native and zero interpreted instructions.
+The supported additive-module continuation preserves that checkpoint unchanged
+and imports its work into the new package. The linked **5,686,836,373 native /
+zero interpreted** total is a qualified multi-package lineage, not a single
+binary's cold campaign. Older ordinary-build checkpoints remain with their packages.
 
-Original-program comparisons match the full RAM, guest RGB, digital PCM,
-CPU/source context and exact retirements at those boundaries. Fresh same-build
-native/repeat/reference forks keep the guard strict and normalize only four
-tier counters. A continuous 600-frame paced TCP check verifies fresh nonzero
-audio accepted by SDL. Unknown CD commands receive the `nec-invalid` response.
+Original-program checks cover 71 control boundaries; the new native scenario
+keeps those 71 inputs with six semantic checkpoints. Fresh 120-frame
+native/repeat/reference forks and a 600-frame paced SDL audio check pass.
+A separate 1,802-frame current-binary cold-entry smoke matches a fresh interpreter
+reference; it does not repeat the full cold prefix. Unknown CD commands receive
+the `nec-invalid` response.
 
 See [STATUS](docs/STATUS.md) for measured scopes and historical evidence.
 Generated source, builds, game inputs and raw proof remain private.
@@ -67,16 +68,19 @@ Keyboard controls remain available for pause, fullscreen and exit. The shared
 host's virtual-device checks cover mapping, hot-plugging and input release;
 physical-controller verification is separate.
 
-The selected [ABI29 toolkit](https://github.com/rages4calm/pcenginerecomp/commit/1c765dcd96923e806bf8009245d8fe4d1e16c402)
+The selected [ABI29 toolkit](https://github.com/rages4calm/pcenginerecomp/commit/d14ce0763271a66a2a7d9d7be5f100774c897d51)
 provides mixed live-overlay and history preparation, feedback, shared emission
-and same-build reference execution. Shared CPU/device semantics and generation remain upstream; this project
+and audited additive checkpoint continuation. Shared CPU/device semantics and generation remain upstream; this project
 owns game configuration, coverage and verification. The previous qualified
 ABI29 build is retained.
 
 ## Audio and checkpoints
 
-Use exact-build checkpoints and explicit reference capability. Original ABI28
-captures remain source evidence; their checkpoints are never imported into ABI29.
+Ordinary restore requires exact-build checkpoints and explicit reference capability.
+The toolkit's [audited additive continuation](https://github.com/rages4calm/pcenginerecomp/blob/d14ce0763271a66a2a7d9d7be5f100774c897d51/docs/CHECKPOINT_CONTINUATIONS.md)
+is a separate, qualified module-only path with the same SDK and compiler/dependency
+closure. It does not retroactively admit older ordinary-build checkpoints.
+Original ABI28 captures remain source evidence; their checkpoints are never imported into ABI29.
 Fresh native/repeat/reference forks compare the entire current machine core with
 only four tier counters normalized. The guard and all other CORE/HOST bytes,
 RAM, pixels, source counts and guest PCM remain strict.
@@ -96,8 +100,8 @@ profile is not selected. Default synthesized Q remains in use for this disc.
 Requires Python 3.11+, CMake 3.20+, a C++20 compiler, Ninja and Git.
 
 ```sh
-git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-current58c
-git -C .deps/pcenginerecomp-current58c checkout --detach 1c765dcd96923e806bf8009245d8fe4d1e16c402
+git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-current60
+git -C .deps/pcenginerecomp-current60 checkout --detach d14ce0763271a66a2a7d9d7be5f100774c897d51
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++
 cmake --build build --parallel 4
 ctest --test-dir build --output-on-failure

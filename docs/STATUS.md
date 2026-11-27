@@ -1,5 +1,93 @@
 # Consumer status - 27 November 2026
 
+## 27 November - Time Ring received and Sarina mayor return
+
+Adol returns to Sarina, receives the named Time Ring from the mayor at frame
+185,562, and reaches the outside of the mayor's house at frame 186,482 with
+90/90 HP. The 12,655-frame continuation uses ordinary controls and no new
+assists. Earlier verified development assists remain in its ancestry. No new
+mine-key award or campaign completion is claimed.
+
+The new segment executes 364,331,034 native and zero interpreted instructions,
+replacing 87,262 fallback retirements. All 518 new exact source identities
+execute. The module contains 69,314 guarded identities: 69,236 observed and
+1,681 declared, with 78 declared-only identities still unexercised.
+
+| Execution scope | Witnessed identities | Unexercised compiled identities |
+| --- | ---: | ---: |
+| Fresh execution by the current binary |25,206|44,108|
+| Imported cold-baseline evidence |65,651|Separate baseline scope|
+| Mixed-package qualified lineage |66,373|2,941|
+
+The current-binary union includes its new route, bounded frontier forks/audio
+and overlapping cold-entry smoke. It does not count imported source witnesses
+as execution by the destination binary. The new story route alone executes
+20,538 exact identities.
+
+The selected toolkit is public ABI29
+[`d14ce0763271a66a2a7d9d7be5f100774c897d51`](https://github.com/rages4calm/pcenginerecomp/commit/d14ce0763271a66a2a7d9d7be5f100774c897d51),
+with 123 source files and canonical source SHA256
+`2346d6fe1fdf95932b072e8ce15ee192206d36f60678797322d44c0b4949e96d`.
+One new audited baseline actually cold-replays the retained route to frame
+173,827, executing 5,322,505,339 native and zero interpreted instructions.
+Its complete serialized HOST/CORE matches the prior original-program endpoint.
+The toolkit's supported additive continuation admits the native-only extension
+and creates a destination-own checkpoint with zero new guest retirements and
+an unchanged full HOST/CORE payload. No older ordinary-build checkpoint is
+rebound or retroactively admitted.
+
+The destination then executes the fresh story suffix. Its linked lifetime
+5,686,836,373 native / zero interpreted count is a qualified multi-package
+lineage, not a single binary's cold campaign. Subsequent supported module-only
+extensions can use this audited baseline rather than repeat the full reset.
+SDK, compiler, machine or media-policy changes still require a new baseline.
+
+The original route and interpreter reference match full RAM, guest RGB, digital
+PCM, CPU/MPR/source context and exact source retirements at all 71 control
+boundaries, with 27 persisted states. The native candidate keeps all 71 inputs
+and six semantic checkpoints. Its source counts and complete HOST/CORE match
+the reference with only four tier counters projected; guard remains strict zero.
+Fresh 120-frame native/repeat/reference forks pass as a separate current-package
+check, including byte-identical native/repeat checkpoints.
+
+A no-WAV 600-frame paced SDL/reference check passes with at least 441,438 fresh
+nonzero audio frames accepted, zero active drops, and 814 planned pause-tail
+frames accounted separately. An earlier startup-counter harness failure remains
+failed. The separate retest records a settled initial state and passes the
+unchanged strict delivery criterion. This is bounded device-delivery evidence,
+not a listening or hardware-equivalence claim.
+
+The current binary also cold-starts independently for 1,802 frames using the
+original literal controls. It retires 51,263,972 native and zero interpreted
+instructions and matches a fresh interpreter process for full RAM, guest RGB,
+digital PCM, exact source counts and complete HOST/CORE except four tiers.
+Golden CPU/timing/PCM checks occur at frames 600, 602, 1,202 and 1,802. No
+historical golden image exists at that endpoint. This overlapping smoke is
+separate from new story work and does not establish a full current-binary cold prefix.
+
+Affected checks pass: 251 upstream Python, 35 consumer, 21 authored host Python
+and five native suites, with seven cached-admission, seven startup-audio and
+six path-parser checks. These are scoped check sets, not a repeated full suite. After launcher and pin integration, 49 affected consumer
+tests pass, including 14 launcher contract cases. The manual launcher derives
+its command from one verified project object and rechecks raw inputs before launch.
+
+Final launcher, pin, package, private-evidence and cleanup checks pass all 68
+tests. The cleanup CMD preserves historical text audit summaries saved with a
+JSON suffix, reports malformed metadata by filename and still refuses unknown
+formats. Its real checkout preview completes with visible progress and no
+remaining disposable compiler files. Obsolete generated build files are retired
+into hash-verified private evidence; current and prior runnable builds remain.
+
+One authentic existing-root offline CD-load declaration is verified; declaration
+and verification add no newly executed coverage. A broad Ys III loader selector,
+room preset or room-warp adapter is not available. Shared continuation
+re-admission remains expensive on the real consumer; the measured performance
+request is tracked in [toolkit issue 48](https://github.com/rages4calm/pcenginerecomp/issues/48).
+Continuation correctness does not establish an overall speedup. Planned launcher
+and game options remain blocked on the supported gameplay adapter in
+[toolkit issue 47](https://github.com/rages4calm/pcenginerecomp/issues/47);
+see [remaster direction](REMASTER_DIRECTION.md).
+
 ## 27 November - Elena and Chester return scene and outside frontier
 
 Adol leaves the Moon Statue arena, returns to Elena and Chester, waits through

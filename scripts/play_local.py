@@ -10,6 +10,7 @@ from pathlib import Path
 import re
 import subprocess
 import sys
+import tempfile
 import tomllib
 import uuid
 
@@ -59,10 +60,54 @@ def shared(arguments, environment):
                                               text=True, timeout=120))
 
 
-def receipt_contract(receipt):
-    """Decode the two retained receipt layouts without changing their bindings."""
+def receipt_contract(receipt, qualification=None):
+    """Decode retained receipt layouts without changing their bindings."""
     require(receipt.get('passed') is True and type(receipt.get('exit_code')) is int
             and receipt['exit_code'] == 0, 'Selected route did not pass with a clean exit')
+    if 'cut_policy' in receipt:
+        require(receipt['cut_policy'] == 'explicit-milestones'
+                and all(receipt.get(k) is True for k in
+                        ('explicit_manifest_quit', 'natural_quit', 'child_stopped')),
+                'Selected sparse scenario did not close naturally at explicit milestones')
+        require(receipt.get('reference') is False
+                and type(receipt.get('native')) is int and receipt['native'] > 0
+                and type(receipt.get('interpreted')) is int and receipt['interpreted'] == 0,
+                'Selected sparse scenario is not native execution')
+        require(type(qualification) is dict and qualification.get('native_qualified') is True,
+                'Sparse scenario requires its native qualification')
+        package = receipt.get('package_after')
+        require(type(package) is dict and bool(package)
+                and receipt.get('package_before') == package
+                and qualification.get('current_package') == package,
+                'Sparse scenario package differs from its qualification')
+        identity = qualification.get('tool')
+        require(type(identity) is dict, 'Missing qualified toolkit identity')
+        if set(identity) == {'revision', 'runtime_abi', 'shared_source_identity', 'tracked_source_clean'}:
+            require(identity['tracked_source_clean'] is True
+                    and type(identity['runtime_abi']) is int and identity['runtime_abi'] > 0,
+                    'Invalid qualified toolkit verification')
+            source = identity['shared_source_identity']
+            require(type(source) is dict and identity['revision'] == source.get('revision'),
+                    'Qualified toolkit revisions disagree')
+        else:
+            source = identity
+        require(set(source) == {'revision', 'source_sha256', 'source_files'}
+                and type(source['revision']) is str and re.fullmatch('[0-9a-f]{40}', source['revision'])
+                and type(source['source_sha256']) is str and re.fullmatch('[0-9a-f]{64}', source['source_sha256'])
+                and type(source['source_files']) is int and source['source_files'] > 0,
+                'Invalid qualified toolkit source identity')
+        def scenario_artifact(name):
+            path = receipt.get(name)
+            require(type(path) is str and bool(path) and '\0' not in path,
+                    'Invalid sparse scenario artifact: ' + name)
+            inputs = receipt.get('input_bindings')
+            require(type(inputs) is dict, 'Missing sparse scenario input bindings')
+            digest = inputs.get(path)
+            require(type(digest) is str and re.fullmatch('[0-9a-f]{64}', digest),
+                    'Missing sparse scenario artifact digest: ' + name)
+            return path, digest
+        return (scenario_artifact('project_descriptor'), scenario_artifact('project_build_receipt'),
+                identity, package)
     if receipt.get('kind') == 'ys3-reset-extension-replay':
         require(receipt.get('child_stopped') is True and receipt.get('natural_quit') is True,
                 'Selected extension did not close naturally')
@@ -87,6 +132,61 @@ def receipt_contract(receipt):
             receipt['tool_identity'], receipt['desktop_contract']['package_after'])
 
 
+def tree_members(directory):
+    directory = Path(directory)
+    require(directory.is_dir() and not directory.is_symlink() and not directory.is_junction(),
+            'Verification tree is missing or linked')
+    rows = []
+    for path in directory.rglob('*'):
+        if '__pycache__' in path.parts:
+            continue
+        require(not path.is_symlink() and not path.is_junction(), 'Linked verification input')
+        rows.append([path.relative_to(directory).as_posix(), path.is_dir()])
+    return sorted(rows)
+
+
+def recheck_inputs(snapshot):
+    for path, digest in snapshot['raw_bindings'].items():
+        require(sha(path) == digest, 'Verified input changed before launch: ' + path)
+    for directory, members in snapshot['trees'].items():
+        require(tree_members(directory) == members, 'Verified artifact membership changed: ' + directory)
+
+
+def verified_launch(tool, descriptor, binary, selected, environment):
+    """Use one official verification object for binding and command derivation."""
+    code = '''import json,sys
+from pathlib import Path
+sys.path[:0]=[sys.argv[1],sys.argv[2]]
+from scripts.verify_tool import verify as verify_tool
+from scripts.play_local import sha,tree_members
+from pcerecomp import project
+tool,descriptor,binary=map(Path,sys.argv[2:5])
+expected=json.loads(sys.argv[5])
+actual=verify_tool(tool,expected['revision'],expected['runtime_abi'])
+p=project.verify(descriptor)
+actual['shared_source_identity']=p['tool_identity']
+if actual!=expected:raise ValueError('Selected clean toolkit identity differs from its qualification')
+command=project.command_for(p,binary)
+raw={str(path):p['identities'][name] for name,path in p['files'].items()}
+raw[str(descriptor)]=p['descriptor_sha256']
+directories=[tool/name for name in ('runtime','pcerecomp','cmake','scripts') if (tool/name).is_dir()]
+directories.append(Path(p['files']['module_source']).parent)
+trees={str(path):tree_members(path) for path in directories}
+for directory in directories[:-1]:
+ for path in directory.rglob('*'):
+  if path.is_file() and '__pycache__' not in path.parts and path.suffix in ('.py','.cpp','.hpp','.h','.cmake'):raw[str(path)]=sha(path)
+raw[str(tool/'CMakeLists.txt')]=sha(tool/'CMakeLists.txt')
+if project.source_identity(tool)!=p['tool_identity']:raise ValueError('Toolkit changed during command derivation')
+if verify_tool(tool,expected['revision'],expected['runtime_abi'])!={k:v for k,v in actual.items() if k!='shared_source_identity'}:raise ValueError('Toolkit verification changed')
+print(json.dumps(dict(tool=actual,verification=dict(schema=1,verified=True,**project._binding(p)),command=command,raw_bindings=raw,trees=trees)))
+'''
+    with tempfile.TemporaryDirectory(prefix='ys3-launch-source-') as prefix:
+        require(not any(Path(prefix).iterdir()), 'Source-only import prefix must start empty')
+        return shared([sys.executable, '-I', '-B', '-X', 'pycache_prefix=' + prefix,
+                       '-c', code, str(ROOT), str(tool), str(descriptor), str(binary),
+                       json.dumps(selected)], environment)
+
+
 def prepare():
     config = load(SELECTION)
     require(config.get('schema') == 1, 'Unknown private launcher selection schema')
@@ -98,27 +198,28 @@ def prepare():
     graph = qualification['evidence_sha256']
     receipt_path = bound(**config['replay_receipt'], graph=graph)
     receipt = load_replay_receipt(receipt_path)
-    descriptor_binding, build_binding, selected, qualified_package = receipt_contract(receipt)
+    descriptor_binding, build_binding, selected, qualified_package = receipt_contract(receipt, qualification)
     descriptor = bound(*descriptor_binding, graph=graph)
     built_path = bound(*build_binding, graph=graph)
     built = load(built_path)
     config = tomllib.loads(descriptor.read_text(encoding='utf-8'))
     tool = (descriptor.parent / config['tool']['path']).resolve(strict=True)
-    source = selected['shared_source_identity']
-    checked = shared([sys.executable, str(ROOT / 'scripts/verify_tool.py'), '--tool-root', str(tool),
-        '--expected-revision', selected['revision'], '--expected-abi', str(selected['runtime_abi']),
-        '--expected-source-sha256', source['source_sha256']], os.environ.copy())
-    require(checked == selected, 'Selected clean toolkit identity differs from its qualified receipt')
+    if 'cut_policy' in receipt:
+        source = selected.get('shared_source_identity', selected)
+        expected = dict(revision=source['revision'], runtime_abi=config['tool']['runtime_abi'],
+                        shared_source_identity=source, tracked_source_clean=True)
+        require(set(selected) == set(source) or selected == expected,
+                'Qualified toolkit differs from the bound descriptor ABI')
+        selected = expected
     environment = dict(os.environ, PYTHONPATH=str(tool), PYTHONSAFEPATH='1', PYTHONDONTWRITEBYTECODE='1')
-    verification = shared([sys.executable, '-m', 'pcerecomp.project', 'verify', str(descriptor)], environment)
-    validate_project_binding(built, verification)
+    plan = verified_launch(tool, descriptor, Path(built['binary']), selected, environment)
+    require(plan['tool'] == selected, 'Selected clean toolkit identity differs from its qualified receipt')
+    validate_project_binding(built, plan['verification'])
     package = verify_package(built, built['binary'])
     require(package == qualified_package, 'Qualified desktop package changed')
     for name, digest in package['output_files'].items():
         bound(Path(package['binary']).parent / name, digest, graph)
-    code = ('import json,sys; from pathlib import Path; from pcerecomp.project import verify,command_for; '
-            'p=verify(Path(sys.argv[1])); print(json.dumps(command_for(p,Path(sys.argv[2]))))')
-    command = shared([sys.executable, '-c', code, str(descriptor), package['binary']], environment)
+    command = plan['command']
     require(command.count('--wall-seconds') == 1, 'Unexpected shared manual host wall-limit contract')
     position = command.index('--wall-seconds')
     del command[position:position + 2]
@@ -132,6 +233,11 @@ def prepare():
     environment, isolation = packaged_environment(package['binary'], environment)
     bound(qfile, qualification_digest)
     bound(receipt_path, qualification['evidence_sha256'][str(receipt_path)])
+    bound(descriptor, descriptor_binding[1], graph)
+    bound(built_path, build_binding[1], graph)
+    recheck_inputs(plan)
+    require(verify_package(built, built['binary']) == package,
+            'Verified desktop package changed before launch')
     return selected, module, package, command, environment, isolation
 
 

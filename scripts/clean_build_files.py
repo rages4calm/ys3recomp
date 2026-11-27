@@ -95,7 +95,19 @@ def protection(root):
         raw = document.read_bytes()
         snapshots[document] = hashlib.sha256(raw).hexdigest()
         protected.add(document)
-        protected.update(referenced_paths(json.loads(raw)))
+        try:
+            metadata = json.loads(raw)
+        except (ValueError, UnicodeError) as error:
+            # Earlier audit runs saved their text summary with a .json suffix.
+            # This exact success line contains no dependency paths. Preserve it
+            # and its hash; all other malformed metadata still stops cleanup.
+            if (document.name.startswith("publication-audit")
+                    and re.fullmatch(rb"Audited [0-9]+ staged/tracked files, [0-9]+ bytes; 0 problems\r?\n?", raw)):
+                say("  Preserving historical text audit: " + str(document.relative_to(local)))
+                metadata = None
+            else:
+                raise ValueError("Invalid protection metadata: " + str(document)) from error
+        protected.update(referenced_paths(metadata))
         if index % 25 == 0:
             say(f"  Protection metadata: {index}/{len(documents)} documents")
     if selection_path.read_bytes() != selection_bytes or qpath.read_bytes() != qbytes:
