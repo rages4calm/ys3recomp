@@ -41,8 +41,14 @@ and independently verify the original damage eligibility, timer initialization
 and expiry before implementing a 2x option. Preserve original behavior when off;
 keep enabled-run evidence distinct from original-program qualification.
 
-These options require the supported title gameplay adapter and launch-settings
-API tracked in [toolkit issue 47](https://github.com/rages4calm/pcenginerecomp/issues/47).
+The selected toolkit now provides the supported
+[title-adapter and launch-settings API](https://github.com/rages4calm/pcenginerecomp/blob/824bb7afaa9d0f35c25c7a8c834c22fdaaafb3a8/docs/TITLE_ADAPTERS.md),
+completing [toolkit issue 47](https://github.com/rages4calm/pcenginerecomp/issues/47).
+Game-specific verified hit and earned-reward rules and CompanionLauncher choices
+remain unimplemented. Keep the vanilla native-coverage package adapter-free;
+qualify enhancements separately because adapter-bearing packages cannot use
+cross-package continuation in this API version. Initial settings and enhanced
+checkpoint state are bound together; pristine behavior remains the default.
 Use the Game UI/UX and gamedev skills with the
 [recomp-ui overlay contract](https://github.com/RetroPortingToolKit/recomp-ui#in-game-settings-overlay)
 for menus and controller navigation. Presentation callbacks are not gameplay

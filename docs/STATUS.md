@@ -1,5 +1,67 @@
 # Consumer status - 27 November 2026
 
+## 27 November - New toolkit baseline and Tigre Mine qualification
+
+The new ABI29 pin is
+[`824bb7a`](https://github.com/rages4calm/pcenginerecomp/commit/824bb7afaa9d0f35c25c7a8c834c22fdaaafb3a8),
+source SHA256 `8a5fdb41a5385451d40b04dcca6f06ecc3a0343b4587a4e22358d6a8f9e64f07`, 127 files.
+Official regeneration and an audited compiler-cache miss preserve all 69,314
+Time Ring module identities. One new cold baseline reaches frame 186,482 with
+5,686,836,373 native / zero interpreted instructions and 66,373 executed source
+identities. Complete HOST/CORE, exact source retirements, 1,068 original RGB
+checks, eleven semantic boundaries and all 411 historical expected-byte assists
+match the retained original-program evidence. This necessary SDK migration reset
+is separate from new story work. Later module-only extensions reuse the supported
+continuation path; ordinary old checkpoints are never rebound.
+
+Development reaches Tigre Mine's lower passage and NPC/chest room, completes its
+dialogue and ends alive at frame 197,076 with 88 HP. The original chest remains
+closed; no named reward is claimed. Three verified local position placements
+and one HP55-to90 refill use seven expected-byte writes. They remain explicit
+assisted progression with saved unassisted cuts and literal reference replay.
+
+The nine-phase source discovery retires 334,138,032 native and 127,306 interpreted
+instructions over 10,594 frames. These are discovery counts, not a native pass.
+The qualified native module contains 69,689 emitted / 69,527 observed / 2,619 declared
+identities, with 162 declared-only. Its 375 new emitted identities comprise 291
+executed-source gaps and 84 static candidates not yet observed. The 938 added
+declaration memberships include identities already compiled; they are not 938
+new native identities. The new native route executes 334,265,338 native and zero
+interpreted instructions, replacing all 127,306 fallback retirements. All 291
+newly observed source gaps execute; the 84 new static candidates remain
+unexercised. Full CORE except four tier counters, RAM, RGB, PCM and exact source
+retirements match the independent reference across all nine semantic phases and
+seven expected-byte writes. The imported 5,686,836,373 plus fresh 334,265,338
+native retirements give 6,021,101,711 linked native / zero interpreted; this is a
+qualified multi-package lineage, not one binary's cold campaign.
+
+| Execution scope | Witnessed identities | Unexercised compiled identities |
+| --- | ---: | ---: |
+| Fresh current-binary execution |22,583|47,106|
+| New story route alone |22,580|Separate route scope|
+| Imported cold baseline |66,373|Separate baseline scope|
+| Mixed qualified lineage |66,692|2,997|
+
+Fresh 120-frame native/repeat/reference forks pass, including byte-identical
+native/repeat checkpoints. The 600-frame paced SDL audio check executes
+18,379,842 native / zero interpreted instructions, with at least 441,441 fresh
+nonzero audio frames accepted, zero unexpected active drops and 818 planned
+pause-tail frames accounted separately. This is bounded delivery evidence,
+not listening or hardware equivalence. All 68 affected consumer checks pass.
+Play selects the newly qualified build. B059's obsolete generated package was
+archived with per-file readback and an index before unlinking 58 files; 86
+unbound compiler products were removed. Current B061, prior B060, required
+audited baselines and fixtures remain. The cleanup CMD preview passes in 17.4s.
+
+Gap collection now combines coherent phases before one build, expands from 256
+source-matched roots in the current mine overlay and uses one admission with two
+flat qualification guests. The closed pair takes 192.23s, including one 23.09s
+project admission. This avoids repeated admission at each assist; it is not a
+controlled comparative performance benchmark. The toolkit's title adapter and verified-input reuse APIs are
+available after [PR49](https://github.com/rages4calm/pcenginerecomp/pull/49);
+Ys III's timer/reward rules, launcher options and remaster presentation remain
+consumer work. No optional game enhancement is enabled by this update.
+
 ## 27 November - Time Ring received and Sarina mayor return
 
 Adol returns to Sarina, receives the named Time Ring from the mayor at frame
@@ -83,9 +145,9 @@ and verification add no newly executed coverage. A broad Ys III loader selector,
 room preset or room-warp adapter is not available. Shared continuation
 re-admission remains expensive on the real consumer; the measured performance
 request is tracked in [toolkit issue 48](https://github.com/rages4calm/pcenginerecomp/issues/48).
-Continuation correctness does not establish an overall speedup. Planned launcher
-and game options remain blocked on the supported gameplay adapter in
-[toolkit issue 47](https://github.com/rages4calm/pcenginerecomp/issues/47);
+Continuation correctness does not establish an overall speedup. The adapter requested in
+[toolkit issue 47](https://github.com/rages4calm/pcenginerecomp/issues/47)
+was unavailable for this historical batch and is supplied by the later pin;
 see [remaster direction](REMASTER_DIRECTION.md).
 
 ## 27 November - Elena and Chester return scene and outside frontier

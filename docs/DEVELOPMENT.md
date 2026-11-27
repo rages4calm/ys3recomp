@@ -88,43 +88,57 @@ and natural story progression remain separate evidence classes.
 
 ## Current discovery boundary
 
-The selected 69,314-identity mixed ABI29 module owns the frame-186,482 checkpoint
-outside the Sarina mayor's house with 90/90 HP. The mayor awards the Time Ring
-at frame 185,562. The new 12,655-frame route uses no additional assists.
-Confirm later dialogue and inventory before naming the next story milestone.
+The new SDK is `824bb7afaa9d0f35c25c7a8c834c22fdaaafb3a8`, ABI29,
+127 source files, source SHA256
+`8a5fdb41a5385451d40b04dcca6f06ecc3a0343b4587a4e22358d6a8f9e64f07`.
+Its audited cold baseline owns the Time Ring frontier at frame 186,482 with
+90/90 HP and 5,686,836,373 native / zero interpreted instructions. It freshly
+executes 66,373 identities rather than importing old-SDK checkpoint counters.
+The original 411 verified historical assists remain explicit.
 
-The selected toolkit is `d14ce0763271a66a2a7d9d7be5f100774c897d51`, ABI29,
-123 source files, source SHA256
-`2346d6fe1fdf95932b072e8ce15ee192206d36f60678797322d44c0b4949e96d`.
-One audited cold baseline reaches frame 173,827. The supported
-[additive checkpoint continuation](https://github.com/rages4calm/pcenginerecomp/blob/d14ce0763271a66a2a7d9d7be5f100774c897d51/docs/CHECKPOINT_CONTINUATIONS.md)
-then admits the native-only extension under the identical SDK path/revision/source,
-machine/media/reference recipe and audited compiler/dependency closure. Preserve
-the original source checkpoint; use the official admission and launch APIs.
-The zero-retirement destination checkpoint preserves the entire HOST/CORE payload.
-Older ordinary-build receipts cannot be retroactively admitted, and equal ABI
+The qualified Tigre endpoint is frame 197,076, alive at 88 HP after lower-passage
+and NPC/chest-room dialogue. The chest remains closed. Three local position
+placements and one HP55-to90 heal use seven expected-byte edits; preserve the
+unassisted cuts and replay those same transactions in the independent reference.
+The 69,689-identity native module passes its 10,594-frame assisted route with
+334,265,338 native / zero interpreted instructions and all nine source/reference
+boundaries. Fresh 120-frame native/repeat/reference forks and 600-frame paced
+SDL audio pass separately. Fresh current-binary witnesses number 22,583, with
+47,106 unexercised; imported baseline witnesses are 66,373. The mixed lineage
+witnesses 66,692, leaving 2,997 unexercised, including all 162 declared-only
+entries. Of 375 newly compiled identities, 291 newly observed gaps execute and
+84 static-only candidates remain unexercised. Keep these evidence classes separate.
+The linked 6,021,101,711 native total combines packages and is not a fresh
+current-binary cold campaign.
+
+Use the supported
+[additive checkpoint continuation](https://github.com/rages4calm/pcenginerecomp/blob/824bb7afaa9d0f35c25c7a8c834c22fdaaafb3a8/docs/CHECKPOINT_CONTINUATIONS.md)
+under the identical SDK path/revision/source, machine/media/reference recipe and
+audited compiler/dependency closure. Preserve the source checkpoint and use the
+official admission and launch APIs. Subsequent module-only extensions qualify
+only the fresh suffix plus native/repeat/reference and paced audio; SDK, lowering,
+compiler or machine/media-policy changes require a new baseline. Equal ABI
 numbers or module membership alone do not authorize transfer.
 
-For subsequent supported module-only extensions, qualify the fresh destination
-suffix, native/repeat/reference forks and paced audio without repeating the
-full cold route. Engine, lowering, compiler or machine/media-policy changes
-require a new baseline. Imported 5,322,505,339 native retirements and fresh
-364,331,034 destination retirements stay separate. Their linked total is a
-multi-package lineage, not one binary's cold campaign. The current binary's
-separate 1,802-frame cold-entry smoke does not establish its full cold prefix.
+The current collection method expands 256 source-matched roots in the actual
+paused mine overlay and combines nine phases into one extension. All root
+identities retain logical PC, every MPR, physical source and original bytes.
+Broader loader selectors or arbitrary room presets remain unimplemented. Local
+verified position edits are development assists, not a generic room loader.
+The flat qualification uses one admitted package context and two fresh guests
+for native/reference, retaining explicit assist boundaries without repeated
+project admission at each phase. The closed pair takes 192.23s with one 23.09s
+admission; record this bounded measurement without claiming a controlled speedup.
+Recheck byte closures and membership at every
+required operation; the new SDK performs scoped verified-input reuse internally.
 
-The current binary freshly witnesses 25,206 identities; 44,108 compiled identities
-remain unexercised by it. Imported baseline witnesses number 65,651. The separately
-named mixed qualified lineage witnesses 66,373, leaving 2,941 unexercised,
-including 78 declared-only identities. Keep those evidence classes separate.
-
-One verified existing-root offline CD-load declaration supplies no new executed
-coverage. Broader loader selectors and room presets remain unimplemented.
-The real consumer's repeated admission cost is tracked in
-[toolkit issue 48](https://github.com/rages4calm/pcenginerecomp/issues/48);
-do not promise a universal speedup or weaken source/compiler/dependency checks.
-Reuse one immutable admitted context for same-package bounded forks, rechecking
-its complete byte closure and package before each fresh owned process.
+Keep the vanilla coverage lineage adapter-free. The optional
+[title-adapter API](https://github.com/rages4calm/pcenginerecomp/blob/824bb7afaa9d0f35c25c7a8c834c22fdaaafb3a8/docs/TITLE_ADAPTERS.md)
+supports separate enhancement builds with exact source sites and initial launch
+settings. Adapter-bearing packages, including compiled-pristine adapters, cannot
+use cross-package continuation in this version. Enhanced HOSTv2 binds settings
+and state; original code discovery remains pristine. This API does not verify
+Ys III hit timers, earned rewards, refunds or level behavior.
 
 Collect gaps across coherent bounded scenarios, then prepare one combined
 build. Reuse exact owning-build checkpoints and deterministic successful hit

@@ -2,36 +2,39 @@
 
 An incremental PC Engine CD native port of *Ys III: Wanderers from Ys* (USA),
 built with [pcenginerecomp](https://github.com/rages4calm/pcenginerecomp).
-**Adol returns to Sarina and receives the Time Ring from the mayor.**
-The exchange occurs at frame **185,562**. Adol reaches the outside of the
-mayor's house at frame **186,482**, with **90/90 HP**.
+**Development has reached Tigre Mine's lower passage and NPC/chest room.**
+Adol completes the room dialogue and remains alive with **88 HP** at frame
+**197,076**. The original chest is still closed; no named reward is claimed.
+The assisted route passes native/reference, repeat and paced TCP audio checks;
+Play uses the newly qualified build.
 
-The new **12,655-frame** route retires **364,331,034 native and zero interpreted
-instructions**, replacing 87,262 fallback retirements. All **518 new source
-identities execute**. It uses ordinary controls with no new assists; earlier
-verified assists remain part of its ancestry.
+The new ABI29 SDK pin is
+[`824bb7a`](https://github.com/rages4calm/pcenginerecomp/commit/824bb7afaa9d0f35c25c7a8c834c22fdaaafb3a8),
+with 127 runtime/tooling source files. Its new audited cold baseline reaches
+the Time Ring checkpoint at frame **186,482**, executing **5,686,836,373 native
+and zero interpreted instructions**. All 66,373 source identities from the
+retained route execute again, with exact original HOST/CORE and source counts.
+Older SDK checkpoints retain their original owning packages.
 
-The module contains **69,314 guarded source identities**. Fresh execution by
-this binary witnesses **25,206** identities; **44,108** remain unexercised by it.
-The separately named mixed-package qualified lineage witnesses 66,373, including
-imported baseline evidence. Its 2,941 unexercised identities include 78 declared-only
-entries. Unseen source variants retain interpreter fallback.
+The Tigre discovery route collects nine phases into one native extension.
+The qualified module contains **69,689 guarded identities**: 69,527 observed,
+2,619 declared, and 162 declared-only. Its 375 newly compiled identities comprise
+291 executed-source gaps and 84 additional static candidates. Static declaration
+membership and emission do not establish execution. The new **10,594-frame**
+route executes **334,265,338 native and zero interpreted instructions**, replacing
+127,306 fallback retirements. All 291 newly observed gaps execute; the 84 new
+static candidates remain unexercised. Fresh 120-frame native/repeat/reference
+forks and 600-frame paced TCP audio pass.
 
-The selected ABI29 toolkit is
-[`d14ce07`](https://github.com/rages4calm/pcenginerecomp/commit/d14ce0763271a66a2a7d9d7be5f100774c897d51),
-with 123 runtime/tooling source files. One new audited cold baseline reaches
-frame 173,827 with 5,322,505,339 native and zero interpreted instructions.
-The supported additive-module continuation preserves that checkpoint unchanged
-and imports its work into the new package. The linked **5,686,836,373 native /
-zero interpreted** total is a qualified multi-package lineage, not a single
-binary's cold campaign. Older ordinary-build checkpoints remain with their packages.
+Fresh execution by this binary witnesses **22,583 identities**; 47,106 remain
+unexercised by it. The separately recorded imported baseline witnesses 66,373;
+the mixed-package lineage witnesses 66,692, leaving 2,997 unexercised. Its linked
+**6,021,101,711 native / zero interpreted** total is not a single-binary cold run.
 
-Original-program checks cover 71 control boundaries; the new native scenario
-keeps those 71 inputs with six semantic checkpoints. Fresh 120-frame
-native/repeat/reference forks and a 600-frame paced SDL audio check pass.
-A separate 1,802-frame current-binary cold-entry smoke matches a fresh interpreter
-reference; it does not repeat the full cold prefix. Unknown CD commands receive
-the `nec-invalid` response.
+Verified development assists comprise three local position placements and one
+HP refill, seven expected-byte writes in total. Original checkpoints and literal
+reference-write replay are retained. Unseen source variants retain interpreter
+fallback; this bounded assisted route does not establish campaign completion.
 
 See [STATUS](docs/STATUS.md) for measured scopes and historical evidence.
 Generated source, builds, game inputs and raw proof remain private.
@@ -68,16 +71,18 @@ Keyboard controls remain available for pause, fullscreen and exit. The shared
 host's virtual-device checks cover mapping, hot-plugging and input release;
 physical-controller verification is separate.
 
-The selected [ABI29 toolkit](https://github.com/rages4calm/pcenginerecomp/commit/d14ce0763271a66a2a7d9d7be5f100774c897d51)
+The selected [ABI29 toolkit](https://github.com/rages4calm/pcenginerecomp/commit/824bb7afaa9d0f35c25c7a8c834c22fdaaafb3a8)
 provides mixed live-overlay and history preparation, feedback, shared emission
-and audited additive checkpoint continuation. Shared CPU/device semantics and generation remain upstream; this project
+and audited additive checkpoint continuation. It also supplies optional title
+adapters and operation-local verified-input reuse; game enhancements still need
+consumer implementation. Shared CPU/device semantics and generation remain upstream; this project
 owns game configuration, coverage and verification. The previous qualified
 ABI29 build is retained.
 
 ## Audio and checkpoints
 
 Ordinary restore requires exact-build checkpoints and explicit reference capability.
-The toolkit's [audited additive continuation](https://github.com/rages4calm/pcenginerecomp/blob/d14ce0763271a66a2a7d9d7be5f100774c897d51/docs/CHECKPOINT_CONTINUATIONS.md)
+The toolkit's [audited additive continuation](https://github.com/rages4calm/pcenginerecomp/blob/824bb7afaa9d0f35c25c7a8c834c22fdaaafb3a8/docs/CHECKPOINT_CONTINUATIONS.md)
 is a separate, qualified module-only path with the same SDK and compiler/dependency
 closure. It does not retroactively admit older ordinary-build checkpoints.
 Original ABI28 captures remain source evidence; their checkpoints are never imported into ABI29.
@@ -85,8 +90,8 @@ Fresh native/repeat/reference forks compare the entire current machine core with
 only four tier counters normalized. The guard and all other CORE/HOST bytes,
 RAM, pixels, source counts and guest PCM remain strict.
 
-The current paced 600-frame check verifies fresh nonzero PCM accepted by SDL beyond
-imported audio, with zero active drops. Planned pause clears and shutdown drains
+The current paced 600-frame check verifies at least 441,441 fresh nonzero PCM
+frames accepted by SDL beyond imported audio, with zero unexpected active drops. Planned pause clears and shutdown drains
 are counted separately. The fast-forward route compares guest digital PCM; it
 does not claim a newly captured boot WAV or listening/hardware parity.
 
@@ -100,8 +105,8 @@ profile is not selected. Default synthesized Q remains in use for this disc.
 Requires Python 3.11+, CMake 3.20+, a C++20 compiler, Ninja and Git.
 
 ```sh
-git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-current60
-git -C .deps/pcenginerecomp-current60 checkout --detach d14ce0763271a66a2a7d9d7be5f100774c897d51
+git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-current61
+git -C .deps/pcenginerecomp-current61 checkout --detach 824bb7afaa9d0f35c25c7a8c834c22fdaaafb3a8
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++
 cmake --build build --parallel 4
 ctest --test-dir build --output-on-failure
