@@ -48,13 +48,48 @@ overlay contract when integrating in-game settings.
 [Gamedev skill collection](https://github.com/gamedev-skills/awesome-gamedev-agent-skills) ·
 [recomp-ui runtime overlay](https://github.com/RetroPortingToolKit/recomp-ui#in-game-settings-overlay)
 
+## Bounded scenarios and sparse proof cuts
+
+Collect a coherent room, encounter or story sequence before preparing one native
+extension. Reuse owning-build checkpoints and immutable reference receipts whose
+inputs and checker bindings still match. Keep one admitted project and TCP
+session for a route; repeated admission and checkpoint persistence have measured
+costs. The transport itself has not been isolated as the bottleneck.
+
+The authored `scripts/scenario_plan.py` prepares an input-only JSONL manifest
+from a successful, naturally closed private receipt. It preserves every control
+and frame while selecting explicit checkpoint boundaries. Indices are zero-based
+and must include the final control. For an authored three-control example:
+
+```sh
+python scripts/scenario_plan.py build SOURCE_RECEIPT --milestone 0:menu --milestone 2:room-exit --out .local/scenario.jsonl
+python scripts/scenario_plan.py validate .local/scenario.jsonl
+```
+
+The builder never launches a guest or establishes qualification. The caller's
+bound scenario runner must implement the exact manifest contract. Plans allow
+at most 600 frames per step and 20,000 per scenario, reject write-assisted or
+failed receipts, and refuse to overwrite outputs. Use the separate reviewed
+assist journal when development requires memory edits.
+
+Keep source capture active across the whole scenario. At semantic boundaries,
+compare full RAM, guest RGB, digital PCM, CPU/MPR/source context and exact source
+retirements. A fresh same-build native/reference comparison keeps the guard
+strict and normalizes only the four tier counters. On a mismatch, replay the
+affected interval with denser cuts to locate the first divergence. Sparse cuts
+do not prove every intermediate frame equal.
+
+Broader room sweeps need verified Ys III loader selectors and state presets.
+IoG's room table and Ys I&II's CD layout supply useful methods; their numeric
+addresses and flags are not Ys III data. Static declarations, executed coverage
+and natural story progression remain separate evidence classes.
+
 ## Current discovery boundary
 
-The selected 68,387-identity mixed ABI29 module owns the
-frame-164,251 checkpoint after the winged boss defeat and Moon Statue.
-The game names the reward in the verified source and candidate route. The
-Equipment menu is open at this checkpoint. Use ordinary controls to return
-to the arena and continue toward Elena and Chester.
+The selected 68,796-identity mixed ABI29 module owns the frame-173,827
+checkpoint outside Alcaino Ruins after the Moon Statue return scene with
+Elena and Chester. Adol has 90/90 HP and movement is restored. Return to town
+is the next progression target. The new segment uses no additional assists.
 
 Collect gaps across coherent bounded scenarios, then prepare one combined
 build. Reuse exact owning-build checkpoints and deterministic successful hit

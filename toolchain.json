@@ -6,7 +6,7 @@
     "source_sha256": "17eb1bb582ffbaf1ae9b338e05e5218a1e370c117eb4a08208f0ee49ea87fa10",
     "checkout": ".deps/pcenginerecomp-current58c",
     "runtime_abi": 29,
-    "source_policy": "Reviewed clean ABI29 source. Official mixed live-overlay/history preparation and shared emission. Fresh own-build retained route through winged boss defeat and the named Moon Statue, original-program reference and paced SDL audio pass. Assisted bounded routes; unseen source variants retain fallback."
+    "source_policy": "Reviewed clean ABI29 source. Official mixed overlay/history preparation and shared emission. One own-build canonical lineage and native return through Elena/Chester to the outside of Alcaino. Original-program parity, strict same-build frontier forks and paced SDL audio pass. Earlier checkpoint assists remain explicit; unseen variants retain fallback."
   },
   "progression_label_correction": {
     "date": "2026-11-02",
@@ -4817,5 +4817,51 @@
     "bulk_overlay_keys_absent_from_prior": 78,
     "bulk_overlay_unresolved_frontiers": 2692,
     "scope": "Assisted winged boss defeat and named Moon Statue reward. New own-build lineage, retained routes including Game Over, exact original-program reference parity and separate paced TCP SDL audio. Discovery-only aiming and teleport branches excluded from progression totals. Declared unexercised keys remain explicit."
+  },
+  "alcaino_return_native": {
+    "date": "2026-11-27",
+    "tool_revision": "1c765dcd96923e806bf8009245d8fe4d1e16c402",
+    "passed": true,
+    "frames": 9576,
+    "native": 300913373,
+    "interpreted": 0,
+    "prior_interpreted": 42412,
+    "compiled_keys": 68796,
+    "added_keys": 409,
+    "added_keys_exercised": 409,
+    "newly_observed_keys": 409,
+    "newly_observed_unexercised_keys": 0,
+    "declared_only_keys": 78,
+    "declared_only_unexercised_keys": 78,
+    "endpoint": 173827,
+    "linked_native": 5322505339,
+    "linked_interpreted": 0,
+    "new_route_unique_identities": 16353,
+    "player_hp_refills": 0,
+    "boss_hp_adjustments": 0,
+    "position_assist_events": 0,
+    "new_memory_writes": 0,
+    "consumer_tests": 35,
+    "consumer_test_scope": "Affected20scenario and15toolchain cases; no repeated full consumer suite",
+    "affected_toolkit_tests_rerun": 0,
+    "toolkit_source_unchanged": true,
+    "fresh_nonzero_device_accepted_lower_bound": 441808,
+    "original_source_reference_cuts": 49,
+    "new_candidate_semantic_cuts": 5,
+    "coverage": {
+      "compiled": 68796,
+      "witnessed_union": 65651,
+      "unexercised": 3145,
+      "new_build_canonical_witnessed_union": 65651,
+      "new_route_witnessed_union": 16353,
+      "declared_only_unexercised": 78
+    },
+    "source_identities_on_new_segment": 16353,
+    "sparse_input_steps": 49,
+    "sparse_checkpoints": 5,
+    "retained_canonical_roles": 45,
+    "scenario_plan_tests": 20,
+    "affected_toolchain_tests": 15,
+    "scope": "Moon Statue checkpoint to Elena/Chester scene and outside Alcaino. Ordinary controls on prior assisted ancestry, one unchanged-SDK native extension/build, one own canonical lineage. New native execution and source/reference/fork/audio evidence separate from historical auxiliary builds."
   }
 }

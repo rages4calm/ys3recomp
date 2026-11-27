@@ -1,5 +1,60 @@
 # Consumer status - 27 November 2026
 
+## 27 November - Elena and Chester return scene and outside frontier
+
+Adol leaves the Moon Statue arena, returns to Elena and Chester, waits through
+their scene and reaches the outside of Alcaino Ruins. The living frontier is
+frame 173,827 with 90/90 HP and ordinary movement restored. No new RAM edits occur;
+this continuation inherits the prior assisted Moon Statue checkpoint.
+
+The 9,576 new frames execute 300,913,373 native and zero interpreted instructions,
+replacing 42,412 fallback retirements. All 409 new exact source identities execute.
+The 68,796-entry mixed module preserves the original observed and declared source
+classes; 78 declared-only entries remain unexercised. Its own-build linked
+checkpoint records 5,322,505,339 native and zero interpreted.
+
+Both original source segments match the same-build original-program interpreter
+across 49 dense cuts for RAM, pixels, PCM, HOST, controls and source retirements.
+Their fallback-related guard differences remain explicit discovery evidence.
+A failed 900-frame harness request is preserved. All 33 completed prefix
+checkpoints were reproduced byte for byte before the resumed segment was used.
+The corrected helper enforces the server's 600-frame request limit.
+
+One official preparation combines all 409 missing identities; one ordinary build
+uses the unchanged qualified toolkit. A single admitted host reconstructs the
+retained 45-role canonical lineage with every original input, expected-byte edit
+and settled check. It omits intermediate checkpoint persistence and auxiliary
+branches. Historical auxiliary qualifications remain tied to their old builds.
+The new native scenario retains all 49 steps with five semantic proof cuts;
+strict same-build frontier forks and a continuous 600-frame paced SDL check
+also pass, including a matching 600-frame interpreter reference.
+
+An earlier 120-frame paced test with WAV recording and nominal 10 ms durable
+polling failed audio delivery: seven queue-budget clears dropped 30,689 active
+frames. Its failed receipt remains unchanged. The normal no-WAV Play path with
+50 ms polling passed 600 continuous frames, accepting at least 441,808 fresh
+nonzero audio frames with zero active drops; final pause-tail loss is separate.
+WAV output, polling, duration and concurrent checker load changed, so causality
+is unresolved. The diagnostic interaction is tracked in
+[toolkit issue 45](https://github.com/rages4calm/pcenginerecomp/issues/45).
+
+The new authored scenario-plan builder passes 20 synthetic cases, including the
+actual 600/601/900 boundary, and 15 affected toolchain checks pass. Runtime/tooling
+source did not change, so previously passed upstream suites are reused.
+
+The measured automated 2,600-frame/33-cut prefix spans 57.89 seconds, compared with
+238.41 seconds of interactive steering. Checkpoint envelopes account for 45.71
+seconds of the automated span. Journals lack timestamps, so these measurements
+do not establish socket-only latency. Sparse cuts and one admitted session
+address demonstrated workflow costs; they do not prove every intermediate frame.
+
+Shared follow-ups are [checkpoint continuation](https://github.com/rages4calm/pcenginerecomp/issues/43)
+and [offline CD load maps](https://github.com/rages4calm/pcenginerecomp/issues/44).
+The latter draws on PCERecomp/YsRecomp's load-family mapping approach. Ys III
+still needs its own verified loader/table adapter; Ys I&II addresses and flags
+are not transferable game data. No unsupported checkpoint transfer or SDK fork
+was used. Optional new GPU shader presets remain unqualified locally.
+
 ## 27 November - winged boss defeated and Moon Statue received
 
 Adol finishes the winged boss and receives the Moon Statue. The original game

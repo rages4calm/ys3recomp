@@ -2,40 +2,40 @@
 
 An incremental PC Engine CD native port of *Ys III: Wanderers from Ys* (USA),
 built with [pcenginerecomp](https://github.com/rages4calm/pcenginerecomp).
-**Adol defeats the winged boss in Alcaino Ruins and receives the Moon Statue.**
-The game displays the named reward, and the qualified checkpoint reaches
-frame **164,251** with **90 HP**.
+**Adol returns to Elena and Chester after receiving the Moon Statue.**
+Their scene completes and Adol reaches the outside of Alcaino Ruins at
+frame **173,827**, with **90/90 HP** and movement restored.
 
-The assisted **3,794-frame** continuation retires **121,514,843
-native and zero interpreted instructions**, converting 7,304
-previous fallback retirements. The linked own-build route records
-**5,021,591,966 native and zero interpreted** instructions.
-Verified assists include 9 current-HP refills and two
-boss-HP reductions that preserve ordinary attacks for the finishing blows.
+The new **9,576-frame** continuation retires **300,913,373 native and zero
+interpreted instructions**, replacing 42,412 fallback retirements. All **409
+new source identities execute**. The segment uses ordinary controller inputs;
+its starting checkpoint retains the earlier verified development assists.
+The linked own-build route records **5,322,505,339 native and zero
+interpreted** instructions.
 
-The latest selected toolkit is ABI29 revision
+The module contains **68,796 guarded source identities**. The new segment
+executes 16,353 exact identities. The new build's verified execution union covers
+**65,651** identities; **3,145** compiled identities remain unexercised, including
+the 78 declared-only identities. Unseen source variants retain interpreter fallback.
+
+The selected ABI29 toolkit remains
 [`1c765dc`](https://github.com/rages4calm/pcenginerecomp/commit/1c765dcd96923e806bf8009245d8fe4d1e16c402).
-Its 118 runtime and tooling source files match the final public update
-[`5a8e325`](https://github.com/rages4calm/pcenginerecomp/commit/5a8e325860966b338bb13f10e09a65669c60eb64).
-It supplies disc-source diagnostics, live-overlay branch discovery, input profiles
-and presentation controls.
-A bulk read-only sweep adds candidates from authentic paused RAM, alongside
-all genuine execution history. The module contains **68,387 source
-identities**, of which **65,396** execute across the verified route
-union. **2,991 compiled identities remain unexercised**, including the
-78 declared-only identities. Unseen source variants retain interpreter fallback.
+Its 118 runtime/tooling files match reviewed public revision
+[`e62cb5a`](https://github.com/rages4calm/pcenginerecomp/commit/e62cb5a1d55be8af641d7cefd1d995e19661a262).
+The module was extended once from the two closed source captures and rebuilt
+once. One admitted process replays the retained canonical lineage; the new
+scenario keeps all 49 input steps with five semantic checkpoints.
 
-Same-build interpreter comparisons match the controls, full RAM, guest pixels,
-digital PCM and exact retired source identities. The upgraded build replays
-the retained routes and natural Game Over branch. A separate paced TCP check
-during the defeat sequence verifies fresh nonzero audio accepted by SDL.
-Unknown CD commands receive the `nec-invalid` response.
+Original-program comparisons match the full RAM, guest RGB, digital PCM,
+CPU/source context and exact retirements at those boundaries. Fresh same-build
+native/repeat/reference forks keep the guard strict and normalize only four
+tier counters. A continuous 600-frame paced TCP check verifies fresh nonzero
+audio accepted by SDL. Unknown CD commands receive the `nec-invalid` response.
 
 See [STATUS](docs/STATUS.md) for measured scopes and historical evidence.
-Generated game source and qualified builds are private local artifacts.
-The repository contains authored consumer source, configuration, launchers and
-synthetic tests. The [remaster direction](docs/REMASTER_DIRECTION.md) records
-presentation, controller and save improvements and their individual readiness.
+Generated source, builds, game inputs and raw proof remain private.
+The [remaster direction](docs/REMASTER_DIRECTION.md) records presentation,
+controller and save improvements and their individual readiness.
 
 ## Play the local build
 
@@ -81,7 +81,7 @@ Fresh native/repeat/reference forks compare the entire current machine core with
 only four tier counters normalized. The guard and all other CORE/HOST bytes,
 RAM, pixels, source counts and guest PCM remain strict.
 
-Separate paced 120-frame runs verify fresh nonzero PCM accepted by SDL beyond
+The current paced 600-frame check verifies fresh nonzero PCM accepted by SDL beyond
 imported audio, with zero active drops. Planned pause clears and shutdown drains
 are counted separately. The fast-forward route compares guest digital PCM; it
 does not claim a newly captured boot WAV or listening/hardware parity.
