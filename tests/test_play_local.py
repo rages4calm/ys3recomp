@@ -40,6 +40,68 @@ def sparse():
 
 
 class LauncherReceiptTests(unittest.TestCase):
+    def test_composed_prepare_normalizes_source_identity_to_descriptor_abi(self):
+        with tempfile.TemporaryDirectory() as folder:
+            base = Path(folder)
+            (base/'sdk').mkdir()
+            module = base/'module.cpp'; module.write_text('// Authored fixture.\n')
+            binary = base/'authored.exe'; binary.write_bytes(b'Authored fixture')
+            descriptor = base/'project.toml'
+            descriptor.write_text('[tool]\npath="sdk"\nruntime_abi=29\n'
+                                  '[module.source]\npath="module.cpp"\n')
+            built = base/'build-receipt.json'
+            built.write_text(json.dumps({'binary': str(binary)}))
+            receipt, qualification = sparse()
+            receipt.pop('cut_policy'); receipt.pop('explicit_manifest_quit')
+            receipt.update(kind='ys3-composed-native-route', explicit_quit=True,
+                           project_descriptor=str(descriptor), project_build_receipt=str(built),
+                           input_bindings={str(p): launcher.sha(p) for p in (descriptor, built)})
+            package = dict(binary=str(binary), output_files={binary.name: launcher.sha(binary)})
+            receipt.update(package_before=copy.deepcopy(package), package_after=package)
+            replay = base/'replay.json'; replay.write_text(json.dumps(receipt))
+            qualification.update(passed=True, current_package=package,
+                                 evidence_sha256={str(p): launcher.sha(p)
+                                                  for p in (descriptor, built, binary, replay)})
+            qfile = base/'qualification.json'; qfile.write_text(json.dumps(qualification))
+            selection = base/'selection.json'
+            selection.write_text(json.dumps(dict(schema=1,
+                qualification=dict(path=str(qfile), digest=launcher.sha(qfile)),
+                replay_receipt=dict(path=str(replay), digest=launcher.sha(replay)))))
+            expected = dict(revision=qualification['tool']['revision'], runtime_abi=29,
+                            shared_source_identity=qualification['tool'], tracked_source_clean=True)
+            plan = dict(tool=expected, verification={}, command=[str(binary), '--wall-seconds', '1'])
+            with patch.object(launcher, 'SELECTION', selection), \
+                 patch.object(launcher, 'verified_launch', return_value=plan) as verified, \
+                 patch.object(launcher, 'validate_project_binding'), \
+                 patch.object(launcher, 'verify_package', return_value=package), \
+                 patch.object(launcher, 'packaged_environment', return_value=({}, {})), \
+                 patch.object(launcher, 'recheck_inputs'):
+                self.assertEqual(launcher.prepare()[0], expected)
+                self.assertEqual(verified.call_args.args[3], expected)
+
+    def test_composed_route_preserves_qualified_artifact_bindings(self):
+        receipt, qualification = sparse()
+        receipt.pop('cut_policy')
+        receipt.pop('explicit_manifest_quit')
+        receipt.update(kind='ys3-composed-native-route', explicit_quit=True)
+        descriptor, built, tool, package = launcher.receipt_contract(receipt, qualification)
+        self.assertEqual(descriptor, ('authored/project.toml', 'c' * 64))
+        self.assertEqual(built, ('authored/build-receipt.json', 'd' * 64))
+        self.assertEqual(tool, qualification['tool'])
+        self.assertEqual(package, qualification['current_package'])
+        for key, value in [('explicit_quit', False), ('natural_quit', False),
+                           ('child_stopped', False), ('reference', True),
+                           ('native', 0), ('interpreted', 1),
+                           ('cut_policy', 'explicit-milestones')]:
+            broken = copy.deepcopy(receipt)
+            broken[key] = value
+            with self.subTest(key=key), self.assertRaises(ValueError):
+                launcher.receipt_contract(broken, qualification)
+        broken = copy.deepcopy(receipt)
+        broken['input_bindings'].pop(broken['project_build_receipt'])
+        with self.assertRaises(ValueError):
+            launcher.receipt_contract(broken, qualification)
+
     def test_sparse_scenario_uses_qualified_tool_and_original_input_digests(self):
         receipt, qualification = sparse()
         descriptor, built, tool, package = launcher.receipt_contract(receipt, qualification)

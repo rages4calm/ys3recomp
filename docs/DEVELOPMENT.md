@@ -1,5 +1,26 @@
 # Consumer development
 
+## Fast checkpoint-based native expansion
+
+Keep discovery running across bounded control batches and capture images at
+route boundaries. Poll health between short combat steps; this does not require
+saving an image or checkpoint for every step. Use reviewed, journaled position
+and health edits to skip traversal while retaining the original game code.
+
+Collect missing full source identities before making one additive build. Resume
+development from own-package checkpoints, then reconstruct the selected suffix
+from its last qualified checkpoint in fresh native and independent-reference
+guests. A development checkpoint's imported interpreted instructions are not
+qualified native execution. If an earlier partial capture lacks exact per-key
+counts, preserve that limitation and require exact whole-suffix native/reference
+counts instead of inventing a prefix distribution.
+
+Play accepts a closed composed-route receipt with its exact descriptor, build,
+package and qualified toolkit bindings. It requires an acknowledged quit and
+clean child exit. Keep repeat and paced-audio checks on a safe retained waypoint
+when neutral input at the active encounter would kill Adol; bind that waypoint
+separately from the boss progression checkpoint.
+
 ## Story labels and checkpoint navigation
 
 The post-lodge cavern route previously labeled Alcaino is Tigre Mine. Named

@@ -2,45 +2,37 @@
 
 An incremental PC Engine CD native port of *Ys III: Wanderers from Ys* (USA),
 built with [pcenginerecomp](https://github.com/rages4calm/pcenginerecomp).
-**Development has collected Power Ring, Crystal, Tablet and Plate Mail in Tigre Mine.**
-Plate Mail and Power Ring are equipped. Adol is alive at the Plate Mail chest,
-with **90/100 HP** at frame **220,716**. The next boss has not been reached.
-Retained route evidence and fresh native/reference, repeat and paced TCP audio
-checks pass; Play uses the newly qualified build.
+**Development has reached the next boss beyond the Plate Mail cavern in Tigre Mine.**
+The opening fight, fire and blue projectiles are captured; Adol is alive with
+**82/100 HP** at frame **224,324**. The boss has not been defeated.
+Power Ring, Crystal, Tablet and Plate Mail remain held; Plate Mail and Power Ring
+are equipped. Play uses the qualified expanded build.
 
-The selected ABI29 SDK is
+The selected ABI29 SDK remains
 [`2143123`](https://github.com/rages4calm/pcenginerecomp/commit/2143123c0b9fa9fec064c55dad14973dfc6eca5b),
-with 136 runtime/tooling source files. This is a migration-only batch: **zero new
-native identities and no new story milestone**. The module preserves all
-**71,919 guarded identities**: 71,767 observed, 2,619 declared and 152 declared-only.
-Compilation is separate from execution proof.
+with 136 runtime/tooling source files. One additive build adds **541 guarded
+identities**, bringing the catalogue to **72,460 emitted / 72,309
+observed / 2,619 declared**. Compilation and execution remain separate.
 
-Typed checkpoint inspection/comparison, corrected frame-latched burst border
-color, immutable port-render layers and completed-frame presentation effects are
-available. Softness and persistence remain at their default zero; the original
-Ys III world view remains selected. These helpers do not implement a game-specific
-widescreen renderer, settings UI or persistent saves.
+The new **3,488-frame** checkpoint-based route executes **110,485,710 native /
+zero interpreted instructions**, with zero guard misses. Fresh native and
+independent-reference runs match at **55 semantic boundaries**, including full
+RAM, RGB, digital PCM and HOST/CORE state apart from four execution-tier counters.
+Verified position and health assists accelerate traversal; original game code
+remains unchanged. This is bounded assisted progression, not campaign completion.
 
-One fresh cold reconstruction reaches frame **220,716** with
-**6,758,540,315 native / zero interpreted instructions**, witnessing **69,619
-identities**. It checks exact retained source counts, complete original HOST/CORE,
-1,068 RGB samples and 35 semantic boundaries. The **542 historical CAS
-transactions** comprise 418 older transactions and 124 B062 position/HP edits;
-this update adds no assist recipe. Old checkpoints remain bound to their original
-packages. This is assisted retained-route reconstruction, not campaign completion.
+Fresh 120-frame native/repeat/reference checks and 600-frame paced TCP audio
+checks pass from the retained pre-boss stairs waypoint. They are separate from
+the active boss endpoint. Current-binary fresh execution witnesses
+**14,296 identities**; **58,164
+compiled identities remain unexercised**. The prior full cold reconstruction is
+retained historical evidence; it was not rerun or attributed to this new binary.
 
-Fresh 120-frame native/repeat/reference forks and 600-frame paced TCP audio
-pass using typed checkpoint reports and strict source/RAM/RGB/digital-PCM checks.
-Only four tier counters differ in the fresh reference comparison. The selected
-checkpoint is frame **220,836**, after the verification fork; the cold story
-endpoint remains frame 220,716. Fresh current-binary execution witnesses
-**69,619 identities**, leaving
-**2,300 compiled identities unexercised**.
-
-Power Ring, Crystal, Tablet and Plate Mail remain collected; Plate Mail and
-Power Ring remain equipped, with 90/100 HP. The next boss remains ahead.
-SAVE/LOAD menu exercise and opaque BRAM extraction do not establish a usable
-save or cross-process persistence. Unseen source variants retain fallback.
+Typed checkpoint diagnostics and upstream rendering helpers are available.
+Softness and persistence remain at zero; the original world view remains selected.
+Game-specific widescreen, settings UI and persistent saves remain future work.
+SAVE/LOAD menu exercise does not establish usable saves or cross-process
+persistence. Unseen source variants retain fallback.
 
 See [STATUS](docs/STATUS.md) for measured scopes and historical evidence.
 Generated source, builds, game inputs and raw proof remain private.

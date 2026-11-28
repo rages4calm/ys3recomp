@@ -1,5 +1,47 @@
 # Consumer status - 27 November 2026
 
+## 27 November - Cavern crossing and next boss reached
+
+Adol has crossed the large cavern, climbed its alternating wooden stairs and
+left-wall landings, reached the next boss and survived opening combat. The
+selected frontier is frame 224,324 with 82/100 HP. Fire and blue projectile phases
+are observed; no boss defeat, new reward or full-campaign completion is claimed.
+
+The SDK remains ABI29 [`2143123`](https://github.com/rages4calm/pcenginerecomp/commit/2143123c0b9fa9fec064c55dad14973dfc6eca5b).
+One audited additive build adds 541 emitted identities and 542 observed memberships
+(including one formerly declared-only identity): 72,460 emitted,
+72,309 observed, 2,619 declared and 151 declared-only.
+Compiler, dependency, media and SDK identities remain unchanged. Supported
+continuation admission imports the qualified frame 220,836 state without retiring
+an instruction; original package checkpoints are not rebound.
+
+Fresh native and independent-reference reconstruction of the selected 3,488-frame
+suffix passes: 110,485,710 native / zero interpreted / zero guards versus
+110,485,710 interpreted. All 55 semantic waypoints match full RAM, RGB, digital
+PCM and HOST/CORE state, with only four tier counters normalized
+between fresh execution tiers. All 55 raw comparisons are retained, with one
+official final typed comparison as an additional anchor. The 71 expected-byte
+data writes include 14 reviewed position-sync groups; original code and all
+work-RAM source aliases are protected.
+Development's 29,400 interpreted instructions remain historical discovery;
+they are not promoted to native execution. The selected original partial prefix
+lacks exact per-key counts; fresh whole-suffix per-key counts match exactly.
+
+Fresh 120-frame native/repeat/reference and 600-frame paced audio/reference checks
+pass from the safe pre-boss frame 223,924 waypoint. Native/repeat checkpoint bytes
+match. Paced audio accepts at least 441,856
+fresh nonzero PCM frames, with zero unexpected active drops and an exact queue
+equation; planned pause tails are separate. These neutral pre-boss windows do not
+claim boss combat/death coverage, listening or hardware parity.
+
+The new binary freshly witnesses 14,296 source identities;
+58,164 compiled identities remain unexercised.
+Of 541 newly emitted identities, 534 execute in fresh qualification;
+7 remain discovery-only. The prior cold campaign prefix is retained
+separately and was not replayed by this new binary. All 595 consumer tests pass.
+Play selects the expanded build. Closed raw proof is archived with per-file hash
+verification; current/prior runnable packages and required ancestry remain.
+
 ## 27 November - Migration-only toolkit refresh and typed qualification
 
 Story progress is unchanged: Power Ring, Crystal, Tablet and Plate Mail are

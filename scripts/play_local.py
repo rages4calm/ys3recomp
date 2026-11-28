@@ -64,11 +64,18 @@ def receipt_contract(receipt, qualification=None):
     """Decode retained receipt layouts without changing their bindings."""
     require(receipt.get('passed') is True and type(receipt.get('exit_code')) is int
             and receipt['exit_code'] == 0, 'Selected route did not pass with a clean exit')
-    if 'cut_policy' in receipt:
-        require(receipt['cut_policy'] == 'explicit-milestones'
-                and all(receipt.get(k) is True for k in
-                        ('explicit_manifest_quit', 'natural_quit', 'child_stopped')),
-                'Selected sparse scenario did not close naturally at explicit milestones')
+    composed = receipt.get('kind') == 'ys3-composed-native-route'
+    if 'cut_policy' in receipt or composed:
+        if composed:
+            require('cut_policy' not in receipt
+                    and all(receipt.get(k) is True for k in
+                            ('explicit_quit', 'natural_quit', 'child_stopped')),
+                    'Selected composed route did not close naturally')
+        else:
+            require(receipt['cut_policy'] == 'explicit-milestones'
+                    and all(receipt.get(k) is True for k in
+                            ('explicit_manifest_quit', 'natural_quit', 'child_stopped')),
+                    'Selected sparse scenario did not close naturally at explicit milestones')
         require(receipt.get('reference') is False
                 and type(receipt.get('native')) is int and receipt['native'] > 0
                 and type(receipt.get('interpreted')) is int and receipt['interpreted'] == 0,
@@ -204,7 +211,7 @@ def prepare():
     built = load(built_path)
     config = tomllib.loads(descriptor.read_text(encoding='utf-8'))
     tool = (descriptor.parent / config['tool']['path']).resolve(strict=True)
-    if 'cut_policy' in receipt:
+    if 'cut_policy' in receipt or receipt.get('kind') == 'ys3-composed-native-route':
         source = selected.get('shared_source_identity', selected)
         expected = dict(revision=source['revision'], runtime_abi=config['tool']['runtime_abi'],
                         shared_source_identity=source, tracked_source_clean=True)
