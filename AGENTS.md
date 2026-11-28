@@ -41,6 +41,12 @@ emission counts alone prove no execution. Preserve logical PC, all MPRs and
 source identity when discovering or selecting overlays. Capture original game
 code only in unmodified or verified-restored state, never temporary cheat bytes.
 
+Run discovery hosts hidden and unthrottled (`--hidden on --unthrottled on`),
+which mutes device presentation while preserving guest PCM. Keep tests off the
+owner's active desktop and speakers. If a visible window is needed, keep it
+muted. Separate paced audio/device verification from discovery and give notice
+before any audible listening test.
+
 The owner authorizes verified minimal development assists. Verify exact input
 and independent-reference evidence, journal expected-byte edits, preserve
 unassisted checkpoints, and label assisted progression separately. An assisted

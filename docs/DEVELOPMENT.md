@@ -20,6 +20,34 @@ mirrors. Reports contain original bytes and must remain private. Synthetic
 fixtures and the authored discovery tools may be published. Historical variants
 that do not match a snapshot are not current native fallback measurements.
 
+`scripts/ys3_room_sweep.py` queues the original deferred room transition from
+the resident main-loop boundary. Its caller supplies an authenticated area/file
+catalogue, original source guards and the protected compiled/captured footprint.
+Each case requires a fresh restored checkpoint process with zero fresh execution;
+reusing a guest after dialogue or another room is refused. Expected-byte writes
+select the room and construct a return frame below the existing stack.
+Scheduler return alone is insufficient: require the original
+task's completion site, matching selector/file and cleared transition state.
+The seeded exercise stops on death or departure from the selected room and
+always releases held input. Living-only HP refills are bounded assistance;
+they do not prove invulnerability. Keep per-room retirements and source captures
+separate from any native qualification. Verify a new warp recipe against an
+independent reference before applying it broadly.
+
+Do not infer an asset's purpose solely from its transfer device: this title can
+stage graphics in ADPCM RAM. Cumulative warps can also carry dialogue and resource
+state between unrelated rooms. A settled selector is entry evidence, not visual
+qualification; reproduce corruption from an isolated origin before reporting a
+shared renderer defect.
+
+For a fixed batch, a worker may retain one upstream `verified_input_epoch` across
+fresh guest processes. Call normal `project.prepare_launch` again for every case;
+it retains raw source, compiler, dependency and package checks. Revalidate between
+cases and seal the epoch at completion. Keep epochs worker-local, inputs immutable
+and outputs outside admitted inputs. An escaping error retires that worker's batch.
+Never substitute saved launch commands for fresh admission. Discovery launches use
+`--hidden on --unthrottled on`; device output is muted while guest PCM continues.
+
 Discovery builds collect per-area fallback retirements, guard misses and new
 source identities with bounded scripted input. Keep decoded, declared, observed
 and executed evidence distinct. Use isolated processes for parallel cases and
