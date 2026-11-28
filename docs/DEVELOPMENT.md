@@ -1,25 +1,42 @@
 # Consumer development
 
-## Fast checkpoint-based native expansion
+## Area-first discovery
 
-Keep discovery running across bounded control batches and capture images at
-route boundaries. Poll health between short combat steps; this does not require
-saving an image or checkpoint for every step. Use reviewed, journaled position
-and health edits to skip traversal while retaining the original game code.
+Discover code through the title's file directory, area selectors and original
+load routines. Story progression is not the discovery loop. Keep the toolkit
+pin frozen while mapping and sweeping; adopt updates together at a milestone,
+or when a confirmed defect blocks discovery.
 
-Collect missing full source identities before making one additive build. Resume
-development from own-package checkpoints, then reconstruct the selected suffix
-from its last qualified checkpoint in fresh native and independent-reference
-guests. A development checkpoint's imported interpreted instructions are not
-qualified native execution. If an earlier partial capture lacks exact per-key
-counts, preserve that limitation and require exact whole-suffix native/reference
-counts instead of inventing a prefix distribution.
+Use `sweep-loaders` for verified register-selected loaders and `declare-cd-loads`
+for authenticated direct-copy mappings. Preserve full PC, all eight MPRs and
+source bytes. A file directory can contain graphics and data as well as code;
+neither a plausible root nor a decoded area entry proves execution or a working
+room warp. Verify the transfer, entry and deferred initialization separately.
 
-Play accepts a closed composed-route receipt with its exact descriptor, build,
-package and qualified toolkit bindings. It requires an acknowledged quit and
-clean child exit. Keep repeat and paced-audio checks on a safe retained waypoint
-when neutral input at the active encounter would kill Adol; bind that waypoint
-separately from the boss progression checkpoint.
+`scripts/ys3_area_discovery.py` reads official code captures, filters identities
+against an authenticated physical snapshot and decodes an explicit area-layout
+recipe. Required known-memory ranges exclude device holes and unverified RAM
+mirrors. Reports contain original bytes and must remain private. Synthetic
+fixtures and the authored discovery tools may be published. Historical variants
+that do not match a snapshot are not current native fallback measurements.
+
+Discovery builds collect per-area fallback retirements, guard misses and new
+source identities with bounded scripted input. Keep decoded, declared, observed
+and executed evidence distinct. Use isolated processes for parallel cases and
+retain only useful new coverage seeds. Health refills do not guarantee survival
+during one long unchecked pulse; use bounded health-aware execution or a
+separately verified mechanism. TCP supplies bounded controls and settled results,
+with images only at useful identification boundaries.
+
+Run full native/reference, repeat and paced-audio qualification at coverage
+milestones, rather than after each small discovery build. Keep the current Play
+selection until a milestone passes. Publish one milestone status update; retain
+discovery measurements in the private area catalogue between milestones.
+
+Qualified checkpoint suffixes remain useful for milestone verification. Imported
+interpreted work is never relabeled as fresh native execution. Preserve missing
+original per-key evidence explicitly, require exact fresh native/reference source
+counts and bind safe audio/repeat origins separately from encounter checkpoints.
 
 ## Story labels and checkpoint navigation
 
@@ -71,10 +88,10 @@ overlay contract when integrating in-game settings.
 [Gamedev skill collection](https://github.com/gamedev-skills/awesome-gamedev-agent-skills) ·
 [recomp-ui runtime overlay](https://github.com/RetroPortingToolKit/recomp-ui#in-game-settings-overlay)
 
-## Bounded scenarios and sparse proof cuts
+## Milestone scenarios and sparse proof cuts
 
-Collect a coherent room, encounter or story sequence before preparing one native
-extension. Reuse owning-build checkpoints and immutable reference receipts whose
+At a qualification milestone, select a bounded verification sequence. Reuse
+owning-build checkpoints and immutable reference receipts whose
 inputs and checker bindings still match. Keep one admitted project and TCP
 session for a route; repeated admission and checkpoint persistence have measured
 costs. The transport itself has not been isolated as the bottleneck.
