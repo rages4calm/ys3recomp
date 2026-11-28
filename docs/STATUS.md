@@ -1,5 +1,53 @@
 # Consumer status - 27 November 2026
 
+## 27 November - Migration-only toolkit refresh and typed qualification
+
+Story progress is unchanged: Power Ring, Crystal, Tablet and Plate Mail are
+collected, Plate Mail and Power Ring are equipped, and Adol has 90/100 HP at the
+Plate Mail chest. The next boss has not been reached. The selected checkpoint
+is the fresh 120-frame fork at frame 220,836; the cold endpoint is 220,716.
+
+The selected ABI29 SDK is
+[`2143123`](https://github.com/rages4calm/pcenginerecomp/commit/2143123c0b9fa9fec064c55dad14973dfc6eca5b),
+source SHA256 `71b32e4bb580b239fda4beeb370a697831ac500595c140edb51462628e54f159`,
+136 source files. Official preparation and one audited compiler-cache miss
+preserve the complete 71,919 emitted / 71,767 observed / 2,619 declared catalogue,
+with 152 declared-only identities. No native identity, story milestone or assist
+recipe is added. Compiler, dependency, media and original-source memberships
+remain unchanged; old checkpoints are not rebound.
+
+One fresh cold reconstruction passes 220,716 frames and 6,758,540,315 native /
+zero interpreted instructions in 907.61 seconds. It witnesses 69,619 source
+identities and matches retained exact source counts, complete HOST/CORE,
+1,068 RGB checks and 35 semantic boundaries. Its 542 historical CAS transactions
+are 418 older transactions plus 124 B062 position/HP transactions; no broader
+claim about the older transaction types is made.
+
+Fresh 120-frame native/repeat/reference and 600-frame paced native/reference
+checks pass using source-bound typed inspection/comparison. Native/repeat
+checkpoints are byte-identical. Guards remain zero; only four tier counters are
+normalized. Current-binary execution witnesses 69,619 identities,
+leaving 2,300 compiled identities unexercised.
+The paced window executes 18,702,174 native / zero interpreted instructions,
+accepts at least 441,857 fresh nonzero PCM frames and observes zero unexpected
+active drops; 388 planned pause-tail frames are separate.
+
+Typed checkpoint inspection/comparison, corrected frame-latched burst border
+color, immutable port-render layers and completed-frame presentation effects are
+available. Softness and persistence remain at their default zero; the original
+Ys III world view remains selected. These helpers do not implement a game-specific
+widescreen renderer, settings UI or persistent saves.
+
+Six scoped upstream native suites pass against the retained runtime archives;
+45 affected Python checks pass and 18 compiled-environment cases are recorded
+as skipped. These scopes are separate. No speedup, listening, hardware,
+usable-save or full-campaign qualification is claimed.
+
+All 86 affected consumer tests pass. Play selects the qualified build. Cleanup
+archives 77 obsolete-package and closed-log files with per-file hash readback
+before removing their loose copies. Current and prior runnable builds, required
+ancestry, fixtures and all selected checkpoints remain available.
+
 ## 27 November - Tigre Mine rewards and hot-path SDK qualification
 
 Power Ring, Crystal, Tablet and Plate Mail are collected. Plate Mail and Power

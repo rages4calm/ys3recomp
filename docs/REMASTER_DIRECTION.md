@@ -42,7 +42,7 @@ and expiry before implementing a 2x option. Preserve original behavior when off;
 keep enabled-run evidence distinct from original-program qualification.
 
 The selected toolkit now provides the supported
-[title-adapter and launch-settings API](https://github.com/rages4calm/pcenginerecomp/blob/25ead81d73ac3ea555db6d5d25e4171ce9f5cd0c/docs/TITLE_ADAPTERS.md),
+[title-adapter and launch-settings API](https://github.com/rages4calm/pcenginerecomp/blob/2143123c0b9fa9fec064c55dad14973dfc6eca5b/docs/TITLE_ADAPTERS.md),
 completing [toolkit issue 47](https://github.com/rages4calm/pcenginerecomp/issues/47).
 Game-specific verified hit and earned-reward rules and CompanionLauncher choices
 remain unimplemented. Keep the vanilla native-coverage package adapter-free;
@@ -67,8 +67,11 @@ must agree; inspect both the original guest image and the final presented image.
 Test real scene boundaries and controller flows before calling a feature ready.
 Reuse completed route checks when their exact contracts remain unchanged.
 
-The selected ABI29 toolkit already contains the presentation and widescreen
-callback interfaces. The current game still uses its original world view; a
+The selected ABI29 toolkit contains presentation/widescreen callbacks, immutable
+scene-layer composition, tilemap sampling and completed-frame effect helpers.
+Optional softness and persistence default to zero and remain disabled here.
+The burst-border correction and typed checkpoint reports are available; they
+do not constitute a Ys III renderer or options UI. The current game still uses its original world view; a
 Ys III widescreen renderer, unified options interface and persistent saves are
 future implementation work. Bounded native route qualification does not establish
 full-game or campaign completion. Publication to a storefront is a separate task.

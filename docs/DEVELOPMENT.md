@@ -88,30 +88,36 @@ and natural story progression remain separate evidence classes.
 
 ## Current discovery boundary
 
-The selected SDK is `25ead81d73ac3ea555db6d5d25e4171ce9f5cd0c`, ABI29,
-130 source files, source SHA256
-`37df6dad3b173ba3501f01631cd6474a90d480e928e07c718d7490fe332f7b97`.
-One fused audited build includes the migration and all collected source gaps.
-Its new cold baseline reaches frame 197,076 with 6,021,101,711 native / zero
-interpreted instructions and 66,692 executed identities, matching original
-HOST/CORE and source counts. The 418 historical assists remain explicit.
+The selected SDK is `2143123c0b9fa9fec064c55dad14973dfc6eca5b`, ABI29,
+136 source files, source SHA256
+`71b32e4bb580b239fda4beeb370a697831ac500595c140edb51462628e54f159`.
+This migration-only build preserves all 71,919 emitted / 71,767 observed /
+2,619 declared identities, with 152 declared-only. No source gap, story
+milestone or new assist recipe is added.
 
-The living endpoint is frame 220,716 at the Plate Mail chest, with 90/100 HP.
-Power Ring, Crystal, Tablet and Plate Mail are collected; Plate Mail and Power
-Ring are equipped. The boss remains ahead. The selected 23,640-frame route
-executes 737,438,604 native / zero interpreted instructions with 124 literal
-expected-byte position/HP edits. MAX HP, experience, gold and quest flags are
-unchanged by assists. Fifteen own-build waypoints, strict reference parity,
-120-frame repeat forks and 600-frame paced SDL audio pass.
+One fresh cold route reaches frame 220,716 with 6,758,540,315 native / zero
+interpreted instructions, 69,619 executed identities, exact retained source
+counts, complete HOST/CORE, 1,068 RGB checks and 35 semantic boundaries. The
+542 historical CAS transactions comprise 418 older transactions and 124 B062
+position/HP transactions; retain their original individual policies.
 
-The module contains 71,919 emitted / 71,767 observed / 2,619 declared identities,
-with 152 declared-only. Of 2,230 added emitted identities,
-2,087 execute and 143 remain unexercised. Fresh current-binary
-qualification witnesses 69,619, leaving 2,300 compiled identities unexercised.
-The same-binary lifetime is 6,758,540,315 native / zero interpreted, combining
-a cold prefix and restored suffixes rather than a continuous campaign.
+The Plate Mail story endpoint remains 90/100 HP, with four named rewards and
+Plate Mail/Power Ring equipped; the boss remains ahead. A fresh 120-frame
+native/repeat/reference fork supplies the selected checkpoint at frame 220,836.
+The separate 600-frame paced native/reference window verifies at least 441,857
+fresh nonzero accepted PCM frames with zero unexpected active drops. Typed
+checkpoint inspection/comparison replaces private byte-offset parsing in these
+fresh auxiliary checks; only the four tier counters are normalized.
+Fresh current-binary execution witnesses 69,619 identities;
+2,300 compiled identities remain unexercised.
 
-One selected discovery prefix has no persisted original per-key count oracle.
+Typed checkpoint inspection/comparison, corrected frame-latched burst border
+color, immutable port-render layers and completed-frame presentation effects are
+available. Softness and persistence remain at their default zero; the original
+Ys III world view remains selected. These helpers do not implement a game-specific
+widescreen renderer, settings UI or persistent saves.
+
+The retained B062 discovery prefix has no persisted original per-key count oracle.
 Preserve its literal wire boundary, checkpoint state, aggregate totals and full
 capture upper counts. Require exact fresh whole-route native/reference encoded
 counts; do not invent original per-phase counts.
@@ -133,7 +139,7 @@ retirements and no live restore/TCP/presentation. Opaque extraction does not
 validate original-game save format or implement player persistence.
 
 Use the supported
-[additive checkpoint continuation](https://github.com/rages4calm/pcenginerecomp/blob/25ead81d73ac3ea555db6d5d25e4171ce9f5cd0c/docs/CHECKPOINT_CONTINUATIONS.md)
+[additive checkpoint continuation](https://github.com/rages4calm/pcenginerecomp/blob/2143123c0b9fa9fec064c55dad14973dfc6eca5b/docs/CHECKPOINT_CONTINUATIONS.md)
 under the identical SDK path/revision/source, machine/media/reference recipe and
 audited compiler/dependency closure. Preserve the source checkpoint and use the
 official admission and launch APIs. Subsequent module-only extensions qualify
@@ -151,7 +157,7 @@ Recheck byte closures and membership at every
 required operation; the new SDK performs scoped verified-input reuse internally.
 
 Keep the vanilla coverage lineage adapter-free. The optional
-[title-adapter API](https://github.com/rages4calm/pcenginerecomp/blob/25ead81d73ac3ea555db6d5d25e4171ce9f5cd0c/docs/TITLE_ADAPTERS.md)
+[title-adapter API](https://github.com/rages4calm/pcenginerecomp/blob/2143123c0b9fa9fec064c55dad14973dfc6eca5b/docs/TITLE_ADAPTERS.md)
 supports separate enhancement builds with exact source sites and initial launch
 settings. Adapter-bearing packages, including compiled-pristine adapters, cannot
 use cross-package continuation in this version. Enhanced HOSTv2 binds settings

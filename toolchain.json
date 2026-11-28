@@ -2,12 +2,12 @@
   "schema": 1,
   "tool": {
     "repository": "https://github.com/rages4calm/pcenginerecomp",
-    "revision": "25ead81d73ac3ea555db6d5d25e4171ce9f5cd0c",
-    "source_sha256": "37df6dad3b173ba3501f01631cd6474a90d480e928e07c718d7490fe332f7b97",
-    "source_files": 130,
-    "checkout": ".deps/pcenginerecomp-current62b",
+    "revision": "2143123c0b9fa9fec064c55dad14973dfc6eca5b",
+    "source_sha256": "71b32e4bb580b239fda4beeb370a697831ac500595c140edb51462628e54f159",
+    "source_files": 136,
+    "checkout": ".deps/pcenginerecomp-current63",
     "runtime_abi": 29,
-    "source_policy": "Reviewed clean ABI29 source with inactive adapter hooks compiled out in adapter-free hosts and source-bound offline BRAM diagnostics. An audited new cold chest baseline and same-package restored forward route pass native/reference, repeat and paced TCP audio gates. Vanilla coverage is adapter-free; original selected-prefix per-key limits and unexercised source facts remain explicit. No old checkpoint rebinding, uninterrupted campaign, throughput or portable-save claim."
+    "source_policy": "Reviewed clean ABI29 source with typed exact-producer checkpoint inspection/comparison, corrected palette256 burst color, immutable renderer helpers and optional completed-frame presentation effects. One audited new cold reconstruction through the retained Plate Mail endpoint and fresh same-package native/repeat/reference and paced TCP audio suffixes pass. The cold route retains its prior qualified reference bridge; fresh reference execution covers the bounded120/600frame suffixes. Vanilla coverage remains adapter-free; no old checkpoint rebinding, new story/native-identity gain, enhanced rendering, portable SAVE, throughput or campaign claim."
   },
   "progression_label_correction": {
     "date": "2026-11-02",
@@ -5182,6 +5182,69 @@
     },
     "campaign_complete": false,
     "scope": "Bounded assisted current-binary progression through four named rewards and Plate Mail/Power Ring equipment, with fifteen strict machine/host/reference waypoints, repeats and paced audio. Source01 death and an unselected source03 tail contribute compilation facts only. SAVE/LOAD menus are UI exercise, not usable-load or portable-save qualification. Boss not reached; unexercised facts are not execution coverage.",
+    "consumer_tests": 86
+  },
+  "toolkit_2143123_migration": {
+    "date": "2026-11-27",
+    "tool_revision": "2143123c0b9fa9fec064c55dad14973dfc6eca5b",
+    "runtime_abi": 29,
+    "source_sha256": "71b32e4bb580b239fda4beeb370a697831ac500595c140edb51462628e54f159",
+    "source_files": 136,
+    "qualification_sha256": "7f0ef0da87485549579897c82bd0dfe57cc6358be0aa15a55354fad8c5880fb4",
+    "migration_only": true,
+    "new_story_milestone": false,
+    "new_source_identities": 0,
+    "new_assist_recipes": 0,
+    "emitted": 71919,
+    "observed": 71767,
+    "declared": 2619,
+    "declared_only_unexercised": 152,
+    "current_binary_fresh_witnessed_union": 69619,
+    "current_binary_unexercised": 2300,
+    "cold": {
+      "frames": 220716,
+      "native": 6758540315,
+      "interpreted": 0,
+      "guard_misses": 0,
+      "source_identities": 69619,
+      "historical_CAS": 542,
+      "older_CAS": 418,
+      "B062_forward_position_HP_CAS": 124,
+      "semantic_boundaries": 35,
+      "canonical_RGB_checks": 1068,
+      "whole_HOST_CORE_equal_to_retained_native": true,
+      "RGB_differences_from_retained_route": 0,
+      "exact_PC_MPR_physical_source_counts_equal": true,
+      "new_SDK_full_route_reference_executed": false,
+      "retained_qualified_reference_bridge": true
+    },
+    "forks": {
+      "frames_each": 120,
+      "new_native_each": 3740441,
+      "reference_new_interpreted": 3740441,
+      "new_interpreted": 0,
+      "guard_misses": 0,
+      "selected_endpoint_frame": 220836,
+      "native_repeat_checkpoint_bytes_equal": true,
+      "same_producer_typed_checkpoint_policy": "tier-counters",
+      "whole_HOST_and_other_CORE_equal": true,
+      "RAM_RGB_digital_PCM_per_key_source_counts_equal": true
+    },
+    "audio": {
+      "frames_each": 600,
+      "new_native": 18702174,
+      "reference_new_interpreted": 18702174,
+      "new_interpreted": 0,
+      "guard_misses": 0,
+      "paced_TCP": true,
+      "no_WAV": true,
+      "fresh_nonzero_device_accepted_lower_bound": 441857,
+      "planned_pause_tail_frames": 388,
+      "unexpected_active_drops": 0,
+      "exact_queue_equation": true,
+      "same_producer_typed_checkpoint_equal": true
+    },
+    "scope": "SDK migration of the already-qualified Plate Mail state only. Cold220716frame reconstruction replays542historical CAS:418older assists plus124B062position/HP edits; no new assist recipe or claim that every older edit has the latter scope. Fresh independent references cover120frame fork and600frame audio suffixes, separately from the retained whole-route reference bridge. Selected native fork checkpoint is frame220836. No new story/source-identity gain, usable SAVE, rendering enhancement, hardware or continuous campaign qualification.",
     "consumer_tests": 86
   }
 }
