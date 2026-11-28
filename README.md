@@ -6,27 +6,37 @@ built with [pcenginerecomp](https://github.com/rages4calm/pcenginerecomp).
 The opening fight, fire and blue projectiles are captured; Adol is alive with
 **82/100 HP** at frame **224,324**. The boss has not been defeated.
 Power Ring, Crystal, Tablet and Plate Mail remain held; Plate Mail and Power Ring
-are equipped. Play uses the qualified expanded build.
+are equipped. Play now uses the newly qualified room-expansion build.
 
-The selected ABI29 SDK remains
-[`2143123`](https://github.com/rages4calm/pcenginerecomp/commit/2143123c0b9fa9fec064c55dad14973dfc6eca5b),
-with 136 runtime/tooling source files. One additive build adds **541 guarded
-identities**, bringing the catalogue to **72,460 emitted / 72,309
-observed / 2,619 declared**. Compilation and execution remain separate.
+The build SDK is now ABI29
+[`62c706c`](https://github.com/rages4calm/pcenginerecomp/commit/62c706c51e3e7b8d59c235c30093cc47f95af1f3),
+with 138 runtime/tooling source files. **The full 136-selector matrix passes
+and Play selects the new build.** One recoverable build
+reuses the merged room history and adds **12,854 identities**, yielding
+**85,314 emitted / 85,184 observed / 2,619 declared**, with 130 declared-only.
+Fresh current-binary execution witnesses **83,231 identities**; **2,083 compiled
+identities remain unexercised**. The 525 interpreted source identities observed
+in this matrix belong to selector 135's frontier.
 
-The new **3,488-frame** checkpoint-based route executes **110,485,710 native /
-zero interpreted instructions**, with zero guard misses. Fresh native and
-independent-reference runs match at **55 semantic boundaries**, including full
-RAM, RGB, digital PCM and HOST/CORE state apart from four execution-tier counters.
-Verified position and health assists accelerate traversal; original game code
-remains unchanged. This is bounded assisted progression, not campaign completion.
+One fresh cold reconstruction reaches frame **224,324** with
+**6,872,766,466 native / zero interpreted instructions / zero guard misses**.
+It preserves the retained assisted route and exact original source counts;
+only the new package's own checkpoints are restored.
 
-Fresh 120-frame native/repeat/reference checks and 600-frame paced TCP audio
-checks pass from the retained pre-boss stairs waypoint. They are separate from
-the active boss endpoint. Current-binary fresh execution witnesses
-**14,296 identities**; **58,164
-compiled identities remain unexercised**. The prior full cold reconstruction is
-retained historical evidence; it was not rerun or attributed to this new binary.
+Across **135 native-qualified selectors**, bounded native/reference checks retire
+**2,256,852,676 native / zero interpreted instructions / zero guards**.
+That promotes **37,007,421 formerly interpreted retirements** on those same
+selectors. All 136 cases together execute 2,281,234,306 native + 726,584 interpreted
+instructions. Selector 135 passes the fixed CD-audio leadout boundary but retains
+those **726,584 interpreted instructions and guards**, alongside 24,381,630 native
+instructions; full CORE/HOST equality and native qualification are withheld for
+that frontier. Full RAM, RGB, digital PCM, controls and source counts agree.
+
+The checks use fresh isolated processes and verified loader warps. Sixty cases
+complete 600 exercise frames; 16 stop on death and 60 leave the selected room.
+Those 76 incomplete exercises do not establish complete room or campaign coverage.
+Separate 120-frame native/repeat/reference and 600-frame process-muted paced-audio
+checks pass from the new cold run's own safe pre-boss checkpoint.
 
 Typed checkpoint diagnostics and upstream rendering helpers are available.
 Softness and persistence remain at zero; the original world view remains selected.
@@ -69,30 +79,39 @@ Keyboard controls remain available for pause, fullscreen and exit. The shared
 host's virtual-device checks cover mapping, hot-plugging and input release;
 physical-controller verification is separate.
 
-The selected [ABI29 toolkit](https://github.com/rages4calm/pcenginerecomp/commit/2143123c0b9fa9fec064c55dad14973dfc6eca5b)
+The build [ABI29 toolkit](https://github.com/rages4calm/pcenginerecomp/commit/62c706c51e3e7b8d59c235c30093cc47f95af1f3)
 provides mixed live-overlay and history preparation, feedback, shared emission
 and audited additive checkpoint continuation. It also supplies optional title
 adapters and operation-local verified-input reuse; game enhancements still need
 consumer implementation. Shared CPU/device semantics and generation remain upstream; this project
 owns game configuration, coverage and verification. The previous qualified
-ABI29 build is retained.
+ABI29 build remains available as the prior runnable package.
 
 ## Audio and checkpoints
 
 Ordinary restore requires exact-build checkpoints and explicit reference capability.
-The toolkit's [audited additive continuation](https://github.com/rages4calm/pcenginerecomp/blob/2143123c0b9fa9fec064c55dad14973dfc6eca5b/docs/CHECKPOINT_CONTINUATIONS.md)
-is a separate, qualified module-only path with the same SDK and compiler/dependency
-closure. It does not retroactively admit older ordinary-build checkpoints.
-Original ABI28 captures remain source evidence; their checkpoints are never imported into ABI29.
-Fresh native/repeat/reference forks compare the entire current machine core with
-only four tier counters normalized. The guard and all other CORE/HOST bytes,
-RAM, pixels, source counts and guest PCM remain strict.
+The new recovery-built package establishes a fresh cold baseline and restores
+only its own checkpoints. [Toolkit issue 60](https://github.com/rages4calm/pcenginerecomp/issues/60)
+is fixed upstream in
+[`98a5e83`](https://github.com/rages4calm/pcenginerecomp/commit/98a5e83d20d41a56676ca8d932417f7b05971f75),
+which has not been adopted by this 62c706c package. Adopting that fix requires
+new preparation and a fresh cold baseline; it cannot admit 2143123/62c706c
+packages through a newer controller alone. This milestone stays on its frozen
+pin and owning-package restores. Historical cache-producer continuations keep their
+original scope. Original ABI28 captures remain source evidence; their checkpoints
+are never imported into ABI29.
 
-The current paced 600-frame check executes 18,702,174 native / zero interpreted
-instructions and accepts at least 441,857 fresh nonzero PCM frames beyond imported
-audio. Zero unexpected active drops are observed; 388 planned pause-tail
-frames are accounted separately. This is bounded SDL delivery evidence, not
-listening or hardware equivalence. No new boot WAV is claimed.
+The new package's 120-frame native/repeat/reference forks execute 3,743,555
+instructions per run, with zero native fallback and zero guards. Native/repeat
+checkpoint bytes match exactly. Native/reference full CORE/HOST matches with only
+four execution-tier counters normalized; guards remain strict. Its 600-frame
+paced native/reference checks execute 18,728,072
+instructions each and generate 442,281 fresh PCM frames. The real SDL queue
+accepts at least 441,856 fresh nonzero frames, with zero observed active drops;
+planned pause tails are 388 native / 362 reference frames. These processes stay
+muted. Fresh typed comparisons and the full room matrix pass. Numerical PCM
+and bounded SDL delivery do not establish listening or
+hardware equivalence.
 
 The selected `nec-invalid` CD policy returns an invalid-command response with
 sense for unknown commands. It does not implement those operations. Historical
@@ -104,8 +123,8 @@ profile is not selected. Default synthesized Q remains in use for this disc.
 Requires Python 3.11+, CMake 3.20+, a C++20 compiler, Ninja and Git.
 
 ```sh
-git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-current63
-git -C .deps/pcenginerecomp-current63 checkout --detach 2143123c0b9fa9fec064c55dad14973dfc6eca5b
+git clone -c core.autocrlf=false https://github.com/rages4calm/pcenginerecomp .deps/pcenginerecomp-current65
+git -C .deps/pcenginerecomp-current65 checkout --detach 62c706c51e3e7b8d59c235c30093cc47f95af1f3
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++
 cmake --build build --parallel 4
 ctest --test-dir build --output-on-failure

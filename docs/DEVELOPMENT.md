@@ -154,28 +154,48 @@ and natural story progression remain separate evidence classes.
 
 ## Current discovery boundary
 
-The selected SDK is `2143123c0b9fa9fec064c55dad14973dfc6eca5b`, ABI29,
-136 source files, source SHA256
-`71b32e4bb580b239fda4beeb370a697831ac500595c140edb51462628e54f159`.
-This migration-only build preserves all 71,919 emitted / 71,767 observed /
-2,619 declared identities, with 152 declared-only. No source gap, story
-milestone or new assist recipe is added.
+The build SDK is `62c706c51e3e7b8d59c235c30093cc47f95af1f3`, ABI29,
+138 source files, source SHA256
+`9ecc5b33581e830aaa10547b4173f8fdaee525334a4e58e7906d57ce9bbf664e`.
+The full room matrix and package qualification pass; Play selects this build,
+with the prior 2143123 package retained. Keep the discovery pin frozen.
 
-One fresh cold route reaches frame 220,716 with 6,758,540,315 native / zero
-interpreted instructions, 69,619 executed identities, exact retained source
-counts, complete HOST/CORE, 1,068 RGB checks and 35 semantic boundaries. The
-542 historical CAS transactions comprise 418 older transactions and 124 B062
-position/HP transactions; retain their original individual policies.
+Re-emission reuses the already merged 135-selector history and original declared
+roots; it neither recomposes 135 captures nor discovers areas through story play.
+The new audited recoverable build contains 85,314 emitted / 85,184 observed /
+2,619 declared identities, 130 declared-only. Full PC/all-MPR/physical/original-byte
+sets and original media, boot, runtime and limits must match the prepared union.
+Current-binary execution witnesses 83,231 full source identities, with 2,083
+compiled identities unexercised and 525 interpreted identities at selector 135.
+Require full emitted catalogue membership for every native witness; comparing
+only counts cannot reject a foreign PC/MPR/physical/source-byte variant.
+Read the producing SDK's nested recovery receipt and verify its seals; never
+flatten it to satisfy another reader or certify an old unreceipted binary.
 
-The Plate Mail story endpoint remains 90/100 HP, with four named rewards and
-Plate Mail/Power Ring equipped; the boss remains ahead. A fresh 120-frame
-native/repeat/reference fork supplies the selected checkpoint at frame 220,836.
-The separate 600-frame paced native/reference window verifies at least 441,857
-fresh nonzero accepted PCM frames with zero unexpected active drops. Typed
-checkpoint inspection/comparison replaces private byte-offset parsing in these
-fresh auxiliary checks; only the four tier counters are normalized.
-Fresh current-binary execution witnesses 69,619 identities;
-2,300 compiled identities remain unexercised.
+One fresh cold reconstruction reaches 224,324 with 6,872,766,466 native /
+zero interpreted instructions and zero guards, preserving the retained exact
+source counts. New tests restore only this package's own checkpoints. The
+full 136-selector native/reference matrix passes. Selectors 0..134 execute
+2,256,852,676 native / zero interpreted instructions / zero guards. Selector 135
+retains 726,584 interpreted instructions and guards, with 24,381,630 native
+instructions. Full RAM/RGB/digital PCM and exact source counts agree; full
+CORE/HOST equality is withheld for that guard frontier. Current owning-package
+repeat/reference and process-muted real-device PCM checks also pass. Sixty cases
+complete 600 exercise frames; 16 stop on death and 60 leave the selected room.
+Keep these 76 incomplete exercises distinct from the 135 native-qualified windows.
+Native identity coverage does not imply a full room or boss-phase exercise.
+
+Use the actual new cold pre-boss checkpoint at 223,924 for direct 120-frame
+native/repeat/reference forks and 600-frame paced audio checks. Do not substitute
+the active boss endpoint or add a seed advance: those change the verified window.
+The failed endpoint-based auxiliary attempt remains failed. A later parent-only
+comparison error is checked by a separate sealed closed-artifact comparer; all
+five actual role runs remain unchanged and no guests are replayed. Native/repeat
+checkpoint bytes must match exactly; native/reference full CORE/HOST comparison
+normalizes only four execution-tier counters and keeps guards strict. All hosts
+stay hidden; discovery uses unthrottled presentation muting. Paced tests open the
+real device while independently muting only the owned process audio session,
+with readback before advancing. No master-volume change or audible test is needed.
 
 Typed checkpoint inspection/comparison, corrected frame-latched burst border
 color, immutable port-render layers and completed-frame presentation effects are
@@ -204,23 +224,29 @@ diagnostics use only the owning executable and checkpoint, offline with zero
 retirements and no live restore/TCP/presentation. Opaque extraction does not
 validate original-game save format or implement player persistence.
 
-Use the supported
+Historical cache-producer
 [additive checkpoint continuation](https://github.com/rages4calm/pcenginerecomp/blob/2143123c0b9fa9fec064c55dad14973dfc6eca5b/docs/CHECKPOINT_CONTINUATIONS.md)
-under the identical SDK path/revision/source, machine/media/reference recipe and
-audited compiler/dependency closure. Preserve the source checkpoint and use the
-official admission and launch APIs. Subsequent module-only extensions qualify
-only the fresh suffix plus native/repeat/reference and paced audio; SDK, lowering,
-compiler or machine/media-policy changes require a new baseline. Equal ABI
-numbers or module membership alone do not authorize transfer.
+proofs remain valid in their original identical-SDK/compiler/machine context.
+[Toolkit issue 60](https://github.com/rages4calm/pcenginerecomp/issues/60) is fixed
+upstream by 98a5e83d20d41a56676ca8d932417f7b05971f75. Its source SHA256 is
+`ff311c45185aebcf4ca009a93d712e6c442c3daa92c60e6e7f275697e4566c5e`
+(138 files, ABI29). This is an available qualified toolkit handoff, not adoption
+or Ys III execution evidence. Keep the current 62c706c discovery/milestone pin
+frozen. Adopting 98a5e83 requires a newly prepared baseline and expanded package
+on that same pin, followed by one new cold reconstruction. A newer controller
+cannot admit existing 2143123/62c706c packages. The current migration continues
+to avoid the older reader: one fresh package, one cold baseline,
+then owning-package restores. SDK, lowering, compiler or machine/media changes
+require a new baseline; equal module memberships alone never authorize transfer.
 
-Combine coherent source-discovery areas before one extension. Retain logical
-PC, all MPRs, physical source and original bytes for every identity. Broader loader
-selectors or arbitrary room presets remain unimplemented. The flat qualifier
-uses one admitted package context and two continuous native/reference guests,
-with explicit semantic and assist boundaries. The latest pair closes in 732.13s
-with one 34.90s admission; these are bounded measurements, not a speedup proof.
-Recheck byte closures and membership at every
-required operation; the new SDK performs scoped verified-input reuse internally.
+The 136 decoded selectors now have a verified original-loader warp recipe.
+Each native/reference case uses a fresh process and owning-package checkpoint;
+room state is never carried between cases. Two bounded worker-local
+verified-input epochs reuse parsed graphs while every case still calls normal
+prepare_launch and revalidates immutable raw inputs. Release input and close
+hosts before sealing each worker. Collect new fallback at remaining frontiers,
+merge coherent discoveries once and qualify at a milestone. Preserve isolated
+exercise outcomes and stop-on-death limits separately from native identity counts.
 
 Keep the vanilla coverage lineage adapter-free. The optional
 [title-adapter API](https://github.com/rages4calm/pcenginerecomp/blob/2143123c0b9fa9fec064c55dad14973dfc6eca5b/docs/TITLE_ADAPTERS.md)
@@ -1168,7 +1194,7 @@ execution proof. Keep the six-byte historical exclusion across all4variants;
 its984profile hits differ from this route's actual3identities/3interpreted hits.
 
 Same-route native work changes from564,265,156N/20,674I to564,285,827N/3I;
-gain20,671, with63,473native blocks/zero interpreted and3guard misses. Reset
+gain20,671, with63,473native blocks/ zero interpreted and3guard misses. Reset
 prefix work remains432,875,213N/0I. Preserve full CPU/MPR/source/CD/PCM/images;
 capture/emission totals alone do not establish execution. Native gain and the
 new shared toolkit migration need separate passing qualifiers before publication.
@@ -1251,7 +1277,7 @@ records an explicit neutral advance120/capture/advance480/capture recipe,
 retaining the extra raw state120. The full candidate/reference state at600 must
 still match including actual tiers; that capture proves BIOS work by600, not
 before120. Verify decoded RGB and actual PNG hashes. The external Gear menu
-bridge compares only its declared aligned 237-row viewport at120 and600;
+bridge compares only its declared aligned 237-row viewport at120 and 600;
 full raw frames differ, and no retail CPU/device tick parity follows.
 
 The full reset route uses raw44100 Gear PCM and a 441,000-frame WAV cap.

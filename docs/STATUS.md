@@ -1,4 +1,74 @@
-# Consumer status - 27 November 2026
+# Consumer status - 28 November 2026
+
+## 28 November - Room-sweep native expansion qualified
+
+Story progression remains the living Tigre Mine boss encounter at frame 224,324,
+82/100 HP; no boss defeat, new reward or campaign completion is claimed. Play
+now selects the new qualified package; the previous qualified package remains
+available.
+
+One fresh recoverable build uses ABI29
+[`62c706c`](https://github.com/rages4calm/pcenginerecomp/commit/62c706c51e3e7b8d59c235c30093cc47f95af1f3),
+source SHA256 `9ecc5b33581e830aaa10547b4173f8fdaee525334a4e58e7906d57ce9bbf664e`,
+138 source files. The existing merged history from 135 isolated selectors adds
+12,854 emitted identities in one build: 85,314 emitted / 85,184 observed / 2,619
+declared / 130 declared-only. Original full PC/all-MPR/physical/source-byte
+memberships, machine/media and LLVM/SDL closures are preserved.
+Fresh current-binary native execution witnesses 83,231 full source identities;
+2,083 compiled identities remain unexercised. All native witnesses are checked
+against the exact emitted catalogue. The remaining 525 interpreted identities
+are selector 135's explicit frontier.
+
+One fresh cold reconstruction completes 224,324 frames and 6,872,766,466 native /
+zero interpreted instructions, with zero guards, in 975.90 seconds. It retains
+1,068 RGB checks, 91 semantic checks, 613 expected-byte data writes and exact
+source counts for 70,173 identities. The inherited assists remain labeled;
+this is controlled route reconstruction, not a new unassisted campaign.
+
+All 136 isolated native/reference cases close successfully. Selectors 0..134
+retire 2,256,852,676 native / zero interpreted instructions / zero guards, promoting
+37,007,421 formerly interpreted retirements on the same 135 selectors. The full
+matrix totals 2,281,234,306 native + 726,584 interpreted instructions and 726,584
+guards. Independent full RAM, RGB, digital PCM, controls and exact original-source
+retirement counts agree. Native/reference full CORE/HOST comparisons normalize
+only four execution-tier counters and retain guards as strict fields.
+
+Selector 135 now completes after the shared CD-audio fix: 24,381,630 native +
+726,584 interpreted instructions, 726,584 guards and 525 observed identities.
+Its guard frontier retains no full CORE/HOST equality or native qualification
+claim. Sixty room cases complete 600 exercise frames; 16 end on death and 60
+leave the selected room. These 76 incomplete exercises remain bounded measured
+coverage, not complete room, boss-phase or campaign qualification.
+
+Separate 120-frame native/repeat/reference forks pass at 3,743,555 instructions
+each; 600-frame paced native/reference checks pass at 18,728,072 each, with zero
+native fallback/guards. Each audio run generates 442,281 fresh PCM frames. The
+actual process-muted SDL device accepts at least 441,856 fresh nonzero frames,
+with zero observed active loss and an exact pending/generated/submitted equation.
+Planned pause tails are 388 native / 362 reference frames. Native/repeat checkpoint
+bytes match exactly; native/reference full CORE/HOST matches with only four tier
+counters normalized and guards strict.
+
+These auxiliary runs directly restore the new cold safe checkpoint at 223,924.
+The earlier active-endpoint attempt remains failed. All five replacement roles
+closed successfully; their parent's post-run comparison hit a consumer checker
+bug. A separate sealed comparer reaudited those closed artifacts and passed the
+three official comparisons without replaying guests or relabeling that failed
+parent. Listening and hardware parity remain unqualified.
+
+[Toolkit issue 59](https://github.com/rages4calm/pcenginerecomp/issues/59) is fixed
+and closed: the reviewed runtime change is limited to the CD-audio leadout endpoint.
+[Issue 60](https://github.com/rages4calm/pcenginerecomp/issues/60) is now fixed
+and closed upstream in
+[`98a5e83`](https://github.com/rages4calm/pcenginerecomp/commit/98a5e83d20d41a56676ca8d932417f7b05971f75),
+but that fix is not in this frozen 62c706c consumer. The qualified upstream
+handoff reports 2,764 Python tests, all native suites and authored recovery-to-
+recovery/cache-MISS-to-recovery proofs; these are toolkit evidence, not Ys III
+execution. Adopting 98a5e83 requires new preparation and a new cold baseline;
+there is no controller-only admission of older 2143123/62c706c packages.
+This package uses a fresh baseline and same-package restores, with no cross-package
+checkpoint transfer, receipt flattening or certification of the old failed cache
+output. Hidden tests preserve guest PCM; paced tests mute only their owned process.
 
 ## 27 November - Cavern crossing and next boss reached
 
